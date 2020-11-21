@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="做题中遇到的漏洞积累"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">Hello World</p>
+          <p class="title">做题中遇到的漏洞积累</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -103,7 +103,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-11-19</span>
+            <span class="date">2020-11-21</span>
             <span class="time">22:08:46</span>
           </span>
           
@@ -112,19 +112,9 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <p>#前言<br>用这个来记录做题时所遇到的漏洞吧。</p>
+<a id="more"></a>
+<p>命令执行漏洞<br>命令执行漏洞是指服务器没有对执行的命令进行过滤，用户可以随意执行系统命令，命令执行漏洞属于高危漏洞之一。<br>如php的命令执行漏洞主要是基于一些函数的参数过滤不足导致的，可以执行命令的函数有system，exec，shell-exec，passthru，pcntl-execl，popen，proc-open等。（我做的题的题目直接都是exec，我说写wp的大佬怎么一下就看出来是命令执行漏洞）<br>漏洞的原理<br>在操作系统中， &amp; 、&amp;&amp; 、| 、 || 都可以作为命令连接符使用，用户通过浏览器提交执行命令，由于服务器端没有针对执行函数做过滤，导致在没有指定绝对路径的情况下就执行命令<br>注解<br>A&amp;&amp;B   先执行A，执行成功后执行B，否则不执行B<br>A|B    只执行B<br>A&amp;B    先执行A，不管是否成功，都会执行B<br>A;B    先执行A，再执行B<br>A&amp;B    简单拼接，A B之间无制约关系<br>但是有时做题会出现过滤现象，要一个一个试试，然后%0A也可以实现拼接<br>。</p>
 
         </div>
       </div>
