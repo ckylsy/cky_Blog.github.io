@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-11-25</span>
-            <span class="time">20:07:02</span>
+            <span class="time">20:10:36</span>
           </span>
           
         </div>
@@ -114,7 +114,7 @@
         <div class="post-content">
           <p>#前言<br>basic rce</p>
 <p>&lt;–!more–&gt;</p>
-<p>首先拿到题，就直接想到是不是一句话木马，然后连蚁剑，连不上，御剑扫描目录，补全index.php,还是连不上…<br>然后就在网上搜关于rce的资料，看见一个关于无参数读文件和RCE总结的介绍跟题目好像，我跟着那个操作，得出了flag。<br>！<a href="1.png">1</a><br><img src="2.png" alt="2"><br>这里把分享下通过这道题所学到的知识<br>先说什么是无参数？<br>就是只能使用函数，不能带有参数，且函数能接受其括号所带函数的返回值<br>。<br>这个题目就短短的几行代码，也看不出什么，所以就想着去看看这个页面有没有什么隐藏的目录，<br>法一。我们可以用print_r(scandir(‘.’));来查看所有的文件名和目录。<br>但是输入后没有回响，因为是无参数嘛，所以想办法去构造这个’.’<br>localeconv()<br>返回一组包含本地数字及货币格式信息的数组，而数组的第一项就是’.’，但要我们怎么取到这个’.’呢？<br>current（）<br>返回数组单元默认取第一个值<br>所以构造payload<br>？a=print_r(scandir(current(localeconv())));<br>！<a href="1.png">1</a><br>成功查看到所有的目录<br>法二<br>我们可以使用print_r(scandir(“绝对路径”));<br>绝对路径：绝对路径，就是从盘符开始的路径，例如：“c:\windows\system32\mfc42.dll”<br>获得绝对路径的函数有getcwd()<br>所以我们也可以构造<br>？a=print_r(scandir(getcew()));<br>我们所有的目录都是数组的值，我们要得到每个文件对应的数组<br>从目录名单中我们可以看到，flag对应的数组是在倒数第二位，那么我们就要去使用函数去读取这个倒数第二位的数组<br>了解几个函数<br>show_source()对文件进行高亮显示，<br>next（）数组内部的指针向前移一位<br>array_reverse()以相反的元素顺序返回数组。<br>所以构造payload<br>?a=show_source(next(array_reverse(scandir(getcew))));<br>拿到flag<br>！<a href="2.png">2</a><br>ps<br>如果想得到倒数第一个文件，可以用函数end()<br>构造payload？a=show_source(end(scandir(getcew（）)));<br>如果不是倒数第一个或者第二个，可以尝试随机函数<br>array_rand()随机返回一个数组<br>array_filp()交换数组地键和值<br>show_source(array_rand(array_filp(scandir(getcew()))));</p>
+<p>首先拿到题，就直接想到是不是一句话木马，然后连蚁剑，连不上，御剑扫描目录，补全index.php,还是连不上…<br>然后就在网上搜关于rce的资料，看见一个关于无参数读文件和RCE总结的介绍跟题目好像，我跟着那个操作，得出了flag。<br>！<a href="1.png">1</a><br><img src="1.png" alt="1"><br><img src="2.png" alt="2"><br>这里把分享下通过这道题所学到的知识<br>先说什么是无参数？<br>就是只能使用函数，不能带有参数，且函数能接受其括号所带函数的返回值<br>。<br>这个题目就短短的几行代码，也看不出什么，所以就想着去看看这个页面有没有什么隐藏的目录，<br>法一。我们可以用print_r(scandir(‘.’));来查看所有的文件名和目录。<br>但是输入后没有回响，因为是无参数嘛，所以想办法去构造这个’.’<br>localeconv()<br>返回一组包含本地数字及货币格式信息的数组，而数组的第一项就是’.’，但要我们怎么取到这个’.’呢？<br>current（）<br>返回数组单元默认取第一个值<br>所以构造payload<br>？a=print_r(scandir(current(localeconv())));<br>！<a href="1.png">1</a><br><img src="1.png" alt="1"><br>成功查看到所有的目录<br>法二<br>我们可以使用print_r(scandir(“绝对路径”));<br>绝对路径：绝对路径，就是从盘符开始的路径，例如：“c:\windows\system32\mfc42.dll”<br>获得绝对路径的函数有getcwd()<br>所以我们也可以构造<br>？a=print_r(scandir(getcew()));<br>我们所有的目录都是数组的值，我们要得到每个文件对应的数组<br>从目录名单中我们可以看到，flag对应的数组是在倒数第二位，那么我们就要去使用函数去读取这个倒数第二位的数组<br>了解几个函数<br>show_source()对文件进行高亮显示，<br>next（）数组内部的指针向前移一位<br>array_reverse()以相反的元素顺序返回数组。<br>所以构造payload<br>?a=show_source(next(array_reverse(scandir(getcew))));<br>拿到flag<br>！<a href="2.png">2</a><br>1<a href="2.png">2</a><br>ps<br>如果想得到倒数第一个文件，可以用函数end()<br>构造payload？a=show_source(end(scandir(getcew（）)));<br>如果不是倒数第一个或者第二个，可以尝试随机函数<br>array_rand()随机返回一个数组<br>array_filp()交换数组地键和值<br>show_source(array_rand(array_filp(scandir(getcew()))));</p>
 
         </div>
       </div>
