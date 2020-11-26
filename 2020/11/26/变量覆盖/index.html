@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="力扣两数之和"/>
+  <meta property="og:title" content="变量覆盖"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">力扣两数之和</p>
+          <p class="title">变量覆盖</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -103,7 +103,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-11-20</span>
+            <span class="date">2020-11-26</span>
             <span class="time">22:45:19</span>
           </span>
           
@@ -112,9 +112,19 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>#前言<br>力扣两数之和的暴力解法，，，小白暂时只会暴力解法</p>
+          <p>#前言<br>extract变量覆盖</p>
 <a id="more"></a>
-<p>第一次写博客，内心有点小激动，毕竟手搭博客废了我好长时间。<br>这道题，毕竟我现有的知识有限，害，还是慢慢学吧，现在还只会最简单的方法。<br>class是类，solution是类名，切记{}；这个分号不能忘。这道题用了遍历数组的方法，i的下标数开始是0，然后加一不能超过数组的长度在减1，然后i++我的理解是，这不是从0开始的，当然要减去一啊，然后j=i+1，长度不能超过数组j++有一点我不大明白为啥子j不能从1开始，不都是遍历一遍吗。可能是我的知识有限，我还是下去再研究研究。<br>class Solution {<br>public:<br>    vector<int> twoSum(vector<int>&amp; nums, int target) {<br>        int i,j;<br>        for(i = 0;i&lt;nums.size() - 1;i++)<br>        {<br>            for (j = i+1;j&lt;nums.size(); j++)<br>            {<br>                if (nums[i] + nums[j] == target)<br>                {<br>                    return{i,j};<br>                }<br>            }<br>        }<br>         return{i,j};<br>    }<br>};</p>
+
+<p><img src="1.png" alt="1"><br>先了解下题目中出现的几个函数<br>extract（）</p>
+<pre><code>1.从数组中将变量导入到当前的符号表
+2.该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量</code></pre>
+<p>trim（）</p>
+<pre><code>去除字符串首尾的空白字符（或其它字符）</code></pre>
+<p>file_get_contents()</p>
+<pre><code>把整个文件读入到一个字符串中
+语法：file_get_contents(path,include_path,context,start,max_length)
+path,必需，规定要读文件的路径</code></pre>
+<p>flag并不是文件地路径，所以content的值为空，所以让liwu的值与content的值都为空即构造？liwu=&amp;flag=或者构造？liwu=<br>！<a href="2.png">2</a></p>
 
         </div>
       </div>
