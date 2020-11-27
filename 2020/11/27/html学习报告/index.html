@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="做题中遇到的漏洞积累"/>
+  <meta property="og:title" content="html学习报告"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">做题中遇到的漏洞积累</p>
+          <p class="title">html学习报告</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -103,7 +103,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-11-21</span>
+            <span class="date">2020-11-27</span>
             <span class="time">12:40:38</span>
           </span>
           
@@ -112,9 +112,41 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>#前言<br>用这个来记录做题时所遇到的漏洞吧。</p>
+          <p>#前言<br>无</p>
 <a id="more"></a>
-<p>命令执行漏洞<br>命令执行漏洞是指服务器没有对执行的命令进行过滤，用户可以随意执行系统命令，命令执行漏洞属于高危漏洞之一。<br>如php的命令执行漏洞主要是基于一些函数的参数过滤不足导致的，可以执行命令的函数有system，exec，shell-exec，passthru，pcntl-execl，popen，proc-open等。（我做的题的题目直接都是exec，我说写wp的大佬怎么一下就看出来是命令执行漏洞）<br>漏洞的原理<br>在操作系统中， &amp; 、&amp;&amp; 、| 、 || 都可以作为命令连接符使用，用户通过浏览器提交执行命令，由于服务器端没有针对执行函数做过滤，导致在没有指定绝对路径的情况下就执行命令<br>注解<br>A&amp;&amp;B   先执行A，执行成功后执行B，否则不执行B<br>A|B    只执行B<br>A&amp;B    先执行A，不管是否成功，都会执行B<br>A;B    先执行A，再执行B<br>A&amp;B    简单拼接，A B之间无制约关系<br>但是有时做题会出现过滤现象，要一个一个试试，然后%0A也可以实现拼接<br>。</p>
+
+<h1><font color="green">html的标题</font></h1>
+</head>
+</body style="background-color:blue;">
+html的标题是通过<h1>-<h6>标签来定义的，<h1>定义最大的标题。<h6>定义最小的标题
+</body>
+<h1><font color="green">html的段落</font></h1>
+     <p>这是第一段</p>
+     <p>这是第二段</p>
+实际上它是长这样的,是这样的
+      &#60;p&#62;这是第一段&#60;/&#62;
+      &#60;p&#62;这是第二段&#60;/&#62;
+<h1><font color="green"><b>html</b><em>文本</em><i>格式化</i></font></h1>
+      <b>    定义粗体文本
+      <em>    定义着重文字
+      <i>    定义斜体字
+      <small>    定义小号字
+      <strong>    定义加重语气
+      <sub>    定义下标字
+      <sup>    定义上标字
+      <ins>    定义插入字
+      <del>    定义删除字
+<h1><font color="green">html链接</font></h1>
+<h2>语法是这样的</h2>
+     &#60;a href="url"&#62;链接文本&#60;/a&#62;
+<a herf="url">ckylsy.github.io</a>
+<h2>target属性</h2>
+      blank 所指浏览器总在一个新打开的，未命名的窗口中载入目标文档。<a herf="ckylsy.github.io"target="_blank">博客</a>
+      self 在相同的框架中打开被链接的文档
+      parent 在父框架集中打开被链接的文档
+      top 在整个窗口中打开被链接的文档
+<h2>id属性</h2>
+      id属性可用于创建在一个html的书签标志，不以任何特殊的方式显示
 
         </div>
       </div>
