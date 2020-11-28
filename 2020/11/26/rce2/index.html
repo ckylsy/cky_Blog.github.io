@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-11-26</span>
-            <span class="time">17:53:30</span>
+            <span class="time">21:17:11</span>
           </span>
           
         </div>
@@ -113,10 +113,11 @@
         <!-- Post Main Content -->
         <div class="post-content">
           <p>#前言<br>basic rce 2</p>
-<p>先说构造的payload<br>    ?Rem=include $_GET[“cky”] ?&gt;&amp;cky=php://filter/read=convert.base64-encode/resource=flag</p>
-<p><img src="2.png" alt="1"><br>emmmmmmm,这道题我现在还有点云里雾里也不知道能不能写清楚<br><br>看代码这是个正则匹配，如果说构造的payload出现一下的字符就输出<br></p>
-<pre><code>   就是这么可爱</code></pre>
-<p><img src="3.png" alt="3"><br>那就想怎么绕过这些字符，本来构造的是<br><br>    sort%09fl?g||<br>sort命令与cat命令都有读取文件内容的作用，可以用其代替cat。但是，我上面写的是废话，因为他没有回响。。。。。。。。<br><img src="4.png" alt="4"><br>然后吧，注意到了eval（）这个函数，这个函数放在这肯定不一般，百度吧，大概也能看懂，就是跟这道题有啥联系不大懂，但是有看到说eval=&#60;?php?&#62;,emmmm跟题目就联系上了，所以构造文件包含，伪协议读取文件，于是构造<br><br>    ?Rem=include $_GET[“cky”] ?&gt;&amp;cky=php://filter/read=convert.base64-encode/resource=flag<br><br>至于为什么这么构造，我是看了相关的例题，这么菜怎么可能自己想出来,大概就是要构造文件包含， ?Rem=include $_GET[“cky”] ?&gt;后面的？&gt;是要封闭，按我的理解是可能不对，就是不会在过滤了，因为如果要伪协议读取里面是要有flag，$_GET[“cky”]这是传入一个参数，就是上面说的eval=<?php?>，后面在传入值。<br><br>这道题我刚开始还有一点的疑问是是构造？Rem还是？Ram，后来尝试后只有Rem可行，就想为什么，上网查发现get传入的参数只有rem，所以要用这个。</p>
+<pre><code>直接构造？Rem=（&quot;ca\t f\lag&quot;）或者Rem=（&quot;\x63\x61\x74\x20\x66\x6c\x61\x67&quot;）就可以出来</code></pre>
+<p><img src="5.png" alt="5"><br>但是在网上看到了一个比较厉害的做法<br></p>
+<pre><code>?Rem=include $_GET[&quot;cky&quot;] ?&gt;&amp;cky=php://filter/read=convert.base64-encode/resource=flag&lt;br&gt;</code></pre>
+<p>构造文件包含， ?Rem=include $_GET[“cky”] ?&gt;后面的？&gt;是要封闭，按我的理解是可能不对，就是不会在过滤了，因为如果要伪协议读取里面是要有flag，$_GET[“cky”]这是传入一个参数，就是上面说的eval=<?php?>，后面在传入值。<br></p>
+<p><img src="1.png" alt="3"><br>然后base64<br>这道题我刚开始还有一点的疑问是是构造？Rem还是？Ram，后来尝试后只有Rem可行，就想为什么，上网查发现get传入的参数只有rem，所以要用这个。</p>
 
         </div>
       </div>
