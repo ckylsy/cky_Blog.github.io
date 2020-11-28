@@ -1,223 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="theme-color" content="#34495e">
-  <title>常见函数汇总 | Hexo</title>
-  <link rel="alternate" href="path/of/rss" type="application/atom+xml">
-  <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="常见函数汇总"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://example.com"/>
   
-<link rel="stylesheet" href="/css/style.css">
-
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
   
 
-  
+  <!-- Site Title -->
+  <title>Hexo</title>
 
+  <!-- Bootstrap CSS -->
   
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
   
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
-<body>
-  <div class="mobile-header">
-    <span><i class="iconfont icon-turnon" id="mobile-nav-toggle"></i></span>
-    <div class="mobile-logo">
-      <a href="/.">Ztopic</a>
-    </div>
-  </div>
-  <div class="page" id="mobile-nav-panel">
-    <div class="container">
-      <header class="site-nav">
-      <div class="nav-content">
-        <div class="logo">
-          <a href="/">Ztopic</a>
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">常见函数汇总</p>
+          <p class="subtitle"></p>
         </div>
-        <nav class="navbar">
+        <div class="site-menu with-background-image">
           <ul>
             
-              <li class="menu-item">
-                <a href="/" class="menu-item-link"><i class="iconfont icon-home"></i>Home</a>
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
               </li>
             
-              <li class="menu-item">
-                <a href="/archives" class="menu-item-link"><i class="iconfont icon-archive"></i>Archive</a>
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
               </li>
             
-              <li class="menu-item">
-                <a href="/about" class="menu-item-link"><i class="iconfont icon-about"></i>About</a>
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
               </li>
             
           </ul>
-        </nav>
-      </div>
-</header>
-
-      <div class="banner">
-  <div class="show">
-    <!-- <img src="/" alt="banner"> -->
-    <div class="banner-title">
-      
-        <div class="post-title">
-          常见函数汇总
-            <div class="post-tags">
-    		    
-    	      </div>
         </div>
-      
+      </div>
     </div>
   </div>
-</div>
+</header>
 
-      <main class="main"id="main">
-          <article class="post">
-  
-
-  <header>
-    <div class="post-title mobile-post-title">
-      <h1>常见函数汇总</h1>
-        <div class="post-tags">
-        
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By John Doe</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-11-25</span>
+            <span class="time">21:56:09</span>
+          </span>
+          
         </div>
-    </div>
-    <div class="post-meta">
-      <span class="post-time"><i class="iconfont icon-calendar"></i>2020-11-25</span>
-      
-      <!----------------------------------->
+        <!-- Tags -->
         
-      <!----------------------------------->
-    </div>
-  </header>
-  
-
-  <div class="post-content">
-    <p>#前言<br>遇到后随时补充</p>
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>#前言<br>遇到后随时补充</p>
 <a id="more"></a>
 
 <p> 1.cat<br><br>　　由第一行开始显示内容，并将所有内容输出。当文件过大时，使用cat查看不方便。<br>　　语法：cat -n filename.txt （-n：显示时，连行号一起输出）<br>2.tac<br><br>　　从最后一行倒序显示内容，并将所有内容输出。<br>　　语法：tac filename.txt<br>3.more<br><br>　　根据窗口大小，一页一页的显示文件内容，退出查看页面，可按“q”键。<br>　　另外，more可以配合管道符“|”（pipe）使用，例如：ls -al | more<br>　　语法：more filename.txt<br>4.less<br><br>　　和more类似，但其优点可以使用【pageup】和【pagedown】键前后翻页。<br>　　语法：less filename.txt<br>　　less还有一个功能，可以在文件中进行搜索字符串。<br>5.head<br><br>　　只显示文件的前几行。<br>　　语法：head filename.txt 显示文件的前10行<br>　　head -n 3 filename.txt 显示前3行<br>　　head -3 filename.txt 显示前3行<br>6.tail<br><br>　　只显示文件的后几行。<br>　　语法：同head<br>7.nl<br><br>　　nl的功能和cat -n一样，从第一行开始输出全部内容，并且显示行号。<br>　　语法：nl filename.txt<br>8.tailf<br><br>　　类似于tail -f filename 监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。<br><br>　　tail -f 和 tailf 的区别：<br>   tailf 总是从文件开头一点一点的读， 而tail -f 则是从文件尾部开始读；<br><br>   tailf check文件增长时，使用的是文件名， 用stat系统调用；而tail -f 则使用的是打开的文件描述符；<br><br>   注：tailf 也可以做到类似跟踪文件名的效果，但是tail总是使用fstat系统调用，而不是stat系统调用。结果就是：默认情况下，当tail的文件被偷偷删除时，tail是不知道的，而tailf是知道的。<br>9.sort<br><br>  sort可针对文本文件的内容，以行为单位来排序。</p>
 
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="post-footer">the end</div>
 </article>
 
-          
-  <nav class="pagination post-nav">
-    
-      <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">
-        <span class="prev-post"><i class="iconfont icon-back"></i>变量覆盖</span>
-      </a>
-    
-    
-      <a href="/2020/11/25/rce/">
-        <span class="next-post">rce<i class="iconfont icon-more"></i></span>
-      </a>
-    
-  </nav>
 
 
-          
-  
-
-
-      </main>
-    </div>
-    <footer>
-      <div class="social-links">
-        
-          
-            <a target="_blank" rel="noopener" href="https://www.zhihu.com/"><i class="iconfont icon-zhihu"></i></a>
-          
-        
-          
-            <a target="_blank" rel="noopener" href="https://weibo.com"><i class="iconfont icon-weibo"></i></a>
-          
-        
-          
-            <a target="_blank" rel="noopener" href="https://github.com/"><i class="iconfont icon-github"></i></a>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      </div>
-      
-        <div class="quote">
-          <p>Love all, trust a few, do wrong to none.——William Shakespeare</p>
-        </div>
-      
-      <div class="copyright">
-        <p>
-          Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
-          <span>|</span>
-          Theme - <a target="_blank" rel="noopener" href="https://github.com/wa-ri/hexo-theme-ztopic">ztopic</a
-        </p>
-        <p>
-          <span>
-          
-          &copy;
-          
-            2020
-          
-          </span>
-          <i class="iconfont icon-circle"></i>
-          <span>John Doe</span>
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
         </p>
       </div>
-</footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
   </div>
-  <div id="mobile-nav">
-  <nav id="mobile-nav-menu">
-    
-      <a href="/" class="mobile-nav-link"><i class="iconfont icon-home"></i>Home</a>
-    
-      <a href="/archives" class="mobile-nav-link"><i class="iconfont icon-archive"></i>Archive</a>
-    
-      <a href="/about" class="mobile-nav-link"><i class="iconfont icon-about"></i>About</a>
-    
-    <div class="mobile-intro"><i class="iconfont icon-pen"></i>practice makes perfect</div>
-  </nav>
-</div>
+</footer>
 
 
-  
-<script src="/libs/jQuery/jquery-3.2.1.min.js"></script>
+    <!-- After Footer Scripts -->
 
-  
-<script src="/libs/slideout/slideout.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
 
-  
-    
-<link rel="stylesheet" href="/libs/fancybox/jquery.fancybox.css">
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 
-    
-<script src="/libs/fancybox/jquery.fancybox.pack.js"></script>
-
-  
-  
-
-  
-<script src="/js/ztopic.js"></script>
-
-</body>
+  </body>
 </html>
+
