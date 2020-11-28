@@ -104,7 +104,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2020-11-27</span>
-            <span class="time">16:09:29</span>
+            <span class="time">17:53:30</span>
           </span>
           
         </div>
@@ -115,16 +115,16 @@
           <p>#前言<br>无</p>
 <a id="more"></a>
 
-<h1><font color="LightSteelBlue">html的标题</font></h1>
-    html的标题是通过&#60;h1&#62;-&#60;h6&#62;标签来定义的，&#60;h1&#62;定义最大的标题。&#60;h6&#62;定义最小的标题
-<h1><font color="LightSteelBlue">html的段落</font></h1>
-     <p>这是第一段</p>
-     <p>这是第二段</p>
+<h1><font color="LightBlue">html的标题</font></h1>
+      html的标题是通过&#60;h1&#62;-&#60;h6&#62;标签来定义的，&#60;h1&#62;定义最大的标题。&#60;h6&#62;定义最小的标题
+<h1><font color="LightBlue">html的段落</font></h1>
+       <p>这是第一段</p>
+       <p>这是第二段</p>
 实际上它是长这样的,是这样的
-      &#60;p&#62;这是第一段&#60;/&#62;
-      <br>
-      &#60;p&#62;这是第二段&#60;/&#62;
-<h1><font color="LightSteelBlue"><b>html</b><em>文本</em><i>格式化</i></font></h1>
+       &#60;p&#62;这是第一段&#60;/&#62;
+        <br>
+       &#60;p&#62;这是第二段&#60;/&#62;
+<h1><font color="LightBlue"><b>html</b><em>文本</em><i>格式化</i></font></h1>
       &#60;b&#62;        定义粗体文本
 <br>
       &#60;em&#62;        定义着重文字
@@ -144,7 +144,7 @@
       &#60;del&#62;        定义删除字
 <br>
 <h1><font color="LightBlue ">html链接</font></h1>
-<h1>语法是这样的</h1>
+<h2>语法是这样的</h2>
      &#60;a href="url"&#62;链接文本&#60;/a&#62;
 <br>
     <a herf="ckylsy.github.io"target="_blank">cky的博客</a>
@@ -161,7 +161,7 @@
 <br>
 <h2>id属性</h2>
       id属性可用于创建在一个html的书签标志，不以任何特殊的方式显示
-<h1><font color="green">html的头部</font></h1>
+<h1><font color="LightBlue">html的头部</font></h1>
 先介绍head头部可插入的元素标签
       &#60；title&#62；  定义了浏览器工具栏的标题，当网页添加到收藏夹时，显示在收藏夹中的标题，显示在搜索引擎结果页面的标题
 <br>
@@ -176,6 +176,7 @@
      &#60;script&#62;标签用于加载脚本文件,如:JavaScript
 <br>
 <h1><fong color="LightBlue">CSS</font></h1><br>
+
 <html>
 <head> 
 <meta charset="utf-8"> 
@@ -203,6 +204,92 @@
 
 </body>
 </html>
+
+<p>ahhh这是从网上帮过来的一段代码，看着挺好看的<br><br>css是为了更好的渲染HTML元素而引入的<br></p>
+<h2>内联样式</h2>
+当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。<br>
+<font color="Gray">背景颜色</font><br>
+    &#60;body style="background-color:yellow;"&#62;<br>
+    &#60;h2 style="background-color:red;"&#62;这是一个标题&#60;/h2&#62;<br>
+    &#60;p style="background-color:green;"&#62;这是一个段落。&#60;/p&#62;<br>
+    &#60;/body&#62;<br>
+<font color="Gray">字体, 字体颜色 ，字体大小</font><br>
+     有font-family（字体），color（颜色），和font-size（字体大小）属性来定义字体的样式<br>
+    &#60;h1&#62; style="font-family:verdana;"&#62;一个标题&#60;/h1&#62;<br>
+    &#60;p&#62; style="font-family:arial;color:red;font-size:20px;"&#60;一个段落。&#60;/p&#62;<br>
+<font color="Gray">外联样式</font><br>
+    当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观<br>
+&#60;head&#62;<br>
+&#60;link rel="stylesheet" type="text/css" href="mystyle.css"&#62;<br>
+&#60;/head&#62;<br>
+<h1><font color="LightBlue">html图像</font></h1>
+<font color="Gray">图像标签（&#60;img&#62;）和源属性（Src)</font><br>
+定于图像的语法是
+    $#60;img src="url" alt="some_text"$#62;<br>
+    URL 指存储图像的位置。alt 属性用来为图像定义一串预备的可替换的文本。<br>
+<font color="Gray">图像的高度与宽度</font><br>
+    &#60;img src="名字.jpg" alt="文本" width="宽度" height="高"&#62;
+<h1><font color="LightBlue">表格</font></h1>
+&#60;table border="1"&#62;<br>//表格由 &#60;table&#62;标签来定义。
+    &#60;tr&#62;<br>//由tr来定义每行别分为的单元格
+        &#60;th>Header 1&#60;/th&#62;<br>//th来定于表格表头
+        &#60;th>Header 2&#60;/th&#62;<br>
+    &#60;/tr&#62;<br>
+    &#60;tr&#62;<br>
+        &#60;td>row 1, cell 1&#60;/td&#62;<br>//由td来定义每行
+        &#60;td>row 1, cell 2&#60;/td&#62;<br>
+    &#60;/tr&#62;<br>
+    &#60;tr&#62;<br>
+        &#60;td&#62;row 2, cell 1&#60;/td&#62;<br>
+        &#60;td&#62;row 2, cell 2&#60;/td&#62;<br>
+     &#60;/tr&#62;<br>
+    &#60;/table&#62;<br>
+<h1><font color="LightBlue">列表</font></h1>
+分为有序列表和无序列表<br>
+无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记<br>
+     &#60;ul&#62;//是由ul定义<br>
+     &#60;li&#62;cky&#60;/li&#62;<br>
+     &#60;li&#62;cky&#60;/li&#62;<br>
+     &#60;/ul&#62;<br> 
+     <ul>
+     <li>cky</li>
+     <li>cky</li>
+     </ul> 
+有序列表也是一列项目，列表项目使用数字进行标记。
+&#60;ol&#62;<br>
+&#60;li&#62;cky&#60;/li&#62;<br>
+&#60;li&#62;cky&#60;/li&#62;<br>
+&#60;/ol&#62;//有序列表始于&#60;ol&#62;标签。每个列表项始于&#60;li&#62;标签。 <br>
+<ol>
+<li>cky</li>
+<li>cky</li>
+</ol> 
+
+<h1><font color="LightBlue">区块</font></h1>
+
+<p>&#60;div&#62; 元素是块级元素，它可用于组合其他 HTML 元素的容器。<br>&#60;div&#62;元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。如果与 CSS 一同使用，&#60;div&#62; 元素可用于对大的内容块设置样式属性。<br>&#60;div&#62; 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 &#60;table&#62; 元素进行文档布局不是表格的正确用法。&#60;table&amp;&#62; 元素的作用是显示表格化的数据.<br><br>&#60;span&#62; 元素是内联元素，可用作文本的容器&#60;span&#62;元素也没有特定的含义。当与 CSS 一同使用&#60;span&#62; 元素可用于为部分文本设置样式属性。</p>
+<h1><font color="LightBlue">表单</font></h1>
+文本域通过&#60;input type="text"&#62; <input type="text">标签来设定，当用户要在表单中键入字母、数字等内容时，就会用到文本域。<br>
+密码字段通过标签&#60;input type="password"&#62; <input type="password">来定义<br>
+&#60;input type="radio"&#62; <input type="radio">标签定义了表单单选框选项<br>
+&#60;<brinput type="checkbox"&#62; <input type="checkbox">定义了复选框. 用户需要从若干给定的选择中选取一个或若干选项。<br>
+&#60;input type="submit"&#62;<input type="submit"> 定义了提交按钮.
+当用户单击确认按钮时，表单的内容会被传送到另一个文件。表单的动作属性定义了目的文件的文件名。由动作属性定义的这个文件通常会对接收到的输入数据进行相关的处理。<br>
+
+
+<h1><font color="LightBlue">框架</font></h1>
+iframe语法:
+&#60;iframe src="URL"&#62;&#60;/iframe&#62;<br>
+该URL指向不同的网页
+<h1><font color="LightBlue">脚本</font></h1>
+&#60;script&#62; 标签用于定义客户端脚本，比如 JavaScript。
+&#60;script&#62; 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。
+&#60;noscript&#62; 标签提供无法使用脚本时的替代内容，比方在浏览器禁用脚本时，或浏览器不支持客户端脚本时。
+&#60;noscript&#62;元素可包含普通 HTML 页面的 body 元素中能够找到的所有元素。
+只有在浏览器不支持脚本或者禁用脚本时，才会显示 &#60;noscript&#62; 元素中的内容
+
+
+<h1><font color="CadetBlue ">大体也就这么多了吧</font></h1>
         </div>
       </div>
     </div>
