@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="变量覆盖"/>
+  <meta property="og:title" content="变量覆盖二"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
   <meta property="og:type" content="article" />
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">变量覆盖</p>
+          <p class="title">变量覆盖二</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -103,7 +103,7 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2020-11-26</span>
+            <span class="date">2020-11-28</span>
             <span class="time">16:09:29</span>
           </span>
           
@@ -112,19 +112,40 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>#前言<br>extract变量覆盖</p>
+          <p>#前言<br>变量覆盖2</p>
 <a id="more"></a>
 
-<p><img src="1.png" alt="1"><br>先了解下题目中出现的几个函数<br>extract（）</p>
-<pre><code>1.从数组中将变量导入到当前的符号表
-2.该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量</code></pre>
-<p>trim（）</p>
-<pre><code>去除字符串首尾的空白字符（或其它字符）</code></pre>
-<p>file_get_contents()</p>
-<pre><code>把整个文件读入到一个字符串中
-语法：file_get_contents(path,include_path,context,start,max_length)
-path,必需，规定要读文件的路径</code></pre>
-<p>flag并不是文件地路径，所以content的值为空，所以让liwu的值与content的值都为空即构造？liwu=&amp;flag=或者构造？liwu=<br><img src="2.png" alt="2"></p>
+
+
+<h1><font color="SlateGray">还是要先了解一下什么是变量覆盖</font></h1>
+          用我们自定义的参数值来替换程序原有的变量值
+<h2><font color="RosyBrown">好家伙，刚拿到题的时候还真是一脸懵，看不懂代码，QAQ。百度了一下，参考变量覆盖其他题目，大概明白了是什么意思</font></h2>
+<html>
+<head> 
+<meta charset="utf-8"> 
+<title>变量覆盖</title> 
+</head>
+<body>
+
+<div style="opacity:0.2;position:absolute;left:6px;width:900px;height:1000px;background-color:#40B3DF"></div>
+
+<p>&#60;?php<br><br>highlight_file(<strong>FILE</strong>);<br><br>include “flag.php”;//有个flag.php的文件，里面有flag<br></p>
+<p>$_403 = “拒绝访问”;<br><br>$_200 = “欢迎~~~”;<br></p>
+<p>if ($_SERVER[“REQUEST_METHOD”] != “POST”)<br><br>    die(“sssssssspost…”);<br></p>
+<p>if ( !isset($_POST[“flag”]) )<br><br>    die($_403);<br></p>
+<p>foreach ($_GET as $key =&gt; $value)<br><br>    $$key = $$value;<br></p>
+<p>foreach ($_POST as $key =&gt; $value)<br><br>    $$key = $value;//<font color="IndianRed">看到这里，flag的值被覆盖，如果$key等于flag，则$$key就等于$flag，如果$$value=$cky,而cky是个有变量的值，那么就可以让$flag=$cky，得到flag</font><br></p>
+<p>if ( $_POST[“flag”] !== $flag )<br><br>    die($_403);//<font color="IndianRed">看到这里，数组循环那么这个判断一定是相等的，所以是无法进入_403</font><br></p>
+<p>echo “This is your flag : “. $flag . “\n”;<br><br>die($_200);//<font color="IndianRed">所以我们可以先把flag的值赋给_200然后通过，die_200把flag的值输入出来</font><br></p>
+<p>?&#62;</p>
+</div>
+
+</body>
+</html>
+
+<h1><font color="SlateGray">开始解题</font></h1>
+
+<p>首先把flag的值赋给_200，就是用get的方式，构造？_200=flag<br><br>然后用post的方式，赋给flag的值，flag=cky<br><br><img src="1.png" alt="1"><br><br><img src="2.png" alt="2"></p>
 
         </div>
       </div>
