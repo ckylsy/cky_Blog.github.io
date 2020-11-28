@@ -1,159 +1,222 @@
 <!DOCTYPE html>
-<html>
-  <!-- Html Head Tag-->
-  <head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="John Doe">
-  <!-- Open Graph Data -->
-  <meta property="og:title" content="做题中遇到的漏洞积累"/>
-  <meta property="og:description" content="" />
-  <meta property="og:site_name" content="Hexo"/>
-  <meta property="og:type" content="article" />
-  <meta property="og:image" content="http://example.com"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#34495e">
+  <title>做题中遇到的漏洞积累 | Hexo</title>
+  <link rel="alternate" href="path/of/rss" type="application/atom+xml">
+  <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+
   
 
-  <!-- Site Title -->
-  <title>Hexo</title>
-
-  <!-- Bootstrap CSS -->
   
-<link rel="stylesheet" href="/css/bootstrap.min.css">
 
-  <!-- Custom CSS -->
   
-  
-<link rel="stylesheet" href="/css/style.light.css">
 
-
-  <!-- Google Analytics -->
   
 
 <meta name="generator" content="Hexo 5.2.0"></head>
 
-  <body>
-    <!-- Page Header -->
-
-
-<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-title with-background-image">
-          <p class="title">做题中遇到的漏洞积累</p>
-          <p class="subtitle"></p>
+<body>
+  <div class="mobile-header">
+    <span><i class="iconfont icon-turnon" id="mobile-nav-toggle"></i></span>
+    <div class="mobile-logo">
+      <a href="/.">Ztopic</a>
+    </div>
+  </div>
+  <div class="page" id="mobile-nav-panel">
+    <div class="container">
+      <header class="site-nav">
+      <div class="nav-content">
+        <div class="logo">
+          <a href="/">Ztopic</a>
         </div>
-        <div class="site-menu with-background-image">
+        <nav class="navbar">
           <ul>
             
-              <li>
-                <a href="/">
-                  
-                  Home
-                  
-                </a>
+              <li class="menu-item">
+                <a href="/" class="menu-item-link"><i class="iconfont icon-home"></i>Home</a>
               </li>
             
-              <li>
-                <a href="/archives">
-                  
-                  Archives
-                  
-                </a>
+              <li class="menu-item">
+                <a href="/archives" class="menu-item-link"><i class="iconfont icon-archive"></i>Archive</a>
               </li>
             
-              <li>
-                <a href="https://github.com/<your-github-username>">
-                  
-                  Github
-                  
-                </a>
-              </li>
-            
-              <li>
-                <a href="mailto:<your-email-address>">
-                  
-                  Email
-                  
-                </a>
+              <li class="menu-item">
+                <a href="/about" class="menu-item-link"><i class="iconfont icon-about"></i>About</a>
               </li>
             
           </ul>
-        </div>
+        </nav>
       </div>
-    </div>
-  </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By John Doe</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2020-11-21</span>
-            <span class="time">21:23:47</span>
-          </span>
-          
+      <div class="banner">
+  <div class="show">
+    <!-- <img src="/" alt="banner"> -->
+    <div class="banner-title">
+      
+        <div class="post-title">
+          做题中遇到的漏洞积累
+            <div class="post-tags">
+    		    
+    	      </div>
         </div>
-        <!-- Tags -->
+      
+    </div>
+  </div>
+</div>
+
+      <main class="main"id="main">
+          <article class="post">
+  
+
+  <header>
+    <div class="post-title mobile-post-title">
+      <h1>做题中遇到的漏洞积累</h1>
+        <div class="post-tags">
         
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>#前言<br>用这个来记录做题时所遇到的漏洞吧。</p>
+        </div>
+    </div>
+    <div class="post-meta">
+      <span class="post-time"><i class="iconfont icon-calendar"></i>2020-11-21</span>
+      
+      <!----------------------------------->
+        
+      <!----------------------------------->
+    </div>
+  </header>
+  
+
+  <div class="post-content">
+    <p>#前言<br>用这个来记录做题时所遇到的漏洞吧。</p>
 <a id="more"></a>
 <p>命令执行漏洞<br>命令执行漏洞是指服务器没有对执行的命令进行过滤，用户可以随意执行系统命令，命令执行漏洞属于高危漏洞之一。<br>如php的命令执行漏洞主要是基于一些函数的参数过滤不足导致的，可以执行命令的函数有system，exec，shell-exec，passthru，pcntl-execl，popen，proc-open等。（我做的题的题目直接都是exec，我说写wp的大佬怎么一下就看出来是命令执行漏洞）<br>漏洞的原理<br>在操作系统中， &amp; 、&amp;&amp; 、| 、 || 都可以作为命令连接符使用，用户通过浏览器提交执行命令，由于服务器端没有针对执行函数做过滤，导致在没有指定绝对路径的情况下就执行命令<br>注解<br>A&amp;&amp;B   先执行A，执行成功后执行B，否则不执行B<br>A|B    只执行B<br>A&amp;B    先执行A，不管是否成功，都会执行B<br>A;B    先执行A，再执行B<br>A&amp;B    简单拼接，A B之间无制约关系<br>但是有时做题会出现过滤现象，要一个一个试试，然后%0A也可以实现拼接<br>。</p>
 
-        </div>
-      </div>
-    </div>
   </div>
+  <div class="post-footer">the end</div>
 </article>
 
+          
+  <nav class="pagination post-nav">
+    
+      <a href="/2020/11/21/exec1-php/">
+        <span class="prev-post"><i class="iconfont icon-back"></i>exec1,php</span>
+      </a>
+    
+    
+      <a href="/2020/11/20/%E5%8A%9B%E6%89%A3%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+        <span class="next-post">力扣两数之和<i class="iconfont icon-more"></i></span>
+      </a>
+    
+  </nav>
 
 
-    <!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <p class="copyright text-muted">
-          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
-          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
-        <p class="copyright text-muted">
-          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+          
+  
+
+
+      </main>
+    </div>
+    <footer>
+      <div class="social-links">
+        
+          
+            <a target="_blank" rel="noopener" href="https://www.zhihu.com/"><i class="iconfont icon-zhihu"></i></a>
+          
+        
+          
+            <a target="_blank" rel="noopener" href="https://weibo.com"><i class="iconfont icon-weibo"></i></a>
+          
+        
+          
+            <a target="_blank" rel="noopener" href="https://github.com/"><i class="iconfont icon-github"></i></a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+      
+        <div class="quote">
+          <p>Love all, trust a few, do wrong to none.——William Shakespeare</p>
+        </div>
+      
+      <div class="copyright">
+        <p>
+          Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+          <span>|</span>
+          Theme - <a target="_blank" rel="noopener" href="https://github.com/wa-ri/hexo-theme-ztopic">ztopic</a
+        </p>
+        <p>
+          <span>
+          
+          &copy;
+          
+            2020
+          
+          </span>
+          <i class="iconfont icon-circle"></i>
+          <span>John Doe</span>
         </p>
       </div>
-    </div>
-  </div>
 </footer>
 
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <div id="mobile-nav">
+  <nav id="mobile-nav-menu">
+    
+      <a href="/" class="mobile-nav-link"><i class="iconfont icon-home"></i>Home</a>
+    
+      <a href="/archives" class="mobile-nav-link"><i class="iconfont icon-archive"></i>Archive</a>
+    
+      <a href="/about" class="mobile-nav-link"><i class="iconfont icon-about"></i>About</a>
+    
+    <div class="mobile-intro"><i class="iconfont icon-pen"></i>practice makes perfect</div>
+  </nav>
+</div>
 
-    <!-- After Footer Scripts -->
 
-<script src="/js/highlight.pack.js"></script>
+  
+<script src="/libs/jQuery/jquery-3.2.1.min.js"></script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
-    codeBlocks.forEach(function(block, index) {
-      hljs.highlightBlock(block);
-    });
-  });
-</script>
+  
+<script src="/libs/slideout/slideout.min.js"></script>
 
-  </body>
+  
+    
+<link rel="stylesheet" href="/libs/fancybox/jquery.fancybox.css">
+
+    
+<script src="/libs/fancybox/jquery.fancybox.pack.js"></script>
+
+  
+  
+
+  
+<script src="/js/ztopic.js"></script>
+
+</body>
 </html>
-
