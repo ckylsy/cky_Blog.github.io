@@ -400,7 +400,7 @@
 <div class='new-meta-item author'>
   <a class='author' href="/" rel="nofollow">
     <img no-lazy src="">
-    <p>请设置文章作者</p>
+    <p>lucky</p>
   </a>
 </div>
 
@@ -446,22 +446,20 @@
   <a id="more"></a>
 
 <h1><font color="DarkSeaGreen"><i>伪协议一</i></font></h1>
-![](1.png)
-emmmm,在把preg_match的作用整一下<br>
-此函数可以根据正则表达式对字符串进行搜索匹配，语法格式如下
-preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
-<table border="1">
-<tr>
-<th>参数</th>
-<th>作用</th>
-</tr>
-<tr>
-<td>$pattern</td>
-<td>要搜索的模式，也就是编辑好的正则表达式</td>
-</tr>
-<tr>
-<td>$subject</td
-<>
+![1](1.png)
+emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过<br>
+想了有几种构造方法<br>
+<ul>
+<li>?file=PHP://filter/resource=flag
+<li>?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
+<li>?file=DATA://text/plain;BASE.64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZyIpOw==
+<li>?file=PHP://input<br>
+[POST DATA]&#60;?php system("cat flag");?&#62;
+</ul>
+但是最后只有第二个是成功的得到了base64编码
+
+<h1><font color="DarkSeaGreen"><i>伪协议二</i></font></h1>
+第二题多了一个str_replace(str_replace() 函数替换字符串中的一些字符（区分大小写）。)还有在正则匹配那多了个/i，这个东西是让正则匹配就是不用管大小写，所以第一题的做法就不可以了.但是通过学习这个str_replace的作用我们可以尝试去说把php构造成ptroyehp,把base整成btroyease。因为str_replace这个函数在这里的作用就是把这个troye替换为空，所以这样我们就成功的绕过了，得到了base64编码
   
   
     
@@ -478,7 +476,7 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/>http://example.com/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/</a></p>
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/>http://ckylsy.github.io/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/</a></p>
               
             
           </blockquote>
@@ -495,7 +493,7 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-04T19:55:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-04T20:57:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Dec 4, 2020</p>
@@ -517,7 +515,7 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
           
           >
           
@@ -529,7 +527,7 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
           
           >
           
@@ -541,7 +539,7 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/&title=两道伪协议 - Hexo&summary="
           
           >
           
@@ -579,10 +577,14 @@ preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）<br>
 
 伪协议
 见另一篇博客，伪协议
-日志文件包含fetshell
+日志文件包含getshell
 见另一篇博客，漏洞积累。
-利用session.upload_progress进行文件包含和反序列化渗透
-</p>
+一周刷题记录
+做的都是一些比较基础的没有难度的题目。
+第一个类型,文件收集
+
+第一题
+web1:...</p>
         </a>
       
     </div>
@@ -1121,7 +1123,7 @@ function setSearchService() {
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+        var pvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -1139,7 +1141,7 @@ function setSearchService() {
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+        var uvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -1161,7 +1163,7 @@ function setSearchService() {
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var url = 'http://example.com' + pv.getAttribute('data-path');
+          var url = 'http://ckylsy.github.io' + pv.getAttribute('data-path');
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增

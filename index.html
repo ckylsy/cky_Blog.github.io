@@ -443,21 +443,13 @@
         
 
 伪协议一
-![](1.png)
-emmmm,在把preg_match的作用整一下
-此函数可以根据正则表达式对字符串进行搜索匹配，语法格式如下
-preg_match（$pattern，$subject,[,&$matches,[,$flags=0[,&offset=0]]]）
+![1](1.png)
+emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过
+想了有几种构造方法
 
-
-参数
-作用
-
-
-$pattern
-要搜索的模式，也就是编辑好的正则表达式
-
-
-$subject
+?file=PHP://filter/resource=flag
+?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
+?file...
       
     
   </div>
@@ -1454,7 +1446,7 @@ function setSearchService() {
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+        var pvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -1472,7 +1464,7 @@ function setSearchService() {
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+        var uvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -1494,7 +1486,7 @@ function setSearchService() {
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var url = 'http://example.com' + pv.getAttribute('data-path');
+          var url = 'http://ckylsy.github.io' + pv.getAttribute('data-path');
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增

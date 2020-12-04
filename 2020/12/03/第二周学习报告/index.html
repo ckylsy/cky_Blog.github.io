@@ -402,7 +402,7 @@
 <div class='new-meta-item author'>
   <a class='author' href="/" rel="nofollow">
     <img no-lazy src="">
-    <p>请设置文章作者</p>
+    <p>lucky</p>
   </a>
 </div>
 
@@ -450,9 +450,81 @@
 
 <h1><font color="DarkSeaGreen"><em>伪协议</em></font></h1>
 见另一篇博客，伪协议
-<h1><font color="DarkSeaGreen"><em>日志文件包含fetshell</em></font></h1>
+<h1><font color="DarkSeaGreen"><em>日志文件包含getshell</em></font></h1>
 见另一篇博客，漏洞积累。
-<h1><font color="DarkSeaGreen"><em>利用session.upload_progress进行文件包含和反序列化渗透</em></font></h1>
+<h1><font color="DarkSeaGreen"><em>一周刷题记录</em></font></h1>
+做的都是一些比较基础的没有难度的题目。<br>
+第一个类型,文件收集
+<ul>
+<li>第一题<br>
+web1:where is flag?<br>很简单的签到题，直接ctrl+u查看源代码得到flag
+<li>第二题<br>
+题目打开有一行信息是说无法查看源代码，确实shift+
+f12没有作用，一下有几种做法。<br>
+1.ctrl+u<br>
+2.在url前面加show resource：查看源代码<br>
+3.火狐浏览器菜单处有个web开发者点击查看源代码<br>
+<li>第三题
+打开依旧是web3:where is flag?<br>
+此时查看源代码是没有用的，突然想到没思路就抓个包，果然，GO后得到flag
+<li>第四题<br>
+打开还是web5:where is flag ?<BR>
+害，看view hint说是跟phps源码泄露有关<br>
+phps文件就是php的源代码文件，通常用于提供给用户（访问者）直接通过web浏览器查看php代码的内容，因为用户无法直接通过web浏览器“看到”php文件的内容，所以要用phps文件代替。<br>
+所以直接在url后面添加index.phps弹出文件，用记事本打开得到flag。<br>
+第二个类型，文件包含
+<li>第一题<br>
+if(isset($_GET['file'])){<br>
+    $file = $_GET['file'];<br>
+    $file = str_replace("php", "???", $file);<br>
+    include($file);<br>
+}else{<br>
+    highlight_file(__FILE__);<br>
+}<br>
+因为暂时不知道出了什么问题，传不上图片，就直接把源码附上了<br>
+这里就是文件$file的php都配替换成了？？？<br>
+所以这里有几种方法<br>
+1.大写php，PHP://input[POST DATA]为<？php system ("ls");？><br>
+查看所有文件名，得到flag.php<br>
+然后[post data]为<?php system ("cat flag.php");?>或者是<？php system("cat flag,php|base.64");？><br>
+2.data://text/plain;base64,PD9waHAgc3lzdGVtKCJscyIpOw==(<?php system("ls");)<br>
+然后data://text/plain;base64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZyIpOw==(<?php system("cat flag.php");)
+<li>第二题<br>
+if(isset($_GET['file'])){<br>
+    $file = $_GET['file'];<br>
+    $file = str_replace("php", "???", $file);<br>
+    $file = str_replace("data", "???", $file);<br>
+    include($file);<br>
+}else{<br>
+    highlight_file(__FILE__);<br>
+}<br>
+这道题跟上一道题不一样的是这个data也不能用了，我是又想说大小写一下PHP：//filter或者DATA://text这样的但是都没有成功，就是用哪个PHP：//input这个成功了<br>
+<li>第三题<br>
+if(isset($_GET['file'])){<br>
+    $file = $_GET['file'];<br>
+    $file = str_replace("php", "???", $file);<br>
+    $file = str_replace("data", "???", $file);<br>
+    $file = str_replace(":", "???", $file);<br>
+    include($file);<br>
+}else{<br>
+    highlight_file(__FILE__);<br>
+}<br>
+这个不好做的一点是说它连：都不能用了，看了view hint是给了个提示是文件包含getshell漏洞，具体漏洞是怎样的我有在一个博客中写道，给了一个包含日志文件 进行getshell 日志文件路径： ?file=/var/log/nginx/access.log<br>
+因为不同的系统的重用的文件路径是不一样的，所以就在bp的user—agent中加了个木马，连上蚁剑得到flag。
+</li>
+第三个类型sql注入
+题目打开后出来的界面是就是一个很简单的填写用户名和密码，随便输入的是没有报错只是清空了界面，emmm这里了解下万能密码，我这里用的是'or 1=1 #,也就是lucky'or 1=1 #,因为那个#号是注释符，所以语句后面是被注释掉的，也就是说密码是啥无所为了<br>
+然后就可以看到虽然那个界面又被清空了，但是，出现了欢迎你，ctfshow。<br>
+然后就是判断字段，爆库，爆表，爆字段<br>
+在bp那输入union select 1,2,3知道输入到三的时候出现了ctfshow欢迎你那出现了欢迎你，说明有三个字段<br>
+然后爆库，union select 1，database（），3找到库名<BR>
+爆表union select 1,group_concat(table name),3 from information_schema.tables where table_schema="web 2"(库名)<br>
+爆字段 union select 1,group_concat(columu_name),3 from information_schema.columans where table_name="flag"<br>
+爆值
+union select 1,flag,3 from flag得到flag
+
+
+
 
   
   
@@ -470,7 +542,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/>http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/</a></p>
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/>http://ckylsy.github.io/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/</a></p>
               
             
           </blockquote>
@@ -487,10 +559,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-03T22:00:00+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-04T23:22:26+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Dec 3, 2020</p>
+    <p>更新于：Dec 4, 2020</p>
   </a>
 </div>
 
@@ -509,7 +581,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -521,7 +593,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -533,7 +605,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -568,10 +640,10 @@
           <p class='content'>
 
 伪协议一
-![](1.png)
-emmmm,在把preg_match的作用整一下
-此函数可以根据正则表达式对字符串进行搜索匹配，语法格式如下
-preg_match（$pattern，$sub...</p>
+![1](1.png)
+emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过
+想了有几种构造方法
+...</p>
         </a>
       
       
@@ -1122,7 +1194,7 @@ function setSearchService() {
       // 请求 PV 并自增
       var pvCtn = document.querySelector('#lc-sv');
       if (pvCtn || enableIncr) {
-        var pvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-sv', 'Visits').then((record) => {
+        var pvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-sv', 'Visits').then((record) => {
           incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-sv #number');
           if (eles.length > 0) {
@@ -1140,7 +1212,7 @@ function setSearchService() {
       // 请求 UV 并自增
       var uvCtn = document.querySelector('#lc-uv');
       if (uvCtn || enableIncr) {
-        var uvGetter = this.getRecord(Counter, 'http://example.com' + '/#lc-uv', 'Visitors').then((record) => {
+        var uvGetter = this.getRecord(Counter, 'http://ckylsy.github.io' + '/#lc-uv', 'Visitors').then((record) => {
           var vuv = this.validUV();
           vuv && incrArr.push(this.buildIncrement(record.objectId))
           var eles = document.querySelectorAll('#lc-uv #number');
@@ -1162,7 +1234,7 @@ function setSearchService() {
         for (i = 0; i < allPV.length; i++) {
           let pv = allPV[i];
           let title = pv.getAttribute('data-title');
-          var url = 'http://example.com' + pv.getAttribute('data-path');
+          var url = 'http://ckylsy.github.io' + pv.getAttribute('data-path');
           if (url) {
             var viewGetter = this.getRecord(Counter, url, title).then((record) => {
               // 是当前页面就自增
