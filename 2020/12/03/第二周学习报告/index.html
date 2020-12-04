@@ -19,11 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>rce - Hexo</title>
+  <title>第二周学习报告 - Hexo</title>
   
 
   
-    <meta name="description" content="#前言basic rce">
+    <meta name="description" content="#前言">
   
 
   <!-- feed -->
@@ -393,7 +393,7 @@
     
     
       <h1 class="title">
-        rce
+        第二周学习报告
       </h1>
       <div class='new-meta-box'>
         
@@ -417,7 +417,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Nov 25, 2020</p>
+    <p>发布于：Dec 3, 2020</p>
   </a>
 </div>
 
@@ -428,7 +428,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="rce" data-path="/2020/11/25/rce/">
+      <div id="lc-pv" data-title="第二周学习报告" data-path="/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -445,13 +445,14 @@
 
 
   
-  <p>#前言<br>basic rce</p>
+  <p>#前言</p>
 <a id="more"></a>
-<p>首先拿到题，就直接想到是不是一句话木马，然后连蚁剑，连不上，御剑扫描目录，补全index.php,还是连不上…</p>
-<p>最下面有个简单的方法没想到当时<br></p>
-<p>然后就在网上搜关于rce的资料，看见一个关于无参数读文件和RCE总结的介绍跟题目好像，我跟着那个操作，得出了flag。<br><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666" alt="1"><br><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666" alt="2"><br>这里把分享下通过这道题所学到的知识<br>先说什么是无参数？<br>就是只能使用函数，不能带有参数，且函数能接受其括号所带函数的返回值<br>。<br>这个题目就短短的几行代码，也看不出什么，所以就想着去看看这个页面有没有什么隐藏的目录。<br>法一。我们可以用print_r(scandir(‘.’));来查看所有的文件名和目录。<br>但是输入后没有回响，因为是无参数嘛，所以想办法去构造这个’.’<br>localeconv()<br>返回一组包含本地数字及货币格式信息的数组，而数组的第一项就是’.’，但要我们怎么取到这个’.’呢？<br>current（）<br>返回数组单元默认取第一个值<br>所以构造payload<br>？a=print_r(scandir(current(localeconv())));<br><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666" alt="1"><br>成功查看到所有的目录<br>法二<br>我们可以使用print_r(scandir(“绝对路径”));<br>绝对路径：绝对路径，就是从盘符开始的路径，例如：“c:\windows\system32\mfc42.dll”<br>获得绝对路径的函数有getcwd()<br>所以我们也可以构造<br>？a=print_r(scandir(getcew()));<br>我们所有的目录都是数组的值，我们要得到每个文件对应的数组<br>从目录名单中我们可以看到，flag对应的数组是在倒数第二位，那么我们就要去使用函数去读取这个倒数第二位的数组<br>了解几个函数<br>show_source()对文件进行高亮显示，<br>next（）数组内部的指针向前移一位<br>array_reverse()以相反的元素顺序返回数组。<br>所以构造payload<br>?a=show_source(next(array_reverse(scandir(getcew))));<br>拿到flag<br><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666" alt="2"><br>ps<br>如果想得到倒数第一个文件，可以用函数end()<br>构造payload？a=show_source(end(scandir(getcew（）)));<br>如果不是倒数第一个或者第二个，可以尝试随机函数<br>array_rand()随机返回一个数组<br>array_filp()交换数组地键和值<br>show_source(array_rand(array_filp(scandir(getcew()))));</p>
-<p>突然学到一个简单的方法</p>
-<p>用？a=system（”ls”）;去看目录，发现有个f111a9.php，然后就可以用cat，tac，sort，去查看，cat无回响，其他两个可以。</p>
+
+<h1><font color="DarkSeaGreen"><em>伪协议</em></font></h1>
+见另一篇博客，伪协议
+<h1><font color="DarkSeaGreen"><em>日志文件包含fetshell</em></font></h1>
+见另一篇博客，漏洞积累。
+<h1><font color="DarkSeaGreen"><em>利用session.upload_progress进行文件包含和反序列化渗透</em></font></h1>
 
   
   
@@ -469,7 +470,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://example.com/2020/11/25/rce/>http://example.com/2020/11/25/rce/</a></p>
+                <p>本文永久链接是：<a href=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/>http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/</a></p>
               
             
           </blockquote>
@@ -486,10 +487,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-28T21:00:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-03T22:00:00+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Nov 28, 2020</p>
+    <p>更新于：Dec 3, 2020</p>
   </a>
 </div>
 
@@ -508,7 +509,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/11/25/rce/&title=rce - Hexo&summary=#前言basic rce"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -520,7 +521,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/11/25/rce/&title=rce - Hexo&summary=#前言basic rce"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -532,7 +533,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/11/25/rce/&title=rce - Hexo&summary=#前言basic rce"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/&title=第二周学习报告 - Hexo&summary=#前言"
           
           >
           
@@ -562,21 +563,16 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>常见命令汇总</p>
-          <p class='content'>#前言遇到后随时补充
-
-
- 1.cat　　由第一行开始显示内容，并将所有内容输出。当文件过大时，使用cat查看不方便。　　语法：cat -n filename.txt （-n：显示时，连行号一起...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/11/21/exec1-php/'>
-          <p class='title'>exec1,php<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>#前言无哈哈哈哈哈哈
+        <a class='next' href='/2020/12/02/php%E5%87%BD%E6%95%B0/'>
+          <p class='title'>php函数<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言无
 
 
-拿到这道题，打开是空白，本小白表示很懵逼，看了一眼大佬写的wp，说是命令执行漏洞，很奇怪，怎么看出来就是命令执行漏洞了，大佬都这么厉害？先去百度了一下什么是命令执行漏洞...</p>
+
+str_replace
+  替换字符串的一些字符(区分大小写)
+  如果搜索的字符串是一个数组，那么它将返回一个数组。对数组的每一个元素进行查找和替换。如果同时对某个数组进行查找...</p>
         </a>
       
     </div>
@@ -609,6 +605,20 @@
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        
+    </div>
+  </section>
+
 
   
 
@@ -625,7 +635,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="rce";
+  pdata.postTitle="第二周学习报告";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
