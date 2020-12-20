@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2020 - Hexo</title>
+  <title>两道伪协议 - Hexo</title>
   
 
   
@@ -56,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,284 +381,249 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        两道伪协议
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Dec 4, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
-        常见命令汇总
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>遇到后随时补充</p>
-    
+      <div id="lc-pv" data-title="两道伪协议" data-path="/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<h1><font color="DarkSeaGreen"><i>伪协议一</i></font></h1>
+
+<p><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666" alt="1"></p>
+<p>emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过<br><br>想了有几种构造方法<br></p>
+<ul>
+<li>?file=PHP://filter/resource=flag
+<li>?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
+<li>?file=DATA://text/plain;BASE.64,PD9waHAgc3lzdGVtKCJjYXQgZmxhZyIpOw==
+<li>?file=PHP://input<br>
+[POST DATA]&#60;?php system("cat flag");?&#62;
+</ul>
+但是最后只有第二个是成功的得到了base64编码
+
+<h1><font color="DarkSeaGreen"><i>伪协议二</i></font></h1>
+第二题多了一个str_replace(str_replace() 函数替换字符串中的一些字符（区分大小写）。)还有在正则匹配那多了个/i，这个东西是让正则匹配就是不用管大小写，所以第一题的做法就不可以了.但是通过学习这个str_replace的作用我们可以尝试去说把php构造成ptroyehp,把base整成btroyease。因为str_replace这个函数在这里的作用就是把这个troye替换为空，所以这样我们就成功的绕过了，得到了base64编码
+
+<p><img src="3.png" class="lazyload" data-srcset="3.png" srcset="data:image/png;base64,666" alt="3"></p>
+<h1><font color="DarkSeaGreen"><i>ssrf1</i></font></h1>
+代码很简单，参数中要有unctf.com,而且过滤了许多伪协议，然后题目上又说‘啊这，这怎么...这file_get_contents()有啥用呢’，查找资料当PHP的 file_get_contents() 函数在遇到不认识的伪协议头时候会将伪协议头当做文件夹，造成目录穿越漏洞，这时候只需不断往上跳转目录即可读到根目录的文件。这个方法可以在SSRF的众多协议被ban的情况下来进行读取文件
+
+<p>所以构造？url=lucky：//lucky/dotnet.com：//../../../../../flag,得到flag</p>
+<p><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666" alt="2"></p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/>http://ckylsy.github.io/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-05T16:01:02+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Dec 5, 2020</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/rce/">
-        rce
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>basic rce</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/rce/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/21/exec1-php/">
-        exec1,php
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无哈哈哈哈哈哈</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-21</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/21/exec1-php/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/21/%E5%81%9A%E9%A2%98%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%BC%8F%E6%B4%9E%E7%A7%AF%E7%B4%AF/">
-        做题中遇到的漏洞积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>用这个来记录做题时所遇到的漏洞吧。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-21</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/21/%E5%81%9A%E9%A2%98%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E6%BC%8F%E6%B4%9E%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/20/%E5%8A%9B%E6%89%A3%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
-        力扣两数之和
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>力扣两数之和的暴力解法，，，小白暂时只会暴力解法</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/20/%E5%8A%9B%E6%89%A3%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/19/hello-world/">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/&title=两道伪协议 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/&title=两道伪协议 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/&title=两道伪协议 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2020-11-19</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2020/11/19/hello-world/'>
-            Read More
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>信息收集</p>
+          <p class='content'>
+
+目录遍历
+路径遍历攻击(目录遍历)旨在访问存储在web根目录文件夹之外的文件和目录。通过操控带有“点-斜线（...）”序列以及变化的文件或使用绝对文件路径来引用文件变量，可以访问存储在文件系...</p>
+        </a>
+      
+      
+        <a class='next' href='/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
+          <p class='title'>第二周学习报告<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言
+
+
+伪协议
+见另一篇博客，伪协议
+日志文件包含getshell
+见另一篇博客，漏洞积累。
+一周刷题记录
+做的都是一些比较基础的没有难度的题目。
+第一个类型,文件收集
+
+第一题
+web1:...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2020/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 2
-        </p>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -668,87 +631,28 @@ Qu...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -758,14 +662,14 @@ Qu...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="两道伪协议";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 

@@ -522,6 +522,14 @@ if(isset($_GET['file'])){<br>
 爆字段 union select 1,group_concat(columu_name),3 from information_schema.columans where table_name="flag"<br>
 爆值
 union select 1,flag,3 from flag得到flag
+<h1><font color="DarkSeaGreen"><em>ssrf漏洞</em></font></h1>
+ssrf，服务端请求伪造，是一种由攻击者构造形成由服务器端发起请求的一个漏洞。一般情况下，ssrf攻击的目标是外网无法访问的内部系统。<br>
+<ul>
+<li>可以对外网，服务器所在的内网、本地进行端口扫描，获取一些服务的banner信息.</li>
+<li>攻击运行在内网、本地的应用程序（比如溢出）
+<li>对内网web应用进行指纹识别，通过访问默认文件实现。
+<li>攻击内外网的web应用，主要是使用get参数就可以实现攻击。
+<li>利用file协议读取本地文件等。
 
 
 
@@ -559,10 +567,10 @@ union select 1,flag,3 from flag得到flag
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-04T23:22:26+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-12-05T15:54:01+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Dec 4, 2020</p>
+    <p>更新于：Dec 5, 2020</p>
   </a>
 </div>
 
@@ -635,15 +643,16 @@ union select 1,flag,3 from flag得到flag
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/12/04/%E4%B8%A4%E9%81%93%E4%BC%AA%E5%8D%8F%E8%AE%AE/'>
+        <a class='prev' href='/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/'>
           <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>两道伪协议</p>
           <p class='content'>
 
 伪协议一
-![1](1.png)
-emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过
-想了有几种构造方法
-...</p>
+
+
+emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过想了有几种构造方法
+
+?file=PHP:...</p>
         </a>
       
       
