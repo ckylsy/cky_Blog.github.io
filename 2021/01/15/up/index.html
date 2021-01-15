@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2020 - Hexo</title>
+  <title>buu warm up - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言开启buu刷题之路">
   
 
   <!-- feed -->
@@ -56,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper postbuu dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,485 +383,115 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-postbuu" id="postbuu" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
-      
+    
+    
+      <h1 class="title">
+        buu warm up
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
           
         
           
-        
+            
+
           
         
           
-        
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jan 15, 2021</p>
+  </a>
+</div>
+
           
         
           
-        
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="buu warm up" data-path="/2021/01/15/up/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
           
         
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/28/sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/">
-        sql注入学习
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>忘保存了，写了一半全没了。。。。。。。那就随便写写，本来写这个就是为了可以更好的理解sql注入，现在一半都没了，也就随便吧，无所谓了</p>
+      </div>
     
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-28</time>
-        
-      </div>
+  <p>#前言<br>开启buu刷题之路</p>
+<a id="more"></a>
+
+<p>拿到题目只有一个笑脸，查看源代码，发现里面有个source.php,打开后是一个php代码.<br><br>     <mark>$whitelist =[“source”=&gt;”source.php”,”hint”=&gt;”hint.php”];</mark><br><br>看到这句代码，我查看了hint.php,该页面提示了flag存放的位置<br><br>     <mark>flag not here, and flag in ffffllllaaaagggg</mark><br><br>知道了flag存放的位置，就要开始知道这段代码到底是什么意思，我们怎么样才可以得到flag。<br></p>
+<p><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666"></p>
+<p>从这段代码我们知道了下一步该做什么<br></p>
+<p><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666"><br>这里面有4个if条件句，只要有一个可以被调用，我们就可以得到flag<br><br>但显然第一个if对我们没有用<br><br>第二个if，如果我们要使其成立，我们就要构造有含有source.php或者hint.php，但是我们知道我们必需构造的参数中含有ffffllllaaaagggg，否则我们是拿不到flag，所以这个也是不可行的。<br><br>第三个if，因为这个是保留？以前的东西，所以我们可以构造file=source.php（或者hint.php）%3f（这个是？进行了url编码，如果直接是？，那么服务器会以为是提交的参数）./ffffllllaaaagggg参看当前目录是什么都没有的，然后../查看父级目录，?file=source.php%3f../../../../../ffffllllaaaagggg得到flag。<br><br>第四个if，这个是先解码，然后在保留？以前的东西，所以我们可以对？进行两次url编码，一个是先让服务器解码，一个是在类里面进行，构造?file=source.php%253f../../../../../ffffllllaaaagggg得到flag</p>
+
+  
+  
+  
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2020/12/28/sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2020/12/28/sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/'>
+          <p class='title'>sql注入学习<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言忘保存了，写了一半全没了。。。。。。。那就随便写写，本来写这个就是为了可以更好的理解sql注入，现在一半都没了，也就随便吧，无所谓了
+
+判断是否存在sql注入
+单引号判断法。
+如果页面返回...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/27/web4-web5-web6/">
-        web4,web5,web6，耗子尾汁
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>web4-6，耗子尾汁</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/27/web4-web5-web6/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/23/php%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AF%87/">
-        php学习之路基础篇
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>从php开始学起</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/23/php%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AF%87/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/20/postc-%E5%AE%9E%E9%AA%8C/">
-        c++实验
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>把计算机导论实验布置的实验总结一下</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/20/postc-%E5%AE%9E%E9%AA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-        信息收集
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-目录遍历
-路径遍历攻击(目录遍历)旨在访问存储在web根目录文件夹之外的文件和目录。通过操控带有“点-斜线（...）”序列以及变化的文件或使用绝对文件路径来引用文件变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码，配置文件和关键系统文件。需要注意的是，系统访问控制(如在微软windows操作系统上锁定或使用文件)限制了对文件的访问权限。这种攻击也称为“点点斜杠”，“目录...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/">
-        两道伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-伪协议一
+  </article>
 
 
-emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过想了有几种构造方法
-
-?file=PHP://filter/resource=flag
-?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
-?file=DATA://tex...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-04</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        第二周学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/php%E5%87%BD%E6%95%B0/">
-        php函数
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/php%E5%87%BD%E6%95%B0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-        伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>伪协议的学习</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/">
-        变量覆盖二
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>变量覆盖2</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 2
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2020/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
-	
+
+
 </div>
 <aside class='l_side'>
   
@@ -869,87 +499,14 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -966,7 +523,7 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
