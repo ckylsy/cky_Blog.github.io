@@ -460,14 +460,14 @@
 <p><img src="3.png" class="lazyload" data-srcset="3.png" srcset="data:image/png;base64,666"></p>
 <p>因为要进行反序列化，所以我们可以传入一个序列化的字符串，内容包括password=100,username=admin<br><br>于是得到<mark>O:4:”Name”:2:{s:14:”Nameusername”;s:5:”admin”;s:14:”Namepassword”;i:100;}</mark><br>由于我们用的是private定于的变量，所以要改为<mark>O:4:”Name”:2:{s:14:”%00Name%00username”;s:5:”admin”;s:14:”%00Name%00password”;i:100;}</mark><br>于是构造？select=O:4:”Name”:2:{s:14:”%00Name%00username”;s:5:”admin”;s:14:”%00Name%00password”;i:100;}，发现这个是没有回响的，为什么呢，因为我们知道反序列化的时候会自动调用__wakeup()这个魔术方法，它把username赋值为guest，所以我们要先怎么绕过这个魔术方法，在网上查绕过方式是让类的属性大于原来的时候，可以绕过该函数。欧克，？select=O:4:”Name”:<mark>3</mark>:{s:14:”%00Name%00username”;s:5:”admin”;s:14:”%00Name%00password”;i:100;},得到flag。</p>
 <h1>题目三</h1>
-![](4.png)
-整道题的解题点就是让password全等于p让username等于u，然而我感觉这个$n 应该就是xxxxxx，$P 等于xxxxxx，
-其实这道题应该就是对类的巩固，与反序列化应该没啥关系.
 
+<p><img src="4.png" class="lazyload" data-srcset="4.png" srcset="data:image/png;base64,666"></p>
+<p>整道题的解题点就是让password全等于p让username等于u，然而我感觉这个$n 应该就是xxxxxx，$P 等于xxxxxx，<br>其实这道题应该就是对类的巩固，与反序列化应该没啥关系.</p>
 <h1>题目四</h1>
 这道题乍一看跟上一道一样实则不然
-![](5.png)
-![](6.png)
+
+<p><img src="5.png" class="lazyload" data-srcset="5.png" srcset="data:image/png;base64,666"></p>
+<p><img src="6.png" class="lazyload" data-srcset="6.png" srcset="data:image/png;base64,666"></p>
 
   
   
@@ -502,7 +502,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T14:14:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T14:16:05+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jan 18, 2021</p>
