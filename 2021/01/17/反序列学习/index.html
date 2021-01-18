@@ -468,6 +468,18 @@
 
 <p><img src="5.png" class="lazyload" data-srcset="5.png" srcset="data:image/png;base64,666"></p>
 <p><img src="6.png" class="lazyload" data-srcset="6.png" srcset="data:image/png;base64,666"></p>
+<h1>题目五</h1>
+
+<p>这道题跟上一道题目不同的地方在于。</p>
+<p><img src="7.png" class="lazyload" data-srcset="7.png" srcset="data:image/png;base64,666"></p>
+<p>这段代码的意思是要让我们的username与password的值不同，但是这个类给两者的赋值都是xxxxxx，那么我们要怎么使这两者的值不相同呢？我们知道，上一道题目，我们的isvip是false但是我们构造一个字符串，使其反序列化，得到的值是true，那我们尝试构造使得usename=ab；password=abc；isvip=true，得到flag</p>
+<p><img src="8.png" class="lazyload" data-srcset="8.png" srcset="data:image/png;base64,666"></p>
+<H1>题目六</h1>
+
+<p><img src="9.png" class="lazyload" data-srcset="9.png" srcset="data:image/png;base64,666"></p>
+<p>拿到题后，先整理下思路，就是用get传入username和password具体的值是什么样子的对题目没有影响，然后进入下一步，反序列化user，然后到达析构函数，可以看到析构函数这里有一个getinfo（）。下面有两个类，都有getinfo（），但是第二个类中含有eval这个函数，该函数是可以执行php命令的，所以这里我们可以构造$code=<mark>‘</mark>system(‘ls’);<mark>‘</mark>;所以我们就该想怎么才能来到backdoor类这里。<br><br>因为我们看到析构函数那里是$this-&gt;class,所以我们可以尝试让$class=new backdoor();</p>
+<p><img src="10.png" class="lazyload" data-srcset="10.png" srcset="data:image/png;base64,666"></p>
+<p>然后cat，得到flag。<br><br>又在网上看到有大佬是这样构造的<mark>$code=’system(“cat f*”);’</mark></p>
 
   
   
@@ -502,7 +514,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T14:16:05+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T15:38:19+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jan 18, 2021</p>
