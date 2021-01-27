@@ -407,9 +407,57 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/01/27/hardsql/">
+        hardsql
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-01-27</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/01/27/hardsql/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -429,8 +477,9 @@
     
       
         
-学到了绕过方法
+学到了绕过方法，因为这个是提示为input your name password，说明关键字被替换为空格，显示为空，使用双写绕过
 
+如果=被过滤，可以用like替代（模糊查找运算符），‘%’代表0次或n次任意字符，‘_’代表只匹配一次任意字符，如果substr被过滤，可以使用left（），right（）这两个函数来替代left(字符串,从左开始数几位)right（字符串，从右开始数几位）
 
       
     
