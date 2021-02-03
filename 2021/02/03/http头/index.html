@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>http头 - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言http协议简介">
   
 
   <!-- feed -->
@@ -56,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,535 +383,258 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
+      <h1 class="title">
         http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2021-02-03</time>
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 3, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="http头" data-path="/2021/02/03/http%E5%A4%B4/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>#前言<br>http协议简介</p>
+<a id="more"></a>
+
+<h1>HTTP(HyperText Transfer Protocol,超文本传输协议)，是一个基于请求与相应，无状态的，应用的协议，常运行在tcp/ip协议传输数据。
+<h1>1、HTTP报文格式</h1>
+(1)http请求
+
+<p><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666"></p>
+<p>第一部分：<br><br>请求方式 |空格|路径|空格|协议版本（请求行）<br><br>第二部分：<br><br>头部字段名|：|值（请求头部）<br><br>空行（不能缺少）<br><br>第四部分：<br><br>请求正文（图中没有，一般只有post方式才有）<br></p>
+<h1>(2)、HTTP响应</h1>
+
+<p><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666"></p>
+<p>第一部分：<br><br>协议版本|空格|状态码|状态码描述|（状态行）<br><br>第二部分：<br><br>头部字段名|：|值|（响应头部）<br><br>第三部分：<br><br>空行（必不可少）<br><br>第四部分：<br><br>响应正文<br></p>
+<h1>3、常有的状态码</h1>
+
+<pre><code> (1）、200：服务器已成功处理了请求并提供了请求的网页。
+ (2）、204： 服务器成功处理了请求，但没有返回任何内容。
+ (3）、301： 请求的网页已永久移动到新位置。当URLs发生变化时，使用301代码。搜索引擎索引中保存新的URL。
+（4）、302： 请求的网页临时移动到新位置。搜索引擎索引中保存原来的URL。
+（5）、304： 如果网页自请求者上次请求后没有更新，则用304代码告 诉搜索引擎机器人，可节省带宽和开销。
+（6）、400： 服务器不理解请求的语法。
+（7）、403： 服务器拒绝请求。
+（8）、404： 服务器找不到请求的网页。服务器上不存在的网页经常会返回此代码。
+（9）、410 ：请求的资源永久删除后，服务器返回此响应。该代码与 404（未找到）代码相似，但在资源以前存在而现在不存在的情况下，有时用来替代404 代码。如果资源已永久删除，应当使用 301 指定资源的新位置。
+（10）、500 ：服务器遇到错误，无法完成请求。
+（11）、503： 服务器目前无法使用（由于超载或停机维护）。</code></pre>
+<h1>4、 HTTP请求方法</h1>
+    1、OPTIONS：返回服务器针对特定资源所支持的HTTP请求方法，也可以利用向web服务器发送‘*’的请求来测试服务器的功能性
+    2、HEAD：向服务器索与GET请求相一致的响应，只不过响应体将不会被返回。这一方法可以再不必传输整个响应内容的情况下，就可以获取包含在响应小消息头中的元信息。
+    3、GET：向特定的资源发出请求。注意：GET方法不应当被用于产生“副作用”的操作中，例如在Web Application中，其中一个原因是GET可能会被网络蜘蛛等随意访问。Loadrunner中对应get请求函数：web_link和web_url
+    4、POST：向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 Loadrunner中对应POST请求函数：web_submit_data,web_submit_form
+    5、PUT：向指定资源位置上传其最新内容
+    6、DELETE：请求服务器删除Request-URL所标识的资源
+    7、TRACE：回显服务器收到的请求，主要用于测试或诊断
+    8、CONNECT：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。
+注意：大多数情况下，使用的是GET和HEAD/POST方法，并且这些方法区分大小写，当某个请求的资源不支持对应的请求方法的时候，服务器应当返回状态码405；当服务器不认识或者不支持对应的请求方法时，应返回状态码501。
+
+<h1>5、HTTP头部字段</h1>
+
+<pre><code>（1）、User-Agent：告诉网站服务器，访问者是通过什么工具来请求的；
+（2）、X-Forwarded-For ：用来表示HTTP请求端真实IP；
+（3）、X-Forwarded-IP：同X-Forwarded-For；
+（4）、Accept-Language：设置接受的语言；
+ (5）、Accept-Encoding：是浏览器发给服务器，声明浏览器支持的编码类型；
+（6）、Content-Type 用于表明发送数据流的类型，服务器根据编码服务器根据编码类型使用特定的解析方式，获取数据流中的数据；
+（7）、Cookie：辨认用户状态及身份的；
+（8）、Referer ：当浏览器向web服务器发送请求时，一般会带上Referer ，告诉服务器该网页是从哪个页面链接过来的。</code></pre>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/03/http%E5%A4%B4/>http://ckylsy.github.io/2021/02/03/http%E5%A4%B4/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T16:42:45+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 3, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/03/http%E5%A4%B4/&title=http头 - Hexo&summary=#前言http协议简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/03/http%E5%A4%B4/&title=http头 - Hexo&summary=#前言http协议简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/03/http%E5%A4%B4/&title=http头 - Hexo&summary=#前言http协议简介"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
+          <p class='title'>基础知识积累<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
 一、bugku文件包含
   &lt;?php 
 include &quot;flag.php&quot;; 
 $a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
+eval(...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
-
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/31/buu/">
-        buu
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>have fun</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/31/buu/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/bodysqli/">
-        badysqli
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-体验了sqlmap一把梭的乐趣，但是没用，这个题目上没有提示md5加密，我是看wp才知道后端语句
-   &lt;?
-$name = $_POST[&#39;name&#39;];
-$passwd = md5($_POST[&#39;pw&#39;]);
-
-$sql = &quot;select * from user where username = &#39;$name&#39;&q...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/bodysqli/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/suctf/">
-        suctf sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-&lt;?php
-session_start();
-
-include_once &quot;config.php&quot;;
-
-$post = array();
-$get = array();
-global $MysqlLink;
-
-//GetPara();
-$MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/suctf/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/easysql/">
-        easysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/easysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/hardsql/">
-        hardsql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/hardsql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/babysql/">
-        babysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-学到了绕过方法，因为这个是提示为input your name password，说明关键字被替换为空格，显示为空，使用双写绕过
-
-如果=被过滤，可以用like替代（模糊查找运算符），‘%’代表0次或n次任意字符，‘_’代表只匹配一次任意字符，如果substr被过滤，可以使用left（），right（）这两个函数来替代left(字符串,从左开始数几位)right（字符串，从右开始数几位）
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/babysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/26/postlovesql/">
-        lovesql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-认识一个新的函数concat_ws一般写的是(‘&#39;,password,&#39;‘,name)这个可以帮忙concat_ws(‘`’,password,name)
-回归正题
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/26/postlovesql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 2
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -919,87 +642,28 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -1009,14 +673,14 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="http头";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
