@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>preg_match函数详解，foreach - Hexo</title>
   
 
   
@@ -58,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -374,7 +370,7 @@
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -385,578 +381,295 @@
         
 
 <div class='l_main'>
-  
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/cacl/">
-        easy cacl
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/cacl/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
   
-  
-  
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
+    
+    
+      <h1 class="title">
         preg_match函数详解，foreach
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
 
-在php中preg_match（）函数是用来执行正则表达式的一个常用的函数。正则表达式中，几乎在所有的编程表达式中都会用到。preg_match（）函数用于进行正则表达式匹配，成功给返回1，否则返回0.preg_match()成功匹配一次后会停止匹配。preg_match(正则表达式，需要匹配检索的对象，可选：储存匹配结果的数组)例子
-  &lt;?php
-  $str=&quot;Da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+          
         
-        <time>2021-02-03</time>
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 3, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="preg_match函数详解，foreach" data-path="/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>在php中preg_match（）函数是用来执行正则表达式的一个常用的函数。正则表达式中，几乎在所有的编程表达式中都会用到。<br><br>preg_match（）函数用于进行正则表达式匹配，成功给返回1，否则返回0.<br><br>preg_match()成功匹配一次后会停止匹配。<br><br>preg_match(正则表达式，需要匹配检索的对象，可选：储存匹配结果的数组)<br><br>例子</p>
+<pre><code>  &lt;?php
+  $str=&quot;Daniel J. Gross Catholic High School A. is a faith and family based community committed to developing Christian leaders through educational excellence in the Marianist tradition.&quot;;
+  if(preg_match(&quot;/[A-Z]. /&quot;,$str,$matches))&#123;
+  print_r($matches);
+  &#125;
+  ?&gt;</code></pre>
+<p>输出结果</p>
+<pre><code> Array ( [0] =&gt; J. )</code></pre>
+<h1>foreach</h1>
+在php中foreach循环语句，常用于遍历数组，一般有两种使用方法：不取下标，取下标。<br>
+<h1>(一)只取值，不取下标</h1>
+
+<pre><code>   &lt;?php
+   foreach (数组 as 值)&#123;
+    //执行的任务
+  &#125;
+   ?&gt;</code></pre>
+<h1>取下标，也取值</h1>
+
+<pre><code>   &lt;?php
+  foreach (数组 as 下标 =&gt; 值)&#123;
+  //执行的任务
+  &#125;
+  ?&gt;</code></pre>
+<p>数组<br>    &lt;?php<br>    $students = array(<br>    ‘2010’=&gt;’令狐冲’,<br>    ‘2011’=&gt;’林平之’,<br>    ‘2012’=&gt;’曲洋’,<br>    ‘2013’=&gt;’任盈盈’,<br>    ‘2014’=&gt;’向问天’,<br>    ‘2015’=&gt;’任我行’,<br>    ‘2016’=&gt;’冲虚’,<br>    ‘2017’=&gt;’方正’,<br>    ‘2018’=&gt;’岳不群’,<br>    ‘2019’=&gt;’宁中则’,<br>    );//10个学生的学号和姓名，用数组存储</p>
+<pre><code>//使用循环结构遍历数组,获取学号和姓名  
+foreach($students as $v)
+&#123; 
+echo $v;//输出（打印）学号：姓名
+echo &quot;&lt;br /&gt;&quot;;
+ &#125;
+?&gt;</code></pre>
+<p>//</p>
+<pre><code>令狐冲
+林平之
+曲洋
+任盈盈
+向问天
+任我行
+冲虚
+方正
+岳不群
+宁中则</code></pre>
+<p>//</p>
+<pre><code>&lt;?php
+$students = array(
+&#39;2010&#39;=&gt;&#39;令狐冲&#39;,
+&#39;2011&#39;=&gt;&#39;林平之&#39;,
+ &#39;2012&#39;=&gt;&#39;曲洋&#39;,
+&#39;2013&#39;=&gt;&#39;任盈盈&#39;,
+&#39;2014&#39;=&gt;&#39;向问天&#39;,
+&#39;2015&#39;=&gt;&#39;任我行&#39;,
+&#39;2016&#39;=&gt;&#39;冲虚&#39;,
+&#39;2017&#39;=&gt;&#39;方正&#39;,
+&#39;2018&#39;=&gt;&#39;岳不群&#39;,
+&#39;2019&#39;=&gt;&#39;宁中则&#39;,
+ );//10个学生的学号和姓名，用数组存储
+
+//使用循环结构遍历数组,获取学号和姓名  
+foreach($students as $key =&gt; $v)
+&#123; 
+echo $key.&quot;:&quot;.$v;//输出（打印）学号：姓名
+echo &quot;&lt;br /&gt;&quot;;
+&#125;
+?&gt;</code></pre>
+<p>//</p>
+<pre><code> 2010:令狐冲
+2011:林平之
+2012:曲洋
+2013:任盈盈
+2014:向问天
+2015:任我行
+2016:冲虚
+2017:方正
+2018:岳不群
+2019:宁中则</code></pre>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/>http://ckylsy.github.io/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T17:38:32+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 3, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http/">
-        http、knife
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>这道题不难，倒是，因为一点点的跑偏，打开了不应该打开的东西，哈哈哈</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
-        http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/&title=preg_match函数详解，foreach - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/&title=preg_match函数详解，foreach - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/&title=preg_match函数详解，foreach - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
 
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
+        <a class='prev' href='/2021/02/03/cacl/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>easy cacl</p>
+          <p class='content'>#前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪
+
+
+打开是让算数的，就忘了我在哪打开了cacl.php出现了别的界面，看wp好像是说在bp抓包的时候可以看见，我记得我应该是在...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/03/http/'>
+          <p class='title'>http、knife<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言这道题不难，倒是，因为一点点的跑偏，打开了不应该打开的东西，哈哈哈
+
+
+f12,打开网页，bp抓包，改包
+第二个，直接上菜刀
+</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/31/buu/">
-        buu
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>have fun</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/31/buu/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/bodysqli/">
-        badysqli
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
-体验了sqlmap一把梭的乐趣，但是没用，这个题目上没有提示md5加密，我是看wp才知道后端语句
-   &lt;?
-$name = $_POST[&#39;name&#39;];
-$passwd = md5($_POST[&#39;pw&#39;]);
-
-$sql = &quot;select * from user where username = &#39;$name&#39;&q...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/bodysqli/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/suctf/">
-        suctf sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
 
-&lt;?php
-session_start();
-
-include_once &quot;config.php&quot;;
-
-$post = array();
-$get = array();
-global $MysqlLink;
-
-//GetPara();
-$MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/suctf/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/easysql/">
-        easysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/easysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 4
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -966,82 +679,22 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        
+    </div>
+  </section>
 
-  
 
   
 
@@ -1057,14 +710,14 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="preg_match函数详解，foreach";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
