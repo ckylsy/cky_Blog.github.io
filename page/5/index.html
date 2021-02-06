@@ -5,6 +5,10 @@
   <!-- SEO相关 -->
   
     
+      
+        <meta name="robots" content="noindex,follow">
+      
+    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -19,11 +23,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>easy cacl - Hexo</title>
+  <title>Hexo</title>
   
 
-  
-    <meta name="description" content="#前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪">
   
 
   <!-- feed -->
@@ -307,7 +309,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post dock' style="display: none;">
+        <div id="full" class='cover-wrapper  dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,259 +385,75 @@
         
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-
-
-  
-  <div class="article-meta" id="top">
+  <section class="post-list">
     
     
-    
-      <h1 class="title">
-        easy cacl
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="">
-    <p>lucky</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Feb 3, 2021</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
       
-      <div id="lc-pv" data-title="easy cacl" data-path="/2021/02/03/cacl/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
-          
         
-      </div>
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/11/19/hello-world/">
+        Hello World
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Qu...
+      
     
   </div>
-
-
   
-  <p>#前言<br>按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪</p>
-<a id="more"></a>
-
-<p>打开是让算数的，就忘了我在哪打开了cacl.php出现了别的界面，看wp好像是说在bp抓包的时候可以看见，我记得我应该是在源代码中找到的，但是emm，现在找不到了，就这样子吧。我想起来了，源码中有</p>
-<pre><code>    &lt;!--I&#39;ve set up WAF to ensure security.--&gt;
- &lt;script&gt;
-$(&#39;#calc&#39;).submit(function()&#123;
-    $.ajax(&#123;
-        url:&quot;calc.php?num=&quot;+encodeURIComponent($(&quot;#content&quot;).val()),
-        type:&#39;GET&#39;,
-        success:function(data)&#123;
-            $(&quot;#result&quot;).html(`&lt;div class=&quot;alert alert-success&quot;&gt;
-        &lt;strong&gt;答案:&lt;/strong&gt;$&#123;data&#125;
-        &lt;/div&gt;`);
-        &#125;,
-        error:function()&#123;
-            alert(&quot;这啥?算不来!&quot;);
-        &#125;
-    &#125;)
-    return false;
-&#125;)
-&lt;/script&gt;</code></pre>
-<p>在这<mark> url:”calc.php?num=”+encodeURIComponent($(“#content”).val()),</mark><br><br>这个跟js有关，这方面还没有开始接触<br></p>
-<pre><code>  获取id为content的HTML标签元素的值,是JQuery
-  $(&quot;#content&quot;)
- 同document.getElementById(“content”);
- $(&quot;#content&quot;).val()
- 同document.getElementById(“content”).value;</code></pre>
-<p>提示打开cacl。php</p>
-<pre><code>  &lt;?php
-error_reporting(0);
-if(!isset($_GET[&#39;num&#39;]))&#123;
-show_source(__FILE__);
-&#125;else&#123;
-    $str = $_GET[&#39;num&#39;];
-    $blacklist = [&#39; &#39;, &#39;\t&#39;, &#39;\r&#39;, &#39;\n&#39;,&#39;\&#39;&#39;, &#39;&quot;&#39;, &#39;`&#39;, &#39;\[&#39;, &#39;\]&#39;,&#39;\$&#39;,&#39;\\&#39;,&#39;\^&#39;];
-    foreach ($blacklist as $blackitem) &#123;
-            if (preg_match(&#39;/&#39; . $blackitem . &#39;/m&#39;, $str)) &#123;
-                    die(&quot;what are you want to do?&quot;);
-            &#125;
-    &#125;
-    eval(&#39;echo &#39;.$str.&#39;;&#39;);
-&#125;
-?&gt;</code></pre>
-
-  
-  
-    
-    <div class='footer'>
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2020-11-19</time>
+        
+      </div>
       
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/03/cacl/>http://ckylsy.github.io/2021/02/03/cacl/</a></p>
-              
-            
-          </blockquote>
+        <div>
+          <a class='readmore' href='/2020/11/19/hello-world/'>
+            Read More
+          </a>
         </div>
       
-      
     </div>
   
-  
-    
 
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-03T19:19:12+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 3, 2021</p>
-  </a>
 </div>
 
+          </div>
         
       
+    
+  </section>
+  
+    
+      <br>
+      <div class="prev-next">
         
-          
-
+          <a class="prev" rel="prev" href="/page/4/">
+            <section class="post prev white-box shadow" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
+            </section>
+          </a>
         
-      
+        <p class="current">
+          5 / 5
+        </p>
         
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
+      </div>
     
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/03/cacl/&title=easy cacl - Hexo&summary=#前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/03/cacl/&title=easy cacl - Hexo&summary=#前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/03/cacl/&title=easy cacl - Hexo&summary=#前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </div>
-
-
   
-  
-
-  
-    <div class="prev-next">
-      
-        <a class='prev' href='/2021/02/05/python/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>python</p>
-          <p class='content'>读取
-
-   name=input(&quot;请输入你的名字&quot;)
-   age=input(&quot;请输入你的年龄&quot;)
-   print(name)
-   print(...</p>
-        </a>
-      
-      
-        <a class='next' href='/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/'>
-          <p class='title'>preg_match函数详解，foreach<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>
-
-在php中preg_match（）函数是用来执行正则表达式的一个常用的函数。正则表达式中，几乎在所有的编程表达式中都会用到。preg_match（）函数用于进行正则表达式匹配，成功给返回1，...</p>
-        </a>
-      
-    </div>
-  
-</article>
-
-
-  
-
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-</div>
-
-  </article>
-
-
-
-
 
 
 </div>
@@ -645,8 +463,82 @@ show_source(__FILE__);
     
     
 
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Hexo</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:me@xxx.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/volantis-x/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
+  
 
+  
+    
+    
+
+  
+
+  
+    
+    
+
+  
 
   
 
@@ -662,8 +554,8 @@ show_source(__FILE__);
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="easy cacl";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
