@@ -478,6 +478,169 @@
 <h1>多个if分支</h1>
 
 <pre><code>if elif else</code></pre>
+<h1>一个猜随机数的小游戏</h1>
+调用random模块
+
+<pre><code>   import random
+
+ n=random.randint(0,10)
+ s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+print(&quot;input smaller......&quot;)
+elif s&lt;n:
+print(&quot;input bigger....&quot;)
+else:
+print(&quot;you are right&quot;)
+print(n)</code></pre>
+<p>修改了一下，让他能持续进行直到，相等</p>
+<pre><code>import random
+
+s=-1
+n=random.randint(0,10)
+while s!=n:
+s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+  print(&quot;input smaller......&quot;)
+elif s&lt;n:
+ print(&quot;input bigger....&quot;)
+
+
+if s==n:
+print(&quot;you are right&quot;)
+print(n)</code></pre>
+<p>最多猜三次：</p>
+<pre><code>import random
+
+count=0
+n=random.randint(0,10)
+while count&lt;3:
+s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+  print(&quot;input smaller......&quot;)
+elif s&lt;n:
+ print(&quot;input bigger....&quot;)
+else:
+   print(&quot;you are right&quot;)
+   print(n)
+   exit()
+count+=1
+print(n)</code></pre>
+<p>升级版本</p>
+<pre><code> import random
+
+count=0
+n=random.randint(0,10)
+def xunhuan():
+ count = 0
+ while count&lt;3:
+
+ s=int(input(&quot;输入一个数&quot;))
+ if s&gt;n:
+   print(&quot;input smaller......&quot;)
+ elif s&lt;n:
+   print(&quot;input bigger....&quot;)
+ else:
+   print(&quot;you are right&quot;)
+   print(n)
+   exit()
+ count+=1
+xunhuan()
+shuru=input(&quot;你还想继续吗&quot;)
+if shuru==&quot;n&quot; or &quot;N&quot;:
+exit()
+while shuru ==&quot;y&quot; or &quot;Y&quot; :
+xunhuan()
+shuru = input(&quot;你还想继续吗&quot;)//暂时没想起来更好的解法，就调用了一下函数</code></pre>
+<h1>break和contiune</h1>
+这两个在当时学习c++的时候都不怎么清楚，现在稍微明白一点。这两个必需是跟着循环出来的，for和while如果不是循环会报错
+
+<pre><code>break:中止循环
+contimue：中止本次循坏
+
+a=0
+while a&lt;100:
+a+=1
+if a==50:
+    break
+print(a)//输出0~49</code></pre>
+<p>//</p>
+<pre><code>a=0
+while a&lt;100:
+a+=1
+if a&lt;50 and a&gt;40:
+    continue
+print(a)//40~50没有打印出来</code></pre>
+<h1>一道简单的计算题</h1>
+    n=int(input("输入一个数"))
+    s=2
+    sum=0
+    while s<=n:
+    if s%2==0:
+        sum=sum+s
+    else:
+        sum=sum-s
+    s+=1
+    print(sum)//计算2-3+4-5......-或+n
+<h1>打印一个图像</h1>
+
+<pre><code> *
+ **
+ ***
+ ****
+ *****
+ ****
+ ***
+ **
+ *</code></pre>
+<p>//</p>
+<pre><code> i=1
+while i&lt;=9:
+if i&lt;=5:
+    print(&quot;*&quot;*i)
+else:
+    print(&quot;*&quot;*(10-i))
+i+=1</code></pre>
+<p>//升级</p>
+<pre><code>i=1
+n=int(input(&quot;输入一个数字&quot;))
+
+while i&lt;=(2*n-1):
+if i&lt;=5:
+    print(&quot;*&quot;*i)
+else:
+    print(&quot;*&quot;*(2*n-i))
+i+=1</code></pre>
+<h1>死循环</h1>
+
+<pre><code> while true</code></pre>
+<h1>双色球</h1>
+
+<pre><code>red_list=[]
+blue_list=[]
+while len(red_list)&lt;6:
+num=int(input(&quot;请输入第%s个数:&quot;%(len(red_list)+1)))
+if num&gt;1 and num&lt;16:
+    if num not in red_list:
+        red_list.append(num)
+    else:
+        print(&quot;该数字存在，请重新输入&quot;)
+else:
+    print(&quot;该数超出范围&quot;)
+
+while len(blue_list) &lt; 2:
+num = int(input(&quot;请输入第%s个数：&quot;%(len(blue_list)+1)))
+if num &gt; 1 and num &lt; 8:
+    if num not in blue_list:
+        blue_list.append(num)
+    else:
+        print(&quot;该数字存在，请重新输入&quot;)
+else:
+    print(&quot;该数超出范围&quot;)
+
+print (&quot;红球：&quot;)
+print(red_list)
+print (&quot;篮球&quot;)
+print(blue_list)</code></pre>
 
   
   
@@ -512,10 +675,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-05T12:00:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T16:58:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 5, 2021</p>
+    <p>更新于：Feb 8, 2021</p>
   </a>
 </div>
 

