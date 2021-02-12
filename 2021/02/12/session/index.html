@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>session - Hexo</title>
   
 
   
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,506 +381,243 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
-        preg_match函数详解，foreach
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-在php中preg_match（）函数是用来执行正则表达式的一个常用的函数。正则表达式中，几乎在所有的编程表达式中都会用到。preg_match（）函数用于进行正则表达式匹配，成功给返回1，否则返回0.preg_match()成功匹配一次后会停止匹配。preg_match(正则表达式，需要匹配检索的对象，可选：储存匹配结果的数组)例子
-  &lt;?php
-  $str=&quot;Da...
-      
-    
-  </div>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        session
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2021-02-03</time>
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 12, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="session" data-path="/2021/02/12/session/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<h1>session</h1>
+
+<p>Session的中文译名叫做“会话”，其本来的含义是指有始有终的一系列动作/消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列过程可以称之为一个session。目前社会上对session的理解非常混乱：有时候我们可以看到这样的话“在一个浏览器会话期间，…”，这里的会话是指从一个浏览器窗口打开到关闭这个期间；也可以看到“用户（客户端）在一次会话期间”这样一句话，它可能指用户的一系列动作（一般情况下是同某个具体目的相关的一系列动作，比如从登录到选购商品到结账登出这样一个网上购物的过程；然而有时候也可能仅仅是指一次连接；其中的差别只能靠上下文来推断了。</p>
+<p> 然而当session一词与网络协议相关联时，它又往往隐含了“面向连接”和/或“保持状态”这样两个含义，“面向连接”指的是在通信双方在通信之前要先建立一个通信的渠道，比如打电话，直到对方接了电话通信才能开始。“保持状态”则是指通信的一方能够把一系列的消息关联起来，使得消息之间可以互相依赖，比如一个服务员能够认出再次光临的老顾客并且记得上次这个顾客还欠店里一块钱。这一类的例子有“一个TCP session”或者“一个POP3 session”。</p>
+<p>鉴于这种混乱已不可改变，要为session下个定义就很难有统一的标准。而在阅读session相关资料时，我们也只有靠上下文来推断理解了。不过我们可以这样理解：例如我们打电话，从拨通的那一刻起到挂断电话期间，因为电话一直保持着接通的状态，所以把这种接通的状态叫做session。它是访客与整个网站交互过程中一直存在的公有变量，在客户端不支持COOKIE的时候，为了保证数据正确、安全，就采用SESSION变量。访问网站的来客会被分配一个唯一的标识符，即所谓的会话 ID。它要么存放在客户端的 cookie，要么经由 URL传递。</p>
+<p>SESSION的发明填补了HTTP协议的局限：HTTP协议被认为是无状态协议，无法得知用户的浏览状态，当它在服务端完成响应之后，服务器就失去了与该浏览器的联系。这与HTTP协议本来的目的是相符的，客户端只需要简单的向服务器请求下载某些文件，无论是客户端还是服务器都没有必要纪录彼此过去的行为，每一次请求之间都是独立的，好比一个顾客和一个自动售货机或者一个普通的（非会员制）大卖场之间的关系一样。</p>
+<p>因此通过SESSION(cookie是另外一种解决办法)记录用户的有关信息，以供用户再次以此身份对web服务器提起请求时作确认。会话的发明使得一个用户在多个页面间切换时能够保存他的信息。网站编程人员都有这样的体会，每一页中的变量是不能在下一页中使用的(虽然form，url也可以实现，但这都是非常不理想的办法)，而SESSION中注册的变量就可以作为全局变量使用了。</p>
+<p>那么SESSION到底有什么用处呢？网上购物时大家都用过购物车，你可以随时把你选购的商品加入到购物车中，最后再去收银台结帐。在整个过程中购物车一直扮演着临时存贮被选商品的角色，用它追踪用户在网站上的活动情况，这就是SESSION的作用，它可以用于用户身份认证，程序状态记录，页面之间参数传递等。</p>
+<p>SESSION 的实现中采用COOKIE技术，SESSION会在客户端保存一个包含session_id(SESSION编号)的COOKIE；在服务器端保存其他 session变量，比如session_name等等。当用户请求服务器时也把session_id一起发送到服务器，通过session_id提取所保存在服务器端的变量，就能识别用户是谁了。同时也不难理解为什么SESSION有时会失效了。</p>
+<p>当客户端禁用COOKIE时(点击IE中的“工具”—“internet=””&gt;Internet选项”，在弹出的对话框里点击“安全”—“自定义级别”项，将“允许每个对话COOKIE”设为禁用)，session_id将无法传递，此时SESSION失效。不过php5在Linux/unix平台可以自动检查cookie状态，如果客户端设置了禁用，则系统自动把session_id附加到url上传递。windows主机则无此功能。     </p>
+<h2>session常用函数及用法</h2>
+ Session_start()：开始一个会话或者返回已经存在的会话。
+
+
+<p>说明：这个函数没有参数，且返回值均为true。如果你使用基于cookie的session(cookie-based sessions),那么在使用Session_start()之前浏览器不能有任何输出，否则会发生以下错误：</p>
+<p>Warning: Cannot send session cache limiter - headers already sent (output started at /usr/local/apache/htdocs/cga/member/1.PHP:2)…………</p>
+<p>你可以在php=””&gt;php.ini里启动session.auto_start=1，这样就无需每次使用session之前都要调用session_start()。但启用该选项也有一些限制，如果确实启用了 session.auto_start，则不能将对象放入会话中，因为类定义必须在启动会话之前加载以在会话中重建对象。<br>请求结束后所有注册的变量都会被序列化。已注册但未定义的变量被标记为未定义。在之后的访问中这些变量也未被会话模块定义，除非用户以后定义它们。</p>
+<p>警告:有些类型的数据不能被序列化因此也就不能保存在会话中。包括 resource变量或者有循环引用的对象（即某对象将一个指向自己的引用传递给另一个对象）。</p>
+<p>注册SESSION变量：</p>
+<p>PHP5使用$_SESSION[‘xxx’]=xxx注册SESSION全局变量。和GET，POST，COOKIE的使用方法相似。</p>
+<p>注意：session_register()，session_unregister，session_is_registered在php5下不再使用，除非在php.ini里把register_globle设为on，不过出于安全考虑，强烈建议关闭register_globle。HTTP_SESSION_VARS也不提倡使用了，官方建议用$_SESSION代替之。例如：</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/12/session/>http://ckylsy.github.io/2021/02/12/session/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-12T20:04:19+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 12, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http/">
-        http、knife
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>这道题不难，倒是，因为一点点的跑偏，打开了不应该打开的东西，哈哈哈</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
-        http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/12/session/&title=session - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/12/session/&title=session - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/12/session/&title=session - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
 
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
+        <a class='prev' href='/2021/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>文件上传</p>
+          <p class='content'>
+
+文件上传
+
+前端检查
+对应ctfshow第一道题，先上传a.png，然后bp抓包后更改文件名为a.php,连接得到数据。
+
+为什么不能不更改.php后缀，可能是没办法解析文件。
+后端检查
+大...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
+          <p class='title'>.htaccess和.user.ini配置文件的妙用<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+.htaccess
+httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的系统配置文件，对整个web服...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/31/buu/">
-        buu
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>have fun</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/31/buu/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/bodysqli/">
-        badysqli
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-体验了sqlmap一把梭的乐趣，但是没用，这个题目上没有提示md5加密，我是看wp才知道后端语句
-   &lt;?
-$name = $_POST[&#39;name&#39;];
-$passwd = md5($_POST[&#39;pw&#39;]);
-
-$sql = &quot;select * from user where username = &#39;$name&#39;&q...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/bodysqli/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/suctf/">
-        suctf sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-&lt;?php
-session_start();
-
-include_once &quot;config.php&quot;;
-
-$post = array();
-$get = array();
-global $MysqlLink;
-
-//GetPara();
-$MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/suctf/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/easysql/">
-        easysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/easysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/hardsql/">
-        hardsql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/hardsql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 5
-        </p>
-        
-          <a class="next" rel="next" href="/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -894,82 +627,22 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">session常用函数及用法</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
@@ -985,8 +658,8 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="session";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
