@@ -719,6 +719,57 @@ capitalize()首字母大写
 <p>‘no.1 NO.1 no.2 NO,2’</p>
 <p>或者话可以，name=’{name}.1 {name1}.1 {name}.2 {name1},2’</p>
 <p>name.format(name=’no’,name1=’NO’)</p>
+<p>声称字典：c=dict(name=’’)<br>添加：c[‘age’]=20<br>添加key：c=dict.fromkeys(你要的key列表)<br>update，合并，a.update.(c),如果c中有a存在的key，则覆盖a的values值<br>查：get<br>a.get(‘key’)如果存在，返回value，如果不存在，不返回<br>a.get(‘key’,-1)如果不存在返回-1<br>a.keys()返回所有的键值，a.values()返回所有的值，a.items()返回所有的键值和值<br>循环<br>for i in a:<br>print(i)<br>for i in a:<br>print(i,a[i])<br>for i in a.items():<br>print(i)<br>for i,j in a.items():<br>print(i,j)<br>集合<br>无序，不能重复，不可变<br>一个小例子，找出a，b中重复的元素，并将其存入c中<br>a=[1,2,3,12,434,56,23,12,2]<br>b=[1,23,45,2,34,56,23,45,2]<br>c=[]<br>for i in a:<br>if i in b:<br>c.append(i)<br>去重：如果a={1，3，4，1，2，3，4，1}，那么回车后，a={1,2,3,2},自动去重，如果<br>a=[1,2,3,1,2,12,3]是个列表，可以用c=set(a),就可以了，set是英文集合的意思，<br>c={1,2,3,12}<br>增加：add  a.add(元素)，钙元素一定是不可以改变的类型，列表，字典都有不可以，元组<br>是可以的，如果添加的元素该集合中有了，就不可以添加进去了，但是不会报错<br>删除：discard，a.discard(元素)，如果该元素不存在也不会报错<br>pop，a.pop()随机删除，实验几遍不像是随即删除，感觉是从头开始删除，每次删一个<br>remove：跟discard一样。只不过就如果删的是里面没有的，会报错<br>&amp;：求两个集合的相同的元素a{1,2,3,4,5},b={2,3,4,5,6}a&amp;b={2,3,4,5}<br>|:求两个集合的合集a|b={1,2，3，4，5，6}<br>-：如果a中存在b中的元素，b-a={6}<br>^:踢出去两者中都有的元素，a^b={1,6}<br>判断是不是相交：isdisjoint<br>判断是不是子集：issubset<br>判断是不是父集：issuperset<br>intersection：将两个集合中相同的元素取出来，就跟&amp;一样<br>difference_update():相当于a=a-b</p>
+<p>2**4=16，就是2的4次方<br>bin（数字），把十进制换成二进制<br>hex（数字），就是将十进制转换成16进制<br>ord（符号），查询acsii吗</p>
+<p>hash<br>这种转换是一种压缩运算，不能通过结果推算输入，不可逆算法，具有加密特性<br>特行：补课你，计算快<br>作用：密码，数字签名，文件完整性校检</p>
+<p>基于hash的两个数字类型：dict，set<br>set天生去重也是因为hash<br>dict之所以查询速度很快，所采用的是hash和二分法</p>
+<p>用python操作文件<br>1.f=open(file=’文件名’，mode=’w\r\a’),这个文件在你的python中声称<br>2.f.read()度全部，f.readline()读一行，f.readline(想读多少字)，f.readlines()将全部以字符串的形式输出，f.read(想读多少字)<br>3.追加模式，也是以写的方式进行<br>4.write，f.write(想写的字)<br>三种模式不能混合</p>
+<p>循环文件<br>a=open(file=’文件名’)<br>for line in a:<br>print(line)<br>此时会出现，每行之间都有空格，所以我们可以使用print（line.strip()）去掉空行<br>还可以使用，line.split(),将每行变成字符串，这样我们可以更好地筛选信息</p>
+<p>循环从1-100：可以用函数range（100）</p>
+<p>文件操作的其他模式：<br>f.seek（）：移动开始的光标，python3默认使用gbk编码，一个中文是两个字节，一个英文字母是1个字节，a.seek(2)<br>意思是从第二个中文开始<br>f.flush()强制将内存里的东西刷入硬盘：平时只有在f.close()之后，才可以在内存中看到新写入的文件，使用flush可以直接看到<br>f.readable()判断是否可读<br>f.tell()返回光标的位置<br>f.truncate(数字)，从0接到100，如果是f.truncate()表示从0接到光标处，可用于日志截断<br>f.writelines()项文件中写入内容，是字符串</p>
+<p>混合模式有三种<br>a+：追加读，光标回到尾部，可以使用seek（0）使光标回到开始<br>w+：没用<br>r+:读加写，相当于追加的效果，加载尾部，光标回到开始</p>
+<p>修改文件<br>f=open(‘’,’r+’)<br>f.seek()从第几个字符开始<br>f.write(),直接覆盖其他字符</p>
+<p>不占内存的修改文件<br>import os<br>old_file=”hello.txt”<br>new_file=”new.txt”<br>f=open(‘hello.txt’,’r+’)<br>f_new=open(‘new.txt’,’w’)<br>old_str=’wo’<br>new_str=’ni’<br>for line in f:<br>    if ‘wo’ in line:<br>        line=line.replace(old_str,new_str)</p>
+<pre><code>f_new.write(line)</code></pre>
+<p>f.close()<br>f_new.close()<br>os.replace(new_file,old_file)</p>
+<p>写一个脚本，使得，当我们输入新的字符串，被替换的字符串，以及文件名，就会进行替换<br>import sys<br>import os<br>a=sys.argv<br>old_file=a[3]<br>new_file=”new.txt”<br>f=open(a[3],’r+’)<br>f_new=open(‘new.txt’,’w’)<br>old_str=a[1]<br>new_str=a[2]<br>for line in f:<br>    if a[1] in line:<br>        line=line.replace(old_str,new_str)</p>
+<pre><code>f_new.write(line)</code></pre>
+<p>f.close()<br>f_new.close()<br>os.replace(new_file,old_file)<br>f=open(a[3],’r’)<br>print(f.read())</p>
+<p>作业：设置一个登陆注册，如果登陆三次没有成功，就锁定用户：</p>
+<p>c=0<br>answer=input(‘这是我们的网站，您是登陆还是注册：’)<br>if answer==’注册’:<br>    f=open(‘记录表’,’a+’)<br>    shujv=input(‘请输入您的用户名和密码，用空格隔开:’)<br>    shujv=shujv.replace(‘ ‘,’’)<br>    f.write(shujv)<br>    f.write(‘\n’)<br>    f.close()<br>if answer==’登陆’:<br>    def xunhuan():<br>        shujv = input(‘请输入您的用户名和密码，用空格隔开:’)<br>        shujv = shujv.replace(‘ ‘, ‘’)<br>        f = open(‘记录表’, ‘r’)<br>        c = 0<br>        for line in f:<br>            if shujv in line:<br>                if len(shujv) == len(line):<br>                    print(‘登陆成功’)<br>                    exit()<br>        f.close()<br>        print(‘登陆失败，请重新登陆’)<br>        c += 1<br>while c&lt;3:<br>    xunhuan()<br>    c+=1<br>if c &gt;=3:<br>    print(“账号已经被锁定”)<br>    exit()</p>
+<p>光标从第二行开始读文件，是next（f）</p>
+<p>本来说是查股票的<br>为了简便就用了成绩，感觉这样也行</p>
+<p>f=open(‘股票.txt’,’r’,encoding=’utf-8’,errors=’ignore’)<br>keys=[]<br>zidian={}<br>zidian1={}<br>diyipai=f.readline()<br>liebiao=[]<br>diyipai=dict(diyipai.split())<br>while True:<br>    for line in f:<br>        line = list(line.split())<br>        zidian[line[0]] = line<br>    qingqiu = input(“模糊查询：”)<br>    for k, v in zidian.items():<br>        if qingqiu in k:<br>            print(v)<br>    f.seek(0)<br>    next(f)<br>    a = input(“你想筛选成绩的科目”)<br>    c = 0<br>    for k in diyipai.keys():<br>        if k in a[0]:<br>            break<br>        c = c + 1</p>
+<pre><code>b = int(input(&quot;你想筛选成绩&quot;))
+for line1 in f:
+    line1 = line1.split()
+    if int(line1[c]) &gt;= b:
+        print(line1)</code></pre>
+<p>升级版本：<br>f=open(‘股票.txt’,’r’,encoding=’utf-8’,errors=’ignore’)<br>keys=[]<br>zidian={}<br>zidian1={}<br>diyipai=f.readline()<br>liebiao=[]<br>diyipai=dict(diyipai.split())<br>while True:<br>    for line in f:<br>        line = list(line.split())<br>        zidian[line[0]] = line<br>    qingqiu = input(“模糊查询：”)<br>    def hanshu():<br>        global qingqiu<br>        for k, v in zidian.items():<br>            if qingqiu in k:</p>
+<pre><code>            if len(qingqiu) == 0:
+                qingqiu = input(&quot;不能是空白请重新输入:&quot;)
+                hanshu()
+                return//重要的是，为什么把return加到了这里，如果不加return，则会返回我打了几个空白，就有几条数据，想不明白
+            else:
+                print(v)
+
+
+hanshu()
+f.seek(0)
+next(f)
+a = input(&quot;你想筛选成绩的科目:&quot;)
+c = 0
+for k in diyipai.keys():
+    if k in a[0]:
+        break
+    c = c + 1
+
+b = int(input(&quot;你想筛选成绩:&quot;))
+
+for line1 in f:
+    line1 = line1.split()
+    if int(line1[c]) &gt;= b:
+        print(line1)</code></pre>
 
   
   
@@ -753,10 +804,10 @@ capitalize()首字母大写
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-13T17:22:51+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-23T18:28:38+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 13, 2021</p>
+    <p>更新于：Feb 23, 2021</p>
   </a>
 </div>
 
