@@ -499,9 +499,61 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
+        ctfhub-备份文件下载，vim缓存
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+vim是个用的很多的文本编辑器
+知识点
+
+1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
+2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
+以index.php为例，第一...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -934,52 +986,6 @@ httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的�
       
         <div>
           <a class='readmore' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/09/upload/">
-        ACTF upload
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这道题，我本来以为就是一个前端有个检查，因为当上传.php文件的时候，是bp就劫不住，然后想就是，因为又说必须是jpg，png为后缀的，所以就把1.php改为1.jpg，成功拦截，在bp中改为1.php结尾的，发现还是后端还有一次检查，以.php结尾的还是可以被拦截住的，换成phtml文件测试。phtml文件代码如下
-   GIF89a  //在文件前加上GIF89a来绕过PHP get...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-09</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/09/upload/'>
             Read More
           </a>
         </div>
