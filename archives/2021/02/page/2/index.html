@@ -398,6 +398,54 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/">
+        宽字节注入
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+ 在使用php连接数据库的时候，当设置“set character_set_client=gbk”时会导致一个编码问题，也就是我们熟悉的宽字节
+ 注入，注入%DF%27的时候，即可把%5c吃掉，举个例子
+http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1
+当我们输入id=1’ and 1=1%23,查询语句是select id,tit...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-09</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/08/admin/">
         hctf2018 admin
       </a>
@@ -802,61 +850,6 @@ show_source(__FILE__);
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
-
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -871,8 +864,14 @@ $a===$b
           </a>
         
         <p class="current">
-          2 / 2
+          2 / 3
         </p>
+        
+          <a class="next" rel="next" href="/archives/2021/02/page/3/">
+            <section class="post next white-box shadow">
+              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
+            </section>
+          </a>
         
       </div>
     

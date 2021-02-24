@@ -5,9 +5,7 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
+      <meta name="robots" content="noindex,follow">
     
   
   <!-- 渲染优化 -->
@@ -23,7 +21,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>Archive: 2021/2 - Hexo</title>
   
 
   
@@ -58,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="half" class='cover-wrapper  dock' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,7 +383,8 @@
         
 
 <div class='l_main'>
-  
+	
+		
   <section class="post-list">
     
     
@@ -399,8 +398,8 @@
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/">
-        两道伪协议
+      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
+        php弱类型
       </a>
     </h2>
   
@@ -409,14 +408,17 @@
       
         
 
-伪协议一
+0x01前言
+php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
+0x02知识介绍
+php有两种比较的符号 == 与===
 
-
-emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过想了有几种构造方法
-
-?file=PHP://filter/resource=flag
-?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
-?file=DATA://tex...
+&lt;?php
+$a==$b;
+$a===$b
+?&gt;
+===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
+ 如果比较一个数字...
       
     
   </div>
@@ -424,386 +426,12 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time>2020-12-04</time>
+        <time>2021-02-02</time>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        第二周学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/php%E5%87%BD%E6%95%B0/">
-        php函数
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/php%E5%87%BD%E6%95%B0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-        伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>伪协议的学习</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/">
-        变量覆盖二
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>变量覆盖2</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        html学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/rce2/">
-        rce2
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        #前言basic rce 2
-直接构造？Rem=（&quot;ca\t f\lag&quot;）或者Rem=（&quot;\x63\x61\x74\x20\x66\x6c\x61\x67&quot;）就可以出来
-但是在网上看到了一个比较厉害的做法
-?Rem=include $_GET[&quot;cky&quot;] ?&gt;&amp;cky=php://filter/read=conve...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/26/rce2/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">
-        变量覆盖
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>extract变量覆盖</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
-        常见命令汇总
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>遇到后随时补充</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/rce/">
-        rce
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>basic rce</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/rce/'>
+          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
             Read More
           </a>
         </div>
@@ -823,27 +451,22 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
       <br>
       <div class="prev-next">
         
-          <a class="prev" rel="prev" href="/page/4/">
+          <a class="prev" rel="prev" href="/archives/2021/02/page/2/">
             <section class="post prev white-box shadow" >
               <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
             </section>
           </a>
         
         <p class="current">
-          5 / 6
+          3 / 3
         </p>
-        
-          <a class="next" rel="next" href="/page/6/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
         
       </div>
     
   
 
 
+	
 </div>
 <aside class='l_side'>
   
@@ -934,7 +557,6 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
 </aside>
 
 
-
         
         
           <!--此文件用来存放一些不方便取值的变量-->
@@ -949,7 +571,7 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
 </script>
 
