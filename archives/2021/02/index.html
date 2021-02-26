@@ -422,6 +422,162 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/26/request/">
+        request
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+陆陆续续学习了一些python的基础知识，感觉有必要开始对模块的学习了
+模块说明
+
+requesr支持http连接保持和连接池，支持使用cookie来保持会话，支持文件上传，支持相应内容自动编码，支持国际化的url和post数据自动连接
+在python内置模块中进行了高度的封装，使python在进行网络请求的时候，可以轻而易举地完成浏览器的所有操作
+requests会自动实现持久连接，k...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-26</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/26/request/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/25/110/">
+        sql 1`10
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+1`5,基本sqlmap都可以跑出来，其他的没有尝试
+less1
+
+输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
+从查询语句可以看出，SELECT * FROM users WHERE id=’’ union select 1,2,database() – ‘ LIMIT 0,1，他只能显示一行内容，所以我们再进行联合查询的时候，要记得在左边是空，即是’，而不是1’
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-25</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/25/110/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/24/register/">
+        spl_autoload_register()
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+在了解该函数之前先看另一个函数，__autoload
+__autoload
+这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
+
+PRINTIT.class.php
+    &lt;?php
+ class PRINTIT &#123;
+ function doPrint() &#123;
+ echo &#39;hello world&#39;;
+&#125;
+&#125;
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/register/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
         ctfhub-备份文件下载，vim缓存
       </a>
@@ -740,160 +896,6 @@ include可以获得指定文件中，所有的文件/代码/标记，并把它�
       
         <div>
           <a class='readmore' href='/2021/02/15/buu%E5%A4%8D%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-        文件上传
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-文件上传
-
-前端检查
-对应ctfshow第一道题，先上传a.png，然后bp抓包后更改文件名为a.php,连接得到数据。
-
-为什么不能不更改.php后缀，可能是没办法解析文件。
-后端检查
-大小写绕过
-在windows下，可以将后缀改为pHp
-unicode
-
-当目标存在json_decode且检查在json_decode之前，可以将php改写为\0070hp
-使用.user.ini,
-
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/12/session/">
-        session
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-session
-
-Session的中文译名叫做“会话”，其本来的含义是指有始有终的一系列动作/消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列过程可以称之为一个session。目前社会上对session的理解非常混乱：有时候我们可以看到这样的话“在一个浏览器会话期间，…”，这里的会话是指从一个浏览器窗口打开到关闭这个期间；也可以看到“用户（客户端）在一次会话期间”这样一句话，它可...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/12/session/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/">
-        .htaccess和.user.ini配置文件的妙用
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-.htaccess
-httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的系统配置文件，对整个web服务器起作用；而.htaccess也是Apache的配置文件，不过相当于一个局部配置文件，只对该文件所在目录下的文件起作用。
-实例
-在绕过文件上传的限制中，通常在Apache全局配置文件httpd.co...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-10</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
             Read More
           </a>
         </div>

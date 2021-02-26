@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>request - Hexo</title>
   
 
   
@@ -58,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -374,7 +370,7 @@
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -385,647 +381,391 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/02/26/request/">
+      <h1 class="title">
         request
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
 
-陆陆续续学习了一些python的基础知识，感觉有必要开始对模块的学习了
-模块说明
+          
+        
+          
+            
 
-requesr支持http连接保持和连接池，支持使用cookie来保持会话，支持文件上传，支持相应内容自动编码，支持国际化的url和post数据自动连接
-在python内置模块中进行了高度的封装，使python在进行网络请求的时候，可以轻而易举地完成浏览器的所有操作
-requests会自动实现持久连接，k...
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 26, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-    
+      <div id="lc-pv" data-title="request" data-path="/2021/02/26/request/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>陆陆续续学习了一些python的基础知识，感觉有必要开始对模块的学习了</p>
+<h1>模块说明</h1>
+
+<p>requesr支持http连接保持和连接池，支持使用cookie来保持会话，支持文件上传，支持相应内容自动编码，支持国际化的url和post数据自动连接</p>
+<p>在python内置模块中进行了高度的封装，使python在进行网络请求的时候，可以轻而易举地完成浏览器的所有操作</p>
+<p>requests会自动实现持久连接，keep alive</p>
+<h1>基础入门</h1>
+
+<h2>导入模块</h2>
+
+<p>import requests</p>
+<h2>发送简洁的请求</h2>
+示例：获得一个个人网页
+
+<p>import requests</p>
+<p>r=requests.get(‘<a href="https://ckylsy.github.io/&#39;)(%E4%B8%8D%E5%B8%A6%E5%8F%82%E6%95%B0)">https://ckylsy.github.io/&#39;)(不带参数)</a><br>r1=requests.get(url=’<a target="_blank" rel="noopener" href="http://dict.baidu.com/s&#39;">http://dict.baidu.com/s&#39;</a>, params={‘wd’: ‘python’})(<a target="_blank" rel="noopener" href="http://dict.baidu.com/s?wd=python">http://dict.baidu.com/s?wd=python</a>)</p>
+<p>我们可以使用该方法使用以下各种方法</p>
+<p>1   requests.get(‘<a target="_blank" rel="noopener" href="https://github.com/timeline.json%E2%80%99">https://github.com/timeline.json’</a>)                                # GET请求</p>
+<p>2   requests.post(“<a target="_blank" rel="noopener" href="http://httpbin.org/post%E2%80%9D">http://httpbin.org/post”</a>)                                        # POST请求</p>
+<p>3   requests.put(“<a target="_blank" rel="noopener" href="http://httpbin.org/put%E2%80%9D">http://httpbin.org/put”</a>)                                          # PUT请求</p>
+<p>4   requests.delete(“<a target="_blank" rel="noopener" href="http://httpbin.org/delete%E2%80%9D">http://httpbin.org/delete”</a>)                                    # DELETE请求</p>
+<p>5   requests.head(“<a target="_blank" rel="noopener" href="http://httpbin.org/get%E2%80%9D">http://httpbin.org/get”</a>)                                         # HEAD请求</p>
+<p>6   requests.options(“<a target="_blank" rel="noopener" href="http://httpbin.org/get%E2%80%9D">http://httpbin.org/get”</a> )                                     # OPTIONS请求</p>
+<h2>为url传递参数</h2>
+
+<p>url_params={‘key’:’python’}   #字典传递参数，如果是值为none的键不会被添加到url中<br>r=requests.get(‘your_url’,params=url_params)</p>
+<p>r=your url？key =value</p>
+<h2>响应内容</h2>
+
+<p>r.encoding:获得当前编码</p>
+<p>r.encoding=‘utf-8’设置编码</p>
+<p>r.text:以encoding解析返回内容，如果是字符串的消息体，则根据响应头的编码进行解码</p>
+<p>r.content:以字节形势（二进制）来发挥内容，字节方式的响应体会自动为你解码，gzip和deflaste进行压缩</p>
+<p>r.headers:以字典的方式返回响应体，这个字典的键不区分大小写，如果键不存在则2返回none</p>
+<p>r.status_code:返回状态码，其实直接输入print（r）就可以的得到</p>
+<p>r.raw:返回原始响应体，即urllib的response对象，使用r.raw.read()</p>
+<p>r.ok:返回bool值，便可查看是否登陆成功</p>
+<p>r.json():requests中的内置json解码器，以json的形式返回，前提是返回的内容使json格式的，否则会抛出异常</p>
+<p>r.raise_for_status():失败请求抛出异常</p>
+<p>post发出json请求</p>
+<p> import requests</p>
+<p> import json</p>
+<p> r = requests.post(‘<a target="_blank" rel="noopener" href="https://api.github.com/some/endpoint&#39;">https://api.github.com/some/endpoint&#39;</a>, data=json.dumps({‘some’: ‘data’}))</p>
+<p> print(r.json()</p>
+<h2>定制头和cookie信息</h2>
+
+<p>header={‘user-agent’:’my-app/0.01’}</p>
+<p>cookie={‘key’:’value’}</p>
+<p>r=requests.get/post(‘your url’,hear)<br>//<br>data={‘some’:’data’}</p>
+<p>headers={‘content-type’: ‘application/json’,’User-Agent’: ‘Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0’}</p>
+<p>r = requests.post(‘<a target="_blank" rel="noopener" href="https://api.github.com/some/endpoint&#39;">https://api.github.com/some/endpoint&#39;</a>, data=data, headers=headers)</p>
+<p>print(r.text)</p>
+<h2>响应</h2>
+
+<p>r.headers:返回字典类型，头信息</p>
+<p>r.requests.headers:返回发送到服务器的头信息</p>
+<p>测试了一下：{‘User-Agent’: ‘python-requests/2.25.1’, ‘Accept-Encoding’: ‘gzip, deflate’, ‘Accept’: ‘<em>/</em>‘, ‘Connection’: ‘keep-alive’} r.requests.headers<br>{‘Server’: ‘nginx’, ‘Date’: ‘Fri, 26 Feb 2021 06:04:34 GMT’, ‘Content-Type’: ‘text/html’, ‘Transfer-Encoding’: ‘chunked’, ‘Connection’: ‘keep-alive’, ‘Vary’: ‘Accept-Encoding’, ‘Content-Encoding’: ‘gzip’} r.headers</p>
+<p>r.cookies 返回cookie</p>
+<p>r.history 返回重定向信息，当然可以在请求头上加上allow_redirects=false阻止重定向</p>
+<h2>超时</h2>
+r=requests.gets('url',timeout=1)
+设置秒数超时，仅对于连接有效
+
+<h2>会话对象，能够跨请求保持参数</h2>
+s=requests.session()
+
+<p>s.auth=(‘auth’,’passwd’)</p>
+<p>s.headers=(‘key’:’value’)</p>
+<p>r=s.get(‘url’)</p>
+<p>r=s.get(‘url1’)</p>
+<h2>代理</h2>
+
+<p>proxies={‘http’:’ip1’,’https’:’ip2’}</p>
+<p>requests.get(‘url’,proxies=proxies)</p>
+<h2>汇总</h2>
+
+<h1 id="HTTP请求类型"><a href="#HTTP请求类型" class="headerlink" title="HTTP请求类型"></a>HTTP请求类型</h1><h1 id="get类型"><a href="#get类型" class="headerlink" title="get类型"></a>get类型</h1><p>r = requests.get(‘<a target="_blank" rel="noopener" href="https://github.com/timeline.json&#39;">https://github.com/timeline.json&#39;</a>)</p>
+<h1 id="post类型"><a href="#post类型" class="headerlink" title="post类型"></a>post类型</h1><p>r = requests.post(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/post&quot;">http://m.ctrip.com/post&quot;</a>)</p>
+<h1 id="put类型"><a href="#put类型" class="headerlink" title="put类型"></a>put类型</h1><p>r = requests.put(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/put&quot;">http://m.ctrip.com/put&quot;</a>)</p>
+<h1 id="delete类型"><a href="#delete类型" class="headerlink" title="delete类型"></a>delete类型</h1><p>r = requests.delete(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/delete&quot;">http://m.ctrip.com/delete&quot;</a>)</p>
+<h1 id="head类型"><a href="#head类型" class="headerlink" title="head类型"></a>head类型</h1><p>r = requests.head(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/head&quot;">http://m.ctrip.com/head&quot;</a>)</p>
+<h1 id="options类型"><a href="#options类型" class="headerlink" title="options类型"></a>options类型</h1><p>r = requests.options(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/get&quot;">http://m.ctrip.com/get&quot;</a>)</p>
+<h1 id="获取响应内容"><a href="#获取响应内容" class="headerlink" title="获取响应内容"></a>获取响应内容</h1><p>print(r.content) #以字节的方式去显示，中文显示为字符</p>
+<p>print(r.text) #以文本的方式去显示</p>
+<p>#URL传递参数<br>payload = {‘keyword’: ‘香港’, ‘salecityid’: ‘2’}<br>r = requests.get(“<a target="_blank" rel="noopener" href="http://m.ctrip.com/webapp/tourvisa/visa_list&quot;">http://m.ctrip.com/webapp/tourvisa/visa_list&quot;</a>, params=payload)<br>print（r.url） #示例为<a target="_blank" rel="noopener" href="http://m.ctrip.com/webapp/tourvisa/visa_list?salecityid=2&amp;keyword=%E9%A6%99%E6%B8%AF">http://m.ctrip.com/webapp/tourvisa/visa_list?salecityid=2&amp;keyword=香港</a></p>
+<p>#获取/修改网页编码<br>r = requests.get(‘<a target="_blank" rel="noopener" href="https://github.com/timeline.json&#39;">https://github.com/timeline.json&#39;</a>)</p>
+<p>print （r.encoding）</p>
+<p>#json处理<br>r = requests.get(‘<a target="_blank" rel="noopener" href="https://github.com/timeline.json&#39;">https://github.com/timeline.json&#39;</a>)</p>
+<p>print（r.json()） # 需要先import json    </p>
+<h1 id="定制请求头"><a href="#定制请求头" class="headerlink" title="定制请求头"></a>定制请求头</h1><p>url = ‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a></p>
+<p>headers = {‘User-Agent’ : ‘Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19’}</p>
+<p>r = requests.post(url, headers=headers)</p>
+<p>print （r.request.headers)</p>
+<p>#复杂post请求<br>url = ‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a></p>
+<p>payload = {‘some’: ‘data’}</p>
+<p>r = requests.post(url, data=json.dumps(payload)) #如果传递的payload是string而不是dict，需要先调用dumps方法格式化一下</p>
+<h1 id="post多部分编码文件"><a href="#post多部分编码文件" class="headerlink" title="post多部分编码文件"></a>post多部分编码文件</h1><p>url = ‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a></p>
+<p>files = {‘file’: open(‘report.xls’, ‘rb’)}</p>
+<p>r = requests.post(url, files=files)</p>
+<h1 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a>响应状态码</h1><p>r = requests.get(‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a>)</p>
+<p>print(r.status_code)</p>
+<h1 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h1><p>r = requests.get(‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a>)</p>
+<p>print (r.headers)</p>
+<p>print (r.headers[‘Content-Type’])</p>
+<p>print (r.headers.get(‘content-type’)) #访问响应头部分内容的两种方式</p>
+<h1 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h1><p>url = ‘<a target="_blank" rel="noopener" href="http://example.com/some/cookie/setting/url&#39;">http://example.com/some/cookie/setting/url&#39;</a></p>
+<p>r = requests.get(url)</p>
+<p>r.cookies[‘example_cookie_name’]    #读取cookies</p>
+<p>url = ‘<a target="_blank" rel="noopener" href="http://m.ctrip.com/cookies&#39;">http://m.ctrip.com/cookies&#39;</a></p>
+<p>cookies = dict(cookies_are=’working’)</p>
+<p>r = requests.get(url, cookies=cookies) #发送cookies</p>
+<p>#设置超时时间<br>r = requests.get(‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a>, timeout=0.001)</p>
+<p>#设置访问代理<br>proxies = {<br>           “http”: “<a href="http://10.10.1.10:3128&quot;">http://10.10.1.10:3128&quot;</a>,<br>           “https”: “<a href="http://10.10.1.100:4444&quot;">http://10.10.1.100:4444&quot;</a>,<br>          }</p>
+<p>r = requests.get(‘<a target="_blank" rel="noopener" href="http://m.ctrip.com&/#39;">http://m.ctrip.com&#39;</a>, proxies=proxies)</p>
+<p>#如果代理需要用户名和密码，则需要这样：</p>
+<p>proxies = {<br>    “http”: “<a target="_blank" rel="noopener" href="http://user:pass@10.10.1.10:3128/&quot;">http://user:pass@10.10.1.10:3128/&quot;</a>,<br>}</p>
+<h2>代码示例</h2>
+
+<h1 id="1、无参数实例"><a href="#1、无参数实例" class="headerlink" title="1、无参数实例"></a>1、无参数实例</h1><p>import requests</p>
+<p>ret = requests.get(‘<a target="_blank" rel="noopener" href="https://github.com/timeline.json&#39;">https://github.com/timeline.json&#39;</a>)</p>
+<p>print(ret.url)<br>print(ret.text)</p>
+<h1 id="2、有参数实例"><a href="#2、有参数实例" class="headerlink" title="2、有参数实例"></a>2、有参数实例</h1><p>import requests</p>
+<p>payload = {‘key1’: ‘value1’, ‘key2’: ‘value2’}</p>
+<p>ret = requests.get(“<a target="_blank" rel="noopener" href="http://httpbin.org/get&quot;">http://httpbin.org/get&quot;</a>, params=payload)</p>
+<p>print(ret.url)</p>
+<p>print(ret.text)</p>
+<h1 id="1、基本POST实例"><a href="#1、基本POST实例" class="headerlink" title="1、基本POST实例"></a>1、基本POST实例</h1><p>import requests</p>
+<p>payload = {‘key1’: ‘value1’, ‘key2’: ‘value2’}</p>
+<p>ret = requests.post(“<a target="_blank" rel="noopener" href="http://httpbin.org/post&quot;">http://httpbin.org/post&quot;</a>, data=payload)</p>
+<p>print(ret.text)</p>
+<h1 id="2、发送请求头和数据实例"><a href="#2、发送请求头和数据实例" class="headerlink" title="2、发送请求头和数据实例"></a>2、发送请求头和数据实例</h1><p>import requests</p>
+<p>import json</p>
+<p>url = ‘<a target="_blank" rel="noopener" href="https://api.github.com/some/endpoint&#39;">https://api.github.com/some/endpoint&#39;</a></p>
+<p>payload = {‘some’: ‘data’}</p>
+<p>headers = {‘content-type’: ‘application/json’}</p>
+<p>ret = requests.post(url, data=json.dumps(payload), headers=headers)</p>
+<p>print(ret.text)</p>
+<p>print(ret.cookies)</p>
+<p>#! /usr/bin/python3<br>    import requests</p>
+<pre><code>import json
+
+
+class url_request():
+
+def __init__(self):
+    &#39;&#39;&#39; init &#39;&#39;&#39;
+
+if __name__ == &#39;__main__&#39;:
+heard = &#123;&#39;Content-Type&#39;: &#39;application/json&#39;&#125;
+
+payload = &#123;&#39;CountryName&#39;: &#39;中国&#39;,
+           &#39;ProvinceName&#39;: &#39;四川省&#39;,
+           &#39;L1CityName&#39;: &#39;chengdu&#39;,
+           &#39;L2CityName&#39;: &#39;yibing&#39;,
+           &#39;TownName&#39;: &#39;&#39;,
+           &#39;Longitude&#39;: &#39;107.33393&#39;,
+           &#39;Latitude&#39;: &#39;33.157131&#39;,
+           &#39;Language&#39;: &#39;CN&#39;&#125;
+
+r = requests.post(&quot;http://www.xxxxxx.com/CityLocation/json/LBSLocateCity&quot;, heards=heard, data=payload)
+
+data = r.json()
+
+if r.status_code!=200:
+
+    print(&#39;LBSLocateCity API Error&#39; + str(r.status_code))
+
+print(data[&#39;CityEntities&#39;][0][&#39;CityID&#39;])  # 打印返回json中的某个key的value
+
+print(data[&#39;ResponseStatus&#39;][&#39;Ack&#39;])
+
+print(json.dump(data, indent=4, sort_keys=True, ensure_ascii=False))  # 树形打印json，ensure_ascii必须设为False否则中文会显示为unicode</code></pre>
+<h2>上传文件</h2>
+
+<p>import requests</p>
+<p>url = ‘<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/upload&#39;">http://127.0.0.1:8080/upload&#39;</a></p>
+<p>files = {‘file’: open(‘/home/rxf/test.jpg’, ‘rb’)}</p>
+<p>//files = {‘file’: (‘report.jpg’, open(‘/home/lyb/sjzl.mpg’, ‘rb’))}     #显式的设置文件名</p>
+<p>r = requests.post(url, files=files)</p>
+<p>print(r.text)</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/26/request/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/26/request/>http://ckylsy.github.io/2021/02/26/request/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-26T14:24:53+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 26, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/25/110/">
-        sql 1`10
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/26/request/&title=request - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/26/request/&title=request - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/26/request/&title=request - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/02/25/110/'>
+          <p class='title'>sql 1`10<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
 1`5,基本sqlmap都可以跑出来，其他的没有尝试
 less1
 
 输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
-从查询语句可以看出，SELECT * FROM users WHERE id=’’ union select 1,2,database() – ‘ LIMIT 0,1，他只能显示一行内容，所以我们再进行联合查询的时候，要记得在左边是空，即是’，而不是1’
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/25/110/'>
-            Read More
-          </a>
-        </div>
+从查询语句可以看出，SELECT * FROM user...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/register/">
-        spl_autoload_register()
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
-在了解该函数之前先看另一个函数，__autoload
-__autoload
-这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
 
-PRINTIT.class.php
-    &lt;?php
- class PRINTIT &#123;
- function doPrint() &#123;
- echo &#39;hello world&#39;;
-&#125;
-&#125;
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/register/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
-        ctfhub-备份文件下载，vim缓存
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-vim是个用的很多的文本编辑器
-知识点
-
-1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
-2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
-以index.php为例，第一...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/lottery/">
-        lottery
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这是我当是解题写的，主要是太多php了，看了很多没有用的
-
-很多没用的
-
-确实
-
-这里使用了php弱类型的比较就造成了弱类型的产生
-我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
-只能通过购买彩票的方法，赢得最大金额，得到flag
-这里使用bool欺瞒
-在php中，如果‘bool’和任何类型比较，任何类型都会变...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/lottery/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/git/">
-        ctfhub git
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-1.ctf-wscan扫描2.githark扫描
-第一题使用git log看它的日志发现有 remove flag add flag这两个版本我们想办法退回到第一个版本，git reset –hard HEAD^ (–hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交)
-第二题跟slash相关 ，详见另一篇文章
-第三题git che...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/git/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/index/">
-        index
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/index/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/stash/">
-        stash
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-用途
-
-git stash当前修改
-git stash 会将当前正在进行的文件保存下来（包括暂存和非暂存的），然后可以恢复完整的工作目录，比如下面的工作状态，通过git stash推送一个新的储存，当前的工作目录就干净了。
-
-$ git status
-On branch master
-Changes to be committed:
-
-new file:   style.css
-
-Cha...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/stash/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/">
-        无标题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>电脑终于回来了</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/15/buu%E5%A4%8D%E4%B9%A0/">
-        buu复习
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-warm up
-
-这道题，我在二刷的时候发现自己一刷的漏掉一个很关键的点。include
-include可以获得指定文件中，所有的文件/代码/标记，并把它复制给使用include的文件中，这就解释了为什么url中可以直接将绕过和文件包含拼接在一起。
-?file=hint.php?../../../../../ffffllllaaaagggg
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/15/buu%E5%A4%8D%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 6
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -1035,82 +775,22 @@ include可以获得指定文件中，所有的文件/代码/标记，并把它�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">导入模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">发送简洁的请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">为url传递参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">响应内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定制头和cookie信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">超时</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">会话对象，能够跨请求保持参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">上传文件</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
@@ -1126,14 +806,14 @@ include可以获得指定文件中，所有的文件/代码/标记，并把它�
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="request";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 

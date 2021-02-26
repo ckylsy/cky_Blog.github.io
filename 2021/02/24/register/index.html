@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>spl_autoload_register() - Hexo</title>
   
 
   
@@ -58,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -374,7 +370,7 @@
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -385,647 +381,259 @@
         
 
 <div class='l_main'>
-  
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/26/request/">
-        request
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-陆陆续续学习了一些python的基础知识，感觉有必要开始对模块的学习了
-模块说明
-
-requesr支持http连接保持和连接池，支持使用cookie来保持会话，支持文件上传，支持相应内容自动编码，支持国际化的url和post数据自动连接
-在python内置模块中进行了高度的封装，使python在进行网络请求的时候，可以轻而易举地完成浏览器的所有操作
-requests会自动实现持久连接，k...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/request/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
   
-  
-  
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title" >
-      <a href="/2021/02/25/110/">
-        sql 1`10
-      </a>
-    </h2>
-  
-  <div class='md'>
     
-      
-        
-
-1`5,基本sqlmap都可以跑出来，其他的没有尝试
-less1
-
-输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
-从查询语句可以看出，SELECT * FROM users WHERE id=’’ union select 1,2,database() – ‘ LIMIT 0,1，他只能显示一行内容，所以我们再进行联合查询的时候，要记得在左边是空，即是’，而不是1’
-...
-      
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/25/110/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/register/">
+      <h1 class="title">
         spl_autoload_register()
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
 
-在了解该函数之前先看另一个函数，__autoload
-__autoload
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Feb 24, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="spl_autoload_register()" data-path="/2021/02/24/register/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>在了解该函数之前先看另一个函数，__autoload</p>
+<h2>__autoload</h2>
 这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
 
-PRINTIT.class.php
-    &lt;?php
+<p>PRINTIT.class.php</p>
+<pre><code>    &lt;?php
  class PRINTIT &#123;
  function doPrint() &#123;
  echo &#39;hello world&#39;;
 &#125;
 &#125;
-...
-      
-    
-  </div>
+?&gt;  </code></pre>
+<p>index.php</p>
+<pre><code>&lt;?
+function __autoload( $class ) &#123;
+ $file = $class . &#39;.class.php&#39;;
+ if ( is_file($file) ) &#123;
+ require_once($file);
+ &#125;
+&#125;
+$obj = new PRINTIT();
+$obj-&gt;doPrint();?&gt;</code></pre>
+<p>运行index.php后正常输出hello world。在index.php中，由于没有包含printit.class.php，在实例化printit时，自动调用__autoload函数，参数$class的值即为类名printit，此时printit.class.php就被引进来了。</p>
+<p>在面向对象中这种方法经常使用，可以避免书写过多的引用文件，同时也使整个系统更加灵活。</p>
+<p>我自己实验的时候虽然没有报错，但是又提示说，__autoload已经过时了</p>
+<h2>spl_autoload_register</h2>
+
+<pre><code>  &lt;?
+function loadprint( $class ) &#123;
+  $file = $class . &#39;.class.php&#39;;
+  if (is_file($file)) &#123;
+  require_once($file);
+  &#125;
+&#125;
+spl_autoload_register( &#39;loadprint&#39; );
+$obj = new PRINTIT();
+$obj-&gt;doPrint();?&gt; </code></pre>
+<p>将__autoload换成loadprint函数。但是loadprint不会像__autoload自动触发，这时spl_autoload_register()就起作用了，它告诉PHP碰到没有定义的类就执行loadprint()  </p>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/24/register/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/02/24/register/>http://ckylsy.github.io/2021/02/24/register/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-24T16:57:39+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Feb 24, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
-        ctfhub-备份文件下载，vim缓存
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/24/register/&title=spl_autoload_register() - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/24/register/&title=spl_autoload_register() - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/24/register/&title=spl_autoload_register() - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/02/25/110/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>sql 1`10</p>
+          <p class='content'>
+
+1`5,基本sqlmap都可以跑出来，其他的没有尝试
+less1
+
+输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
+从查询语句可以看出，SELECT * FROM user...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
+          <p class='title'>ctfhub-备份文件下载，vim缓存<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
 vim是个用的很多的文本编辑器
 知识点
 
-1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
-2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
-以index.php为例，第一...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
-            Read More
-          </a>
-        </div>
+1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/lottery/">
-        lottery
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
-这是我当是解题写的，主要是太多php了，看了很多没有用的
 
-很多没用的
 
-确实
 
-这里使用了php弱类型的比较就造成了弱类型的产生
-我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
-只能通过购买彩票的方法，赢得最大金额，得到flag
-这里使用bool欺瞒
-在php中，如果‘bool’和任何类型比较，任何类型都会变...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/lottery/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/git/">
-        ctfhub git
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-1.ctf-wscan扫描2.githark扫描
-第一题使用git log看它的日志发现有 remove flag add flag这两个版本我们想办法退回到第一个版本，git reset –hard HEAD^ (–hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交)
-第二题跟slash相关 ，详见另一篇文章
-第三题git che...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/git/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/index/">
-        index
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/index/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/stash/">
-        stash
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-用途
-
-git stash当前修改
-git stash 会将当前正在进行的文件保存下来（包括暂存和非暂存的），然后可以恢复完整的工作目录，比如下面的工作状态，通过git stash推送一个新的储存，当前的工作目录就干净了。
-
-$ git status
-On branch master
-Changes to be committed:
-
-new file:   style.css
-
-Cha...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/stash/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/">
-        无标题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>电脑终于回来了</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/15/buu%E5%A4%8D%E4%B9%A0/">
-        buu复习
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-warm up
-
-这道题，我在二刷的时候发现自己一刷的漏掉一个很关键的点。include
-include可以获得指定文件中，所有的文件/代码/标记，并把它复制给使用include的文件中，这就解释了为什么url中可以直接将绕过和文件包含拼接在一起。
-?file=hint.php?../../../../../ffffllllaaaagggg
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/15/buu%E5%A4%8D%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 6
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -1035,82 +643,22 @@ include可以获得指定文件中，所有的文件/代码/标记，并把它�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">__autoload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">spl_autoload_register</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
@@ -1126,14 +674,14 @@ include可以获得指定文件中，所有的文件/代码/标记，并把它�
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="spl_autoload_register()";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
