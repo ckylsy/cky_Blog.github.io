@@ -450,6 +450,45 @@
 <p>这道题，我在二刷的时候发现自己一刷的漏掉一个很关键的点。include</p>
 <p>include可以获得指定文件中，所有的文件/代码/标记，并把它复制给使用include的文件中，这就解释了为什么url中可以直接将绕过和文件包含拼接在一起。</p>
 <p>?file=hint.php?../../../../../ffffllllaaaagggg</p>
+<h2>easy sql</h2>
+
+<p>过滤的东西有点多</p>
+<p>反正就是数值型注入，但是做的时候好像是看到源码，我准备扫一下目录，没用，没啥头绪，明天再看看</p>
+<h2>secret file</h2>
+
+<p>secret和end之间应该有什么联系，抓包看看</p>
+<p>有提示secr3t.php </p>
+<p>/flag放在了flag.php里</p>
+<p>说我就在这里但是你看不到我</p>
+<p>注意，刚才没有看到，secrst.php中有</p>
+<html>
+    <title>secret</title>
+
+<pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
+<?php
+
+    highlight_file(__FILE__);
+
+    error_reporting(0);
+
+    $file=$_GET['file'];
+
+    if(strstr($file,"../")||stristr($file, "tp")||stristr($file,"input")||stristr($file,"data")){
+
+        echo "Oh no!";
+
+        exit();
+
+    }
+
+    include($file); 
+
+//flag放在了flag.php里
+?>
+</html>
+
+<p>我用file协议，没有成功，然后用来php：//filter/read=convert.base64-encoding/resource=flag.php</p>
+<p>得到flag{6845a78a-dadb-4e66-8499-35b687755fea}</p>
 
   
   
@@ -484,10 +523,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-15T13:22:03+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-28T19:53:34+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 15, 2021</p>
+    <p>更新于：Feb 28, 2021</p>
   </a>
 </div>
 
@@ -624,7 +663,7 @@
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">easy sql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">secret file</span></a></li></ol>
     </div>
   </section>
 
