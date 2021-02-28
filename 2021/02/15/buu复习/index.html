@@ -461,32 +461,32 @@
 <p>/flag放在了flag.php里</p>
 <p>说我就在这里但是你看不到我</p>
 <p>注意，刚才没有看到，secrst.php中有</p>
-<html>
-    <title>secret</title>
+<pre><code>&lt;html&gt;
+&lt;title&gt;secret&lt;/title&gt;
 
-<pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></pre>
-<?php
+&lt;meta charset=&quot;UTF-8&quot;&gt;
 
-    highlight_file(__FILE__);
+&lt;?php
 
-    error_reporting(0);
+highlight_file(__FILE__);
 
-    $file=$_GET['file'];
+error_reporting(0);
 
-    if(strstr($file,"../")||stristr($file, "tp")||stristr($file,"input")||stristr($file,"data")){
+$file=$_GET[&#39;file&#39;];
 
-        echo "Oh no!";
+if(strstr($file,&quot;../&quot;)||stristr($file, &quot;tp&quot;)||stristr($file,&quot;input&quot;)||stristr($file,&quot;data&quot;))&#123;
 
-        exit();
+    echo &quot;Oh no!&quot;;
 
-    }
+    exit();
 
-    include($file); 
+&#125;
+
+include($file); 
 
 //flag放在了flag.php里
-?>
-</html>
-
+?&gt;
+&lt;/html&gt;</code></pre>
 <p>我用file协议，没有成功，然后用来php：//filter/read=convert.base64-encoding/resource=flag.php</p>
 <p>得到flag{6845a78a-dadb-4e66-8499-35b687755fea}</p>
 
@@ -523,7 +523,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-28T19:53:34+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-28T19:59:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Feb 28, 2021</p>
