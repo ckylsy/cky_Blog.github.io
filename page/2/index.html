@@ -399,12 +399,21 @@
   
     
     <h2 class="article-title" >
-      <a href="/2021/02/23/index/">
-        index
+      <a href="/2021/02/23/git/">
+        ctfhub git
       </a>
     </h2>
   
   <div class='md'>
+    
+      
+        
+
+1.ctf-wscan扫描2.githark扫描
+第一题使用git log看它的日志发现有 remove flag add flag这两个版本我们想办法退回到第一个版本，git reset –hard HEAD^ (–hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交)
+第二题跟slash相关 ，详见另一篇文章
+第三题git che...
+      
     
   </div>
   
@@ -416,7 +425,7 @@
       </div>
       
         <div>
-          <a class='readmore' href='/2021/02/23/index/'>
+          <a class='readmore' href='/2021/02/23/git/'>
             Read More
           </a>
         </div>

@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>ZJCTF，不过如此 - Hexo</title>
   
 
   
@@ -58,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -374,7 +370,7 @@
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -385,672 +381,257 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/">
-        ZJCTF，不过如此
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-&lt;?php
+
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        ZJCTF，不过如此
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 1, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="ZJCTF，不过如此" data-path="/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<pre><code>&lt;?php
 
 error_reporting(0);
 $text = $_GET[&quot;text&quot;];
 $file = $_GET[&quot;file&quot;];
-if(isset($text)&amp;&amp;(file_get_contents($text,&#39;r&#39;)===&quot;I have a dream&quot;))&#123;...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-01</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+if(isset($text)&amp;&amp;(file_get_contents($text,&#39;r&#39;)===&quot;I have a dream&quot;))&#123;
+       echo &quot;&lt;br&gt;&lt;h1&gt;&quot;.file_get_contents($text,&#39;r&#39;).&quot;&lt;/h1&gt;&lt;/br&gt;&quot;;
+       if(preg_match(&quot;/flag/&quot;,$file))&#123;
+          die(&quot;Not now!&quot;);
+       &#125;
 
-</div>
+       include($file);  //next.php
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/28/web/">
-        easyweb
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-打开注意到url img=TXpVek5UTTFNbVUzTURabE5qYz0，尝试解码MzUzNTM1MmU3MDZlNjc=，继续3535352e706e67，继续555.png，没有什么用处，当是为什么要重复这么多次，编码3535352E706E67，GM2TGNJTGUZEKNZQGZCTMNY=，这里跟之前不一样了R00yVEdOSlRHVVpFS05aUUdaQ1RNTl...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/28/web/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/28/GKCVE/">
-        GKCVE
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-题目地址：http://4a33f32c-6c18-4ed6-90da-d9700899205b.node3.buuoj.cn
-打开题目vint，提示是cve 2020 7066
-上网查资料
-get_headers(url)，获取url的头信息，以数组的形式返回
-还有get_headers(url,1)
-&lt;?php
-$url = &#39;http://4a33f32c-6c18-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/28/GKCVE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/26/%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/">
-        秋名山车神
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-import requestsimport bs4
-url=’your url’session=requests.session()
-re=session.get(url)
-content=re.content
-res=bs4.BeautifulSoup(content,’lxml’)
-res=str(res.find(‘div’)).split(‘=’)[0].split(‘&gt;...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/%E7%A7%8B%E5%90%8D%E5%B1%B1%E8%BD%A6%E7%A5%9E/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/26/beautifulsoup/">
-        beautifulsoup
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-使用
-
-soup=bs4.BeautifulSoup(指定字符串，‘lxml’)
-解析字符串
-
-str1=’这是测试‘
-soup=bs4.BeautifulSoup(str1,’lxml’)
-print(soup)
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/beautifulsoup/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/26/request/">
-        request
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-陆陆续续学习了一些python的基础知识，感觉有必要开始对模块的学习了
-模块说明
-
-requesr支持http连接保持和连接池，支持使用cookie来保持会话，支持文件上传，支持相应内容自动编码，支持国际化的url和post数据自动连接
-在python内置模块中进行了高度的封装，使python在进行网络请求的时候，可以轻而易举地完成浏览器的所有操作
-requests会自动实现持久连接，k...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/26/request/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/25/110/">
-        sql 1`10
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-1`5,基本sqlmap都可以跑出来，其他的没有尝试
-less1
-
-输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
-从查询语句可以看出，SELECT * FROM users WHERE id=’’ union select 1,2,database() – ‘ LIMIT 0,1，他只能显示一行内容，所以我们再进行联合查询的时候，要记得在左边是空，即是’，而不是1’
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/25/110/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/register/">
-        spl_autoload_register()
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-在了解该函数之前先看另一个函数，__autoload
-__autoload
-这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
-
-PRINTIT.class.php
-    &lt;?php
- class PRINTIT &#123;
- function doPrint() &#123;
- echo &#39;hello world&#39;;
 &#125;
+else&#123;
+      highlight_file(__FILE__);
 &#125;
-...
-      
-    
-  </div>
+?&gt;</code></pre>
+<p>主要的问题在于我不知道file_get_contents($text,’r’)中的r是什么意思<br>我以为是read，然后我自己实验的是</p>
+<pre><code>&lt;?php
+
+$text=&#39;I have a dream&#39;;
+
+print_r(file_get_contents($text,&#39;r&#39;));
+
+?&gt;</code></pre>
+<p>但是报错了</p>
+<p>在网上看到这种类型的解决方法，最后说一下</p>
+<p>现在是得到了next.php的内容</p>
+<pre><code>&lt;?php
+$id = $_GET[&#39;id&#39;];
+$_SESSION[&#39;id&#39;] = $id;
+
+function complex($re, $str) &#123;
+    return preg_replace(
+       &#39;/(&#39; . $re . &#39;)/ei&#39;,
+       &#39;strtolower(&quot;\\1&quot;)&#39;,
+       $str
+    );
+&#125;
+
+
+foreach($_GET as $re =&gt; $str) &#123;
+   echo complex($re, $str). &quot;\n&quot;;
+&#125;
+
+function getFlag()&#123;
+    @eval($_GET[&#39;cmd&#39;]);
+&#125;</code></pre>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/24/register/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/>http://ckylsy.github.io/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-01T18:19:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 1, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
-        ctfhub-备份文件下载，vim缓存
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
-
-vim是个用的很多的文本编辑器
-知识点
-
-1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
-2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
-以index.php为例，第一...
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/&title=ZJCTF，不过如此 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/&title=ZJCTF，不过如此 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/&title=ZJCTF，不过如此 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/lottery/">
-        lottery
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这是我当是解题写的，主要是太多php了，看了很多没有用的
-
-很多没用的
-
-确实
-
-这里使用了php弱类型的比较就造成了弱类型的产生
-我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
-只能通过购买彩票的方法，赢得最大金额，得到flag
-这里使用bool欺瞒
-在php中，如果‘bool’和任何类型比较，任何类型都会变...
-      
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/02/24/lottery/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/02/28/web/'>
+          <p class='title'>easyweb<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+
+打开注意到url img=TXpVek5UTTFNbVUzTURabE5qYz0，尝试解码MzUzNTM1MmU3MDZlNjc=，继续3535352e706e67，继续555.png，没...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 7
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
+
+
+
+
 
 
 </div>
@@ -1060,82 +641,8 @@ vim是个用的很多的文本编辑器
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -1151,14 +658,14 @@ vim是个用的很多的文本编辑器
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="ZJCTF，不过如此";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
