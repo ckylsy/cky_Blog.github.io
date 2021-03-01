@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>GKCVE - Hexo</title>
+  <title>GKCVE，actf backupfile - Hexo</title>
   
 
   
@@ -391,7 +391,7 @@
     
     
       <h1 class="title">
-        GKCVE
+        GKCVE，actf backupfile
       </h1>
       <div class='new-meta-box'>
         
@@ -426,7 +426,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="GKCVE" data-path="/2021/02/28/GKCVE/">
+      <div id="lc-pv" data-title="GKCVE，actf backupfile" data-path="/2021/02/28/GKCVE/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -469,6 +469,28 @@ print_r(&#39;-------------------------------------------------------------------
 print_r(get_headers($url, 1));</code></pre>
 <p>得到提示，其实这个就是得到它的请求标头，其实可以抓包后进行查看，hint：flag in localhost tips:host 必需是123 结尾</p>
 <p>输入<a target="_blank" rel="noopener" href="http://4a33f32c-6c18-4ed6-90da-d9700899205b.node3.buuoj.cn/?url=http%EF%BC%9A//127.0.0.123%00www.ctfhub.com&#39;%EF%BC%8C%E5%BE%97%E5%88%B0flag%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%88%91%E5%86%99%E7%9A%84%E6%97%B6%E5%80%99%E5%9B%A0%E4%B8%BA%E6%8F%90%E7%A4%BA%E7%9A%84%E6%98%AF%E8%AF%B4localhost%EF%BC%8C%E6%88%91%E5%B0%B1%E5%86%99%E7%9A%84http://4a33f32c-6c18-4ed6-90da-d9700899205b.node3.buuoj.cn/?url=http://localhost%00www.ctfhub.com&#39;,%E4%BD%86%E6%98%AF%E9%82%A3%E4%B8%AA123%EF%BC%8C%E6%88%91%E4%B8%8D%E7%9F%A5%E9%81%93%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%E4%BA%86%EF%BC%8C%E6%88%91%E5%8F%88%E6%83%B3%E8%AF%B4%E6%98%AF%E5%9C%A8%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%B8%ADhost%E4%BF%AE%E6%94%B9%E4%BB%A5123%EF%BC%8C%E7%BB%93%E5%B0%BE%E6%89%8D%E5%8F%91%E7%8E%B0%E4%B8%8D%E6%98%AF%EF%BC%8C%E5%B0%B1%E7%9B%B4%E6%8E%A5127.0.0.123%EF%BC%8Cok">http://4a33f32c-6c18-4ed6-90da-d9700899205b.node3.buuoj.cn/?url=http：//127.0.0.123%00www.ctfhub.com&#39;，得到flag，并且我写的时候因为提示的是说localhost，我就写的http://4a33f32c-6c18-4ed6-90da-d9700899205b.node3.buuoj.cn/?url=http://localhost%00www.ctfhub.com&#39;,但是那个123，我不知道该怎么办了，我又想说是在请求头中host修改以123，结尾才发现不是，就直接127.0.0.123，ok</a></p>
+<h1>actf backupfile</h1>
+
+
+<p>因为说是备份文件，我就是了下index.php.bak，然后就出来了</p>
+<pre><code>&lt;?php
+include_once &quot;flag.php&quot;;
+
+if(isset($_GET[&#39;key&#39;])) &#123;
+$key = $_GET[&#39;key&#39;];
+if(!is_numeric($key)) &#123;
+    exit(&quot;Just num!&quot;);
+&#125;
+$key = intval($key);
+$str = &quot;123ffwsfwefwf24r2f32ir23jrw923rskfjwtsw54w3&quot;;
+if($key == $str) &#123;
+    echo $flag;
+&#125;
+&#125;
+else &#123;
+echo &quot;Try to find out source file!&quot;;
+&#125;</code></pre>
+<p>这不就是php弱类型，就直接?key=123，就好了</p>
 
   
   
@@ -503,10 +525,10 @@ print_r(get_headers($url, 1));</code></pre>
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-02-28T12:47:27+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-01T21:25:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Feb 28, 2021</p>
+    <p>更新于：Mar 1, 2021</p>
   </a>
 </div>
 
@@ -525,7 +547,7 @@ print_r(get_headers($url, 1));</code></pre>
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE - Hexo&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE，actf backupfile - Hexo&summary="
           
           >
           
@@ -537,7 +559,7 @@ print_r(get_headers($url, 1));</code></pre>
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE - Hexo&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE，actf backupfile - Hexo&summary="
           
           >
           
@@ -549,7 +571,7 @@ print_r(get_headers($url, 1));</code></pre>
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE - Hexo&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/02/28/GKCVE/&title=GKCVE，actf backupfile - Hexo&summary="
           
           >
           
@@ -659,7 +681,7 @@ content...</p>
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="GKCVE";
+  pdata.postTitle="GKCVE，actf backupfile";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
