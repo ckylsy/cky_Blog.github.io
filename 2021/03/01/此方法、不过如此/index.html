@@ -520,6 +520,8 @@ function getFlag()&#123;
 <p>$1 $2   $3 $4<br>‘/(.<em>)(?|&amp;)’ . $key . ‘=[^&amp;]+?(&amp;)(.</em>)/i’</p>
 <p>回到题目</p>
 <p>最后构造<br>?\S*=${getFlag()}&amp;cmd=system(‘cat /flag’);得到flag</p>
+<p>我感觉问题应该是处在file_get_content(),是将整个文件读入到一个字符串中，但是前面我输入的是text=i have a dream，这是字符串不是文件，这是实验时的报错信息 file_get_contents($text): failed to open stream: No such file or directory ，所以要想怎么才能创建一个文件</p>
+<p>php://input 是个可以访问请求的原始数据的只读流。 POST 请求的情况下，最好使用 php://input 来代替 $HTTP_RAW_POST_DATA，因为它不依赖于特定的 php.ini 指令。 而且，这样的情况下 $HTTP_RAW_POST_DATA 默认没有填充， 比激活 always_populate_raw_post_data 潜在需要更少的内存。 enctype=”multipart/form-data” 的时候 php://input 是无效的。 </p>
 
   
   
@@ -554,10 +556,10 @@ function getFlag()&#123;
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-01T21:12:15+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-02T11:49:54+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 1, 2021</p>
+    <p>更新于：Mar 2, 2021</p>
   </a>
 </div>
 
