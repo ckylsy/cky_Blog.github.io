@@ -450,7 +450,7 @@
 <h2>这一题</h2>
 
 <p>前置知识</p>
-<p>tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以进行传递变量和执行简单的表达式。</p>
+<p>tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。</p>
 <p><img src="3.PNG" class="lazyload" data-srcset="3.PNG" srcset="data:image/png;base64,666"> </p>
 <p>当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?</p>
 <p> 在哪里呢?之前写的Handler都是继承的RequestHandler,这次继承的是BaseHandler是自己写的Handler<br>  继承自己的类,在类了加扩展initialize! 在这里我们可以在这里做获取用户cookie或者写cookie都可以在这里做</p>
@@ -469,7 +469,7 @@
 <p>  return render(request, ‘account/login.html’, {‘model’: login_form}</p>
 <p>由上面可知:render是一个类似模板的东西，可以使用不同的参数来访问网页<br>在tornado模板中，存在一些可以访问的快速对象，例如</p>
 <pre><code>     &#123;&#123; escape(handler.settings["cookie"]) &#125;&#125;</code></pre>
-<p>这两个和这个字典对象也许大家就看出来了，没错就是这个handler.settings对象<br>handler 指向RequestHandler</p>
+<p>这{}中间再来一个{}和这个字典对象也许大家就看出来了，没错就是这个handler.settings对象<br>handler 指向RequestHandler</p>
 <p>而RequestHandler.settings又指向self.application.settings</p>
 <p>所有handler.settings就指向RequestHandler.application.settings了！</p>
 <p>大概就是说，这里面就是我们一下环境变量，我们正是从这里获取的cookie_secret</p>
@@ -511,7 +511,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-02T17:22:24+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-02T17:23:49+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 2, 2021</p>

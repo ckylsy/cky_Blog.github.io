@@ -423,10 +423,10 @@
 这一题
 
 前置知识
-tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以进行传递变量和执行简单的表达式。
+tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。
  
 当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?
- 在哪里呢?之前写的Handler都是继承的RequestHandler,这次继承的是BaseHandler是自己写的Handl...
+ 在哪里呢?之前写的Handler都是继承的RequestHandle...
       
     
   </div>
