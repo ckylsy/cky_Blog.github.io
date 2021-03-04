@@ -496,6 +496,13 @@
 <p><img src="7.PNG" class="lazyload" data-srcset="7.PNG" srcset="data:image/png;base64,666"></p>
 <p>但是我们并没有成功，所以此时，就按照前置知识所说，我们可以看到请求头没有cookie，url也没有编码的现象，所以我们的path是存在表单中了，需要在数据包中进行urldecode操作使%00变成字符串结束符号。</p>
 <p><img src="8.png" class="lazyload" data-srcset="8.png" srcset="data:image/png;base64,666">得到flag</p>
+<p>还有是0x00截断</p>
+<p>尝试</p>
+<p><img src="9.PNG" class="lazyload" data-srcset="9.PNG" srcset="data:image/png;base64,666"></p>
+<p>随便在/uoload/a.php写一个字符，占一个位置</p>
+<p><img src="10.PNG" class="lazyload" data-srcset="10.PNG" srcset="data:image/png;base64,666"></p>
+<p>修改hex，为00</p>
+<p>得到flag</p>
 
   
   
@@ -530,7 +537,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-04T19:48:50+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-04T20:57:31+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 4, 2021</p>
