@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证 - Hexo</title>
   
 
   
@@ -56,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,526 +381,235 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 4, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
-        http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
+      <div id="lc-pv" data-title="爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证" data-path="/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>url=’<a target="_blank" rel="noopener" href="http://scxk.nmpa.gov.cn:81/xk/&#39;">http://scxk.nmpa.gov.cn:81/xk/&#39;</a></p>
+<p>先看这个url可否获得我们想要的数据</p>
+<p><img src="1.PNG" class="lazyload" data-srcset="1.PNG" srcset="data:image/png;base64,666"></p>
+<p>可是结果里并没有我们想要的信息</p>
+<p>所以我们想要的数据很有可能是动态加载出来的，所以考虑ajex请求，查看真正的url</p>
+<p>可以看出<a target="_blank" rel="noopener" href="http://scxk.nmpa.gov.cn:81/xk/itownet/portalAction.do?method=getXkzsList%EF%BC%8C%E6%98%AFpost%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%AF%B7%E6%B1%82%E4%BF%A1%E6%81%AF%E6%98%AF">http://scxk.nmpa.gov.cn:81/xk/itownet/portalAction.do?method=getXkzsList，是post请求，请求信息是</a></p>
+<p>on=true&amp;page=1&amp;pageSize=15&amp;productName=&amp;conditionType=1&amp;applyname=&amp;applysn=</p>
+<p><img src="2.PNG" class="lazyload" data-srcset="2.PNG" srcset="data:image/png;base64,666"></p>
+<p>重新获得数据</p>
+<p>里面那个list，值得注意</p>
+<p>直接写完吧</p>
+<p><img src="3.PNG" class="lazyload" data-srcset="3.PNG" srcset="data:image/png;base64,666"></p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/>http://ckylsy.github.io/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-04T14:10:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 4, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+          
 
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/&title=爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/&title=爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/&title=爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
 
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
   
 
-</div>
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>两个文件上传(你传你🐎呢，cgctf文件上传)</p>
+          <p class='content'>
 
-          </div>
-        
+第一题
+
+就是一个利用.htaccess文件进行上传的题目，先上传.htaccess，后上传a.png，问题处在了哪里呢，是因为我，最后连接的url搞错了
+/var/www/html/upl...</p>
+        </a>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/31/buu/">
-        buu havefun
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>have fun</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-31</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/01/31/buu/'>
-            Read More
-          </a>
-        </div>
+        <a class='next' href='/2021/03/03/Blacklist/'>
+          <p class='title'>强网杯andGYCTF2020 Blacklist<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+
+强网杯
+
+return preg_match(“/select|update|delete|drop|insert|where|./i”,$inject);
+输入1’ or 1=1 #可以...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/bodysqli/">
-        badysqli
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-体验了sqlmap一把梭的乐趣，但是没用，这个题目上没有提示md5加密，我是看wp才知道后端语句
-   &lt;?
-$name = $_POST[&#39;name&#39;];
-$passwd = md5($_POST[&#39;pw&#39;]);
-
-$sql = &quot;select * from user where username = &#39;$name&#39;&q...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/bodysqli/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/suctf/">
-        suctf sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-&lt;?php
-session_start();
-
-include_once &quot;config.php&quot;;
-
-$post = array();
-$get = array();
-global $MysqlLink;
-
-//GetPara();
-$MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/suctf/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/hardsql/">
-        hardsql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/hardsql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/babysql/">
-        babysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-学到了绕过方法，因为这个是提示为input your name password，说明关键字被替换为空格，显示为空，使用双写绕过
-
-如果=被过滤，可以用like替代（模糊查找运算符），‘%’代表0次或n次任意字符，‘_’代表只匹配一次任意字符，如果substr被过滤，可以使用left（），right（）这两个函数来替代left(字符串,从左开始数几位)right（字符串，从右开始数几位）
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/babysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/26/postlovesql/">
-        lovesql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-认识一个新的函数concat_ws一般写的是(‘&#39;,password,&#39;‘,name)这个可以帮忙concat_ws(‘`’,password,name)
-回归正题
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/26/postlovesql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/26/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98easysql/">
-        极客大挑战easysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这个主要是学习到了报错注入
-
-一般登录界面用不到联合注入，联合注入是为了查询什么东西，比如id。。。。
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/26/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98easysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/page/3/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          4 / 5
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/5/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -910,87 +617,14 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -1000,14 +634,14 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 

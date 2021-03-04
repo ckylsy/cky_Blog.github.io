@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>两个文件上传(你传你🐎呢，cgctf文件上传) - Hexo</title>
   
 
   
@@ -56,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,526 +381,264 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        两个文件上传(你传你🐎呢，cgctf文件上传)
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 4, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
-        http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
+      <div id="lc-pv" data-title="两个文件上传(你传你🐎呢，cgctf文件上传)" data-path="/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<h2>第一题</h2>
+
+<p>就是一个利用.htaccess文件进行上传的题目，先上传.htaccess，后上传a.png，问题处在了哪里呢，是因为我，最后连接的url搞错了</p>
+<p>/var/www/html/upload/d31b5eb9684c737c762a8c8d00d6c6df/a.png succesfully uploaded!</p>
+<p>上传的路径是这样，所以我们构造的url应该是 url/upload/d31b5eb9684c737c762a8c8d00d6c6df/a.png</p>
+<p>post连接，会出现报错，直接蚁剑连接</p>
+<p>在复习下.htaccess，application/x-httpd-php，可以将所有文件都解析成php文件</p>
+<h2>第二题</h2>
+
+
+<p>题目地址（<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://teamxlc.sinaapp.com/web5/21232f297a57a5a743894a0e4a801fc3/index.html%EF%BC%89">https://link.jianshu.com/?t=http%3A%2F%2Fteamxlc.sinaapp.com%2Fweb5%2F21232f297a57a5a743894a0e4a801fc3%2Findex.html）</a></p>
+<h3>前置知识</h3>
+
+<li>00截断原理
+
+<p>0x00是字符串结束的标志，我们手动添加这个标志来讲后面的内容截断，而后面的内容又可以帮我们绕过jiance</p>
+<li>00截断的限制条件
+
+<p>php&lt;5.3.29,且GPC关闭</p>
+<li>00截断的利用方法
+
+<p>上传文件的后端检测代码</p>
+<p><img src="1.PNG" class="lazyload" data-srcset="1.PNG" srcset="data:image/png;base64,666"></p>
+<li>用法
+
+<p>如果攻击者构造文件名：<code>admintony.php%00a.jpg</code>，在提取后缀名的时候遇到%00则认为字符串结束了，那么他提取到的后缀名会是.php，.php后缀又不允许上传所以上传失败了(这里有必要提一句，有人可能会说在一些情况下，%00截断文件名可以成功，这种案例你试一下是不是任意文件上传，西普的00截断实验就是一个任意文件上传的上传点，既然是任意文件上传又何必用00截断绕过呢？)</p>
+<p>那么00截断应该在什么时候使用呢？数据包中必须含有上传后文件的目录情况才可以用，比如数据包中存在<code>path: uploads/</code>，那么攻击者可以通过修改path的值来构造<code>paylod: uploads/aa.php%00</code></p>
+<p><img src="2.png" class="lazyload" data-srcset="2.png" srcset="data:image/png;base64,666"></p>
+<p>疑问：</p>
+<p>  为什么效果图中打印的结果和预期不符，是因为echo的特殊性质，官方解释的echo：</p>
+<p>  <img src="3.png" class="lazyload" data-srcset="3.png" srcset="data:image/png;base64,666"></p>
+<p>  正是因为echo可以输出多个字符串，一个字符串截断后就变成了两个字符串，所以会输出后面的内容。</p>
+<h2>%00和%00(urldecode)</h2>
+
+<p>在网上常见用Burp将数据包中的%00进行urldecode的操作，那为什么要进行这一个操作？网上也常见直接放入%00就可以截断成功的案例，为什么呢？</p>
+<li>%00(urldecode)
+
+<p>首先解释为什么要进行urldecode操作呢？其原因在于上传的表单中有一个<code>enctype</code>的属性，并且需要<code>enctype=&quot;multipart/form-data&quot; </code>(不对表单中数据进行编码)，path大多数都是存放在表单中的，因此需要在数据包中进行urldecode操作使%00变成字符串结束符号。</p>
+<li>%00
+  那么为什么网上也有直接添加%00而不进行urldecode操作呢？因为path也可以存放在`URL或者Cookie`中，而在提交数据的时候，浏览器会对数据做一次urldecode的操作，而到服务端，会对数据进行一次urldecode的操作，因此如果path在非enctype=multipart/form-data的表单中或`URL or Cookie`中的时候，就可以直接写%00不需要进行URLdecode操作，让服务端对%00进行URL解码即可。
+
+<p><img src="4.png" class="lazyload" data-srcset="4.png" srcset="data:image/png;base64,666"></p>
+<p>开始解题</p>
+<p><img src="5.png" class="lazyload" data-srcset="5.png" srcset="data:image/png;base64,666"></p>
+<p>上传png文件，bp抓包</p>
+<p><img src="6.png" class="lazyload" data-srcset="6.png" srcset="data:image/png;base64,666"></p>
+<p>明明不让上传。php文件，但是后缀话必须要php的，并且我们可以发现，相应包里面的数组，他把后缀名摘出来了</p>
+<p>不让传php，却又php，只能进行%00截断</p>
+<p><img src="7.PNG" class="lazyload" data-srcset="7.PNG" srcset="data:image/png;base64,666"></p>
+<p>但是我们并没有成功，所以此时，就按照前置知识所说，我们可以看到请求头没有cookie，url也没有编码的现象，所以我们的path是存在表单中了，需要在数据包中进行urldecode操作使%00变成字符串结束符号。</p>
+<p><img src="8.png" class="lazyload" data-srcset="8.png" srcset="data:image/png;base64,666">得到flag</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/>http://ckylsy.github.io/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-04T19:48:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 4, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+          
 
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/&title=两个文件上传(你传你🐎呢，cgctf文件上传) - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/&title=两个文件上传(你传你🐎呢，cgctf文件上传) - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/&title=两个文件上传(你传你🐎呢，cgctf文件上传) - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
 
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
   
 
-</div>
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/'>
+          <p class='title'>爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/31/buu/">
-        buu havefun
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>have fun</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-31</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/31/buu/'>
-            Read More
-          </a>
-        </div>
+url=’http://scxk.nmpa.gov.cn:81/xk/&#39;
+先看这个url可否获得我们想要的数据
+
+可是结果里并没有我们想要的信息
+所以我们想要的数据很有可能是动态加载...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/bodysqli/">
-        badysqli
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-体验了sqlmap一把梭的乐趣，但是没用，这个题目上没有提示md5加密，我是看wp才知道后端语句
-   &lt;?
-$name = $_POST[&#39;name&#39;];
-$passwd = md5($_POST[&#39;pw&#39;]);
-
-$sql = &quot;select * from user where username = &#39;$name&#39;&q...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/bodysqli/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/30/suctf/">
-        suctf sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-&lt;?php
-session_start();
-
-include_once &quot;config.php&quot;;
-
-$post = array();
-$get = array();
-global $MysqlLink;
-
-//GetPara();
-$MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-30</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/30/suctf/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/hardsql/">
-        hardsql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/hardsql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/27/babysql/">
-        babysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-学到了绕过方法，因为这个是提示为input your name password，说明关键字被替换为空格，显示为空，使用双写绕过
-
-如果=被过滤，可以用like替代（模糊查找运算符），‘%’代表0次或n次任意字符，‘_’代表只匹配一次任意字符，如果substr被过滤，可以使用left（），right（）这两个函数来替代left(字符串,从左开始数几位)right（字符串，从右开始数几位）
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/27/babysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/26/postlovesql/">
-        lovesql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-认识一个新的函数concat_ws一般写的是(‘&#39;,password,&#39;‘,name)这个可以帮忙concat_ws(‘`’,password,name)
-回归正题
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/26/postlovesql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/26/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98easysql/">
-        极客大挑战easysql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这个主要是学习到了报错注入
-
-一般登录界面用不到联合注入，联合注入是为了查询什么东西，比如id。。。。
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/26/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98easysql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/page/3/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          4 / 5
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/5/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
-
-
-	
 </div>
 <aside class='l_side'>
   
@@ -910,87 +646,28 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">第一题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">第二题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">前置知识</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">%00和%00(urldecode)</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -1000,14 +677,14 @@ $MysqlLink = mysqli_connect(&quot;localhost&quot;,$datauser,$da...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="两个文件上传(你传你🐎呢，cgctf文件上传)";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
