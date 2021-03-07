@@ -399,6 +399,100 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/09/upload/">
+        ACTF upload
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+这道题，我本来以为就是一个前端有个检查，因为当上传.php文件的时候，是bp就劫不住，然后想就是，因为又说必须是jpg，png为后缀的，所以就把1.php改为1.jpg，成功拦截，在bp中改为1.php结尾的，发现还是后端还有一次检查，以.php结尾的还是可以被拦截住的，换成phtml文件测试。phtml文件代码如下
+   GIF89a  //在文件前加上GIF89a来绕过PHP get...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-09</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/09/upload/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/">
+        宽字节注入
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+ 在使用php连接数据库的时候，当设置“set character_set_client=gbk”时会导致一个编码问题，也就是我们熟悉的宽字节
+ 注入，注入%DF%27的时候，即可把%5c吃掉，举个例子
+http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1
+当我们输入id=1’ and 1=1%23,查询语句是select id,tit...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-09</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/08/admin/">
         hctf2018 admin
       </a>
@@ -739,113 +833,6 @@ HTTP协议工作于客户端-服务端架构之上。浏览器作为HTTP客户�
       
         <div>
           <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-        php弱类型
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-0x01前言
-php弱类型是指，在对php的变量进行初始化的时候，我们不用对其的变量进行类型的定义。
-0x02知识介绍
-php有两种比较的符号 == 与===
-
-&lt;?php
-$a==$b;
-$a===$b
-?&gt;
-===在进行比较的时候，会先判断两种字符的类型是否相同，在比较，值是不是相同，就是全等。==在进行比较的时候，会先将字符串类型转化成相同，在比较。
- 如果比较一个数字...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/02/php%E5%BC%B1%E7%B1%BB%E5%9E%8B/'>
             Read More
           </a>
         </div>

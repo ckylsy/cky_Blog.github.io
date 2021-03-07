@@ -422,6 +422,121 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/03/07/ping/">
+        ping ping ping
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+感觉这道题做了2次，还是对某些命令不了解
+下面就找了一位师傅的文章，系统的学习一下
+常见的管道符
+
+windows
+
+|:直接执行后面的语句（必须保证前面是真）
+
+||:如果前面是错的，就直接执行后面的语句，否则就前面
+
+&：无论真假都执行
+&&：如果前面是假，则两条都不执行，如果是真则执行两条
+linux
+
+多了一个；，跟&amp;一样
+空格过滤
+
+$IFS$9
+${IFS}
+%09(...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-07</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/07/ping/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/">
+        ssrf(简单的做一下)
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
+我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
+所以我们尝试输入127.0.0.1/flag.php,发现得到了flag
+
+这点我们发现。它不能输入127.0.0.1.而且还要一http://
+常见的绕过有127.0.1，127.1，127。0.0.1,还有可以化为16进制...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-07</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/03/07/2018-Fakebook/">
         [2018]Fakebook
       </a>
@@ -769,107 +884,6 @@ http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a7
       
         <div>
           <a class='readmore' href='/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/">
-        爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-url=’http://scxk.nmpa.gov.cn:81/xk/&#39;
-先看这个url可否获得我们想要的数据
-
-可是结果里并没有我们想要的信息
-所以我们想要的数据很有可能是动态加载出来的，所以考虑ajex请求，查看真正的url
-可以看出http://scxk.nmpa.gov.cn:81/xk/itownet/portalAction.do?method=getXkzsList...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-04</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/03/Blacklist/">
-        强网杯andGYCTF2020 Blacklist
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-强网杯
-
-return preg_match(“/select|update|delete|drop|insert|where|./i”,$inject);
-输入1’ or 1=1 #可以列出所有的数据
-array(2) {  [0]=&gt;  string(1) “1”  [1]=&gt;  string(7) “hahahah”}
-array(2) {  [0]=&gt;  st...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/03/Blacklist/'>
             Read More
           </a>
         </div>

