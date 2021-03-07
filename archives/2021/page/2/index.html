@@ -398,6 +398,207 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/03/02/easy-tornado/">
+        easy_tornado
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+
+这一题
+
+前置知识
+tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。
+ 
+当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?
+ 在哪里呢?之前写的Handler都是继承的RequestHandle...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-02</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/02/easy-tornado/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/01/%E7%88%AC%E8%99%AB/">
+        爬虫
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+1.搜狗
+
+2.百度翻译
+
+3.豆瓣
+
+
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-01</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/01/%E7%88%AC%E8%99%AB/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/">
+        ZJCTF，不过如此
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+&lt;?php
+
+error_reporting(0);
+$text = $_GET[&quot;text&quot;];
+$file = $_GET[&quot;file&quot;];
+if(isset($text)&amp;&amp;(file_get_contents($text,&#39;r&#39;)===&quot;I have a dream&quot;))&#123;...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-01</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/01/%E6%AD%A4%E6%96%B9%E6%B3%95%E3%80%81%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/28/web/">
+        easyweb
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+打开注意到url img=TXpVek5UTTFNbVUzTURabE5qYz0，尝试解码MzUzNTM1MmU3MDZlNjc=，继续3535352e706e67，继续555.png，没有什么用处，当是为什么要重复这么多次，编码3535352E706E67，GM2TGNJTGUZEKNZQGZCTMNY=，这里跟之前不一样了R00yVEdOSlRHVVpFS05aUUdaQ1RNTl...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-28</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/28/web/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/28/GKCVE/">
         GKCVE，actf backupfile
       </a>
@@ -697,206 +898,6 @@ vim是个用的很多的文本编辑器
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/lottery/">
-        lottery
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这是我当是解题写的，主要是太多php了，看了很多没有用的
-
-很多没用的
-
-确实
-
-这里使用了php弱类型的比较就造成了弱类型的产生
-我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
-只能通过购买彩票的方法，赢得最大金额，得到flag
-这里使用bool欺瞒
-在php中，如果‘bool’和任何类型比较，任何类型都会变...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/lottery/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/git/">
-        ctfhub git
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-1.ctf-wscan扫描2.githark扫描
-第一题使用git log看它的日志发现有 remove flag add flag这两个版本我们想办法退回到第一个版本，git reset –hard HEAD^ (–hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交)
-第二题跟slash相关 ，详见另一篇文章
-第三题git che...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/git/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/stash/">
-        stash
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-用途
-
-git stash当前修改
-git stash 会将当前正在进行的文件保存下来（包括暂存和非暂存的），然后可以恢复完整的工作目录，比如下面的工作状态，通过git stash推送一个新的储存，当前的工作目录就干净了。
-
-$ git status
-On branch master
-Changes to be committed:
-
-new file:   style.css
-
-Cha...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/stash/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/">
-        无标题
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>电脑终于回来了</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -911,7 +912,7 @@ Cha...
           </a>
         
         <p class="current">
-          2 / 5
+          2 / 6
         </p>
         
           <a class="next" rel="next" href="/archives/2021/page/3/">
