@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>反序列化 ctfshow 263 - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言">
   
 
   <!-- feed -->
@@ -58,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -309,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -374,7 +372,7 @@
   </div>
 </div>
 
-          <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
         </div>
     
   
@@ -385,656 +383,255 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
     
-    <h2 class="article-title" >
-      <a href="/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/">
+      <h1 class="title">
         反序列化 ctfshow 263
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2021-03-11</time>
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 11, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="反序列化 ctfshow 263" data-path="/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>#前言</p>
+<a id="more"></a>
+
+<p>php-session反序列化</p>
+<p>前置知识</p>
+<p>php中的session不是存在内存中的，而是以文件的方式进行存储，配置项session.save_handler来决定，以session_sessionid来进行命名</p>
+<li>php  默认以此方式进行命名，键名|经过serailize函数进行处理的
+
+<li>php_serailize   经过serialize()函数反序列化的数组
+
+<li>php_binary   键名的长度对对应的ASCII字符，键名，serialize序列化处理的值
+
+<p>php.ini中的一些配置</p>
+<p>session.save_path=”” 一些session的存储路径</p>
+<p>session.save_handler=”” 设定用户自定义存储函数，如果使用php内置会话存储机制之外的可以使用该函数</p>
+<p>session.auto_start boolen 指定会话模块是否在请求开始的时候启动一个会话，默认不启动，0</p>
+<p>session.serialize_handler string–定义用来序列化/反序列化的处理器名字。默认使用php</p>
+<p>今天学会了一个新的工具，seay代码审计，虽然对这道题没有太大的帮助，但真的太i了，我本来代码审计就特别弱。不过还是要加强自己审计的能力。</p>
+<p>题目打开是登录页面，啥都没有就扫目录，<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
+<p><img src="1.PNG" class="lazyload" data-srcset="1.PNG" srcset="data:image/png;base64,666"></p>
+<p>我们访问index.php网页后，就会把我们访问的信息写入cookie，base64编码的</p>
+<p>在check.php提示我们</p>
+<p><img src="2.PNG" class="lazyload" data-srcset="2.PNG" srcset="data:image/png;base64,666"></p>
+<p>可以看到inc.php,中有</p>
+<p><img src="3.PNG" class="lazyload" data-srcset="3.PNG" srcset="data:image/png;base64,666"></p>
+<p>所以猜测，这应该是有php_serailize，方式存在的。这应该就是我们的注入点</p>
+<p><img src="4.PNG" class="lazyload" data-srcset="4.PNG" srcset="data:image/png;base64,666"></p>
+<p>看到这里的file_get_contents</p>
+<p><img src="5.PNG" class="lazyload" data-srcset="5.PNG" srcset="data:image/png;base64,666"></p>
+<p>审计报告里也说明了，这里存在文件包含漏洞</p>
+<p><img src="6.PNG" class="lazyload" data-srcset="6.PNG" srcset="data:image/png;base64,666"></p>
+<p>这样的话，当我们在访问check.php的时候，就会生成log-1.php</p>
+<p>另外，如果同时出现php,php serialize这两种存储方式，那么会出现错乱，做个实验</p>
+<p>shiyan.php</p>
+<p><img src="7.PNG" class="lazyload" data-srcset="7.PNG" srcset="data:image/png;base64,666"></p>
+<p>flag.php</p>
+<p><img src="8.PNG" class="lazyload" data-srcset="8.PNG" srcset="data:image/png;base64,666"></p>
+<p>反序列化</p>
+<p><img src="9.PNG" class="lazyload" data-srcset="9.PNG" srcset="data:image/png;base64,666"></p>
+<p>我们在shiyan。php输入?a=|O:4:”test”:1:{s:4:”name”;s:4:”haha”;}</p>
+<p>查看flag.php</p>
+<p>输出haha</p>
+<p>由于1.php是使用php_serialize引擎处理，因此只会把’|’当做一个正常的字符。然后访问2.php，由于用的是php引擎，因此遇到’|’时会将之看做键名与值的分割符，从而造成了歧义，导致其在解析session文件时直接对’|’后的值进行反序列化处理。</p>
+<p>这里可能会有一个小疑问，为什么在解析session文件时直接对’|’后的值进行反序列化处理，这也是处理器的功能？这个其实是因为session_start()这个函数，可以看下官方说明：</p>
+<p>当会话自动开始或者通过 session_start() 手动开始的时候， PHP 内部会调用会话管理器的 open 和 read 回调函数。 会话管理器可能是 PHP 默认的， 也可能是扩展提供的（SQLite 或者 Memcached 扩展）， 也可能是通过 session_set_save_handler() 设定的用户自定义会话管理器。 通过 read 回调函数返回的现有会话数据（使用特殊的序列化格式存储），PHP 会自动反序列化数据并且填充 $_SESSION 超级全局变量</p>
+<p>因此我们成功触发了test类中的__wakeup()方法,所以这种攻击思路是可行的。</p>
+<p>回到题目</p>
+<li>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/>http://ckylsy.github.io/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-11T19:51:33+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 11, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/10/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-        反序列化 ctfshow 258，259，260，261
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-10</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/10/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/08/pop%E9%93%BE/">
-        ezpop
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-
-#前言
-今天又是做不出来题目的一天
-
-
-
-POP链逆向分析
-
-
-
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/&title=反序列化 ctfshow 263 - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/&title=反序列化 ctfshow 263 - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/&title=反序列化 ctfshow 263 - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/08/pop%E9%93%BE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/08/henuctf/">
-        henuctf
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>我知道我很菜，但昨天我意识到了我还不是一般的菜</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-08</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/03/08/henuctf/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/03/10/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
+          <p class='title'>反序列化 ctfshow 258，259，260，261<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言
+
+
+258
+
+设置username，password，user在cookie反序列化，正则[oc]:\d+:/i’，就是不能输入 o:4:之类的，可以通过在o后面添加+绕过我们可以看到在...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/ping/">
-        ping ping ping
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-感觉这道题做了2次，还是对某些命令不了解
-下面就找了一位师傅的文章，系统的学习一下
-常见的管道符
-
-windows
-
-|:直接执行后面的语句（必须保证前面是真）
-
-||:如果前面是错的，就直接执行后面的语句，否则就前面
-
-&：无论真假都执行
-&&：如果前面是假，则两条都不执行，如果是真则执行两条
-(ps如果管道符被过滤可以尝试一下%0a,换行符绕过)
-linux
-
-多了一个；，跟&amp...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/07/ping/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/">
-        ssrf(简单的做一下)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
-这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
-我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
-所以我们尝试输入127.0.0.1/flag.php,发现得到了flag
 
-这点我们发现。它不能输入127.0.0.1.而且还要一http://
-常见的绕过有127.0.1，127.1，127。0.0.1,还有可以化为16进制...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/2018-Fakebook/">
-        [2018]Fakebook
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-打开界面了解功能，有注册，登录页面，注册的时候，因为blog的格式一直未知，就一直不能注册成功，这时候想到进行扫描目录
-扫出user.php.bak,下载源码
-
-代码审计，有个ssrf的漏洞，这个url是我们自己控制的，有个关于blog的正则匹配，我们知道这个blog必须是以http（s）开头的
-然后成功注册，点击注册信息，发现url有sql注入，多多关注url的变化，跟昨天做的那道题，...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/07/2018-Fakebook/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/nizhuansiwei/">
-        nizhuansiwei
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/nizhuansiwei/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/checkin/">
-        checkin
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-寒假做的，发现这道没写wp
-就是挺简单的
-有点，它说&lt;? in contents,我竟然没看懂这啥意思，用phtml就可以了
-然后记录一下，我发现，我总是不知道在哪进行最后一步的连接
-1.user.ini
-http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a70d708fbcd...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/checkin/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/cacl-1/">
-        cacl
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/cacl-1/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 8
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -1044,82 +641,8 @@ http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a7
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -1135,14 +658,14 @@ http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a7
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="反序列化 ctfshow 263";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
