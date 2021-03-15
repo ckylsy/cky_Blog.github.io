@@ -398,6 +398,55 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/03/07/2018-Fakebook/">
+        [2018]Fakebook
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+打开界面了解功能，有注册，登录页面，注册的时候，因为blog的格式一直未知，就一直不能注册成功，这时候想到进行扫描目录
+扫出user.php.bak,下载源码
+
+代码审计，有个ssrf的漏洞，这个url是我们自己控制的，有个关于blog的正则匹配，我们知道这个blog必须是以http（s）开头的
+然后成功注册，点击注册信息，发现url有sql注入，多多关注url的变化，跟昨天做的那道题，...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-07</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/07/2018-Fakebook/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/03/06/nizhuansiwei/">
         nizhuansiwei
       </a>
@@ -797,59 +846,6 @@ array(2) {  [0]=&gt;  st...
       
         <div>
           <a class='readmore' href='/2021/03/03/Blacklist/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/02/easy-tornado/">
-        easy_tornado
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-
-这一题
-
-前置知识
-tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。
- 
-当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?
- 在哪里呢?之前写的Handler都是继承的RequestHandle...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/02/easy-tornado/'>
             Read More
           </a>
         </div>
