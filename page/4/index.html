@@ -399,6 +399,56 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
+        ctfhub-备份文件下载，vim缓存
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+vim是个用的很多的文本编辑器
+知识点
+
+1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
+2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
+以index.php为例，第一...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/24/lottery/">
         lottery
       </a>
@@ -831,54 +881,6 @@ httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的�
       
         <div>
           <a class='readmore' href='/2021/02/09/upload/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/">
-        宽字节注入
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
- 在使用php连接数据库的时候，当设置“set character_set_client=gbk”时会导致一个编码问题，也就是我们熟悉的宽字节
- 注入，注入%DF%27的时候，即可把%5c吃掉，举个例子
-http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1
-当我们输入id=1’ and 1=1%23,查询语句是select id,tit...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-09</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/'>
             Read More
           </a>
         </div>
