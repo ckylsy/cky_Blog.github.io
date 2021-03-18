@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,12 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021/3 - Hexo</title>
+  <title>VNCTF-EZ-GAME - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言
+打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水">
   
 
   <!-- feed -->
@@ -56,7 +57,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +308,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,520 +384,309 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
-      
+    
+      <h1 class="title">
+        VNCTF-EZ-GAME
+      </h1>
+      <div class='new-meta-box'>
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/ping/">
-        ping ping ping
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
         
+          
+            
 
-感觉这道题做了2次，还是对某些命令不了解
-下面就找了一位师傅的文章，系统的学习一下
-常见的管道符
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Mar 18, 2021</p>
+  </a>
+</div>
 
-windows
-
-|:直接执行后面的语句（必须保证前面是真）
-
-||:如果前面是错的，就直接执行后面的语句，否则就前面
-
-&：无论真假都执行
-&&：如果前面是假，则两条都不执行，如果是真则执行两条
-(ps如果管道符被过滤可以尝试一下%0a,换行符绕过)
-linux
-
-多了一个；，跟&amp...
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-    
+      <div id="lc-pv" data-title="VNCTF-EZ-GAME" data-path="/2021/03/18/VNCTF-EZ-GAME/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>#前言</p>
+<p>打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水</p>
+<a id="more"></a>
+
+<p><a target="_blank" rel="noopener" href="https://my.oschina.net/u/4386603/blog/4529738">sojson.v4</a></p>
+<p>这是一个前置知识，一个新姿势，我感觉还是暴力破解的方法最直接！！！</p>
+<p>主要是想讲一下，那个js串是怎么得到的</p>
+<p>因为是js混淆嘛，肯定是要从js中找，下面有三个js，就三个都找。</p>
+<p>问题是不知道比赛的时候有没有这个hint，如果没有那么我们是如何在js中那么长的代码中找到这个</p>
+<p>于是</p>
+<p>又是另一种方法</p>
+<p>上次的大西瓜都是在js代码中查找问题，搞懂js代码应该是去通过题目的关键</p>
+<p>先来看看这道题目吧，这个游戏一打开确实我不懂这是怎么玩的</p>
+<p>有一个小提示</p>
+<pre><code>When life gets you down, 
+it&#39;s never too late to...
+
+B O U N C E B A C K
+
+A JS13k 2019 Game
+By Frank Force
+
+WASD = Move
+Mouse = Aim
+Click = Throw
+Space = Dash
+
+Hints
+- You will keep money after you die!
+- You won&#39;t take damage while dashing.
+- There are 10 levels.
+- Sand slows down you and enemies.
+- Yellow boormang can grab pickups.
+- Blue boomerang does double damage.
+- Beat the game to unlock speed run mode.</code></pre>
+<p>大概的意思是w a s d是移动，点击鼠标释放工具，空格是短暂的加速</p>
+<p>死后你会存钱！  冲刺时不会受到伤害。  这有十关  沙子减慢了你和敌人的速度（玩了这么长时间，没有见到过沙子，不知道只的是啥）黄色的boormang可以抓取皮卡  蓝色回旋镖造成双倍伤害  击败游戏以解锁速度运行模式。</p>
+<p>那当然就是通关拿到flag，最开始我玩了一次，就感觉跟HCTF那个大西瓜一样，靠自己根本就过不了，也可能是我太菜。</p>
+<p>然后一般游戏，我们都应该去找它的js</p>
+<p><img src="2.PNG" class="lazyload" data-srcset="2.PNG" srcset="data:image/png;base64,666"></p>
+<p>有三个js，前两个是engine，应该跟解题没有什么关系</p>
+<p>就看一看game中那个函数有助于我们快速通关，因为以前没有接触过js，所以我看这个感觉很难</p>
+<p>就逐步分析下</p>
+<p>let 语句声明一个块级作用域的本地变量，并且可选的将其初始化为一个值</p>
+<pre><code>    let startLevel=0;
+    let level;
+    let levelNumber;
+    let nextLevel;
+    let warpLevel=0;
+    let isFinalLevel;
+    let isStartLevel;
+    let levelTimer = new Timer();
+    let endLevelTimer = new Timer();
+    let levelExit;
+    let loadNextLevel;
+    let levelMaze = [];
+    let levelMazeSize = 4;
+    let levelColor = new Color();
+    let levelFrame;
+
+    let boss;
+    let player;
+    let playerData;
+    let playerStartPos;
+    let winTimer = new Timer();
+    let healthWarning = new Timer();
+    let buyTimer = new Timer();
+    let mainCanvas = c1;
+    let speedRunMode;
+    let speedRunTime=0;
+    let speedRunBestTime=0;
+    let coinSoundTimer = new Timer();</code></pre>
+<p>·</p>
+<pre><code>    class PlayerData
+&#123;
+// track player data between levels (when player is destroyed)
+constructor()
+&#123;
+    this.health = 3;
+    this.healthMax = 3;
+    this.boomerangs = 1;
+    this.bigBoomerangs = 0;
+    this.coins = 0;
+&#125;
+&#125;</code></pre>
+<p>在关卡之间追踪玩家数据（玩家被消灭时），所以如果当玩家死了的时候，就会执行这个类，因为里面有一个生命，生命最大值，回旋镖，大的回旋镖，所以我们可以合理的猜测，如果我们改变了这些值，保存后，当我们玩游戏失败后，就可以在下一盘利用这些值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	function NextLevel()</span><br><span class="line">   &#123;</span><br><span class="line">   &#x2F;&#x2F; go to next level</span><br><span class="line">   levelFrame &#x3D; 0;</span><br><span class="line">   levelNumber &#x3D; nextLevel;</span><br><span class="line">   nextLevel &#x3D; (nextLevel+1)%11;</span><br><span class="line">   </span><br><span class="line">   &#x2F;&#x2F; track highest level reached</span><br><span class="line">   if (!speedRunMode &amp;&amp; levelNumber&gt;warpLevel)</span><br><span class="line">       warpLevel &#x3D; levelNumber;</span><br><span class="line">   localStorage.kbap_warp &#x3D; warpLevel;</span><br><span class="line">   </span><br><span class="line">   &#x2F;&#x2F; check if is special level</span><br><span class="line">   isFinalLevel &#x3D; levelNumber&#x3D;&#x3D;10;</span><br><span class="line">   isStartLevel &#x3D; !levelNumber;</span><br><span class="line">   if (isStartLevel)</span><br><span class="line">       speedRunMode &#x3D; 0; &#x2F;&#x2F; reset speed run on start level</span><br><span class="line">   </span><br><span class="line">   InitLevel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我认为这道题比较仁慈的一点是它会在每个函数（不确定是不是函数），加上这个东西的作用</p>
+<p>如果我们一直在控制台输入NextLevel()，那么我会就会进入下一关，但是在第十关的时候我们必需打败怪物才能得到flag，所以我们可以先去送死一次，刚才的修改我们可以得到很大的属性值，然后可以打败怪物</p>
+<p>然后我感觉下面我们可以去找一下winTimer，因为在let里面有哪个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if (isFinalLevel)</span><br><span class="line">          &#123;</span><br><span class="line">              &#x2F;&#x2F; player win</span><br><span class="line">              new Pickup(this.pos, 2);</span><br><span class="line">              SpawnPickups(this.pos,1,40);</span><br><span class="line">              winTimer.Set();</span><br><span class="line">              localStorage.kbap_warp&#x3D;0;</span><br><span class="line">              localStorage.kbap_won&#x3D;1;</span><br><span class="line">              speedRunTime&#x3D;speedRunTime|0;</span><br><span class="line">              if (speedRunMode &amp;&amp; (!speedRunBestTime || speedRunTime &lt; speedRunBestTime))</span><br><span class="line">              &#123;</span><br><span class="line">                  &#x2F;&#x2F; track best speed run time</span><br><span class="line">                  speedRunBestTime &#x3D; speedRunTime;</span><br><span class="line">                  localStorage.kbap_bestTime&#x3D;speedRunBestTime;</span><br><span class="line">              &#125;</span><br><span class="line">              PlaySound(2);</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到，当player.win的时候，会执行一个winTimer.Set();，我们直接在运行台输入，就可以得到flag</p>
+<p>#后记</p>
+<p>游戏的题目一般都会跟JS有关，可以在空闲的时候对JS有个了解，不至于一点都看不懂</p>
+<p>当出现题目是游戏的时候，我们应该首先搞懂这个游戏是怎么玩的，然后看JS里面有没有跟通关这个游戏有关的函数代码，或在控制台中运行，在源代码中修改然后保存，不要刷新界面，否则会丢失数据</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/03/07/ping/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/03/18/VNCTF-EZ-GAME/>http://ckylsy.github.io/2021/03/18/VNCTF-EZ-GAME/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-18T22:57:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Mar 18, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/">
-        ssrf(简单的做一下)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
-
-
-这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
-我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
-所以我们尝试输入127.0.0.1/flag.php,发现得到了flag
-
-这点我们发现。它不能输入127.0.0.1.而且还要一http://
-常见的绕过有127.0.1，127.1，127。0.0.1,还有可以化为16进制...
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/03/18/VNCTF-EZ-GAME/&title=VNCTF-EZ-GAME - Hexo&summary=#前言
+打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/03/18/VNCTF-EZ-GAME/&title=VNCTF-EZ-GAME - Hexo&summary=#前言
+打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/03/18/VNCTF-EZ-GAME/&title=VNCTF-EZ-GAME - Hexo&summary=#前言
+打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/07/2018-Fakebook/">
-        [2018]Fakebook
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-打开界面了解功能，有注册，登录页面，注册的时候，因为blog的格式一直未知，就一直不能注册成功，这时候想到进行扫描目录
-扫出user.php.bak,下载源码
 
-代码审计，有个ssrf的漏洞，这个url是我们自己控制的，有个关于blog的正则匹配，我们知道这个blog必须是以http（s）开头的
-然后成功注册，点击注册信息，发现url有sql注入，多多关注url的变化，跟昨天做的那道题，...
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-07</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/03/07/2018-Fakebook/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/03/17/Ezpop/'>
+          <p class='title'>MIS  Ezpop<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言
+这题的代码太长了，基础太差实在审不下去
+
+
+12345678910111213141516171819202122232425262728293031323334353637383940...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/nizhuansiwei/">
-        nizhuansiwei
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/nizhuansiwei/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/checkin/">
-        checkin
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-寒假做的，发现这道没写wp
-就是挺简单的
-有点，它说&lt;? in contents,我竟然没看懂这啥意思，用phtml就可以了
-然后记录一下，我发现，我总是不知道在哪进行最后一步的连接
-1.user.ini
-http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a70d708fbcd...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/checkin/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/cacl-1/">
-        cacl
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/cacl-1/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/06/day/">
-        have a bad day
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-注意，如果没有方法的时候，可以进行扫描目录，也可以对url进行仔细地观察
-点击第一个图片？category=woofers，第二个是category=meowers，然后可以尝试一下?category=flag,显示Sorry, we currently only support woofers and meowers. ，所以只能在这两个身上做功夫
-尝试?category=woofer...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/06/day/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/05/%E7%B3%97%E5%9B%BE%E7%99%BE%E7%A7%91python/">
-        糗图百科python
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
+  </article>
 
 
 
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-05</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/05/%E7%B3%97%E5%9B%BE%E7%99%BE%E7%A7%91python/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/05/veryphp/">
-        veryphp
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-题目源码
-
-这道题我本来想的是str去调用类class，但是没法去掉，并且extract这个函数，以前做变量覆盖的时候遇见过，它是把输入的字符串变为数组，如果有已经存在的变量，就覆盖它的值，它并不具备命令执行的效果，所以str这里，对解答题目没有帮助
-看shaw_root，它是一个正则匹配，如果匹配之路，则输入hint
-/^-[a-e][^a-zA-Z0-8]&lt;b&gt;(.)&g...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-05</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/05/veryphp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
-        两个文件上传(你传你🐎呢，cgctf文件上传)
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-第一题
-
-就是一个利用.htaccess文件进行上传的题目，先上传.htaccess，后上传a.png，问题处在了哪里呢，是因为我，最后连接的url搞错了
-/var/www/html/upload/d31b5eb9684c737c762a8c8d00d6c6df/a.png succesfully uploaded!
-上传的路径是这样，所以我们构造的url应该是 url/upload/d...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-04</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/04/%E4%B8%A4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/03/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 3
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/03/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
-	
+
 </div>
 <aside class='l_side'>
   
@@ -904,87 +694,14 @@ http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a7
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -994,14 +711,14 @@ http://3fe77776-d4fa-4210-9999-ed8a8f74c9d3.node3.buuoj.cn/uploads/e320b013e12a7
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="VNCTF-EZ-GAME";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
