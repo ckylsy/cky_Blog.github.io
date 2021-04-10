@@ -398,6 +398,310 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/23/git/">
+        ctfhub git
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+1.ctf-wscan扫描2.githark扫描
+第一题使用git log看它的日志发现有 remove flag add flag这两个版本我们想办法退回到第一个版本，git reset –hard HEAD^ (–hard 参数撤销工作区中所有未提交的修改内容，将暂存区与工作区都回到上一次版本，并删除之前的所有信息提交)
+第二题跟slash相关 ，详见另一篇文章
+第三题git che...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-23</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/23/git/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/23/stash/">
+        stash
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+用途
+
+git stash当前修改
+git stash 会将当前正在进行的文件保存下来（包括暂存和非暂存的），然后可以恢复完整的工作目录，比如下面的工作状态，通过git stash推送一个新的储存，当前的工作目录就干净了。
+
+$ git status
+On branch master
+Changes to be committed:
+
+new file:   style.css
+
+Cha...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-23</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/23/stash/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/">
+        无标题
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <p>#前言<br>电脑终于回来了</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-23</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/23/%E6%97%A0%E6%A0%87%E9%A2%98/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/15/buu%E5%A4%8D%E4%B9%A0/">
+        buusecret file，easy sql，knife（warm up 又做了一遍）
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+warm up
+
+这道题，我在二刷的时候发现自己一刷的漏掉一个很关键的点。include
+include可以获得指定文件中，所有的文件/代码/标记，并把它复制给使用include的文件中，这就解释了为什么url中可以直接将绕过和文件包含拼接在一起。
+?file=hint.php?../../../../../ffffllllaaaagggg
+easy sql
+
+过滤的东西有点多
+反正就是...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-15</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/15/buu%E5%A4%8D%E4%B9%A0/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+        文件上传
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+文件上传
+
+前端检查
+对应ctfshow第一道题，先上传a.png，然后bp抓包后更改文件名为a.php,连接得到数据。
+
+为什么不能不更改.php后缀，可能是没办法解析文件。
+后端检查
+大小写绕过
+在windows下，可以将后缀改为pHp
+unicode
+
+当目标存在json_decode且检查在json_decode之前，可以将php改写为\0070hp
+使用.user.ini,
+
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-12</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/12/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/12/session/">
+        session
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+session
+
+Session的中文译名叫做“会话”，其本来的含义是指有始有终的一系列动作/消息，比如打电话时从拿起电话拨号到挂断电话这中间的一系列过程可以称之为一个session。目前社会上对session的理解非常混乱：有时候我们可以看到这样的话“在一个浏览器会话期间，…”，这里的会话是指从一个浏览器窗口打开到关闭这个期间；也可以看到“用户（客户端）在一次会话期间”这样一句话，它可...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-12</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/12/session/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/">
         .htaccess和.user.ini配置文件的妙用
       </a>
@@ -572,285 +876,6 @@ http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/08/buyflag/">
-        buyflag
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-知识点
-cookie权限，这道题bp抓包后，有提示说是一定要是cuit的学生才可以去buyflag，并且可以发现cookie这里有：user=0，我们都知道在计算机中1是正确，0是错误，所以尝试改cookie，改为user=1，成功。
-长度限制，要输入购买金额，money=1000000000，输入后提示说，字数太长了，了解后得知，一般是用strcmp去控制长度，这个函数在介绍php弱类...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/08/buyflag/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/05/http%E8%B5%B0%E7%A7%81/">
-        http走私
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-HTTP/1.1协议
-定义：
-HTTP(超文本传输协议)：一种无状态的、应用层、以请求/应答方式运行的协议，它使用可扩展的语义和自描述消息格式，与基于网络的超文本信息系统灵活的互动。
-
-HTTP协议工作于客户端-服务端架构之上。浏览器作为HTTP客户端通过url向HTTP服务端即WEB服务器发送所有请求。Web服务器根据接收到的请求后，向客户端发送响应信息。
-
-客户端和服务器之间进行ht...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-05</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/05/http%E8%B5%B0%E7%A7%81/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/05/python/">
-        python
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        读取
-
-   name=input(&quot;请输入你的名字&quot;)
-   age=input(&quot;请输入你的年龄&quot;)
-   print(name)
-   print(age)//注意使用input，输入的所有数据都是按照字符串来处理。
-输出好看的文本
-
-    name=input(&quot;请输入你的名字&quot;)
-    age=input(&quot;...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-05</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/05/python/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/cacl/">
-        easy cacl
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/cacl/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">
-        preg_match函数详解，foreach
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-在php中preg_match（）函数是用来执行正则表达式的一个常用的函数。正则表达式中，几乎在所有的编程表达式中都会用到。preg_match（）函数用于进行正则表达式匹配，成功给返回1，否则返回0.preg_match()成功匹配一次后会停止匹配。preg_match(正则表达式，需要匹配检索的对象，可选：储存匹配结果的数组)例子
-  &lt;?php
-  $str=&quot;Da...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/preg-match%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/03/http/">
-        http、knife
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>这道题不难，倒是，因为一点点的跑偏，打开了不应该打开的东西，哈哈哈</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-03</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/03/http/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -865,7 +890,7 @@ HTTP协议工作于客户端-服务端架构之上。浏览器作为HTTP客户�
           </a>
         
         <p class="current">
-          6 / 8
+          6 / 9
         </p>
         
           <a class="next" rel="next" href="/archives/2021/page/7/">
