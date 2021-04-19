@@ -399,6 +399,167 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/24/register/">
+        spl_autoload_register()
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+在了解该函数之前先看另一个函数，__autoload
+__autoload
+这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
+
+PRINTIT.class.php
+    &lt;?php
+ class PRINTIT &#123;
+ function doPrint() &#123;
+ echo &#39;hello world&#39;;
+&#125;
+&#125;
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/register/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
+        ctfhub-备份文件下载，vim缓存
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+vim是个用的很多的文本编辑器
+知识点
+
+1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
+2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
+以index.php为例，第一...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/24/lottery/">
+        lottery
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+这是我当是解题写的，主要是太多php了，看了很多没有用的
+
+很多没用的
+
+确实
+
+这里使用了php弱类型的比较就造成了弱类型的产生
+我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
+只能通过购买彩票的方法，赢得最大金额，得到flag
+这里使用bool欺瞒
+在php中，如果‘bool’和任何类型比较，任何类型都会变...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-24</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/24/lottery/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/23/git/">
         ctfhub git
       </a>
@@ -730,141 +891,6 @@ httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的�
       
         <div>
           <a class='readmore' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/09/upload/">
-        ACTF upload
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这道题，我本来以为就是一个前端有个检查，因为当上传.php文件的时候，是bp就劫不住，然后想就是，因为又说必须是jpg，png为后缀的，所以就把1.php改为1.jpg，成功拦截，在bp中改为1.php结尾的，发现还是后端还有一次检查，以.php结尾的还是可以被拦截住的，换成phtml文件测试。phtml文件代码如下
-   GIF89a  //在文件前加上GIF89a来绕过PHP get...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-09</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/09/upload/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/">
-        宽字节注入
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
- 在使用php连接数据库的时候，当设置“set character_set_client=gbk”时会导致一个编码问题，也就是我们熟悉的宽字节
- 注入，注入%DF%27的时候，即可把%5c吃掉，举个例子
-http://chinalover.sinaapp.com/SQL-GBK/index.php?id=1
-当我们输入id=1’ and 1=1%23,查询语句是select id,tit...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-09</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/09/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/08/admin/">
-        hctf2018 admin
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>又是一项大工程</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/08/admin/'>
             Read More
           </a>
         </div>

