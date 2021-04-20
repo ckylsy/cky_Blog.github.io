@@ -398,6 +398,56 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/02/25/110/">
+        sql 1`10
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+1`5,基本sqlmap都可以跑出来，其他的没有尝试
+less1
+
+输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
+从查询语句可以看出，SELECT * FROM users WHERE id=’’ union select 1,2,database() – ‘ LIMIT 0,1，他只能显示一行内容，所以我们再进行联合查询的时候，要记得在左边是空，即是’，而不是1’
+...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-02-25</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/25/110/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/02/24/register/">
         spl_autoload_register()
       </a>
@@ -842,54 +892,6 @@ Session的中文译名叫做“会话”，其本来的含义是指有始有终�
       
         <div>
           <a class='readmore' href='/2021/02/12/session/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/">
-        .htaccess和.user.ini配置文件的妙用
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-.htaccess
-httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的系统配置文件，对整个web服务器起作用；而.htaccess也是Apache的配置文件，不过相当于一个局部配置文件，只对该文件所在目录下的文件起作用。
-实例
-在绕过文件上传的限制中，通常在Apache全局配置文件httpd.co...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-02-10</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/'>
             Read More
           </a>
         </div>

