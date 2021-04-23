@@ -422,6 +422,52 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/04/23/%E7%BD%91%E9%BC%8E%E6%9D%AFcommit/">
+        网鼎杯commit
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        
+
+打开题目后，进行扫描目录，发现是git泄露，用GitHack恢复后，得到一个write_do.php
+1234567891011121314151617181920212223&lt;?phpinclude &quot;mysql.php&quot;;session_start();if($_SESSION[&#39;login&#39;] !&#x3D; &#39;yes&#39;)&...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time>2021-04-23</time>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/04/23/%E7%BD%91%E9%BC%8E%E6%9D%AFcommit/'>
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/04/21/%E5%8E%9F%E8%B0%85%E6%9D%AFweb4/">
         原谅杯web4
       </a>
@@ -815,55 +861,6 @@ bash产生了一个交互环境与本地主机主动发起与目标主机8080端
       
         <div>
           <a class='readmore' href='/2021/04/09/DJBCTF-spaceman/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/09/F5-%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C/">
-        DJBCTF-有手就行
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      
-        
-
-
-直接用这个进行base64解码发现解不出来，然后上网查了一下，这是base64转图片。data:image/jpg;base64,(加上刚才的base64码)
-
-接出来是这个
-然后看了一下url，是？file=scan，改成flag，发现没有回显，然后我就卡住了，因为我发现改成啥页面都不会发生改变。emmm,看WP，发现自己还是不够敏感，为什么修改任何东西，页面都没有改变，那显然是有问...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-04-09</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/04/09/F5-%E6%9C%89%E6%89%8B%E5%B0%B1%E8%A1%8C/'>
             Read More
           </a>
         </div>
