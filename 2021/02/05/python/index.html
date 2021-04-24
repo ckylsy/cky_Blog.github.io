@@ -1,0 +1,1531 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="python, Hexo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>python | Hexo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hexo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hexo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">python</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-05
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1>读取</h1>
+
+<pre><code>   name=input(&quot;请输入你的名字&quot;)
+   age=input(&quot;请输入你的年龄&quot;)
+   print(name)
+   print(age)//注意使用input，输入的所有数据都是按照字符串来处理。</code></pre>
+<h1>输出好看的文本</h1>
+
+<pre><code>    name=input(&quot;请输入你的名字&quot;)
+    age=input(&quot;请输入你的年龄&quot;)
+    mag=&#39;&#39;&#39;
+    -----------start------------
+    Name=%s//%s是占位符，%s代表的是字符串，因为input，输入的字符串都是字符串类型，所以用%s进行占位，如果是数字采用%d，如果是浮点型采用%f
+    age=%s
+    -----------end--------------
+    &#39;&#39;&#39; %(name,age)
+    print(mag)</code></pre>
+<p>//</p>
+<pre><code>  在运行这个程序的时候，发现了一个问题，就是if语句，后面要记得加：号。
+  if question==&quot;y&quot; or question==&quot;Y&quot;:
+  print(&quot;jajajajajjaja&quot;)</code></pre>
+<h1>运算符</h1>
+
+<pre><code> a**b，表示的是a的b次方
+ a//b,表示的是a除了b的值的整数部分
+ and 表示&amp;
+ or 表示！
+ not 表示！</code></pre>
+<h1>缩进</h1>
+
+<pre><code>首级代码必需顶行写
+二级代码要进行缩进，官方要求是4个空格</code></pre>
+<h1>多个if分支</h1>
+
+<pre><code>if elif else</code></pre>
+<h1>一个猜随机数的小游戏</h1>
+调用random模块
+
+<pre><code>   import random
+
+ n=random.randint(0,10)
+ s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+print(&quot;input smaller......&quot;)
+elif s&lt;n:
+print(&quot;input bigger....&quot;)
+else:
+print(&quot;you are right&quot;)
+print(n)</code></pre>
+<p>修改了一下，让他能持续进行直到，相等</p>
+<pre><code>import random
+
+s=-1
+n=random.randint(0,10)
+while s!=n:
+s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+  print(&quot;input smaller......&quot;)
+elif s&lt;n:
+ print(&quot;input bigger....&quot;)
+
+
+if s==n:
+print(&quot;you are right&quot;)
+print(n)</code></pre>
+<p>最多猜三次：</p>
+<pre><code>import random
+
+count=0
+n=random.randint(0,10)
+while count&lt;3:
+s=int(input(&quot;输入一个数&quot;))
+if s&gt;n:
+  print(&quot;input smaller......&quot;)
+elif s&lt;n:
+ print(&quot;input bigger....&quot;)
+else:
+   print(&quot;you are right&quot;)
+   print(n)
+   exit()
+count+=1
+print(n)</code></pre>
+<p>升级版本</p>
+<pre><code> import random
+
+count=0
+n=random.randint(0,10)
+def xunhuan():
+ count = 0
+ while count&lt;3:
+
+ s=int(input(&quot;输入一个数&quot;))
+ if s&gt;n:
+   print(&quot;input smaller......&quot;)
+ elif s&lt;n:
+   print(&quot;input bigger....&quot;)
+ else:
+   print(&quot;you are right&quot;)
+   print(n)
+   exit()
+ count+=1
+xunhuan()
+shuru=input(&quot;你还想继续吗&quot;)
+if shuru==&quot;n&quot; or &quot;N&quot;:
+exit()
+while shuru ==&quot;y&quot; or &quot;Y&quot; :
+xunhuan()
+shuru = input(&quot;你还想继续吗&quot;)//暂时没想起来更好的解法，就调用了一下函数</code></pre>
+<h1>break和contiune</h1>
+这两个在当时学习c++的时候都不怎么清楚，现在稍微明白一点。这两个必需是跟着循环出来的，for和while如果不是循环会报错
+
+<pre><code>break:中止循环
+contimue：中止本次循坏
+
+a=0
+while a&lt;100:
+a+=1
+if a==50:
+    break
+print(a)//输出0~49</code></pre>
+<p>//</p>
+<pre><code>a=0
+while a&lt;100:
+a+=1
+if a&lt;50 and a&gt;40:
+    continue
+print(a)//40~50没有打印出来</code></pre>
+<h1>一道简单的计算题</h1>
+    n=int(input("输入一个数"))
+    s=2
+    sum=0
+    while s<=n:
+    if s%2==0:
+        sum=sum+s
+    else:
+        sum=sum-s
+    s+=1
+    print(sum)//计算2-3+4-5......-或+n
+<h1>打印一个图像</h1>
+
+<pre><code> *
+ **
+ ***
+ ****
+ *****
+ ****
+ ***
+ **
+ *</code></pre>
+<p>//</p>
+<pre><code> i=1
+while i&lt;=9:
+if i&lt;=5:
+    print(&quot;*&quot;*i)
+else:
+    print(&quot;*&quot;*(10-i))
+i+=1</code></pre>
+<p>//升级</p>
+<pre><code>i=1
+n=int(input(&quot;输入一个数字&quot;))
+
+while i&lt;=(2*n-1):
+if i&lt;=5:
+    print(&quot;*&quot;*i)
+else:
+    print(&quot;*&quot;*(2*n-i))
+i+=1</code></pre>
+<h1>死循环</h1>
+
+<pre><code> while true</code></pre>
+<h1>双色球</h1>
+
+<pre><code>red_list=[]
+blue_list=[]
+while len(red_list)&lt;6:
+num=int(input(&quot;请输入第%s个数:&quot;%(len(red_list)+1)))
+if num&gt;1 and num&lt;16:
+    if num not in red_list:
+        red_list.append(num)
+    else:
+        print(&quot;该数字存在，请重新输入&quot;)
+else:
+    print(&quot;该数超出范围&quot;)
+
+while len(blue_list) &lt; 2:
+num = int(input(&quot;请输入第%s个数：&quot;%(len(blue_list)+1)))
+if num &gt; 1 and num &lt; 8:
+    if num not in blue_list:
+        blue_list.append(num)
+    else:
+        print(&quot;该数字存在，请重新输入&quot;)
+else:
+    print(&quot;该数超出范围&quot;)
+
+print (&quot;红球：&quot;)
+print(red_list)
+print (&quot;篮球&quot;)
+print(blue_list)</code></pre>
+<h1>确定和判断变量类型</h1>
+
+<pre><code>type():确定是什么类型
+is ：type() is XXX是的返回true，不是返回false
+is not:type() is not XXX (字符串：str)</code></pre>
+<h1>三元运算符</h1>
+
+<p>原来：</p>
+<p>a=10;b=20;if a&gt; 100: c=a else: c=b</p>
+<p>现在：<br>a=10;b=20;c=a if a&gt;100 else b</p>
+<p>c=值1 if 条件 else 值2</p>
+<h1>列表的曾删改查</h1>
+
+<p>增：append，追加在最后。name.append(元素)</p>
+<p>insert：指定位置插入。name.insert(索引，元素)</p>
+<p>extend：合并两个列表name.extend(列表)</p>
+<p>还有个嵌套列表<br>name=[“q”,”w”,”e”]</p>
+<p>name.insert(2,[1,2,3])</p>
+<p>name=[“q”,”w”,[1,2,3],”e”]</p>
+<p>name[2][2]=3</p>
+<p>删：<br>clear：清空，liebiao.clear()</p>
+<p>pop:删除并返回删除元素。name.pop(),删除最后一个并返回该元素，name.pop(索引)，删除指定元素并返回该元素</p>
+<p>del：直接删。del name[2]   name=[“q”,”w”,”e”]</p>
+<p>remove：如果该元素重复，删除从左到右数的第一个元素，name.remove(元素)，如果remove的元素不存在，则返回错误</p>
+<p>修：就直接对着元素索引修改<br>name[1]=”a”</p>
+<p>name=[“a”,”w”,”e”]</p>
+<p>name[-1]=”h”(倒着数，第一位是-1)</p>
+<p>name=[“a”,”w”,”h”]</p>
+<p>查：index：查下标，如果查询的元素在列表中没有，返回错误，name.index(元素).补充，name.index(元素，开始的索引 默认是0，结束索引  默认为字符串的长度)</p>
+<p>count：统计该元素出现的次数，name.count(元素)</p>
+<p>如果想判断，列表中，有没有某个元素，我们可以使用： 元素 in 列表 如果有返回true 如果没有返回false</p>
+<h1>切片</h1>
+正切片：
+
+<p>可以同时取出多个元素，name=[1,2,3,4,5]</p>
+<p>name[1:3]=[2,3] (顾头不顾尾，就是他只能包含最开始的所引所代表的元素，最后面的元素不包含，也就是说start：end-1)</p>
+<p>name[1:-1]=[2,3,4]</p>
+<p>name[:2]=[1,2]</p>
+<p>name[1:]=[2,3,4,5] </p>
+<p>倒着切：</p>
+<p>因为，python默认是从左到右，所以我们应该写name[-4:-1]=[2,3,4]</p>
+<p>name[-4:]=[2,3,4,5]</p>
+<p>步长：步子的长度，默认是1，其实name[1:-1]的全名应该是name[1:-1:1].<br><br>如果我们想把列表倒着输出2，我们可以使用name[::-1]<br><br>上面讲的倒着切，其实我们也可以这个子写：name[-1:-4:-1]=[4,3,2]<br><br>我们也可以跳着切name[1::2]=[2,4]<br><br>其实用这种方法字符串也可以实现反转：a=”hello”  a[::-1]=’olleh’<br></p>
+<h1>反转原列表</h1>
+我们知道，可以使用切片的方法实现列表的反转，但我们始终没有改变源列表，正经的改变源列表的方法是reverse  name.reserve() name=[5,4,3,2,1]
+
+<h1>排序</h1>
+
+<p>用的是sort这个函数，从小到大排列。name=[1,4,3,4,2,5] name.sort() name=[1,2,3,4,4,5]</p>
+<p>排序只能字符串和字符串，数字和数字在一起排列，字符串的排列依靠下面的那张表</p>
+<p><img src="1.png"></p>
+<p>s=[‘@’,’4’,’&amp;’,’ASFD’,’<em>‘],s.sort() s=[‘&amp;’, ‘4’, ‘@’, ‘ASFD’, ‘</em>‘]</p>
+<h1>for循环</h1>
+
+<p>for i in s:<br>print(i)</p>
+<p>&amp;<br><br>4<br><br>@<br><br>ASFD<br><br>_<br></p>
+<h1>元组</h1>
+只读列表，曾删改查中只有查可以工作，其他跟列表一样。另外列表用的是[],元组用的是(),比如name=(1,2,3)
+
+<p>元组本身不能修改，如果元组中存在可修改的数据类型，那么该数据可以被修改：name=(1,2,3,[4,5])  name[1]=5  报错 name[3][1]=”hi”,成功修改</p>
+<h1>字符串</h1>
+
+<p>是有下标，有序的，然后它相当于一个列表，也是只能读，不可修改的，他也可以进行切片，他也有步长。将一个字符串颠倒a=”hello”  a[::-1]=’olleh’<br></p>
+<p>可以进行两个字符串相加，如果有特殊字符，需要转义，如果name=‘cky\n’，print(name)=cky<br>//空行<br>如果想要转义，可以，name=r’cky\n’,r是原生字符的意思，此时print（name）=’cky\n’<br></p>
+<h2>一些常用的函数</h2>
+capitalize()首字母大写
+
+<p>casefold（）把大写都变成小写</p>
+<p>center()补两边的长度，具体name=‘cky lsy’ name.center(50,”^”)     ^^^^^^^^^^^^^^^^^^^^^cky lsy^^^^^^^^^^^^^^^^^^^^^^</p>
+<p>count()统计某个字符在该字符串中有几个，count(字符，字符，开始的索引 默认是0，结束的索引 默认是字符串的长度)</p>
+<p>endswith（）判断以什么结束，正确返回true，错误返回false</p>
+<p>find()查找一个字符，并返回第一个找到的索引值，跟列表的index差不多。find（字符，开始的索引 默认是0，结束的索引 默认是字符串的长度），如果没有找到返回-1</p>
+<p>format:相当于占位符 %s，但是这个不许要%s的一一对应的关系。</p>
+<p> name=’{0}.1 {1}.1 {0}.2 {1},2’</p>
+<p>name.format(‘no’,’NO’)</p>
+<p>‘no.1 NO.1 no.2 NO,2’</p>
+<p>或者话可以，name=’{name}.1 {name1}.1 {name}.2 {name1},2’</p>
+<p>name.format(name=’no’,name1=’NO’)</p>
+<p>声称字典：c=dict(name=’’)<br>添加：c[‘age’]=20<br>添加key：c=dict.fromkeys(你要的key列表)<br>update，合并，a.update.(c),如果c中有a存在的key，则覆盖a的values值<br>查：get<br>a.get(‘key’)如果存在，返回value，如果不存在，不返回<br>a.get(‘key’,-1)如果不存在返回-1<br>a.keys()返回所有的键值，a.values()返回所有的值，a.items()返回所有的键值和值<br>循环<br>for i in a:<br>print(i)<br>for i in a:<br>print(i,a[i])<br>for i in a.items():<br>print(i)<br>for i,j in a.items():<br>print(i,j)<br>集合<br>无序，不能重复，不可变<br>一个小例子，找出a，b中重复的元素，并将其存入c中<br>a=[1,2,3,12,434,56,23,12,2]<br>b=[1,23,45,2,34,56,23,45,2]<br>c=[]<br>for i in a:<br>if i in b:<br>c.append(i)<br>去重：如果a={1，3，4，1，2，3，4，1}，那么回车后，a={1,2,3,2},自动去重，如果<br>a=[1,2,3,1,2,12,3]是个列表，可以用c=set(a),就可以了，set是英文集合的意思，<br>c={1,2,3,12}<br>增加：add  a.add(元素)，钙元素一定是不可以改变的类型，列表，字典都有不可以，元组<br>是可以的，如果添加的元素该集合中有了，就不可以添加进去了，但是不会报错<br>删除：discard，a.discard(元素)，如果该元素不存在也不会报错<br>pop，a.pop()随机删除，实验几遍不像是随即删除，感觉是从头开始删除，每次删一个<br>remove：跟discard一样。只不过就如果删的是里面没有的，会报错<br>&amp;：求两个集合的相同的元素a{1,2,3,4,5},b={2,3,4,5,6}a&amp;b={2,3,4,5}<br>|:求两个集合的合集a|b={1,2，3，4，5，6}<br>-：如果a中存在b中的元素，b-a={6}<br>^:踢出去两者中都有的元素，a^b={1,6}<br>判断是不是相交：isdisjoint<br>判断是不是子集：issubset<br>判断是不是父集：issuperset<br>intersection：将两个集合中相同的元素取出来，就跟&amp;一样<br>difference_update():相当于a=a-b</p>
+<p>2**4=16，就是2的4次方<br>bin（数字），把十进制换成二进制<br>hex（数字），就是将十进制转换成16进制<br>ord（符号），查询acsii吗</p>
+<p>hash<br>这种转换是一种压缩运算，不能通过结果推算输入，不可逆算法，具有加密特性<br>特行：补课你，计算快<br>作用：密码，数字签名，文件完整性校检</p>
+<p>基于hash的两个数字类型：dict，set<br>set天生去重也是因为hash<br>dict之所以查询速度很快，所采用的是hash和二分法</p>
+<p>用python操作文件<br>1.f=open(file=’文件名’，mode=’w\r\a’),这个文件在你的python中声称<br>2.f.read()度全部，f.readline()读一行，f.readline(想读多少字)，f.readlines()将全部以字符串的形式输出，f.read(想读多少字)<br>3.追加模式，也是以写的方式进行<br>4.write，f.write(想写的字)<br>三种模式不能混合</p>
+<p>循环文件<br>a=open(file=’文件名’)<br>for line in a:<br>print(line)<br>此时会出现，每行之间都有空格，所以我们可以使用print（line.strip()）去掉空行<br>还可以使用，line.split(),将每行变成字符串，这样我们可以更好地筛选信息</p>
+<p>循环从1-100：可以用函数range（100）</p>
+<p>文件操作的其他模式：<br>f.seek（）：移动开始的光标，python3默认使用gbk编码，一个中文是两个字节，一个英文字母是1个字节，a.seek(2)<br>意思是从第二个中文开始<br>f.flush()强制将内存里的东西刷入硬盘：平时只有在f.close()之后，才可以在内存中看到新写入的文件，使用flush可以直接看到<br>f.readable()判断是否可读<br>f.tell()返回光标的位置<br>f.truncate(数字)，从0接到100，如果是f.truncate()表示从0接到光标处，可用于日志截断<br>f.writelines()项文件中写入内容，是字符串</p>
+<p>混合模式有三种<br>a+：追加读，光标回到尾部，可以使用seek（0）使光标回到开始<br>w+：没用<br>r+:读加写，相当于追加的效果，加载尾部，光标回到开始</p>
+<p>修改文件<br>f=open(‘’,’r+’)<br>f.seek()从第几个字符开始<br>f.write(),直接覆盖其他字符</p>
+<p>不占内存的修改文件<br>import os<br>old_file=”hello.txt”<br>new_file=”new.txt”<br>f=open(‘hello.txt’,’r+’)<br>f_new=open(‘new.txt’,’w’)<br>old_str=’wo’<br>new_str=’ni’<br>for line in f:<br>    if ‘wo’ in line:<br>        line=line.replace(old_str,new_str)</p>
+<pre><code>f_new.write(line)</code></pre>
+<p>f.close()<br>f_new.close()<br>os.replace(new_file,old_file)</p>
+<p>写一个脚本，使得，当我们输入新的字符串，被替换的字符串，以及文件名，就会进行替换<br>import sys<br>import os<br>a=sys.argv<br>old_file=a[3]<br>new_file=”new.txt”<br>f=open(a[3],’r+’)<br>f_new=open(‘new.txt’,’w’)<br>old_str=a[1]<br>new_str=a[2]<br>for line in f:<br>    if a[1] in line:<br>        line=line.replace(old_str,new_str)</p>
+<pre><code>f_new.write(line)</code></pre>
+<p>f.close()<br>f_new.close()<br>os.replace(new_file,old_file)<br>f=open(a[3],’r’)<br>print(f.read())</p>
+<p>作业：设置一个登陆注册，如果登陆三次没有成功，就锁定用户：</p>
+<p>c=0<br>answer=input(‘这是我们的网站，您是登陆还是注册：’)<br>if answer==’注册’:<br>    f=open(‘记录表’,’a+’)<br>    shujv=input(‘请输入您的用户名和密码，用空格隔开:’)<br>    shujv=shujv.replace(‘ ‘,’’)<br>    f.write(shujv)<br>    f.write(‘\n’)<br>    f.close()<br>if answer==’登陆’:<br>    def xunhuan():<br>        shujv = input(‘请输入您的用户名和密码，用空格隔开:’)<br>        shujv = shujv.replace(‘ ‘, ‘’)<br>        f = open(‘记录表’, ‘r’)<br>        c = 0<br>        for line in f:<br>            if shujv in line:<br>                if len(shujv) == len(line):<br>                    print(‘登陆成功’)<br>                    exit()<br>        f.close()<br>        print(‘登陆失败，请重新登陆’)<br>        c += 1<br>while c&lt;3:<br>    xunhuan()<br>    c+=1<br>if c &gt;=3:<br>    print(“账号已经被锁定”)<br>    exit()</p>
+<p>光标从第二行开始读文件，是next（f）</p>
+<p>本来说是查股票的<br>为了简便就用了成绩，感觉这样也行</p>
+<p>f=open(‘股票.txt’,’r’,encoding=’utf-8’,errors=’ignore’)<br>keys=[]<br>zidian={}<br>zidian1={}<br>diyipai=f.readline()<br>liebiao=[]<br>diyipai=dict(diyipai.split())<br>while True:<br>    for line in f:<br>        line = list(line.split())<br>        zidian[line[0]] = line<br>    qingqiu = input(“模糊查询：”)<br>    for k, v in zidian.items():<br>        if qingqiu in k:<br>            print(v)<br>    f.seek(0)<br>    next(f)<br>    a = input(“你想筛选成绩的科目”)<br>    c = 0<br>    for k in diyipai.keys():<br>        if k in a[0]:<br>            break<br>        c = c + 1</p>
+<pre><code>b = int(input(&quot;你想筛选成绩&quot;))
+for line1 in f:
+    line1 = line1.split()
+    if int(line1[c]) &gt;= b:
+        print(line1)</code></pre>
+<p>升级版本：<br>f=open(‘股票.txt’,’r’,encoding=’utf-8’,errors=’ignore’)<br>keys=[]<br>zidian={}<br>zidian1={}<br>diyipai=f.readline()<br>liebiao=[]<br>diyipai=dict(diyipai.split())<br>while True:<br>    for line in f:<br>        line = list(line.split())<br>        zidian[line[0]] = line<br>    qingqiu = input(“模糊查询：”)<br>    def hanshu():<br>        global qingqiu<br>        for k, v in zidian.items():<br>            if qingqiu in k:</p>
+<pre><code>            if len(qingqiu) == 0:
+                qingqiu = input(&quot;不能是空白请重新输入:&quot;)
+                hanshu()
+                return//重要的是，为什么把return加到了这里，如果不加return，则会返回我打了几个空白，就有几条数据，想不明白
+            else:
+                print(v)
+
+
+hanshu()
+f.seek(0)
+next(f)
+a = input(&quot;你想筛选成绩的科目:&quot;)
+c = 0
+for k in diyipai.keys():
+    if k in a[0]:
+        break
+    c = c + 1
+
+b = int(input(&quot;你想筛选成绩:&quot;))
+
+for line1 in f:
+    line1 = line1.split()
+    if int(line1[c]) &gt;= b:
+        print(line1)</code></pre>
+<h2>高阶函数</h2>
+
+<p>满足条件：把函数当作参数传入，或者返回一个函数</p>
+<pre><code>         def jieduizhi(n):
+              return int(str(n).strip())
+         def add(x,y,f):
+              return f(x)+f(y)
+        print(add(30,-14,jieduizhi))
+
+        def qvyvshu(n):
+              a=-n
+              return a
+        print(add(30,18,qvyvshu))
+
+        def add1():
+              return add(10,12,jieduizhi)
+        print(add1())</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://ckylsy.github.io/2021/02/05/python/">http://ckylsy.github.io/2021/02/05/python/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">John Doe</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/02/05/http%E8%B5%B0%E7%A7%81/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="http走私">
+                        
+                        <span class="card-title">http走私</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/02/03/cacl/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="easy cacl">
+                        
+                        <span class="card-title">easy cacl</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            #前言按理说，一般题目都跟题有关，但是为撒子这个没一点关系，好奇怪
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">John Doe</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
