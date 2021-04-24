@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="noindex,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Hexo</title>
+  <title>Linux的/proc/self学习 - Hexo</title>
   
 
   
@@ -309,7 +305,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -385,455 +381,208 @@
         
 
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
-  <section class="post-list">
+
+
+  
+  <div class="article-meta" id="top">
     
     
+    
+      <h1 class="title">
+        Linux的/proc/self学习
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="">
+    <p>lucky</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 24, 2021</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/23/rce%E6%80%BB%E7%BB%93/">
-        无参rce总结
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>rce无参数这个东西在很早之前就有接触，但是总是记不住语句，借此对rce无参数进行一个更加具体的理解</p>
-    
+      <div id="lc-pv" data-title="Linux的/proc/self学习" data-path="/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-23</time>
+
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/03/23/rce%E6%80%BB%E7%BB%93/'>
-            Read More
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://ckylsy.github.io/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/>http://ckylsy.github.io/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-24T21:13:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 24, 2021</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/23/ctfshow%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
-        ctfshow命令执行
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>学习命令执行</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-23</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/23/ctfshow%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+          
 
-</div>
-
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/22/ctfshow-web174/">
-        ctfshow-web174
-      </a>
-    </h2>
-  
-  <div class='md'>
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-
-打开输入一个数字都显示不出来任何东西，尝试抓包
-
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://ckylsy.github.io/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/&title=Linux的/proc/self学习 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://ckylsy.github.io/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/&title=Linux的/proc/self学习 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://ckylsy.github.io/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/&title=Linux的/proc/self学习 - Hexo&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-22</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/22/ctfshow-web174/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
 </div>
 
-          </div>
+
+
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/22/GYCTF2020-Easyphp/">
-        GYCTF2020-Easyphp
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>好几天没有更博了，这星期一定要完成任务.<br><br>在想如果我一星期能保证审很长的代码，应该会对我的代码审计能力有帮助吧</p>
-    
+    </div>
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-22</time>
-        
-      </div>
+  
+
+  
+    <div class="prev-next">
       
-        <div>
-          <a class='readmore' href='/2021/03/22/GYCTF2020-Easyphp/'>
-            Read More
-          </a>
-        </div>
+      
+        <a class='next' href='/2021/04/24/Picdown/'>
+          <p class='title'>Picdown<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>
+
+非预期解
+
+打开题目是一个输入框，随便输，发现url变了
+http://7ca0ad1e-09a8-4c80-b6ad-5f9afa360fb7.node3.buuoj.cn/page```...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/18/laravel5-7-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-        laravel5.7-反序列化
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/18/laravel5-7-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
+  </article>
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/18/VNCTF-EZ-GAME/">
-        VNCTF-EZ-GAME
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>打开又是一个游戏，咋都这么爱出游戏，上次HCTF的大西瓜，这次的这个又是一头雾水</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/18/VNCTF-EZ-GAME/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/17/Ezpop/">
-        MIS  Ezpop
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>这题的代码太长了，基础太差实在审不下去</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/17/Ezpop/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/15/267-270/">
-        ctfshow  267-270
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-15</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/15/267-270/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/14/buueasypop/">
-        buueasypop
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言<br>第一次做的时候，搞得不是特别懂，现在把题目在细细的扣一扣</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/14/buueasypop/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/03/14/mai/">
-        henu mai
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>#前言</p>
-<p>学习反序列化之后，打开了那道上星期让我头蒙了3个小时的题目，其实现在看还挺简单的，主要当时就没有听说过pop链这个词就。</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-03-14</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/03/14/mai/'>
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-          <a class="prev" rel="prev" href="/page/2/">
-            <section class="post prev white-box shadow" >
-              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
-            </section>
-          </a>
-        
-        <p class="current">
-          3 / 11
-        </p>
-        
-          <a class="next" rel="next" href="/page/4/">
-            <section class="post next white-box shadow">
-              &nbsp;Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -843,82 +592,8 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Hexo</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-
-  
 
   
 
@@ -934,8 +609,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Linux的/proc/self学习";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
