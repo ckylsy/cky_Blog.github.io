@@ -480,7 +480,7 @@
 </blockquote>
 <blockquote>
 <p>/sbin</p>
-<p>一般是超级用户指令，主要放置一些西铜管理的必备程式。</p>
+<p>一般是超级用户指令，主要放置一些系统管理的必备程式。</p>
 </blockquote>
 <blockquote>
 <p><img src="2.PNG"></p>
@@ -489,11 +489,18 @@
 <p>/usr/bin</p>
 </blockquote>
 <blockquote>
-<p>是在你后期安装的一些软件和运行脚本。主要放置一些应用软件工具的必备执行档例</p>
+<p>系统安装的可执行程序，会随着系统的升级而改变</p>
 </blockquote>
 <blockquote>
 <p><img src="3.PNG"></p>
 </blockquote>
+<blockquote>
+<p>/usr/local/bin</p>
+</blockquote>
+<blockquote>
+<p>给用户放置自己的可执行程序的地方，不会被系统升级而覆盖同名文件</p>
+</blockquote>
+<p><img src="19.PNG"></p>
 <blockquote>
 <p>usr/sbin</p>
 </blockquote>
@@ -509,10 +516,75 @@
 <p>1在文章里的标准输出，stdout</p>
 </blockquote>
 <blockquote>
-<p>2是标准错误输出。stderr</p>
+<p>2是标准错误输出，stderr</p>
 </blockquote>
 <blockquote>
-<p>0是标准输入.stdin</p>
+<p>0是标准输入，stdin</p>
+</blockquote>
+<p>执行ls之后，下面出现的就是标准输出</p>
+<p><img src="8.PNG"></p>
+<p>这是正常查询，那如果我们查询一个不存在的文件呢？</p>
+<p><img src="9.PNG"></p>
+<p>报错了，并且也返回了错误信息。</p>
+<p>如果我们执行，ls &gt; 1</p>
+<p><img src="10.PNG"></p>
+<p>没有报错，而且现在会出现一个 1 的文件</p>
+<p><img src="11.PNG"></p>
+<p><code>这说明ls的标准输出输到了1的文件中</code></p>
+<p>把1文件删除，继续执行ls hhh &gt; 1</p>
+<p><img src="12.PNG"></p>
+<p>报错，重新建了1文件，但是 1 里面什么都没有</p>
+<p><code>这说明标准错误输出没有输入到1里面</code></p>
+<p><img src="13.PNG"></p>
+<p>删除1文件，继续执行ls hhh &gt; 1 2&gt;&amp;1</p>
+<p><img src="14.PNG"></p>
+<p><img src="15.PNG"></p>
+<p>成功执行，而且错误信息也是成功的被输入到1里面去了</p>
+<p>这说明<code>ls的标准错误输出成功的被重定向到了1文件夹里</code></p>
+<p>解释语句</p>
+<blockquote>
+<p>重定向使用规则</p>
+</blockquote>
+<p>标准输入0、输出1、错误2需要分别重定向，一个重定向只能改变它们中的一个。<br>标准输入0和标准输出1可以省略。（当其出现重定向符号左侧时）。<br>文件描述符在重定向符号左侧时直接写即可，在右侧时前面加&amp;<br>文件描述符与重定向符号之间不能有空格</p>
+<p>重定向符：&gt;</p>
+<p>文件描述符： 0，1 ，2</p>
+<p>深入了解ls hhh &gt;1 2&gt;&amp;1</p>
+<p>首先标准错误输出会重定向到标准输出里面，因为标准输出已经被重定向到1这个文件夹，所以最终标准错误输出也被重定向到1这个文件夹里</p>
+<h2>解题 法一</h2>
+
+<p>进入题目，题目代码很简单</p>
+<blockquote>
+<?php isset($_GET['xbx'])?system($_GET['xbx']):highlight_file(__FILE__); 
+</blockquote>
+<p>我们尝试使用ls，会看见</p>
+<p><img src="4.PNG"></p>
+<p>但是这个zip文件，怎么也把不开，执行ls /看见有flag，但是依然也是打不开</p>
+<p><img src="5.PNG"></p>
+<p>因为可以执行ls，所以不妨我们可以尝试一下读取 /bin文件夹</p>
+<p><img src="6.PNG"></p>
+<p>可以看到全部都被删除了，只剩下ls rm sh，所以我们可以用sh来执行命令</p>
+<p><img src="7.PNG"></p>
+<p>解释命令这样写的原因:</p>
+<p><img src="16.PNG"></p>
+<p>我们可以看到当我们执行 sh 2的时候，是会出现报错的，并且可以将2的内容输到报错里面</p>
+<p><img src="17.PNG"></p>
+<p>但是这道题目里是没有的，所以我们可以尝试将错误信息重定向获得flag</p>
+<p>记得&amp;编码</p>
+<p><img src="18.PNG"></p>
+<h2>解题 法二</h2>
+
+<p><img src="20.PNG"></p>
+<p>看见里面有php</p>
+<p>测试一下</p>
+<p><img src="21.PNG"></p>
+<blockquote>
+<p>方法一、php+文件，文件内容会被当成php代码执行，相当于是include<br>/?xbx=php /flag</p>
+</blockquote>
+<blockquote>
+<p>方法二、指定根目录，绕过open_basedir<br>/?xbx=php -t / -r “include(‘/flag’);”</p>
+</blockquote>
+<blockquote>
+<p>方法三、使用空配置文件（默认配置）执行php代码<br>/?xbx=&gt;php.ini<br>/?xbx=php -c php.ini -r “include(‘/flag’);”</p>
 </blockquote>
 
                 
