@@ -368,6 +368,90 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2021/02/25/110/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="sql 1`10">
+                            
+                            <span class="card-title">sql 1`10</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+1`5,基本sqlmap都可以跑出来，其他的没有尝试
+less1
+
+输入1’,报错，但是输入1’ –+正常，所以存在单引号闭合的漏洞
+从查询语句可以看出，SELECT * FROM users WHERE id=’’ union sel
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-25
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Chen Keyan
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/02/24/register/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="spl_autoload_register()">
+                            
+                            <span class="card-title">spl_autoload_register()</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+在了解该函数之前先看另一个函数，__autoload
+__autoload
+这是一个自动加载函数，在php中使用一个未定义的类，会触发该函数
+
+PRINTIT.class.php
+    &lt;?php
+ class PRINTIT 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Chen Keyan
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/02/24/ctfhub-%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%8Cvim%E7%BC%93%E5%AD%98/">
                         <div class="card-image">
                             
@@ -676,81 +760,6 @@ Session的中文译名叫做“会话”，其本来的含义是指有始有终�
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2021-02-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Chen Keyan
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/02/10/htaccess%E5%92%8C-user-ini%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E5%A6%99%E7%94%A8/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt=".htaccess和.user.ini配置文件的妙用">
-                            
-                            <span class="card-title">.htaccess和.user.ini配置文件的妙用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-.htaccess
-httpd-conf是Apache（https://baike.baidu.com/item/Apache/6265?fr=aladdin）的系统配置文件，对整个web服务器起作用；而.htaccess也是Apach
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Chen Keyan
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/02/09/upload/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="ACTF upload">
-                            
-                            <span class="card-title">ACTF upload</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-这道题，我本来以为就是一个前端有个检查，因为当上传.php文件的时候，是bp就劫不住，然后想就是，因为又说必须是jpg，png为后缀的，所以就把1.php改为1.jpg，成功拦截，在bp中改为1.php结尾的，发现还是后端还有一次检查，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-09
                             </span>
                             <span class="publish-author">
                                 

