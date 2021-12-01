@@ -469,29 +469,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var express &#x3D; require(&#39;express&#39;);</span><br><span class="line">var router &#x3D; express.Router();</span><br><span class="line">let app &#x3D; express();</span><br><span class="line">app.listen(4000);</span><br><span class="line">var crypto &#x3D; require(&#39;crypto&#39;);</span><br><span class="line">app.use(&#39;&#x2F;&#39;,router)</span><br><span class="line"></span><br><span class="line">function md5(s) &#123;</span><br><span class="line">  return crypto.createHash(&#39;md5&#39;)</span><br><span class="line">    .update(s)</span><br><span class="line">    .digest(&#39;hex&#39;);</span><br><span class="line">&#125;</span><br><span class="line">var flag&#x3D;&#39;flag&#123;123&#125;&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;* GET home page. *&#x2F;</span><br><span class="line">router.get(&#39;&#x2F;&#39;, function(req, res, next) &#123;</span><br><span class="line">  res.type(&#39;html&#39;);</span><br><span class="line">  var flag&#x3D;&#39;xxxxxxx&#39;;</span><br><span class="line">  var a &#x3D; req.query.a;</span><br><span class="line">  var b &#x3D; req.query.b;</span><br><span class="line">  console.log(md5(a+flag));</span><br><span class="line">  console.log(md5(b+flag));</span><br><span class="line">  console.log(a.length);</span><br><span class="line">  console.log(b.length);</span><br><span class="line">  console.log(a!&#x3D;&#x3D;b);</span><br><span class="line">  console.log(a);</span><br><span class="line">  console.log(b);	</span><br><span class="line">  if(a &amp;&amp; b &amp;&amp; a.length&#x3D;&#x3D;&#x3D;b.length &amp;&amp; a!&#x3D;&#x3D;b &amp;&amp; md5(a+flag)&#x3D;&#x3D;&#x3D;md5(b+flag))&#123;</span><br><span class="line">  	console.log(&#39;flag！！&#39;);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">  	console.log(&#39;no！！&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; router;</span><br></pre></td></tr></table></figure>
 
 <p>其实这道题目就涉及了一个比较简单的知识点</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\1.PNG"></p>
+<p><img src="1.PNG"></p>
 <p>这是在php中两个数组进行比较，如果输入a[]=1&amp;b[]=1那么则会返回a!==b就会返回false</p>
 <p>但是在js中不是这样的，在js中数组是对象，==或===操作符只能比较两个对象是否是同一个实例，也就是是否是同一个对象引用。目前JavaScript没有内置的操作符判断对象的内容是否相同。</p>
 <p>所以如果我们输入的是?a[]=1&amp;b[]=1那么就可以进行绕过</p>
 <h1 id="web338"><a href="#web338" class="headerlink" title="web338"></a>web338</h1><p>这道题目是nodejs的原型链污染</p>
 <p>但是发现username的长度进行了限制,当我在password那里传入{“a”: 1, “__proto__“: {“ctfshow”: “36dboy”}}发现得到的结果是这样的</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\2.PNG"></p>
+<p><img src="2.PNG"></p>
 <p>很显然没有造成污染</p>
 <p>好吧，我应该一开始就抓包看看</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\3.PNG"></p>
+<p><img src="3.PNG"></p>
 <p>原型链污染的原理大概记录一下</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\4.PNG"></p>
+<p><img src="4.PNG"></p>
 <p>当查询a中不存在的属性时，会向上查询a的原型，a的原型的原型…..直到找到这个属性，或者是找到object也没有找到这个属性，object的原型是null，null没有属性，于是返回未定义</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\5.png" alt="image-20211201230147106"></p>
+<p><img src="5.png" alt="image-20211201230147106"></p>
 <p>可以看到b是我新定义的一个对象，因为b跟a具有相同的原型，那么b.cky就与a同样的机制，返回lsy</p>
 <p>那么回到题目，当我传入的是{“username”:”1”,”password”:”1”,”__proto__“: {“ctfshow”: “36dboy”}},req.body来到</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">object1, object2</span>)</span>&#123;<span class="comment">//object1=&#123;&#125;,object2=&#123;&quot;username&quot;:&quot;1&quot;,&quot;password&quot;:&quot;1&quot;,&quot;\_\_proto\_\_&quot;: &#123;&quot;ctfshow&quot;: &quot;36dboy&quot;&#125;&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> object2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (key <span class="keyword">in</span> object2 &amp;&amp; key <span class="keyword">in</span> object1) &#123;</span><br><span class="line">            copy(object1[key], object2[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            object1[key] = object2[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\6.png" alt="image-20211202000622945"></p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\7.png" alt="image-20211202000755677"></p>
+<p><img src="6.png" alt="image-20211202000622945"></p>
+<p><img src="7.png" alt="image-20211202000755677"></p>
 <p>object1[__proto__]={ ctfshow: ‘36dboy’ }</p>
 <p>那么object1的原型就有了ctfshow这个属性，</p>
-<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\8.png" alt="image-20211202000931839"></p>
+<p><img src="8.png" alt="image-20211202000931839"></p>
 <p>从这里可以secert与user具有相同的原型，于此secert.ctfshow=36dboy,得到flag</p>
 
                 
