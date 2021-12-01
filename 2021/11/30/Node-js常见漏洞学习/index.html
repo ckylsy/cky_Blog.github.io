@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="GYCTF2020_EasyThinking, Hexo">
+    <meta name="keywords" content="Node.js常见漏洞学习, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>GYCTF2020_EasyThinking | Hexo</title>
+    <title>Node.js常见漏洞学习 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">GYCTF2020_EasyThinking</h1>
+                    <h1 class="description center-align post-title">Node.js常见漏洞学习</h1>
                 </div>
             </div>
         </div>
@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-29
+                    2021-11-30
                 </div>
                 
 
@@ -464,37 +464,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>先扫一下目录，一般做这种题目的时候都会想一下扫目录，发现存在www/zip，下载源码</p>
-<p>然后观察界面，发现有注册，登录，搜索，退出这三个功能</p>
-<p>感觉漏洞点应该会出现在搜索这里，打开源码，全局搜索一下search</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> public function search()</span><br><span class="line">&#123;</span><br><span class="line">    if (Request::isPost())&#123;</span><br><span class="line">        if (!session(&#39;?UID&#39;))&#x2F;&#x2F;session(&#39;?UID&#39;)判断名称为name的session值是否已经设置</span><br><span class="line">        &#123;</span><br><span class="line">            return redirect(&#39;&#x2F;home&#x2F;member&#x2F;login&#39;);         &#x2F;&#x2F;如果没有设置就重定向到login   </span><br><span class="line">        &#125;</span><br><span class="line">        $data &#x3D; input(&quot;post.&quot;);</span><br><span class="line">        $record &#x3D; session(&quot;Record&quot;);&#x2F;&#x2F;取值</span><br><span class="line">        if (!session(&quot;Record&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            session(&quot;Record&quot;,$data[&quot;key&quot;]);</span><br><span class="line">        &#125;&#x2F;&#x2F;给session进行赋值</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            $recordArr &#x3D; explode(&quot;,&quot;,$record);&#x2F;&#x2F;将字符串打散成数组</span><br><span class="line">            $recordLen &#x3D; sizeof($recordArr);&#x2F;&#x2F;返回数组中元素的个数</span><br><span class="line">            if ($recordLen &gt;&#x3D; 3)&#123;</span><br><span class="line">                array_shift($recordArr);&#x2F;&#x2F;删除第一个元素</span><br><span class="line">                session(&quot;Record&quot;,implode(&quot;,&quot;,$recordArr) . &quot;,&quot; . $data[&quot;key&quot;]);&#x2F;&#x2F;这里把我们传入的数据添加到了session中</span><br><span class="line">                return View::fetch(&quot;result&quot;,[&quot;res&quot; &#x3D;&gt; &quot;There&#39;s nothing here&quot;]);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        session(&quot;Record&quot;,$record . &quot;,&quot; . $data[&quot;key&quot;]);</span><br><span class="line">        return View::fetch(&quot;result&quot;,[&quot;res&quot; &#x3D;&gt; &quot;There&#39;s nothing here&quot;]);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return View(&quot;search&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <p>###为啥写的东西又没了，为啥总是记不住保存…</p>
+<h1 id="web337"><a href="#web337" class="headerlink" title="web337"></a>web337</h1><p>我自己做测试时用的源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var express &#x3D; require(&#39;express&#39;);</span><br><span class="line">var router &#x3D; express.Router();</span><br><span class="line">let app &#x3D; express();</span><br><span class="line">app.listen(4000);</span><br><span class="line">var crypto &#x3D; require(&#39;crypto&#39;);</span><br><span class="line">app.use(&#39;&#x2F;&#39;,router)</span><br><span class="line"></span><br><span class="line">function md5(s) &#123;</span><br><span class="line">  return crypto.createHash(&#39;md5&#39;)</span><br><span class="line">    .update(s)</span><br><span class="line">    .digest(&#39;hex&#39;);</span><br><span class="line">&#125;</span><br><span class="line">var flag&#x3D;&#39;flag&#123;123&#125;&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;* GET home page. *&#x2F;</span><br><span class="line">router.get(&#39;&#x2F;&#39;, function(req, res, next) &#123;</span><br><span class="line">  res.type(&#39;html&#39;);</span><br><span class="line">  var flag&#x3D;&#39;xxxxxxx&#39;;</span><br><span class="line">  var a &#x3D; req.query.a;</span><br><span class="line">  var b &#x3D; req.query.b;</span><br><span class="line">  console.log(md5(a+flag));</span><br><span class="line">  console.log(md5(b+flag));</span><br><span class="line">  console.log(a.length);</span><br><span class="line">  console.log(b.length);</span><br><span class="line">  console.log(a!&#x3D;&#x3D;b);</span><br><span class="line">  console.log(a);</span><br><span class="line">  console.log(b);	</span><br><span class="line">  if(a &amp;&amp; b &amp;&amp; a.length&#x3D;&#x3D;&#x3D;b.length &amp;&amp; a!&#x3D;&#x3D;b &amp;&amp; md5(a+flag)&#x3D;&#x3D;&#x3D;md5(b+flag))&#123;</span><br><span class="line">  	console.log(&#39;flag！！&#39;);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">  	console.log(&#39;no！！&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; router;</span><br></pre></td></tr></table></figure>
 
-<p><a target="_blank" rel="noopener" href="https://www.php.cn/phpkj/thinkphp/441728.html">ThinkPhp任意文件读取成因</a></p>
-<p>从上述资料中可知，我们控制写入的文件名，前提是文件名的长度是32位，然后再利用key传入我们我们的恶意代码</p>
-<p>所以在注册的时候</p>
-<p><img src="1.png"></p>
-<p>然后在搜索的时候输入<?php @eval($_POST[a]);?></p>
-<p><img src="2.png"></p>
-<p><img src="3.png"></p>
-<p>我们知道session文件存在的路径是sess_XXX</p>
-<p><img src="4.png"></p>
-<p>发现需要绕过disable_function</p>
-<p>先连上蚁剑</p>
-<p><img src="5.png"></p>
-<p>可以看到我们上传的文件，是经过序列化操作，只要将session内容反序列化即可getshell</p>
-<blockquote>
-<p>如果要 getshell 的话，后端需要有类似的 Session::Set(‘name’,$_POST[‘i’]) 代码才可以利用</p>
-</blockquote>
-<p>然后利用上传php突破disable_function的exp才可以，我们选择上传到</p>
-<p><img src="6.png"></p>
-<p>根据php版本，选择的是</p>
-<blockquote>
-<p>C:\Users\12230\Desktop\WEB\绕过disable_function\exploits-master\php-filter-bypass</p>
-</blockquote>
-<p>修改文件中pwn,</p>
-<p><img src="7.png"></p>
-<p>得到flag</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1>
+<p>其实这道题目就涉及了一个比较简单的知识点</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\1.PNG"></p>
+<p>这是在php中两个数组进行比较，如果输入a[]=1&amp;b[]=1那么则会返回a!==b就会返回false</p>
+<p>但是在js中不是这样的，在js中数组是对象，==或===操作符只能比较两个对象是否是同一个实例，也就是是否是同一个对象引用。目前JavaScript没有内置的操作符判断对象的内容是否相同。</p>
+<p>所以如果我们输入的是?a[]=1&amp;b[]=1那么就可以进行绕过</p>
+<h1 id="web338"><a href="#web338" class="headerlink" title="web338"></a>web338</h1><p>这道题目是nodejs的原型链污染</p>
+<p>但是发现username的长度进行了限制,当我在password那里传入{“a”: 1, “__proto__“: {“ctfshow”: “36dboy”}}发现得到的结果是这样的</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\2.PNG"></p>
+<p>很显然没有造成污染</p>
+<p>好吧，我应该一开始就抓包看看</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\3.PNG"></p>
+<p>原型链污染的原理大概记录一下</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\4.PNG"></p>
+<p>当查询a中不存在的属性时，会向上查询a的原型，a的原型的原型…..直到找到这个属性，或者是找到object也没有找到这个属性，object的原型是null，null没有属性，于是返回未定义</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\5.png" alt="image-20211201230147106"></p>
+<p>可以看到b是我新定义的一个对象，因为b跟a具有相同的原型，那么b.cky就与a同样的机制，返回lsy</p>
+<p>那么回到题目，当我传入的是{“username”:”1”,”password”:”1”,”__proto__“: {“ctfshow”: “36dboy”}},req.body来到</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">object1, object2</span>)</span>&#123;<span class="comment">//object1=&#123;&#125;,object2=&#123;&quot;username&quot;:&quot;1&quot;,&quot;password&quot;:&quot;1&quot;,&quot;\_\_proto\_\_&quot;: &#123;&quot;ctfshow&quot;: &quot;36dboy&quot;&#125;&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> object2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (key <span class="keyword">in</span> object2 &amp;&amp; key <span class="keyword">in</span> object1) &#123;</span><br><span class="line">            copy(object1[key], object2[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            object1[key] = object2[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\6.png" alt="image-20211202000622945"></p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\7.png" alt="image-20211202000755677"></p>
+<p>object1[__proto__]={ ctfshow: ‘36dboy’ }</p>
+<p>那么object1的原型就有了ctfshow这个属性，</p>
+<p><img src="E:\cky_Blog\cky_Blog\source_posts\Node-js常见漏洞学习\8.png" alt="image-20211202000931839"></p>
+<p>从这里可以secert与user具有相同的原型，于此secert.ctfshow=36dboy,得到flag</p>
+
                 
             </div>
             <hr/>
@@ -520,7 +519,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/11/29/GYCTF2020-EasyThinking/">http://ckylsy.github.io/2021/11/29/GYCTF2020-EasyThinking/</a>
+                    <a href="http://ckylsy.github.io/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">http://ckylsy.github.io/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -727,9 +726,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
@@ -747,9 +747,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -758,6 +758,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -768,13 +769,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/CISCN2019-%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA-Double-Secret/">
+                <a href="/2021/11/29/GYCTF2020-EasyThinking/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="CISCN2019_华东南赛区_Double_Secret">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="GYCTF2020_EasyThinking">
                         
-                        <span class="card-title">CISCN2019_华东南赛区_Double_Secret</span>
+                        <span class="card-title">GYCTF2020_EasyThinking</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
