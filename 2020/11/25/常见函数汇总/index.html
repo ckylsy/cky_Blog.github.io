@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -475,7 +475,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>#前言<br>遇到后随时补充</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p> 1.cat<br><br>　　由第一行开始显示内容，并将所有内容输出。当文件过大时，使用cat查看不方便。<br><br>　　语法：cat -n filename.txt （-n：显示时，连行号一起输出）v<br>2.tac<br><br>　　从最后一行倒序显示内容，并将所有内容输出。<br><br>　　语法：tac filename.txt<br><br>3.more<br><br>　　根据窗口大小，一页一页的显示文件内容，退出查看页面，可按“q”键。<br>　　另外，more可以配合管道符“|”（pipe）使用，例如：ls -al | more<br>　　语法：more filename.txt<br><br>4.less<br><br>　　和more类似，但其优点可以使用【pageup】和【pagedown】键前后翻页。<br><br>　　语法：less filename.txt<br><br>　　less还有一个功能，可以在文件中进行搜索字符串。<br>5.head<br><br>　　只显示文件的前几行。<br><br>　　语法：head filename.txt 显示文件的前10行<br><br>　　head -n 3 filename.txt 显示前3行<br><br>　　head -3 filename.txt 显示前3行<br><br>6.tail<br><br>　　只显示文件的后几行<br>。<br>　　语法：同head<br><br>7.nl<br><br>　　nl的功能和cat -n一样，从第一行开始输出全部内容，并且显示行号。<br><br>　　语法：nl filename.txt<br><br>8.tailf<br><br>　　类似于tail -f filename 监视filename文件的尾部内容（默认10行，相当于增加参数 -n 10），刷新显示在屏幕上。<br><br>　　tail -f 和 tailf 的区别：<br>   tailf 总是从文件开头一点一点的读， 而tail -f 则是从文件尾部开始读；<br><br>   tailf check文件增长时，使用的是文件名， 用stat系统调用；而tail -f 则使用的是打开的文件描述符；<br><br>   注：tailf 也可以做到类似跟踪文件名的效果，但是tail总是使用fstat系统调用，而不是stat系统调用。结果就是：默认情况下，当tail的文件被偷偷删除时，tail是不知道的，而tailf是知道的。<br>9.sort<br><br>  sort可针对文本文件的内容，以行为单位来排序。</p>
 

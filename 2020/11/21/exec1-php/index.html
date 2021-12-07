@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -475,7 +475,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>#前言<br>无哈哈哈哈哈哈</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>拿到这道题，打开是空白，本小白表示很懵逼，看了一眼大佬写的wp，说是命令执行漏洞，很奇怪，怎么看出来就是命令执行漏洞了，大佬都这么厉害？先去百度了一下什么是命令执行漏洞，大概了解了下，看到了php有个exec()函数，这不就是我们的题目嘛，原来是这看出的。根据题目的提示，先输入/exec1.php，啊，它终于不是空白了。<br>！<a href="1.png">1</a><br>根据提示Ping了一下，？ip=127.0.0.1（本地回环ip，他代表设备的本地虚拟接口，所以被默认看作是永远不会宕掉的接口）<br>！<a href="2.png">2</a><br>然后就执行下一个指令，拼接符好像都被过滤了，所以使用换行符%0A执行ls命令，发现有个exec1.php的文件，直接cat无回响，去查看文件的目录，这里有get了一个知识点。<br>/：代表着根目录，是树形结构的最上层<br>.：表示当前目录，也可以用./表示；<br>. .：表示上一级目录，也可以用. ./表示；<br>！<a href="3.png">3</a><br>用了三次才出来，这题目也是，害。<br>然后cat得flag<br>！<a href="4.png">4</a><br>做题不易啊</p>
 

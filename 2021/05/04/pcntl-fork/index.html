@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -474,7 +474,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <a id="more"></a>
+                <span id="more"></span>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?php  </span><br><span class="line">$pid &#x3D; pcntl_fork();</span><br><span class="line">if ($pid &#x3D;&#x3D; -1)</span><br><span class="line">&#123;</span><br><span class="line">   	die(&quot;could not fork&quot;);</span><br><span class="line">&#125;</span><br><span class="line">elseif($pid &#x3D;&#x3D; 0)</span><br><span class="line">&#123;</span><br><span class="line">   	echo &quot;I&#39;m the child  process \n&quot;;</span><br><span class="line">&#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">   	echo &quot;I&#39;m the parent process \n&quot;;</span><br><span class="line">   	exit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>要搞清楚fork的执行过程，就必须弄清楚操作系统中“进程process”概念</p>

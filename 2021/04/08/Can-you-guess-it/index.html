@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -474,7 +474,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <a id="more"></a>
+                <span id="more"></span>
 
 <p>打开题目，点击source，我的想法就是怎么去构造guess与$secret相同，但是自己尝试后，然后又上网查了一下hash_equals的资料，发现好像绕过不了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line">	&lt;?php</span><br><span class="line">include &#39;config.php&#39;; &#x2F;&#x2F; FLAG is defined in config.php</span><br><span class="line"></span><br><span class="line">if (preg_match(&#39;&#x2F;config\.php\&#x2F;*$&#x2F;i&#39;, $_SERVER[&#39;PHP_SELF&#39;])) &#123;</span><br><span class="line">   exit(&quot;I don&#39;t know what you are thinking, but I won&#39;t let you read it :)&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (isset($_GET[&#39;source&#39;])) &#123;</span><br><span class="line">	 highlight_file(basename($_SERVER[&#39;PHP_SELF&#39;]));</span><br><span class="line"> 	 exit();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$secret &#x3D; bin2hex(random_bytes(64));</span><br><span class="line">if (isset($_POST[&#39;guess&#39;])) &#123;</span><br><span class="line"> 		$guess &#x3D; (string) $_POST[&#39;guess&#39;];</span><br><span class="line"> 		if (hash_equals($secret, $guess)) &#123;</span><br><span class="line"> 		  $message &#x3D; &#39;Congratulations! The flag is: &#39; . FLAG;</span><br><span class="line"> 	&#125; else &#123;</span><br><span class="line">   $message &#x3D; &#39;Wrong.&#39;;</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
