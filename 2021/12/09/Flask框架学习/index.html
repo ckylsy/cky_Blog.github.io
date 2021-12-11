@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Node.js常见漏洞学习, Hexo">
+    <meta name="keywords" content="Flask框架学习, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Node.js常见漏洞学习 | Hexo</title>
+    <title>Flask框架学习 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -320,12 +320,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Node.js常见漏洞学习</h1>
+                    <h1 class="description center-align post-title">Flask框架学习</h1>
                 </div>
             </div>
         </div>
@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-30
+                    2021-12-09
                 </div>
                 
 
@@ -474,44 +474,96 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>###为啥写的东西又没了，为啥总是记不住保存…</p>
-<h1 id="web337"><a href="#web337" class="headerlink" title="web337"></a>web337</h1><p>我自己做测试时用的源码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var express &#x3D; require(&#39;express&#39;);</span><br><span class="line">var router &#x3D; express.Router();</span><br><span class="line">let app &#x3D; express();</span><br><span class="line">app.listen(4000);</span><br><span class="line">var crypto &#x3D; require(&#39;crypto&#39;);</span><br><span class="line">app.use(&#39;&#x2F;&#39;,router)</span><br><span class="line"></span><br><span class="line">function md5(s) &#123;</span><br><span class="line">  return crypto.createHash(&#39;md5&#39;)</span><br><span class="line">    .update(s)</span><br><span class="line">    .digest(&#39;hex&#39;);</span><br><span class="line">&#125;</span><br><span class="line">var flag&#x3D;&#39;flag&#123;123&#125;&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;* GET home page. *&#x2F;</span><br><span class="line">router.get(&#39;&#x2F;&#39;, function(req, res, next) &#123;</span><br><span class="line">  res.type(&#39;html&#39;);</span><br><span class="line">  var flag&#x3D;&#39;xxxxxxx&#39;;</span><br><span class="line">  var a &#x3D; req.query.a;</span><br><span class="line">  var b &#x3D; req.query.b;</span><br><span class="line">  console.log(md5(a+flag));</span><br><span class="line">  console.log(md5(b+flag));</span><br><span class="line">  console.log(a.length);</span><br><span class="line">  console.log(b.length);</span><br><span class="line">  console.log(a!&#x3D;&#x3D;b);</span><br><span class="line">  console.log(a);</span><br><span class="line">  console.log(b);	</span><br><span class="line">  if(a &amp;&amp; b &amp;&amp; a.length&#x3D;&#x3D;&#x3D;b.length &amp;&amp; a!&#x3D;&#x3D;b &amp;&amp; md5(a+flag)&#x3D;&#x3D;&#x3D;md5(b+flag))&#123;</span><br><span class="line">  	console.log(&#39;flag！！&#39;);</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">  	console.log(&#39;no！！&#39;);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; router;</span><br></pre></td></tr></table></figure>
+                <p>Flask本身相当于一个内核（根据内核的概念，我的理解是我们的代码相当于是软件，然后通过flask实施对硬件的管理，就是最后呈现出来的页面），几乎所有的所有的功能都需要用到扩展，都需要用第三方扩展来实现。</p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><h4 id="wsgi"><a href="#wsgi" class="headerlink" title="wsgi"></a>wsgi</h4><hr>
+<p>Python Web Server Gateway Interface,它为python语言写的web服务器以及web应用程序或框架之间的一种简单而通用的接口。</p>
+<p>wsgi分为两部分</p>
+<ul>
+<li>Server/GateWay：即Http Server，负责从客户端（Nginx，apache，iis）接受请求，将request转发给application，并将application返回的res返回到客户端</li>
+<li>Application/Framework:一个python web应用或者是web框架，接收到server转发的request，处理请求，并将处理结果返回给server</li>
+</ul>
+<h3 id="可供学习的文档"><a href="#可供学习的文档" class="headerlink" title="可供学习的文档"></a>可供学习的文档</h3><ol>
+<li>中文文档（<a target="_blank" rel="noopener" href="http://docs.jinkan.org/docs/flask/%EF%BC%89">http://docs.jinkan.org/docs/flask/）</a></li>
+<li>英文文档（<a target="_blank" rel="noopener" href="http://flask.pocoo.org/docs/0.11/%EF%BC%89">http://flask.pocoo.org/docs/0.11/）</a></li>
+<li>扩展列表：(<a target="_blank" rel="noopener" href="http://flask.pocoo.org/extensions/%EF%BC%89">http://flask.pocoo.org/extensions/）</a></li>
+</ol>
+<h3 id="第一个web服务"><a href="#第一个web服务" class="headerlink" title="第一个web服务"></a>第一个web服务</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">class Flask(Scaffold) Flask 对象实现了一个 WSGI 应用程序并充当中心对象。</span></span><br><span class="line"><span class="string">它传递了应用程序的模块或包的名称。一旦创建，它将充当视图功能、URL 规则、模板配置等的中央注册表。</span></span><br><span class="line"><span class="string">包的名称用于从包内部或模块所在的文件夹解析资源，</span></span><br><span class="line"><span class="string">具体取决于包参数是解析为实际的 python 包（包含 __init__.py 文件的文件夹）</span></span><br><span class="line"><span class="string">还是标准模块（只是一个 .py 文件）。</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="comment">#将路由映射到视图函数，index()</span></span><br><span class="line"><span class="comment">#我的理解是如果访问/,那么调用index()</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;HelloWorld&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Flask应用程序实例的run方法 启动web服务</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8888</span>)</span><br></pre></td></tr></table></figure>
 
-<p>其实这道题目就涉及了一个比较简单的知识点</p>
-<p><img src="1.PNG"></p>
-<p>这是在php中两个数组进行比较，如果输入a[]=1&amp;b[]=1那么则会返回a!==b就会返回false</p>
-<p>但是在js中不是这样的，在js中数组是对象，==或===操作符只能比较两个对象是否是同一个实例，也就是是否是同一个对象引用。目前JavaScript没有内置的操作符判断对象的内容是否相同。</p>
-<p>所以如果我们输入的是?a[]=1&amp;b[]=1那么就可以进行绕过</p>
-<h1 id="web338"><a href="#web338" class="headerlink" title="web338"></a>web338</h1><p>这道题目是nodejs的原型链污染</p>
-<p>但是发现username的长度进行了限制,当我在password那里传入{“a”: 1, “__proto__“: {“ctfshow”: “36dboy”}}发现得到的结果是这样的</p>
-<p><img src="2.PNG"></p>
-<p>很显然没有造成污染</p>
-<p>好吧，我应该一开始就抓包看看</p>
-<p><img src="3.PNG"></p>
-<p>原型链污染的原理大概记录一下</p>
-<p><img src="4.PNG"></p>
-<p>当查询a中不存在的属性时，会向上查询a的原型，a的原型的原型…..直到找到这个属性，或者是找到object也没有找到这个属性，object的原型是null，null没有属性，于是返回未定义</p>
-<p><img src="5.png" alt="image-20211201230147106"></p>
-<p>可以看到b是我新定义的一个对象，因为b跟a具有相同的原型，那么b.cky就与a同样的机制，返回lsy</p>
-<p>那么回到题目，当我传入的是{“username”:”1”,”password”:”1”,”__proto__“: {“ctfshow”: “36dboy”}},req.body来到</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copy</span>(<span class="params">object1, object2</span>)</span>&#123;<span class="comment">//object1=&#123;&#125;,object2=&#123;&quot;username&quot;:&quot;1&quot;,&quot;password&quot;:&quot;1&quot;,&quot;\_\_proto\_\_&quot;: &#123;&quot;ctfshow&quot;: &quot;36dboy&quot;&#125;&#125;</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> object2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (key <span class="keyword">in</span> object2 &amp;&amp; key <span class="keyword">in</span> object1) &#123;</span><br><span class="line">            copy(object1[key], object2[key])</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            object1[key] = object2[key]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>按照上面的wsgi，是不是意思就是说，Http Server接受客户端的请求，路由是’/‘,然后转发request到web flask框架，然后flask通过路由映射到视图的函数即index(),返回‘Helloworld’给Http Sever，然后server转发给客户端</p>
+<p>ah,我发现了一个warning:这不是wsgi服务器</p>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209175508978.png" alt="image-20211209175508978"></p>
+<h3 id="相关配置参数"><a href="#相关配置参数" class="headerlink" title="相关配置参数"></a>相关配置参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,</span></span></span><br><span class="line"><span class="function"><span class="params">             import_name: <span class="built_in">str</span>, <span class="comment">#flask程序所在的包，传__name__就可以得到，其可以决定flask访问静态文件时查找的路径</span></span></span></span><br><span class="line"><span class="function"><span class="params">             static_url_path: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             static_folder: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="string">&quot;static&quot;</span>, <span class="comment">#静态文件存储的文件夹</span></span></span></span><br><span class="line"><span class="function"><span class="params">             static_host: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             host_matching: <span class="built_in">bool</span> = <span class="literal">False</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             subdomain_matching: <span class="built_in">bool</span> = <span class="literal">False</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             template_folder: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="string">&quot;templates&quot;</span>,<span class="comment">#模板文件存储的文件夹</span></span></span></span><br><span class="line"><span class="function"><span class="params">             instance_path: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="literal">None</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             instance_relative_config: <span class="built_in">bool</span> = <span class="literal">False</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">             root_path: <span class="type">Optional</span>[<span class="built_in">str</span>] = <span class="literal">None</span></span>) -&gt; <span class="type">Any</span></span></span><br></pre></td></tr></table></figure>
 
-<p><img src="6.png" alt="image-20211202000622945"></p>
-<p><img src="7.png" alt="image-20211202000755677"></p>
-<p>object1[__proto__]={ ctfshow: ‘36dboy’ }</p>
-<p>那么object1的原型就有了ctfshow这个属性，</p>
-<p><img src="8.png" alt="image-20211202000931839"></p>
-<p>从这里可以secert与user具有相同的原型，于此secert.ctfshow=36dboy,得到flag</p>
-<h1 id="web339"><a href="#web339" class="headerlink" title="web339"></a>web339</h1><p>这道题目与上述题目不同的一点是,这个flag是啥我不知道。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">router.post(<span class="string">&#x27;/&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>).json(),<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.type(<span class="string">&#x27;html&#x27;</span>);</span><br><span class="line">  <span class="keyword">var</span> flag=<span class="string">&#x27;flag_here&#x27;</span>;</span><br><span class="line">  <span class="keyword">var</span> secert = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> sess = req.session;</span><br><span class="line">  <span class="keyword">let</span> user = &#123;&#125;;</span><br><span class="line">  utils.copy(user,req.body);</span><br><span class="line">  <span class="keyword">if</span>(secert.ctfshow===flag)&#123;</span><br><span class="line">    res.end(flag);</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> res.json(&#123;<span class="attr">ret_code</span>: <span class="number">2</span>, <span class="attr">ret_msg</span>: <span class="string">&#x27;登录失败&#x27;</span>+<span class="built_in">JSON</span>.stringify(user)&#125;);  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<h3 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h3><p>在Flask程序运行的时候，可以给Flask设置相关配置（我理解的配置，就是说给这个东西添加它原来不具备的功能。比如，这个Flask框架就是一个很简单的只能在页面中输出helloworld的一个框架，我给他添加了一个可以连接数据库的配置，那么它就可以跟我的数据库相连接，在页面上实现对我的数据库的一个增删改查）</p>
+<ul>
+<li>从配置对象中加载（常用）<ul>
+<li>app.config.from_object()</li>
+</ul>
+</li>
+<li>从配置文件中加载<ul>
+<li>app.config.from_pyfile()</li>
+</ul>
+</li>
+<li>从环境变量中加载（不常用，我感觉我们的程序最终是让客户使用的，我们如果在让客户进行环境变量的配置，那会大大的减少客户的使用量）<ul>
+<li>app.config.from_envvar()</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置对象加载"><a href="#配置对象加载" class="headerlink" title="配置对象加载"></a>配置对象加载</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义一个配置对象,里面定义需要给app添加的一系列配置</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    DEBUG=<span class="literal">True</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="comment">#从配置对象中加载配置</span></span><br><span class="line">app.config.from_object(Config)</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    a=<span class="number">1</span>/<span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;HelloWorld&#x27;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8888</span>)</span><br></pre></td></tr></table></figure>
 
-<p>所以没有办法进行上一步的操作，所以只能另求它法，注意到这道题目的源码比上一道题目多给了一个api.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.Router();</span><br><span class="line"><span class="keyword">var</span> utils = <span class="built_in">require</span>(<span class="string">&#x27;../utils/common&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET home page.  */</span></span><br><span class="line">router.post(<span class="string">&#x27;/&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>).json(),<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.type(<span class="string">&#x27;html&#x27;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(query);</span><br><span class="line">  res.render(<span class="string">&#x27;api&#x27;</span>, &#123; <span class="attr">query</span>: <span class="built_in">Function</span>(query)(query)&#125;);</span><br><span class="line">   </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+<p>​    关于<a target="_blank" rel="noopener" href="https://blog.csdn.net/pick_ears/article/details/109234750">DEBUG</a>的使用</p>
+<h4 id="从配置文件中加载配置"><a href="#从配置文件中加载配置" class="headerlink" title="从配置文件中加载配置"></a>从配置文件中加载配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从配置文件中加载配置</span></span><br><span class="line">app.config.from_pyfile(<span class="string">&#x27;config.ini&#x27;</span>)</span><br><span class="line"><span class="comment">#config.ini文件中的内容</span></span><br><span class="line">DEBUG=<span class="literal">True</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>这里面的Function(query)(query)相当于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">query</span>(<span class="params">query</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">eval</span>(query)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209173704825.png" alt="image-20211209173704825"></p>
+<p>从中可以看到DEBUG模块已经开启</p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Flask应用将一些常用的配置设置成立应用程序对象的属性，也可以通过设置/获取某些配置</span></span><br><span class="line">app.debug=<span class="literal">True</span></span><br><span class="line"><span class="comment">#这样也可以成功</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209175820363.png" alt="image-20211209175820363"></p>
+<h4 id="读取配置"><a href="#读取配置" class="headerlink" title="读取配置"></a>读取配置</h4><ul>
+<li>app.config.get()</li>
+</ul>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209175914630.png" alt="image-20211209175914630"></p>
+<blockquote>
+<p>发现了一个问题,我只打印了一次config.get（）,为什么出现了两次?</p>
+<p>我尝试了下述的代码测试</p>
+</blockquote>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209181506114.png" alt="image-20211209181506114"></p>
+<p>感觉应该是先从头到尾过一遍，然后遇到app.run（），然后，run是启动这个web程序，然后再从头到尾的来一遍</p>
+<h3 id="路由定义"><a href="#路由定义" class="headerlink" title="路由定义"></a>路由定义</h3><h4 id="指定路由地址"><a href="#指定路由地址" class="headerlink" title="指定路由地址"></a>指定路由地址</h4><p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209182156571.png" alt="image-20211209182156571"></p>
+<p>仔细看这里有一个404，上次在做一道ctf文件上传题目的时候用到了包含长整形ip的时候，也是因为这个404，才没有包含成功</p>
+<p>favicon.ico是页面的一个页面图标，这是浏览器的一个默认行为，当打开一个网页的时候，浏览器都会去请求页面图标，但是我这里没有，所以就会返回404</p>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209182740968.png" alt="image-20211209182740968"></p>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209182826940.png" alt="image-20211209182826940"></p>
+<p>就前面的这个小图标</p>
+<p>但是</p>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209184549199.png" alt="image-20211209184549199"></p>
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211209184602322.png" alt="image-20211209184602322"></p>
+<p>就不会出现这种情况，具体原因是什么，我暂时不知道</p>
+<p>感觉是浏览器对127.0.0.1以及其他ip的操作手段不一样</p>
+<h4 id="给路由传递参数"><a href="#给路由传递参数" class="headerlink" title="给路由传递参数"></a>给路由传递参数</h4><p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211210162419262.png" alt="image-20211210162419262"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#由路由传递参数</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_info</span>(<span class="params">user_id</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(user_id))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello %s&#x27;</span> % user_id</span><br><span class="line"></span><br><span class="line"><span class="comment">#路由传递的参数默认是 string 处理，也可以指定参数类型</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/user/&lt;int:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">user_info1</span>(<span class="params">user_id</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(user_id))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello %d&#x27;</span> % user_id</span><br></pre></td></tr></table></figure>
+
+<h4 id="指定请求方式"><a href="#指定请求方式" class="headerlink" title="指定请求方式"></a>指定请求方式</h4><p>在Flask中第一一个路由，默认请求方式为：</p>
+<ul>
+<li>GET</li>
+<li>OPTIONS(自带)</li>
+<li>HEAD(自带)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/login&#x27;</span>,methods = [<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>():</span></span><br><span class="line">    <span class="keyword">return</span> request.method</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>,port=<span class="number">8888</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="正则匹配路由"><a href="#正则匹配路由" class="headerlink" title="正则匹配路由"></a>正则匹配路由</h4><p>在web开发中，可能会有限制用户访问规则的场景，那么这个时候就会用到正则匹配，根据自己的规则去限定请求参数进行访问</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> werkzeug.routing <span class="keyword">import</span> BaseConverter</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegexConverter</span>(<span class="params">BaseConverter</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,url_map,*args</span>):</span></span><br><span class="line">        <span class="built_in">super</span>(RegexConverter,self).__init__(url_map)</span><br><span class="line">        <span class="comment">#args[0]接收的是我们定义的正则表达式</span></span><br><span class="line">        <span class="comment">#self.regex其实就是对BaseConvert中regex的重写</span></span><br><span class="line">        self.regex = args[<span class="number">0</span>]</span><br><span class="line">        <span class="built_in">print</span>(self.regex)</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        原生的args</span></span><br><span class="line"><span class="string">        args[0]:[^/]+</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment">#re()相当于RegexpConvert（），那么re(&quot;[0-9]&#123;6&#125;&quot;)相当于给RegexConverter的__init__传递了参数&quot;[0-9]&#123;6&#125;&quot;</span></span><br><span class="line">app.url_map.converters[<span class="string">&#x27;re&#x27;</span>] = RegexConverter</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/reg/&lt;re(&quot;[0-9]&#123;6&#125;&quot;):user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reg</span>(<span class="params">user_id</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;用户的id是: %s&quot;</span> % user_id</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8888</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="to-python"><a href="#to-python" class="headerlink" title="to_python"></a>to_python</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> werkzeug.routing <span class="keyword">import</span> BaseConverter</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListConverter</span>(<span class="params">BaseConverter</span>):</span></span><br><span class="line">    regex= <span class="string">&#x27;(\\d+,?)+\\d$&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_python</span>(<span class="params">self,value</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;here&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> value.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">app.url_map.converters[<span class="string">&quot;list&quot;</span>] = ListConverter</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/reg/&lt;list:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reg</span>(<span class="params">user_id</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;用户的id是: %s&quot;</span> % user_id</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8888</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211211203619629.png" alt="image-20211211203619629"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, url_for</span><br><span class="line"><span class="keyword">from</span> werkzeug.routing <span class="keyword">import</span> BaseConverter</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> redirect</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListConverter</span>(<span class="params">BaseConverter</span>):</span></span><br><span class="line">    regex= <span class="string">&#x27;(\\d+,?)+\\d$&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_python</span>(<span class="params">self,value</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;to_python&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> value.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">to_url</span>(<span class="params">self, value</span>):</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;to_url&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;,&quot;</span>.join(<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#app.url_map.converters[&#x27;re&#x27;] = RegexConverter</span></span><br><span class="line">app.url_map.converters[<span class="string">&quot;list&quot;</span>] = ListConverter</span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/reg/&lt;list:user_id&gt;&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo2</span>(<span class="params">user_id</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;用户的id是: %s&quot;</span> % user_id</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/demo3&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo3</span>():</span></span><br><span class="line">    <span class="keyword">return</span> redirect(url_for(<span class="string">&#x27;demo2&#x27;</span>,user_id=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]))</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="number">8888</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\12230\AppData\Roaming\Typora\typora-user-images\image-20211211205615504.png" alt="image-20211211205615504"></p>
+<h3 id="简单视图"><a href="#简单视图" class="headerlink" title="简单视图"></a>简单视图</h3><p>在使用Flask给客户端返回JSON数据时，可以直接使用jsonify生成一个JSON响应</p>
 
                 
             </div>
@@ -538,7 +590,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ckylsy.github.io/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">http://ckylsy.github.io/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/</a>
+                    <a href="http://ckylsy.github.io/2021/12/09/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">http://ckylsy.github.io/2021/12/09/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -745,9 +797,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/12/09/Flask%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
@@ -765,9 +818,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -776,6 +829,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -786,13 +840,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/GYCTF2020-EasyThinking/">
+                <a href="/2021/11/30/Node-js%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="GYCTF2020_EasyThinking">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Node.js常见漏洞学习">
                         
-                        <span class="card-title">GYCTF2020_EasyThinking</span>
+                        <span class="card-title">Node.js常见漏洞学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -803,7 +857,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
                             </span>
                         <span class="publish-author">
                             
