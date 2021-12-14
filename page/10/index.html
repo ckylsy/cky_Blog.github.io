@@ -378,6 +378,86 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2021/03/07/ssrf-%E7%AE%80%E5%8D%95%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%8B/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="ssrf(简单的做一下)">
+                            
+                            <span class="card-title">ssrf(简单的做一下)</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+
+这里面的几个函数，上个题目做的时候已经介绍过，整段代码就是输入url把这个界面的内容输出
+我们输入url=127.0.0.1,会发现它又把整端代码从新返回了一下
+所以我们尝试输入127.0.0.1/flag.php,发现得到了flag
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Chen Keyan
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/03/07/2018-Fakebook/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="[2018]Fakebook">
+                            
+                            <span class="card-title">[2018]Fakebook</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+打开界面了解功能，有注册，登录页面，注册的时候，因为blog的格式一直未知，就一直不能注册成功，这时候想到进行扫描目录
+扫出user.php.bak,下载源码
+
+代码审计，有个ssrf的漏洞，这个url是我们自己控制的，有个关于blog
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                Chen Keyan
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/03/06/nizhuansiwei/">
                         <div class="card-image">
                             
@@ -680,90 +760,6 @@ url=’http://scxk.nmpa.gov.cn:81/xk/&#39;
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/03/Blacklist/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="强网杯andGYCTF2020 Blacklist">
-                            
-                            <span class="card-title">强网杯andGYCTF2020 Blacklist</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-
-强网杯
-
-return preg_match(“/select|update|delete|drop|insert|where|./i”,$inject);
-输入1’ or 1=1 #可以列出所有的数据
-array(2) {  [0]
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-03
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Chen Keyan
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/02/easy-tornado/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="easy_tornado">
-                            
-                            <span class="card-title">easy_tornado</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-
-
-这一题
-
-前置知识
-tornado render是python的渲染函数，如果用户对render的内容可控，不仅可以输入xss代码，而且话可以{}中间再来一个{}（如果直接那样正不能部署到git上面）进行传递变量和执行简单的表达式。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                Chen Keyan
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -781,7 +777,7 @@ tornado render是python的渲染函数，如果用户对render的内容可控，
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">10 / 16</div>
+            <div class="center-align b-text-gray">10 / 17</div>
         </div>
         <div class="col s6 m4 l4">
             
